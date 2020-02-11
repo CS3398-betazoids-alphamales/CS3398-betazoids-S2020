@@ -1,11 +1,11 @@
 # FeedMe
 > FeedMe started out with a team of five versatile developers by the names of:
-    * Jonathan Crouch
-    * Benjamin Bond
-    * Evan Estrada 
-    * Aaron Baker
-    * Andrew Saenz
-with a vision to create an application that helps prevent good food from going to waste.
+    ** Jonathan Crouch ** , 
+    ** Benjamin Bond **,
+    ** Evan Estrada **,
+    ** Aaron Baker **, and
+    ** Andrew Saenz **
+with a vision to create an application that helps prevent good food from going to waste. We want to help individuals with limited cooking experience create recipes based on the ingredients they already have at home. 
 
 ## Table of contents
 * [General info](#general-info)
@@ -18,8 +18,8 @@ with a vision to create an application that helps prevent good food from going t
 * [Contact](#contact)
 
 ## General info
-
-
+![Cocktail](/cocktail.png)
+This is a best effort at creating a recipe recommendation program. For the moment, we are specializing in cocktail recipes. We hope to find a database full of a wide variety of recipes or make our own.
 
 ## Screenshots
 ![Example screenshot](./img/screenshot.png)
