@@ -1,11 +1,13 @@
 # FeedMe
-> FeedMe started out with a team of five versatile developers by the names of:
-    * Jonathan Crouch  
-    * Benjamin Bond 
-    * Evan Estrada 
-    * Aaron Baker 
-    * Andrew Saenz 
-with a vision to create an application that helps prevent good ingredients from going to waste. We want to help individuals with limited mixing experience create recipes based on the ingredients they already have at home. 
+>  FeedMe started out with a team of five versatile developers by the names of:
+> 
+> * Benjamin Bond
+> * Jonathan Crouch
+> * Evan Estrada
+> * Aaron Baker
+> * Andrew Saenz
+>
+> with a vision to create an application that helps prevent good ingredients from going to waste. We want to help individuals with limited mixing experience create recipes based on the ingredients they already have at home. 
 
 ## Table of contents
 * [General info](#general-info)
@@ -18,14 +20,18 @@ with a vision to create an application that helps prevent good ingredients from 
 * [Contact](#contact)
 
 ## General info
-![Cocktail](/Cocktail.png)
+![Cocktail](/Cocktail.png). 
+
 This is a best effort at creating a recipe recommendation program. For the moment, we are specializing in cocktail recipes. We hope to find a database full of a wide variety of recipes or make our own.
 
 ## Screenshots
 ![Example screenshot](./img/screenshot.png)
 
 ## Technologies
-* Tech 1 - version 1.0
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [CSS!](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [MySQL!](https://www.mysql.com/)
+* [Python!](https://www.python.org/about/)
 
 ## Setup
 Describe how to install / setup your local environement / add link to demo version.
@@ -35,10 +41,12 @@ Show examples of usage:
 `put-your-code-here`
 
 ## Features
-List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+List of TODOs for future development:
+
+* __Food Allergy Warning__: Warn the user if one of the recipes could trigger a food allergy. 
+* __Database Creation__: Import a MySQL dump to reference when searching for recipes.
+* __Recipe Recommendation__: Create an algorithm that takes a list of cocktail ingredients, searches a database for recipes with those ingredients, and returns a list of the top ten recipes that include those ingredients.
+* __User Interface__: Create an UI on the web that provides an interface in which to interact with the program.
 
 To-do list:
 * Wow improvement to be done 1
