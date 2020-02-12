@@ -1,4 +1,4 @@
-# FeedMe
+# WitchesBrew
 >  FeedMe started out with a team of five versatile developers by the names of:
 > 
 > * Benjamin Bond
