@@ -48,15 +48,12 @@ List of TODOs for future development:
 * __Recipe Recommendation__: Create an algorithm that takes a list of cocktail ingredients, searches a database for recipes with those ingredients, and returns a list of the top ten recipes that include those ingredients.
 * __User Interface__: Create an UI on the web that provides an interface in which to interact with the program.
 
-To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
-
 ## Status
-Project is: _in progress_ because it has just started.
+                               in progress
+
 
 ## Inspiration
-Add here credits. Project inspired by..., based on...
+Project inspired by our team's weak mixing skills, based on the idea of backward searching.
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Created by [@CS3398-betazoids-alphamales](https://github.com/CS3398-betazoids-alphamales) - feel free to contact us!
