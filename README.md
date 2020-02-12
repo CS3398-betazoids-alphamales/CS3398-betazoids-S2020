@@ -43,10 +43,11 @@ Show examples of usage:
 ## Features
 List of TODOs for future development:
 
-* __Food Allergy Warning__: Warn the user if one of the recipes could trigger a food allergy. 
-* __Database Creation__: Import a MySQL dump to reference when searching for recipes.
-* __Recipe Recommendation__: Create an algorithm that takes a list of cocktail ingredients, searches a database for recipes with those ingredients, and returns a list of the top ten recipes that include those ingredients.
-* __User Interface__: Create an UI on the web that provides an interface in which to interact with the program.
+* __Food Allergy Warning__: Warn the user if one of the recipes could trigger a food allergy. Casual users use this. Ben's first user story corresponds to this feature.
+* __Database Creation__: Import a MySQL dump to reference when searching for recipes. All users indirectly use this. Ben's first user story corresponds to this feature. 
+* __Recipe Recommendation__: Create an algorithm that takes a list of cocktail ingredients, searches a database for recipes with those ingredients, and returns a list of the top ten recipes that include those ingredients. Casual users use this. Ben's first user story corresponds to this feature. 
+* __User Interface__: Create an UI on the web that provides an interface in which users interact with the program. Andrew's second user story corresponds to this feature.
+#__Gamification__: Users can pass ingredients to the random command to pick random recipes instead of highly rated/first five recipes in database table. Evan's first story corresponds to this.
 
 ## Status
                                in progress
