@@ -9,8 +9,28 @@ form{
 	border-radius: 33px;
 }
 
+.nav-item{
+	text-decoration: none;
+	text-align: left;
+	margin-right: 10vw;
+	margin-top: 6vw;
+}
+
+.navbar-brand img{
+	width: 4vw;
+}
+
+.navbar-brand h2{
+	font-size: 18px;
+}
+
+#navsearch{
+	margin-right: 0px;
+	margin-top: 3vw;
+}
+
 #content-window{
-	margin-left: 200px;
+	margin-left: 20vw;
 }
 
 .form-control{
@@ -24,7 +44,7 @@ form{
 
  /* The sidebar menu */
 .sidenav {
-  display: inline-block;
+  align-items: stretch;
   margin-top: 120px;
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 200px; /* Set the width of the sidebar */
