@@ -1,2 +1,2 @@
-"AIzaSyArwkzp5Fo5C3NHI3RAJWG6D6xlzhlTxGo"
+${{secret.secret_key}}
 change 1
