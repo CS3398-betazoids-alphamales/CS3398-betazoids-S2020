@@ -1,0 +1,15 @@
+name: HandleSecrets
+
+on: [push]
+
+jobs:
+  handle-secrets:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Handle Secrets
+      with: # Set the secret as an input
+        super_secret: ${{ secrets.test_key }}
+      env: # Or as an environment variable
+        super_secret: ${{ secrets.test_key }}
