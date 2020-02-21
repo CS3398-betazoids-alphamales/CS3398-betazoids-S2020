@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: security
-      env: 
-        testKey: ${{ secrets.test_key }}
+      - uses: actions/checkout@v2
+      - name: security
+        env: 
+          testKey: ${{ secrets.test_key }}
