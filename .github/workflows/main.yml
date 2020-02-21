@@ -1,0 +1,17 @@
+name: workflow-actions
+
+on: 
+  push:
+    branches: 
+      - Website-Front-End
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: security
+      env: 
+        testKey: ${{ secrets.test_key }}
