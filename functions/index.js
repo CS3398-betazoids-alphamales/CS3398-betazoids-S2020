@@ -171,11 +171,13 @@ exports.devGetByIngredientMultiStrict = functions.https.onRequest(async (request
             }).catch(e => { console.log(e) });
     
     });
+
+
 exports.setRecipeRating = functions.https.onRequest(async (request, response) => {
 //  note: Please add ?variableName=value to end of https calls for passing aurguments.
-    //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
-    //
-    //  EXAMPLE: full_address?recipeName=Cactus Kicker - 4&rating=5
+//  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
+//
+//  EXAMPLE: full_address?recipeName=Cactus Kicker - 4&rating=5
 const thingToFind = request.query.recipeName.toUpperCase();
 const rating = request.query.rating;
 
@@ -205,8 +207,7 @@ admin.database().ref("data").once('value')
 });
 
 // exports.testDatabase = functions.https.onRequest(async (request, response) => {
-////no direct intention for this function atm.
-
+//
 //     admin.database().ref("data").once('value')
 //         .then(function(dataSnapshot) {
 
@@ -224,4 +225,20 @@ admin.database().ref("data").once('value')
 //     });
 
 //     response.send("Check the log!");
+// });
+
+// exports.devAddRatingKeyToAll = functions.https.onRequest(async (request, response) => { //under-construction
+
+//     var rootRef = admin.database().ref("data");
+
+//     rootRef.child("1").update({"ratingRunningTotal" : 0});
+//     rootRef.child("1").update({"ratingCount" : 0});
+
+
+//     response.send("success");
+//     // rootRef.forEach(function(eachEntry) {
+
+//     //     eachEntry.push({"rating" : 0});
+//     //     return null;
+//     // }).catch(e => { console.log(e) });
 // });
