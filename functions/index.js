@@ -171,7 +171,38 @@ exports.devGetByIngredientMultiStrict = functions.https.onRequest(async (request
             }).catch(e => { console.log(e) });
     
     });
+exports.setRecipeRating = functions.https.onRequest(async (request, response) => {
+//  note: Please add ?variableName=value to end of https calls for passing aurguments.
+    //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
+    //
+    //  EXAMPLE: full_address?recipeName=Cactus Kicker - 4&rating=5
+const thingToFind = request.query.recipeName.toUpperCase();
+const rating = request.query.rating;
 
+admin.database().ref("data").once('value')
+    .then(function(dataSnapshot) {
+
+        var match = false;
+
+        dataSnapshot.forEach(function(currentDrinkSnapshotIndex) {
+            if(currentDrinkSnapshotIndex.child("name").val() !== null){
+
+                var nameString = currentDrinkSnapshotIndex.child("name").val().toUpperCase();
+        
+                if ( nameString.includes(thingToFind) ){
+                    match = true;
+                    const dbRef = currentDrinkSnapshotIndex.ref;
+                    dbRef.update({"rating" : rating });
+                }
+        }
+            
+        });
+
+        response.json(match);
+        return null;
+        }).catch(e => { console.log(e);
+        });
+});
 
 // exports.testDatabase = functions.https.onRequest(async (request, response) => {
 ////no direct intention for this function atm.
