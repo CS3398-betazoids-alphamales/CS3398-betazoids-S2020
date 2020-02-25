@@ -80,6 +80,82 @@ exports.devGetByIngredient = functions.https.onRequest(async (request, response)
 });
 
 
+exports.getByIngredientMulti = functions.https.onRequest(async (request, response) => { // currently, using .contains() is returning true for " cola" in "pina colada" etc
+    //  note: Please add ?variableName=value to end of https calls for passing aurguments.
+    //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
+    //
+    //  EXAMPLE: full_address?total=2&findthis1=rum&findthis2=gin 
+        
+        var totalIngrs = request.query.total; // MIN = 2, MAX = 5
+        var find1 = " " + request.query.findthis1.toUpperCase();
+        var find2 = " " + request.query.findthis2.toUpperCase();
+        var find3;
+        var find4;
+        var find5;
+        
+        do {
+            if (totalIngrs === "2")
+                break;
+            
+            find3 = " " + request.query.findthis3.toUpperCase();
+            if (totalIngrs === "3")
+                break;
+            
+            find4 = " " + request.query.findthis4.toUpperCase();
+            if (totalIngrs === "4")
+                break;
+            
+            find5 = " " + request.query.findthis5.toUpperCase();
+        } while (once)
+    
+        admin.database().ref("data").once('value')
+            .then(function(dataSnapshot) {
+    
+                const allMatches = [];
+    
+                dataSnapshot.forEach(function(eachDrinkSnapshot) {
+    
+                    var hasIngr1 = false;
+                    var hasIngr2 = false;
+                    var hasIngr3 = false;
+                    var hasIngr4 = false;
+                    var hasIngr5 = false;
+    
+                    var ingrsObject = eachDrinkSnapshot.child('ingredients');
+    
+                    ingrsObject.forEach(function(eachIngrSnapshot) {
+    
+                        var ingrStr = eachIngrSnapshot.val().toUpperCase();
+
+                        if ( ingrStr.includes(find1) )
+                            hasIngr1 = true;
+                        if ( ingrStr.includes(find2) )
+                            hasIngr2 = true;
+                        if ( ingrStr.includes(find3) )
+                            hasIngr3 = true;
+                        if ( ingrStr.includes(find4) )
+                            hasIngr4 = true;
+                        if ( ingrStr.includes(find5) )
+                            hasIngr5 = true;
+                    });
+
+                    if ( hasIngr1 || hasIngr2 || hasIngr3 || hasIngr4 || hasIngr5 )
+                        allMatches.push( eachDrinkSnapshot );
+    
+                    hasIngr1 = false;
+                    hasIngr2 = false;
+                    hasIngr3 = false;
+                    hasIngr4 = false;
+                    hasIngr5 = false;
+                });
+    
+                response.json(allMatches);
+                return null;
+            }).catch(e => { console.log(e) });
+    
+    });
+
+
 exports.getByIngredientMultiStrict = functions.https.onRequest(async (request, response) => { // currently, using .contains() is returning true for " cola" in "pina colada" etc
     //  note: Please add ?variableName=value to end of https calls for passing aurguments.
     //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
