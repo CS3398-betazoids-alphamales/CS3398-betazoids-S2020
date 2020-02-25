@@ -25,15 +25,18 @@ exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => 
     admin.database().ref("data").once('value')
         .then(function(snapshot) {
 
-            const listOfIngrs = [];
+            var i = 0;            
+            var ingrObj = {};
 
             snapshot.forEach(function(entrySnapshot) {
 
-                listOfIngrs.push( entrySnapshot.child('ingredients') );
+                entrySnapshot.child('ingredients').forEach(function(eachIngr) {
+                    
+                    ingrObj["ingr" + i++] = eachIngr;
+                }); 
             });
 
-
-            response.json(listOfIngrs);
+            response.json(ingrObj);
             return null;
         }).catch(e => { console.log(e) });
 
