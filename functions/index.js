@@ -19,7 +19,7 @@ exports.helloWorld = functions.https.onRequest(async (request, response) => {
 });
 
 
-exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => { //this function is working atm. please consult before edits are made
+exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => {
 //this function will respond with a (json) list of all ingredients from every entry
 
     admin.database().ref("data").once('value')
@@ -40,7 +40,7 @@ exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => 
 });
 
 
-exports.devGetByIngredient = functions.https.onRequest(async (request, response) => { //this function is working atm. please consult before edits are made
+exports.devGetByIngredient = functions.https.onRequest(async (request, response) => {
     //  note: Please add ?variableName=value to end of https calls for passing aurguments.
     //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
     //
@@ -80,15 +80,13 @@ exports.devGetByIngredient = functions.https.onRequest(async (request, response)
 });
 
 
-exports.devGetByIngredientMultiStrict = functions.https.onRequest(async (request, response) => { //SEEMS TO BE WORKING ATM. although, using .contains() is returning true for "cola" in "pinacolada" atc
+exports.getByIngredientMultiStrict = functions.https.onRequest(async (request, response) => { // currently, using .contains() is returning true for " cola" in "pina colada" etc
     //  note: Please add ?variableName=value to end of https calls for passing aurguments.
     //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
     //
     //  EXAMPLE: full_address?total=2&findthis1=rum&findthis2=gin 
-    
-        //const incomingAurgument = request.query.variableName; // supplimental example
         
-        var totalIngrs = request.query.total; //max = 5, min = 2 , atm
+        var totalIngrs = request.query.total; // MIN = 2, MAX = 5
         var find1 = " " + request.query.findthis1.toUpperCase();
         var find2 = " " + request.query.findthis2.toUpperCase();
         var find3;
