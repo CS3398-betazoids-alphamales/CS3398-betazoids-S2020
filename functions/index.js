@@ -27,31 +27,33 @@ exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => 
 
             var totalIngrs = 0;
             var totalRefined = 1;       
-            //var drinkID = 1; //for debugging
-            //var ingrObj = {};
+            var drinkID = 1; //for debugging
             var refinedList = {};
             var hasIngr = false;
 
             snapshot.forEach(function(entrySnapshot) {
 
-                //ingrObj["entry" + drinkID] = drinkID++; //for debugging
                 entrySnapshot.child('ingredients').forEach(function(eachIngr) {
                     
                     var tempStr = eachIngr.val().toUpperCase();
-                    tempStr = tempStr.replace(/\.|-|`|75|0|1|2|3|4|5|6|7 |8|9|\/|PARTS|PART|FROZEN|CRACKED|OZ.| OZ| C | T | L |CUP |LITERS|LITER|LADLE| EACH| GAL |ML|EGGNOG| CANS | CAN |DASH OF|PACKET|INSTANT|\(RAW\)|DASHES|DASH OF|DASH|EQUAL|LARGE | ONE |ONE |DOUBLE BREWED|UNSWEETEND|STRONG|MUG |USHERS |NOILLY PRAT|SCOOPS|SCOOP|SPLASH OF|SPLASH|PREPARED|HALF A|JUICE FROM|JUICE OF| CUBES|\(CUBED\)|\(BOILING\)|\(TO TASTE\)|TO TASTE|\(CHILLED\)|\(STEMMED\)|\(SEEDLESS\)| RIM|ENVELOPE|TBPS|TBSP.|TBSP|TBS.|TBS|TSP.|TSP|\(SEEDED\)|FRESH|CINZANO|PROOF|SUPERFINE|FLAVORED |SLICED|SLICES|SLICE OF|SLICE|SMALL|WITH SYRUP|CHILLED|TEASPOON|WHOLE|BOTTLE|QTS|QT|PINT|SEVERAL|PREMIUM|BUSHMILLS|BACARDI|\(KAHLUA\)|\(PREMIUM\)|\(2 DRINKS\)|JIGGERS|\(WHOLE\)|MINCED|RIPE|CHOPPED|CRUSHED|\(OR\)|IMPORTED/g, '').trim();
+                    tempStr = tempStr.replace(/\.|-|`|75|0|1|2|3|4|5|6|7 |8|9|\/|PARTS|PART|FROZEN|CRACKED|OZ.| OZ| C | T | L | CUPS|CUP |LITERS|LITER|LADLE| EACH|QUART| GAL |ML| CANS | CAN |DASH OF|PACKET|INSTANT|\(RAW\)|DASHES|DASH OF|DASH|EQUAL|LARGE | ONE |ONE |DOUBLE BREWED|UNSWEETEND|STRONG |MUG |USHERS |NOILLY PRAT|SCOOPS|SCOOP|SPLASH OF|SPLASH|PREPARED|RINGS|HALF A|JUICE FROM|JUICE OF| CUBES|\(CUBED\)|CUBE|\(BOILING\)|\(TO TASTE\)|TO TASTE|\(CHILLED\)|\(STEMMED\)|\(SEEDLESS\)| RIM|ENVELOPE|TBPS|TBSP.|TBSP|TBS.|TBS|TSP.|TSP|\(SEEDED\)|FRESH|CINZANO|PROOF|SUPERFINE|FLAVORED |SLICED|SLICES|SLICE OF|SLICE|SMALL|WITH SYRUP|CHILLED|TEASPOON|WHOLE|BOTTLE|QTS|QT|PINT|SEVERAL|PACKAGE|HULLED|PREMIUM|BUSHMILLS|BACARDI|\(KAHLUA\)|\(PREMIUM\)|\(2 DRINKS\)|JIGGERS|JIGGER|\(WHOLE\)|MINCED|RIPE|CHOPPED|CRUSHED|\(OR\)|IMPORTED/g, '').trim();
                     tempStr = tempStr.replace(/ AND | N /g, '&');
-                    //ingrObj["ingr" + [broke this, from iter]++] = tempStr; //for debugging
 
                     for (var i = 0; i < totalIngrs; ++i)
                         if ( refinedList["ingr" + (i+1)] === tempStr)
                             hasIngr = true;
 
-                    if ( !hasIngr )
+                    if ( !hasIngr ) {
+
+                        refinedList["drinkID" + drinkID] = drinkID; //for debugging
                         refinedList["ingr" + totalRefined++] = tempStr;
+                    }
+                        
 
                     hasIngr = false;
                     ++totalIngrs;
                 }); 
+                ++drinkID; //for debugging
             });
 
             response.json(refinedList);
