@@ -2,6 +2,7 @@
 nav {
 	min-height: 120px;
 	background-color: #eeeeee;
+	display: fixed;
 }
 
 form{
@@ -12,6 +13,36 @@ form{
 a:hover{
 
 }
+
+ul, li{
+	list-style: none;
+}
+
+body{
+	overflow: hidden;
+}
+
+.scrollable-panel{
+      min-height:200px;
+      height: 50vw;
+      max-height: 450px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      width:100%;
+      }
+
+.card{
+	max-width: 230px;
+	min-width: 80px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.card-img-top{
+	max-width: 100%;
+	margin: auto;
+}
+
 
 .nav-item{
 	text-decoration: none;
@@ -32,6 +63,7 @@ a:hover{
 	margin-right: 0px;
 	margin-top: 3vw;
 }
+
 
 #content-window{
 	margin-left: 30vw;
