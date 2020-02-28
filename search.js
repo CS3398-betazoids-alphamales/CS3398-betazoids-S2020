@@ -41,28 +41,22 @@ data.forEach((result, idx) => {
   console.log("Now the ingredient array has: ");
   console.log(ingredientArray[i]);
   }
-  // Construct card content
-  const content = `
-    <div class="card">
-    <div class="card-header" id="heading-${idx}">
-      <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-${idx}" aria-expanded="true" aria-controls="collapse-${idx}">
-
-                </button>
-      </h5>
-    </div>
-
-    <div id="collapse-${idx}" class="collapse show" aria-labelledby="heading-${idx}" data-parent="#accordion">
-      <div id="card-body-${idx}" class="card-body">
-
-        <h5>${result.name}</h5>
-        <p>${result.form.type}</p>
+const cont =
+  `<div class="col-md-4" style="display:inline-grid">
+  <div class="card">
+    <div class="card-block" id="card-block-${idx}">
+      <img class="card-img-top" src="amaretto.jpg" alt="Card image" style="width:100%">
+        <div class="card-body" id="card-body-${idx}">
+          <h4 class="card-title"> ${result.name} </h4>
+          <p class="card-text"> ${result.form.type} </p>
+          <a href="#" class="btn btn-primary stretched-link">See Recipe</a>
+        </div>
       </div>
     </div>
-  </div>
-  `;
+</div>`;
 
-  container.innerHTML += content;
+
+  container.innerHTML += cont;
   for(i in ingredientArray){
     var z = document.createElement('p');
     var x = document.createTextNode(ingredientArray[i]);
