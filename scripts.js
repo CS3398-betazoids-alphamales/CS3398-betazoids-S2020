@@ -13,16 +13,52 @@
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 
-// Takes database snapshot and returns an array. Needs testing and tweaking. Possibly not even necessary.
-//function snapshotToArray(snapshot) {
-//    var returnArr = [];
+  var myFirebase = new Firebase("https://rvrslkupdb.firebaseio.com/");
+  var database = myFirebase.database();
+  
 
-//    snapshot.forEach(function(childSnapshot) {
-//       var item = childSnapshot.val();
-//        item.key = childSnapshot.key;
 
-//        returnArr.push(item);
-//    });
+  //Searchbar functions
 
-//    return returnArr;
-//};
+  function navbarSearchFunct() {
+    var input, filter, i;
+    input = document.getElementById("navbar-search");
+    filter = input.value.toUpperCase();
+    list = //PLACEHOLDER_FIREBASE_FUNCTION OR read a .JSON file from firebase;
+    listItem = list.getElementsByTagName("listItem");
+
+    
+
+    for (i = 0, i < listItem.length; i++){
+      var ref = database.ref([i]);
+
+      ref.once("value", function(snapshot) {
+      YOUR_VARIABLE_HERE = snapshot.val();
+      });
+
+
+      item = listItem[i];
+      title = item.name;
+      recipe = item.form 
+      ingredients = item.ingredients;
+
+      // TODO:: Finish this function, stupid
+
+    }
+
+
+  }
+
+
+
+  function sidebarSearchFunct() {
+
+
+
+
+
+  }
+
+  //Event listeners
+
+
