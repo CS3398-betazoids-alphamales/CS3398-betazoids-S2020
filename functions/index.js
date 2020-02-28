@@ -24,6 +24,44 @@ exports.helloWorld = functions.https.onRequest(async (request, response) => {
 });
 
 
+exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
+    //this function will respond with a (json) list of all ingredients from every entry
+    
+        admin.database().ref("data").once('value')
+            .then(function(snapshot) {
+    
+                var totalIngrs = 0;
+                var totalRefined = 1;
+                var refinedList = {};
+                var hasIngr = false;
+    
+                snapshot.forEach(function(entrySnapshot) {
+    
+                    entrySnapshot.child('ingredients').forEach(function(eachIngr) {
+                        
+                        var tempStr = eachIngr.val().toUpperCase();
+                        tempStr = tempStr.replace(/\.|-|`|75|0|1|2|3|4|5|6|7 |8|9|\/|PARTS|PART|FROZEN|CRACKED|SHAVED|SQUEEZE|OZ.| OZ| C | T | L | CUPS|CUP |LITERS|LITER|LADLE| EACH|QUART| GAL |ML| CANS | CAN |DASH OF|PACKET|INSTANT|\(RAW\)|DASHES|DASH OF|DASH|EQUAL|LARGE | ONE |ONE |DOUBLE BREWED|UNSWEETEND|STRONG |MUG |USHERS |NOILLY PRAT|SCOOPS|SCOOP|SPLASH OF|SPLASH|PREPARED|RINGS|HALF A|JUICE FROM|JUICE OF| CUBES|CUBED|\(CUBED\)|CUBE|\(BOILING\)|\(TO TASTE\)|TO TASTE|\(CHILLED\)|\(STEMMED\)|\(SEEDLESS\)| RIM|ENVELOPE|TBPS|TBSP.|TBSP|TBS.|TBS|TSP.|TSP|\(SEEDED\)|FRESH|CINZANO|PROOF|SUPERFINE|FLAVORED |SLICED|SLICES|SLICE OF|SLICE|SMALL|WITH SYRUP|CHILLED|TEASPOON|WHOLE|BOTTLE|DROPS|QTS|QT|PINT|SEVERAL|PACKAGE|HULLED|PREMIUM|BUSHMILLS|BACARDI|\(KAHLUA\)|\(PREMIUM\)|\(2 DRINKS\)|JIGGERS|JIGGER|\(WHOLE\)|MINCED|RIPE|CHOPPED|CRUSHED|\(OR\)|IMPORTED/g, '').trim();
+                        tempStr = tempStr.replace(/ AND | N /g, '&');
+    
+                        for (var i = 0; i < totalIngrs; ++i)
+                            if ( refinedList["ingr" + (i+1)] === tempStr)
+                                hasIngr = true;
+    
+                        if ( !hasIngr )
+                            refinedList["ingr" + totalRefined++] = tempStr;
+                            
+                        hasIngr = false;
+                        ++totalIngrs;
+                    }); 
+                });
+    
+                response.json(refinedList);
+                return null;
+            }).catch(e => { console.log(e) });
+    
+    });
+
+
 exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => {
 //this function will respond with a (json) list of all ingredients from every entry
 
@@ -41,7 +79,7 @@ exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => 
                 entrySnapshot.child('ingredients').forEach(function(eachIngr) {
                     
                     var tempStr = eachIngr.val().toUpperCase();
-                    tempStr = tempStr.replace(/\.|-|`|75|0|1|2|3|4|5|6|7 |8|9|\/|PARTS|PART|FROZEN|CRACKED|OZ.| OZ| C | T | L | CUPS|CUP |LITERS|LITER|LADLE| EACH|QUART| GAL |ML| CANS | CAN |DASH OF|PACKET|INSTANT|\(RAW\)|DASHES|DASH OF|DASH|EQUAL|LARGE | ONE |ONE |DOUBLE BREWED|UNSWEETEND|STRONG |MUG |USHERS |NOILLY PRAT|SCOOPS|SCOOP|SPLASH OF|SPLASH|PREPARED|RINGS|HALF A|JUICE FROM|JUICE OF| CUBES|\(CUBED\)|CUBE|\(BOILING\)|\(TO TASTE\)|TO TASTE|\(CHILLED\)|\(STEMMED\)|\(SEEDLESS\)| RIM|ENVELOPE|TBPS|TBSP.|TBSP|TBS.|TBS|TSP.|TSP|\(SEEDED\)|FRESH|CINZANO|PROOF|SUPERFINE|FLAVORED |SLICED|SLICES|SLICE OF|SLICE|SMALL|WITH SYRUP|CHILLED|TEASPOON|WHOLE|BOTTLE|QTS|QT|PINT|SEVERAL|PACKAGE|HULLED|PREMIUM|BUSHMILLS|BACARDI|\(KAHLUA\)|\(PREMIUM\)|\(2 DRINKS\)|JIGGERS|JIGGER|\(WHOLE\)|MINCED|RIPE|CHOPPED|CRUSHED|\(OR\)|IMPORTED/g, '').trim();
+                    tempStr = tempStr.replace(/\.|-|`|75|0|1|2|3|4|5|6|7 |8|9|\/|PARTS|PART|FROZEN|CRACKED|SHAVED|SQUEEZE|OZ.| OZ| C | T | L | CUPS|CUP |LITERS|LITER|LADLE| EACH|QUART| GAL |ML| CANS | CAN |DASH OF|PACKET|INSTANT|\(RAW\)|DASHES|DASH OF|DASH|EQUAL|LARGE | ONE |ONE |DOUBLE BREWED|UNSWEETEND|STRONG |MUG |USHERS |NOILLY PRAT|SCOOPS|SCOOP|SPLASH OF|SPLASH|PREPARED|RINGS|HALF A|JUICE FROM|JUICE OF| CUBES|CUBED|\(CUBED\)|CUBE|\(BOILING\)|\(TO TASTE\)|TO TASTE|\(CHILLED\)|\(STEMMED\)|\(SEEDLESS\)| RIM|ENVELOPE|TBPS|TBSP.|TBSP|TBS.|TBS|TSP.|TSP|\(SEEDED\)|FRESH|CINZANO|PROOF|SUPERFINE|FLAVORED |SLICED|SLICES|SLICE OF|SLICE|SMALL|WITH SYRUP|CHILLED|TEASPOON|WHOLE|BOTTLE|DROPS|QTS|QT|PINT|SEVERAL|PACKAGE|HULLED|PREMIUM|BUSHMILLS|BACARDI|\(KAHLUA\)|\(PREMIUM\)|\(2 DRINKS\)|JIGGERS|JIGGER|\(WHOLE\)|MINCED|RIPE|CHOPPED|CRUSHED|\(OR\)|IMPORTED/g, '').trim();
                     tempStr = tempStr.replace(/ AND | N /g, '&');
 
                     for (var i = 0; i < totalIngrs; ++i)
@@ -70,8 +108,8 @@ exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => 
 
 exports.getRandomList = functions.https.onRequest(async (request, response) => {
 
-    const randList = {};
-    var tempRandInt;
+    const randList = [];
+    var randIntStr = "init";
     const MIN = 1;
     const MAX = 1072;
     const howMany = 10;
@@ -81,10 +119,8 @@ exports.getRandomList = functions.https.onRequest(async (request, response) => {
 
             for ( var i = 0; i < howMany; ++i) {
                 
-                tempRandInt = (function(MIN,MAX) {
-                    return Math.floor(Math.random() * (MAX - MIN + 1) + MIN);
-                });
-                randList.push( dataSnapshot.child("" + tempRandInt) );
+                randIntStr = Math.floor(Math.random() * (MAX - MIN + 1) + MIN).toString();
+                randList.push( dataSnapshot.child(randIntStr) );
             }
             
             response.json(randList);
