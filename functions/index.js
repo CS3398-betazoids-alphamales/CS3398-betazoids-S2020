@@ -68,6 +68,31 @@ exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => 
 });
 
 
+exports.getRandomList = functions.https.onRequest(async (request, response) => {
+
+    const randList = {};
+    var tempRandInt;
+    const MIN = 1;
+    const MAX = 1072;
+    const howMany = 10;
+
+    admin.database().ref("data").once('value')
+        .then(function(dataSnapshot) {
+
+            for ( var i = 0; i < howMany; ++i) {
+                
+                tempRandInt = (function(MIN,MAX) {
+                    return Math.floor(Math.random() * (MAX - MIN + 1) + MIN);
+                });
+                randList.push( dataSnapshot.child("" + tempRandInt) );
+            }
+            
+            response.json(randList);
+            return null;
+        }).catch(e => { console.log(e) });
+});
+
+
 exports.devGetByIngredient = functions.https.onRequest(async (request, response) => {
     //  note: Please add ?variableName=value to end of https calls for passing aurguments.
     //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
