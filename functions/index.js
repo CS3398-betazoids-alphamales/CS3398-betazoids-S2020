@@ -10,11 +10,16 @@ admin.initializeApp();
 const path = require('path');
 const os = require('os');
 const fs = require('fs');
+// CORS Express middleware to enable CORS Requests.
+const cors = require('cors')({
+    origin: true,
+  });
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
 exports.helloWorld = functions.https.onRequest(async (request, response) => {
+ response.set('Access-Control-Allow-Origin', '*');
  response.send("Hello from the Betazoids!");
 });
 
