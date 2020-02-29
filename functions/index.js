@@ -26,7 +26,7 @@ exports.helloWorld = functions.https.onRequest(async (request, response) => {
 
 exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
     //this function will respond with a (json) list of all ingredients from every entry
-    
+    response.set('Access-Control-Allow-Origin', '*');
         admin.database().ref("data").once('value')
             .then(function(snapshot) {
     
@@ -64,7 +64,7 @@ exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
 
 exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => {
 //this function will respond with a (json) list of all ingredients from every entry
-
+response.set('Access-Control-Allow-Origin', '*');
     admin.database().ref("data").once('value')
         .then(function(snapshot) {
 
@@ -107,7 +107,7 @@ exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => 
 
 
 exports.getRandomList = functions.https.onRequest(async (request, response) => {
-
+    response.set('Access-Control-Allow-Origin', '*');
     const randList = [];
     var randIntStr = "init";
     const MIN = 1;
@@ -134,7 +134,7 @@ exports.devGetByIngredient = functions.https.onRequest(async (request, response)
     //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
     //
     //  EXAMPLE: full_address?findthis=rum
-    
+    response.set('Access-Control-Allow-Origin', '*');
     const thingToFind = " " + request.query.findthis.toUpperCase();
 
     admin.database().ref("data").once('value')
@@ -174,7 +174,7 @@ exports.getByIngredientMulti = functions.https.onRequest(async (request, respons
     //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
     //
     //  EXAMPLE: full_address?total=2&findthis1=rum&findthis2=gin 
-        
+    response.set('Access-Control-Allow-Origin', '*');
         var totalIngrs = request.query.total; // MIN = 2, MAX = 5
         var find1 = " " + request.query.findthis1.toUpperCase();
         var find2 = " " + request.query.findthis2.toUpperCase();
@@ -250,7 +250,7 @@ exports.getByIngredientMultiStrict = functions.https.onRequest(async (request, r
     //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
     //
     //  EXAMPLE: full_address?total=2&findthis1=rum&findthis2=gin 
-        
+    response.set('Access-Control-Allow-Origin', '*');
         var totalIngrs = request.query.total; // MIN = 2, MAX = 5
         var find1 = " " + request.query.findthis1.toUpperCase();
         var find2 = " " + request.query.findthis2.toUpperCase();
@@ -343,7 +343,7 @@ exports.setRecipeRating = functions.https.onRequest(async (request, response) =>
 //  EXAMPLE: full_address?recipeName=Cactus Kicker - 4&rating=5
 const thingToFind = request.query.recipeName.toUpperCase();
 const rating = request.query.rating;
-
+response.set('Access-Control-Allow-Origin', '*');
 admin.database().ref("data").once('value')
     .then(function(dataSnapshot) {
 
