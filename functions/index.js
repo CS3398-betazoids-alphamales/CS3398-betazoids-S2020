@@ -33,8 +33,7 @@ exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
     response.set('Access-Control-Allow-Origin', '*');
 
     admin.database().ref("data").once('value')
-        .then(function(snapshot) {
-    
+        .then(function(snapshot) { 
             var totalIngrs = 0;
             var totalRefined = 1;
             var refinedList = {};
@@ -75,40 +74,40 @@ exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => 
     admin.database().ref("data").once('value')
         .then(function(snapshot) {
 
-            var totalIngrs = 0;
-            var totalRefined = 1;       
-            var drinkID = 1; //for debugging
-            var refinedList = {};
-            var hasIngr = false;
+        var totalIngrs = 0;
+        var totalRefined = 1;       
+        var drinkID = 1; //for debugging
+        var refinedList = {};
+        var hasIngr = false;
 
-            snapshot.forEach(function(entrySnapshot) {
+        snapshot.forEach(function(entrySnapshot) {
 
-                entrySnapshot.child('ingredients').forEach(function(eachIngr) {
+            entrySnapshot.child('ingredients').forEach(function(eachIngr) {
                     
-                    var tempStr = eachIngr.val().toUpperCase();
-                    tempStr = tempStr.replace(REGEX, '').trim();
-                    tempStr = tempStr.replace(/ AND | N /g, '&');
+                var tempStr = eachIngr.val().toUpperCase();
+                tempStr = tempStr.replace(REGEX, '').trim();
+                tempStr = tempStr.replace(/ AND | N /g, '&');
 
-                    for (var i = 0; i < totalIngrs; ++i)
-                        if ( refinedList["ingr" + (i+1)] === tempStr)
-                            hasIngr = true;
+                for (var i = 0; i < totalIngrs; ++i)
+                    if ( refinedList["ingr" + (i+1)] === tempStr)
+                        hasIngr = true;
 
-                    if ( !hasIngr ) {
+                if ( !hasIngr ) {
 
-                        refinedList["drinkID" + drinkID] = drinkID; //for debugging
-                        refinedList["ingr" + totalRefined++] = tempStr;
-                    }
+                    refinedList["drinkID" + drinkID] = drinkID; //for debugging
+                    refinedList["ingr" + totalRefined++] = tempStr;
+                }
                         
 
-                    hasIngr = false;
-                    ++totalIngrs;
-                }); 
-                ++drinkID; //for debugging
-            });
+                hasIngr = false;
+                ++totalIngrs;
+            }); 
+            ++drinkID; //for debugging
+        });
 
-            response.json(refinedList);
-            return null;
-        }).catch(e => { console.log(e) });
+        response.json(refinedList);
+        return null;
+    }).catch(e => { console.log(e) });
 
 });
 
@@ -185,6 +184,7 @@ exports.getByIngredientMulti = functions.https.onRequest(async (request, respons
     //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
     //
     //  EXAMPLE: full_address?total=2&findthis1=rum&findthis2=gin 
+
     response.set('Access-Control-Allow-Origin', '*');    
 
     var totalIngrs = request.query.total; // MIN = 2, MAX = 5
@@ -359,7 +359,7 @@ response.set('Access-Control-Allow-Origin', '*');
 
 const thingToFind = request.query.recipeName.toUpperCase();
 const rating = request.query.rating;
-
+response.set('Access-Control-Allow-Origin', '*');
 admin.database().ref("data").once('value')
     .then(function(dataSnapshot) {
 
