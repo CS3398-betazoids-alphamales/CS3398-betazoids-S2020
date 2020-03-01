@@ -1,8 +1,16 @@
 {
-  "name": "betazoids",
+
+  "name": "cs3398-betazoids-s2020",
   "version": "1.0.0",
   "description": ">  FeedMe started out with a team of five versatile developers by the names of: >  > * Benjamin Bond > * Jonathan Crouch > * Evan Estrada > * Aaron Baker > * Andrew Saenz > > with a vision to create an application that helps prevent good ingredients from going to waste. We want to help individuals with limited mixing experience create recipes based on the ingredients they already have at home.",
-  "main": "search.js",
+  "main": "index.js",
+  "dependencies": {
+      "jquery-typeahead": "^2.11.0"
+  },
+  "devDependencies": {
+    "firebase": "^7.9.1",
+    "firebase-tools": "^7.14.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,9 +23,5 @@
   "bugs": {
     "url": "https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/issues"
   },
-  "homepage": "https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020#readme",
-  "dependencies": {},
-  "devDependencies": {
-    "jquery-typeahead": "^2.11.0"
-  }
+  "homepage": "https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020#readme"
 }
