@@ -5,7 +5,7 @@ $('#example-search-input-0').on('keyup', function(event) {
 
  
   if(event.keyCode == 13){
-
+      document.getElementById("accordion").innerHTML = "";
       if(inner.split(" ").length == 1){
           getByIngredient(inner);
       }
