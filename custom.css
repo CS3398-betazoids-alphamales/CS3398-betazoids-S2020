@@ -2,7 +2,7 @@
 nav {
 	min-height: 120px;
 	background-color: #eeeeee;
-	display: fixed;
+	position:fixed;
 }
 
 form{
@@ -118,6 +118,21 @@ body{
 .main {
   margin-left: 160px; /* Same as the width of the sidebar */
   padding: 0px 10px;
+}
+
+.typeahead{
+	background-color: #FFFFFF;
+}
+.tt-suggestion {
+	padding: 3px 20px;
+}
+.tt-suggestion:hover {
+	cursor: pointer;
+	background-color: grey;
+	color: #FFFFFF;
+}
+.tt-suggestion p {
+	margin: 0;
 }
 
 @media screen and (min-width: 1200px) {
