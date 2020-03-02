@@ -19,7 +19,9 @@
 * [Contact](#contact)
 
 ## General info
-![Cocktail](/Cocktail.png). 
+![Cocktail](/cocktail.png). 
+
+Hosted at: https://cs3398-betazoids-alphamales.github.io/CS3398-betazoids-S2020/
 
 This is a best effort at creating a recipe recommendation program. For the moment, we are specializing in cocktail recipes. We hope to find a database full of a wide variety of recipes or make our own.
 
