@@ -58,7 +58,10 @@ We have successfully built our database, built the front-end of the website, and
 Please see the next steps for each team member below. 
 
 #### Andrew
+ 
+ - My current status is active and contributing.
 
+ - The next step for me is to talk with my teammates and decide what the most important functions they would need from me
 
 #### Benjamin
 
@@ -86,6 +89,10 @@ Please see the next steps for each team member below.
 
 ### Andrew
 
+ - My artifact is the index.js file used for the backend functions that operate on our database.
+   These functions are accessed through https requests, and wait for a response that includes
+   a relavent list of objects.
+   [index.js](https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/blob/database-staging/functions/index.js)
 
 ### Benjamin
 
