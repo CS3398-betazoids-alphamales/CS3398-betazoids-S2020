@@ -129,7 +129,7 @@ body{
 }
 
 .openbtn {
-  font-size: 20px;
+  font-size: 12px;
   cursor: pointer;
   background-color: #111;
   color: white;
@@ -212,6 +212,9 @@ body{
 @media screen and (max-width: 768px) {
 	#content-window{
 		margin-left: 180px;
+	}
+	#content-window h1{
+		font-size: 20px;
 	}
 	.sidenav {
   		width: 185px;
