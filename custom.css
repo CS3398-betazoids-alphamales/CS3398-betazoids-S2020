@@ -147,6 +147,11 @@ body{
   .tt-hint {
 	color: #999999;
   }
+
+  .tt-input{
+	  width:255px;
+  }
+
   .tt-menu {
 	background-color: #FFFFFF;
 	border: 1px solid rgba(0, 0, 0, 0.2);
