@@ -29,8 +29,10 @@ This is a best effort at creating a recipe recommendation program. For the momen
 ## Technologies
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [CSS!](https://developer.mozilla.org/en-US/docs/Web/CSS)
-* [MySQL!](https://www.mysql.com/)
-* [Python!](https://www.python.org/about/)
+* [Google Firebase!](https://firebase.google.com/)
+* [Javascript!](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+
 
 ## Setup
 Describe how to install / setup your local environement / add link to demo version.
@@ -52,15 +54,20 @@ List of TODOs for future development:
 
 We have successfully built our database, built the front-end of the website, and have connected the two. We have also implemented a search of database recipes as well as a typehead for both the recipe and ingredient searches. 
 
-Benjamin Bond: Active and contributing.
-
+Benjamin Bond: Active and contributing
+Evan Estrada: Active and contributing
+Andrew Saenz: Active and contributing
+Jonathan Crouch: Active and contributing
 
 ### Next Steps
 
 Please see the next steps for each team member below. 
 
 #### Andrew
+ 
+ - My current status is active and contributing.
 
+ - The next step for me is to talk with my teammates and decide what the most important functions they would need from me
 
 #### Benjamin
 
@@ -94,6 +101,11 @@ Please see the next steps for each team member below.
 
 ### Andrew
 
+ - My artifact is the index.js file used for the backend functions that operate on our database.
+   These functions are accessed through https requests, and wait for a response that includes
+   a relavent list of objects.
+   
+   [index.js](https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/blob/database-staging/functions/index.js)
 
 ### Benjamin
 

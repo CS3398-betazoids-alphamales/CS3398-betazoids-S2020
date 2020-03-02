@@ -1,7 +1,7 @@
 
 nav {
 	min-height: 120px;
-	background-color: #eeeeee;
+	background-color: #ff971d;
 	position:fixed;
 }
 
@@ -18,8 +18,13 @@ ul, li{
 	list-style: none;
 }
 
+h1{
+	color:white;
+}
+
 body{
 	overflow: hidden;
+	background-color:#ffffff;
 }
 
 .scrollable-panel{
@@ -88,9 +93,10 @@ body{
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
   left: 0;
-  background-color: #eeeeee; /* Black */
+  /*background-color: #eeeeee; !* Black *!*/
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 20px;
+	background-color:#f9f6f7;
 }
 
 /* The navigation menu links */
@@ -118,6 +124,7 @@ body{
 .main {
   margin-left: 160px; /* Same as the width of the sidebar */
   padding: 0px 10px;
+
 }
 
 .input-group > .typeahead {
