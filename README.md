@@ -4,7 +4,6 @@
 > * Benjamin Bond
 > * Jonathan Crouch
 > * Evan Estrada
-> * Aaron Baker
 > * Andrew Saenz
 >
 > with a vision to create an application that helps prevent good ingredients from going to waste. We want to help individuals with limited mixing experience create recipes based on the ingredients they already have at home. 
@@ -50,7 +49,44 @@ List of TODOs for future development:
 #__Gamification__: Users can pass ingredients to the random command to pick random recipes instead of highly rated/first five recipes in database table. Evan's first story corresponds to this.
 
 ## Status
-                               in progress
+
+We have successfully built our database, built the front-end of the website, and have connected the two. We have also implemented a search of database recipes as well as a typehead for both searches. 
+
+
+### Next Steps
+
+Please see the next steps for each team member below. 
+
+#### Andrew
+
+
+#### Benjamin
+
+
+#### Evan
+
+
+#### Jonathan
+
+
+
+## Artifacts
+
+
+### Andrew
+
+
+### Benjamin
+
+
+### Evan
+
+
+### Jonathan
+
+
+
+
 
 
 ## Inspiration
