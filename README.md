@@ -50,7 +50,7 @@ List of TODOs for future development:
 
 ## Status
 
-We have successfully built our database, built the front-end of the website, and have connected the two. We have also implemented a search of database recipes as well as a typehead for both searches. 
+We have successfully built our database, built the front-end of the website, and have connected the two. We have also implemented a search of database recipes as well as a typehead for both the recipe and ingredient searches. 
 
 
 ### Next Steps
@@ -64,6 +64,12 @@ Please see the next steps for each team member below.
 
 
 #### Evan
+
+1: I would like to become more familiar with the database and its functionality
+
+2: I would like to work on the front-end design to make it more modern. 
+
+3: I would like to work on further functionality of the searching and filtering functionality. 
 
 
 #### Jonathan
@@ -81,12 +87,22 @@ Please see the next steps for each team member below.
 
 ### Evan
 
+#### Created a mockup for our site's front-end:
+
+I created a mockup containing multiple images for the initial website design. We ended up using this for the site's initial design and functionality.  
+
+Link to issue: https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/issues/13
+
+Link to mockup: https://docs.google.com/presentation/d/1H3nJWtqTiYMdaJfWLd7iGyKQ_eKWjSnrIqtsADG_00g/edit?usp=sharing
+
+#### Added a typahead to the side navigation search:
+
+After Benjamin, Jonathan, and I got the typehead working, I added the typeahead to the side navigation search. The typahead allows users to see ingredients that are available in the database by displaying them below the search bar as they type.
+
+Link to commit: https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/2cdb41fa513855d27cad351209eb67471c02cd21
+
 
 ### Jonathan
-
-
-
-
 
 
 ## Inspiration
