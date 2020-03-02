@@ -111,14 +111,14 @@ Link to commit: https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-
 
 #### Created a bootstrap website based on Evan's mockup:
 
-I created an HTML/CSS/JavaScript website using bootstrap and prepped it for connecting to the backend.
+I created an HTML/CSS/JavaScript website using bootstrap and prepped it for connecting to the backend. This includes the initial website navbar/sidebar, scrollable panel, responsive display, and card structure. 
 Link to issue: https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/issues/24
 
 Link to commit: https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/270aa38f8cef1b0a46027c3335607b557106186a
 
 #### Created a basic icon/logo as an identifier:
 
-I whipped up a quick logo/icon in Adobe Illustrator to give the site a more polished feel in these early stages.
+I whipped up a quick logo/icon in Adobe Illustrator to give the site a more polished feel in these early stages. It's currently used as an image for the website header and possibly will be used as the Android app icon.
 
 Link to commit: https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/1f83d1307fa2d34baf4c80f47e0a61cb26f4c71d
 
