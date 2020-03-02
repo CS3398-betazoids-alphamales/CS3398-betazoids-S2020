@@ -29,8 +29,10 @@ This is a best effort at creating a recipe recommendation program. For the momen
 ## Technologies
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [CSS!](https://developer.mozilla.org/en-US/docs/Web/CSS)
-* [MySQL!](https://www.mysql.com/)
-* [Python!](https://www.python.org/about/)
+* [Google Firebase!](https://firebase.google.com/)
+* [Javascript!](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+
 
 ## Setup
 Describe how to install / setup your local environement / add link to demo version.
@@ -52,8 +54,10 @@ List of TODOs for future development:
 
 We have successfully built our database, built the front-end of the website, and have connected the two. We have also implemented a search of database recipes as well as a typehead for both the recipe and ingredient searches. 
 
-Benjamin Bond: Active and contributing.
-
+Benjamin Bond: Active and contributing
+Evan Estrada: Active and contributing
+Andrew Saenz: Active and contributing
+Jonathan Crouch: Active and contributing
 
 ### Next Steps
 
