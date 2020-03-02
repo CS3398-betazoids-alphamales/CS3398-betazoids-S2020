@@ -121,7 +121,7 @@ Allowed all CORS access to our backend function so that we could access the func
 
 Link to commit: https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/5d3440d665aefe2e25f877f5505b7e47400b6915
 
-### Fixed styling issues and a list population bug
+#### Fixed styling issues and a list population bug
 
 Fixed styling issues with the nav bar search button no properly positioning itself ontop of the search bar. Also removed previous searches from the bottom of the accordion div so that search functionality would work as expected. 
 
