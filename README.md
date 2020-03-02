@@ -52,6 +52,8 @@ List of TODOs for future development:
 
 We have successfully built our database, built the front-end of the website, and have connected the two. We have also implemented a search of database recipes as well as a typehead for both the recipe and ingredient searches. 
 
+Benjamin Bond: Active and contributing.
+
 
 ### Next Steps
 
@@ -61,6 +63,12 @@ Please see the next steps for each team member below.
 
 
 #### Benjamin
+
+1. Add support for multiple ingredient search. 
+
+2. Implement the side-bar navigation buttons that automatically search for drinks with fruit or juices. 
+
+3. Implement and display a rating category for each drink when the drink list populates.
 
 
 #### Evan
@@ -88,6 +96,24 @@ Please see the next steps for each team member below.
 
 
 ### Benjamin
+
+#### Linked the front end to the back using the search bar:
+
+I added support for searching for one ingredient in our database to the search bar. 
+
+Link to commit: https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/b143f5cd05125beb0475f2c5aa58e6f0d86f1380
+
+#### Temporarily fixed CORS backend settings so that we could access backend functions.
+
+Allowed all CORS access to our backend function so that we could access the function without a unique key. This is a temporary fix and will need to be changed in the future.
+
+Link to commit: https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/5d3440d665aefe2e25f877f5505b7e47400b6915
+
+### Fixed styling issues and a list population bug
+
+Fixed styling issues with the nav bar search button no properly positioning itself ontop of the search bar. Also removed previous searches from the bottom of the accordion div so that search functionality would work as expected. 
+
+Link to commit: https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/85c8a838eb5b271435946dccbccd8027ccab2eb0
 
 
 ### Evan
