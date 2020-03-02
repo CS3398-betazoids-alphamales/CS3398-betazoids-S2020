@@ -23,8 +23,8 @@ body{
 }
 
 .scrollable-panel{
-      min-height:200px;
-      height: 50vw;
+      min-height:300px;
+      height: 90vw;
       max-height: 600px;
       overflow-y: scroll;
       width:100%;
@@ -70,6 +70,8 @@ body{
 
 #content-window{
 	margin-left: 30vw;
+	transition: margin-left .5s; /* If you want a transition effect */
+  	padding: 20px;
 }
 
 .form-control{
@@ -83,23 +85,26 @@ body{
 
  /* The sidebar menu */
 .sidenav {
-  align-items: stretch;
-  height: 100%; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
+  display: block;
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
   left: 0;
-  background-color: #eeeeee; /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
+  background-color: #eeeeee;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
 }
 
 /* The navigation menu links */
 .sidenav a {
-  padding: 6px 8px 6px 16px;
+  padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 25px;
   color: #818181;
   display: block;
+  transition: 0.3s;
 }
 
 .sidenav p {
@@ -114,8 +119,30 @@ body{
   color: #1a7dff;
 }
 
+.sidenav .closebtn {
+ 
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
 /* Style page content */
-.main {
+.container .row {
   margin-left: 160px; /* Same as the width of the sidebar */
   padding: 0px 10px;
 }
@@ -169,6 +196,9 @@ body{
 	margin: 0;
   }
 
+  #sidebar-search{
+  	max-width: 270px;
+  }
 
 @media screen and (min-width: 1200px) {
 	 .nav-item{
@@ -184,8 +214,11 @@ body{
 		margin-left: 180px;
 	}
 	.sidenav {
-  width: 200px;
-}
+  		width: 185px;
+	}
+	#sidebar-search{
+  		max-width: 185px;
+  	}
 
 } 
 

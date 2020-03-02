@@ -2,7 +2,6 @@
 $('#example-search-input-0').on('keyup', function(event) {
   var inner = document.getElementById("example-search-input-0").value;
   console.log(inner);
-
  
   if(event.keyCode == 13){
       document.getElementById("accordion").innerHTML = "";
