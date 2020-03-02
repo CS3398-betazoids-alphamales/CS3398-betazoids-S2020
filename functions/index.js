@@ -1,19 +1,17 @@
 // Authors: Andrew Saenz, Benjamin Bond
 // Notes: all "dev" tagged functions are intended for closed debugging. Please create seperate functions for front-end usage.
-//
-//
-//
 
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
-const path = require('path');
-const os = require('os');
-const fs = require('fs');
+//const path = require('path');
+//const os = require('os');
+//const fs = require('fs');
+
 // CORS Express middleware to enable CORS Requests.
 const cors = require('cors')({
     origin: true,
-  });
+});
 
 const REGEX = new RegExp(/\.|-|`|75|0|1|2|3|4|5|6|7 |8|9|\/|GLASS|PARTS|PART|FROZEN|CRACKED|SHAVED|SQUEEZE|OZ.| OZ| C | T | L | CUPS|CUP |LITERS|LITER|LADLE| EACH|QUART| GAL |ML| CANS | CAN |DASH OF|PACKET|INSTANT|\(RAW\)|DASHES|DASH OF|DASH|EQUAL|LARGE | ONE |ONE |DOUBLE BREWED|UNSWEETEND|STRONG |MUG |USHERS |NOILLY PRAT|SCOOPS|SCOOP|SPLASH OF|SPLASH|PREPARED|RINGS|HALF A|JUICE FROM|JUICE OF| CUBES|CUBED|\(CUBED\)|CUBE|\(BOILING\)|\(TO TASTE\)|TO TASTE|\(CHILLED\)|\(STEMMED\)|\(SEEDLESS\)| RIM|ENVELOPE|TBPS|TBSP.|TBSP|TBS.|TBS|TSP.|TSP|\(SEEDED\)|FRESH|CINZANO|PROOF|SUPERFINE|FLAVORED |SLICED|SLICES|SLICE OF|SLICE|SMALL|WITH SYRUP|CHILLED|TEASPOON|WHOLE|BOTTLE|DROPS|QTS|QT|PINT|SEVERAL|PACKAGE|HULLED|PREMIUM|BUSHMILLS|BACARDI|\(KAHLUA\)|\(PREMIUM\)|\(2 DRINKS\)|JIGGERS|JIGGER|\(WHOLE\)|MINCED|RIPE|CHOPPED|CRUSHED|\(OR\)|IMPORTED/, "g");
 
@@ -33,15 +31,16 @@ exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
     response.set('Access-Control-Allow-Origin', '*');
 
     admin.database().ref("data").once('value')
-        .then(function(snapshot) { 
+        .then((snapshot) => { //changed to arrow-callback style 
+		
             var totalIngrs = 0;
             var totalRefined = 1;
             var refinedList = {};
             var hasIngr = false;
     
-            snapshot.forEach(function(entrySnapshot) {
+            snapshot.forEach((entrySnapshot) => { //changed to arrow-callback style
     
-                entrySnapshot.child('ingredients').forEach(function(eachIngr) {
+                entrySnapshot.child('ingredients').forEach((eachIngr) => { //changed to arrow-callback style
                         
                     var tempStr = eachIngr.val().toUpperCase();
                     tempStr = tempStr.replace(REGEX, '').trim();
@@ -63,7 +62,7 @@ exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
             return null;
         }).catch(e => { console.log(e) });
     
-    });
+});
 
 
 exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => {
@@ -72,7 +71,7 @@ exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => 
     response.set('Access-Control-Allow-Origin', '*');
 
     admin.database().ref("data").once('value')
-        .then(function(snapshot) {
+        .then((snapshot) => { //changed to arrow-callback style
 
         var totalIngrs = 0;
         var totalRefined = 1;       
@@ -80,9 +79,9 @@ exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => 
         var refinedList = {};
         var hasIngr = false;
 
-        snapshot.forEach(function(entrySnapshot) {
+        snapshot.forEach((entrySnapshot) => { //changed to arrow-callback style
 
-            entrySnapshot.child('ingredients').forEach(function(eachIngr) {
+            entrySnapshot.child('ingredients').forEach((eachIngr) => { //changed to arrow-callback style
                     
                 var tempStr = eachIngr.val().toUpperCase();
                 tempStr = tempStr.replace(REGEX, '').trim();
@@ -123,7 +122,7 @@ exports.getRandomList = functions.https.onRequest(async (request, response) => {
     const howMany = 10;
 
     admin.database().ref("data").once('value')
-        .then(function(dataSnapshot) {
+        .then((dataSnapshot) => { //changed to arrow-callback style
 
             for ( var i = 0; i < howMany; ++i) {
                 
@@ -148,17 +147,17 @@ exports.devGetByIngredient = functions.https.onRequest(async (request, response)
     const thingToFind = " " + request.query.findthis.toUpperCase();
 
     admin.database().ref("data").once('value')
-        .then(function(dataSnapshot) {
+        .then((dataSnapshot) => { //changed to arrow-callback style
 
             const allMatches = [];
 
-            dataSnapshot.forEach(function(eachDrinkSnapshot) {
+            dataSnapshot.forEach((eachDrinkSnapshot) => { //changed to arrow-callback style
 
                 var hasIngredient = false;
 
                 var ingrsObject = eachDrinkSnapshot.child('ingredients');
 
-                ingrsObject.forEach(function(eachIngrSnapshot) {
+                ingrsObject.forEach((eachIngrSnapshot) => { //changed to arrow-callback style
 
                     var ingrStr = eachIngrSnapshot.val().toUpperCase();
 
@@ -210,11 +209,11 @@ exports.getByIngredientMulti = functions.https.onRequest(async (request, respons
     } while (once)
     
     admin.database().ref("data").once('value')
-        .then(function(dataSnapshot) {
+        .then((dataSnapshot) => { //changed to arrow-callback style
     
             const allMatches = [];
     
-            dataSnapshot.forEach(function(eachDrinkSnapshot) {
+            dataSnapshot.forEach((eachDrinkSnapshot) => { //changed to arrow-callback style
     
                 var hasIngr1 = false;
                 var hasIngr2 = false;
@@ -224,7 +223,7 @@ exports.getByIngredientMulti = functions.https.onRequest(async (request, respons
     
                 var ingrsObject = eachDrinkSnapshot.child('ingredients');
     
-                ingrsObject.forEach(function(eachIngrSnapshot) {
+                ingrsObject.forEach((eachIngrSnapshot) => { //changed to arrow-callback style
     
                     var ingrStr = eachIngrSnapshot.val().toUpperCase();
 
@@ -254,7 +253,7 @@ exports.getByIngredientMulti = functions.https.onRequest(async (request, respons
             return null;
         }).catch(e => { console.log(e) });
     
-    });
+});
 
 
 exports.getByIngredientMultiStrict = functions.https.onRequest(async (request, response) => { // currently, using .contains() is returning true for " cola" in "pina colada" etc
@@ -288,11 +287,11 @@ exports.getByIngredientMultiStrict = functions.https.onRequest(async (request, r
     } while (once)
     
     admin.database().ref("data").once('value')
-        .then(function(dataSnapshot) {
+        .then((dataSnapshot) => { //changed to arrow-callback style
     
             const allMatches = [];
     
-            dataSnapshot.forEach(function(eachDrinkSnapshot) {
+            dataSnapshot.forEach((eachDrinkSnapshot) => { //changed to arrow-callback style
     
                 var hasIngr1 = false;
                 var hasIngr2 = false;
@@ -302,7 +301,7 @@ exports.getByIngredientMultiStrict = functions.https.onRequest(async (request, r
     
                 var ingrsObject = eachDrinkSnapshot.child('ingredients');
     
-                ingrsObject.forEach(function(eachIngrSnapshot) {
+                ingrsObject.forEach((eachIngrSnapshot) => { //changed to arrow-callback style
     
                     var ingrStr = eachIngrSnapshot.val().toUpperCase();
 
@@ -345,9 +344,9 @@ exports.getByIngredientMultiStrict = functions.https.onRequest(async (request, r
     
             response.json(allMatches);
             return null;
-        }).catch(e => { console.log(e) });
-    
-    });
+        }).catch(e => { console.log(e) });  
+
+});
 
 
 exports.setRecipeRating = functions.https.onRequest(async (request, response) => {
@@ -355,40 +354,42 @@ exports.setRecipeRating = functions.https.onRequest(async (request, response) =>
 //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
 //
 //  EXAMPLE: full_address?recipeName=Cactus Kicker - 4&rating=5
-response.set('Access-Control-Allow-Origin', '*');
 
-const thingToFind = request.query.recipeName.toUpperCase();
-const rating = request.query.rating;
-response.set('Access-Control-Allow-Origin', '*');
-admin.database().ref("data").once('value')
-    .then(function(dataSnapshot) {
+    response.set('Access-Control-Allow-Origin', '*');
 
-        var match = false;
+    const thingToFind = request.query.recipeName.toUpperCase();
+    const rating = request.query.rating;
 
-        dataSnapshot.forEach(function(currentDrinkSnapshotIndex) {
-            if(currentDrinkSnapshotIndex.child("name").val() !== null){
+    admin.database().ref("data").once('value')
+        .then((dataSnapshot) => { //changed to arrow-callback style
 
-                var nameString = currentDrinkSnapshotIndex.child("name").val().toUpperCase();
-        
-                if ( nameString.includes(thingToFind) ){
-                    match = true;
-                    const dbRef = currentDrinkSnapshotIndex.ref;
-                    dbRef.update({"rating" : rating });
-                }
-        }
+            var match = false;
+
+            dataSnapshot.forEach((currentDrinkSnapshotIndex) => { //changed to arrow-callback style
+                if(currentDrinkSnapshotIndex.child("name").val() !== null) {
+
+                    var nameString = currentDrinkSnapshotIndex.child("name").val().toUpperCase();
             
-        });
+                    if ( nameString.includes(thingToFind) ){
+                        
+                        match = true;
+                        const dbRef = currentDrinkSnapshotIndex.ref;
+                        dbRef.update({"rating" : rating });
+                    }
+                }
+                
+            });
 
-        response.json(match);
-        return null;
-        }).catch(e => { console.log(e);
-        });
+            response.json(match);
+            return null;
+        }).catch(e => { console.log(e) });
+
 });
 
 // exports.testDatabase = functions.https.onRequest(async (request, response) => {
 //
 //     admin.database().ref("data").once('value')
-//         .then(function(dataSnapshot) {
+//         .then(function(dataSnapshot) { //pre-arrow-callback style
 
 //             for (var i = 1; i < 10; ++i) {
 //                 var test = "00"+i+"/name";
@@ -415,7 +416,7 @@ admin.database().ref("data").once('value')
 
 
 //     response.send("success");
-//     // rootRef.forEach(function(eachEntry) {
+//     // rootRef.forEach(function(eachEntry) { //pre-arrow-callback style
 
 //     //     eachEntry.push({"rating" : 0});
 //     //     return null;
