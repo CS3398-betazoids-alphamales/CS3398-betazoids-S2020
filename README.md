@@ -1,5 +1,5 @@
 # WitchesBrew
->  FeedMe started out with a team of five versatile developers by the names of:
+>  Witches Brew started out with a team of four versatile developers by the names of:
 > 
 > * Benjamin Bond
 > * Jonathan Crouch
@@ -56,13 +56,13 @@ List of TODOs for future development:
 
 We have successfully built our database, built the front-end of the website, and have connected the two. We have also implemented a search of database recipes as well as a typehead for both the recipe and ingredient searches. 
 
-Benjamin Bond: Active and contributing
+* Benjamin Bond: Active and contributing
 
-Evan Estrada: Active and contributing
+* Evan Estrada: Active and contributing
 
-Andrew Saenz: Active and contributing
+* Andrew Saenz: Active and contributing
 
-Jonathan Crouch: Active and contributing
+* Jonathan Crouch: Active and contributing
 
 ### Next Steps
 
