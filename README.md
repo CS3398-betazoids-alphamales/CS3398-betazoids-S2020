@@ -74,6 +74,11 @@ Please see the next steps for each team member below.
 
 #### Jonathan
 
+1: Begin building on my Firebase knowledge to better integrate back-end to front-end.
+
+2: Clean up front-end code & work on scrollable panel responsiveness.
+
+3: Optimize front-end-back-end connection/JavaScript to lower loading times. 
 
 
 ## Artifacts
