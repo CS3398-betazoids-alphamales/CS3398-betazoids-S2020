@@ -106,11 +106,17 @@ Please see the next steps for each team member below.
 
 ### Andrew
 
- - My artifact is the index.js file used for the backend functions that operate on our database.
+ - My first artifact is the index.js file used for the backend functions that operate on our database.
    These functions are accessed through https requests, and wait for a response that includes
    a relavent list of objects.
    
    [functions/index.js](https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/blob/database-staging/functions/index.js)
+   
+ - My second artifact is an export json file of current database on the Firebase Realtime-Database.
+   This export is a direct translation of our working database on the server.
+   Since linking directly to it would do no good, this seems to be the best alternative.
+   
+   [public/data.json](https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/blob/master/public/data.json)
 
 ### Benjamin
 
