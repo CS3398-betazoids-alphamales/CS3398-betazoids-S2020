@@ -110,7 +110,7 @@ Please see the next steps for each team member below.
    These functions are accessed through https requests, and wait for a response that includes
    a relavent list of objects.
    
-   [index.js](https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/blob/database-staging/functions/index.js)
+   [functions/index.js](https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/blob/database-staging/functions/index.js)
 
 ### Benjamin
 
