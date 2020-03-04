@@ -1,6 +1,6 @@
 
 nav {
-	min-height: 120px;
+	min-height: 50px;
 	background-color: #ff971d;
 	position:fixed;
 }
@@ -28,7 +28,7 @@ body{
 }
 
 .scrollable-panel{
-      min-height:450px;
+      min-height:480px;
       height: 90vw;
       max-height: 600px;
       overflow-y: auto;
@@ -232,6 +232,9 @@ body{
 
 
 @media screen and (min-width: 1200px) {
+	.navbar-brand img{
+	width: 70px;
+}
 	.btn{
 		width: 80px;
 		font-size: 16px;
@@ -240,8 +243,8 @@ body{
 		font-size: 21px;
 	}
 
-.card-body p{
-	font-size: 16px;
+	.card-body p{
+		font-size: 16px;
 	}
 	 .nav-item{
 		margin-right: 150px;
@@ -258,10 +261,26 @@ body{
 	.card-body p{
 		font-size: 14px;
 	}
+	.card-body h4{
+		font-size: 18px;
+	}
 } 
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .navbar-brand img{
+	width: 20px;
+  }
+  .sidenav a {font-size: 16px;}
+  .nav-item{
+  	margin-top: 10px;
+  }
+  #navsearch{
+  	margin-top: 10px;
+  }
+  .navbar-toggler{
+	margin: none;
+	padding: none;
+}
+  
 } 
