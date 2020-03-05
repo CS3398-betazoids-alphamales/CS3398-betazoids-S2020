@@ -40,8 +40,7 @@ function homeDisplay(){
 	document.getElementById("favorites").style.display = "none";
 	document.getElementById("home").style.display = "block";
 	}
-
-	function aboutDisplay(){
+function aboutDisplay(){
 	document.getElementById("ingredient-search").style.display = "none";
 	document.getElementById("home").style.display = "none";
 	document.getElementById("services").style.display = "none";
@@ -55,7 +54,7 @@ function homeDisplay(){
 	document.getElementById("about").style.display = "block";
 	}
 
-	function servicesDisplay(){
+function servicesDisplay(){
 	document.getElementById("ingredient-search").style.display = "none";
 	document.getElementById("about").style.display = "none";
 	document.getElementById("home").style.display = "none";
@@ -69,7 +68,7 @@ function homeDisplay(){
 	document.getElementById("services").style.display = "block";
 	}
 
-	function browseDisplay(){
+function browseDisplay(){
 	document.getElementById("ingredient-search").style.display = "none";
 	document.getElementById("about").style.display = "none";
 	document.getElementById("services").style.display = "none";
@@ -83,7 +82,7 @@ function homeDisplay(){
 	document.getElementById("browse").style.display = "block";
 	}
 
-	function alcoholDisplay(){
+function alcoholDisplay(){
 	document.getElementById("ingredient-search").style.display = "none";
 	document.getElementById("about").style.display = "none";
 	document.getElementById("services").style.display = "none";
@@ -97,7 +96,7 @@ function homeDisplay(){
 	document.getElementById("alcohol").style.display = "block";
 	}
 
-	function juicesDisplay(){
+function juicesDisplay(){
 	document.getElementById("ingredient-search").style.display = "none";
 	document.getElementById("about").style.display = "none";
 	document.getElementById("services").style.display = "none";
@@ -111,7 +110,7 @@ function homeDisplay(){
 	document.getElementById("juices").style.display = "block";
 	}
 
-	function fruitDisplay(){
+function fruitDisplay(){
 	document.getElementById("ingredient-search").style.display = "none";
 	document.getElementById("about").style.display = "none";
 	document.getElementById("services").style.display = "none";
@@ -125,7 +124,7 @@ function homeDisplay(){
 	document.getElementById("fruit").style.display = "block";
 	}
 
-	function otherDisplay(){
+function otherDisplay(){
 	document.getElementById("ingredient-search").style.display = "none";
 	document.getElementById("about").style.display = "none";
 	document.getElementById("services").style.display = "none";
@@ -139,7 +138,7 @@ function homeDisplay(){
 	document.getElementById("other").style.display = "block";
 	}
 
-	function favDisplay(){
+function favDisplay(){
 	document.getElementById("ingredient-search").style.display = "none";
 	document.getElementById("about").style.display = "none";
 	document.getElementById("services").style.display = "none";
@@ -162,4 +161,3 @@ function homeDisplay(){
    		 modal.style.display = "none";
  	 	}
 	}
-	
