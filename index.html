@@ -44,15 +44,15 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href=" # ">Home
+            <a class="nav-link" id="homelink" onclick="homeDisplay()" href=" # ">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href=" # ">About</a>
+            <a class="nav-link" id="aboutlink" onclick="aboutDisplay()" href=" # ">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href=" # ">Services</a>
+            <a class="nav-link" id="serviceslink" onclick="servicesDisplay()" href=" # ">Services</a>
           </li>
           <li class="nav-item" id="navsearch">
             <!-- Search form -->
@@ -75,24 +75,23 @@
 
   <!-- Search form -->
   <div class="input-group">
-       <input class="form-control py-2 border-right-0 border typeahead" type="text" spellcheck="false"
-              placeholder="Search Ingredients" autocomplete="off" id="sidebar-search">
+       <input class="form-control py-2 border-right-0 border typeahead" type="search" spellcheck="false" onsearch="sidebarSearch()" placeholder="Search Ingredients" autocomplete="off" id="sidebar-search">
        <span class="input-group-append">
           <div class="input-group-text bg-white" style="border: none; top: 1px; right:0px; position: absolute;"><i class="fa fa-search"></i></div>
        </span>
    </div>
 
- <a href="#"><p>Browse Ingredients</p></a>
+ <a onclick="browseDisplay()" href="#"><p>Browse Ingredients</p></a>
 
- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Alcohol</a>
+ <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="alcohollink" onclick="alcoholDisplay()" href="#">Alcohol</a>
 
- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Juices</a>
+ <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="juiceslink" onclick="juicesDisplay()" href="#">Juices</a>
 
- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Fruit</a>
+ <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="fruitlink" onclick="fruitDisplay()" href="#">Fruit</a>
 
- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Other</a>
+ <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="otherlink" onclick="otherDisplay()" href="#">Other</a>
 
- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Favorites</a>
+ <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="favlink" onclick="favDisplay()" href="#">Favorites</a>
 
 </div>
 
@@ -102,13 +101,75 @@
       
     <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
       <div class="col-lg-12 text-left">
-      <div id= "accordion" class="panel panel-primary scrollable-panel container">
 
+        <div id="home" class="panel panel-primary scrollable-panel container">
+          <p>home</p>
           <!-- The cards appear here -->
+            
+          </div>
 
-      </div>
-    </div>
-</div>
+        <div id="about" class="panel panel-primary scrollable-panel container">
+          <p>about</p>
+          <!-- The cards appear here -->
+            
+          </div>
+
+        <div id="services" class="panel panel-primary scrollable-panel container">
+          <p>services</p>
+          <!-- The cards appear here -->
+            
+          </div>
+
+        <div id="name-search" class="panel panel-primary scrollable-panel container">
+          <p>namesearch</p>
+          <!-- The cards appear here -->
+            
+          </div>
+
+        <div id="ingredient-search" class="panel panel-primary scrollable-panel container">
+
+          <!-- The cards appear here --> 
+        </div>
+
+        <div id="browse" class="panel panel-primary scrollable-panel container">
+          <p>browse</p>
+          <!-- The cards appear here -->
+            
+          </div>
+
+          <div id="alcohol" class="panel panel-primary scrollable-panel container">
+          <p>alcohol</p>
+          <!-- The cards appear here -->
+            
+          </div>
+
+          <div id="juices" class="panel panel-primary scrollable-panel container">
+          <p>juices</p>
+          <!-- The cards appear here -->
+            
+          </div>
+
+          <div id="fruit" class="panel panel-primary scrollable-panel container">
+          <p>fruit</p>
+          <!-- The cards appear here -->
+            
+          </div>
+
+          <div id="other" class="panel panel-primary scrollable-panel container">
+          <p>other</p>
+          <!-- The cards appear here -->
+            
+          </div>
+
+          <div id="favorites" class="panel panel-primary scrollable-panel container">
+          <p>favorites</p>
+          <!-- The cards appear here -->
+            
+          </div>
+
+       </div>
+     </div>
+  </div>
 
   <!-- Bootstrap core JavaScript -->
   

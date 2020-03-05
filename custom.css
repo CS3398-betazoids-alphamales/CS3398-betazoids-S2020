@@ -27,15 +27,6 @@ body{
 	background-color:#ffffff;
 }
 
-.scrollable-panel{
-      min-height:480px;
-      height: 90vw;
-      max-height: 600px;
-      overflow-y: auto;
-      margin: auto;
-      width:90%;
-      }
-
 .card{
 	max-width: 230px;
 	max-height: 350px;
@@ -109,12 +100,11 @@ body{
  /* The sidebar menu */
 .sidenav {
   align-items: stretch;
-  height: 100%; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
+  height: 100%; 
+  position: fixed; 
+  z-index: 1; 
   left: 0;
-  /*background-color: #eeeeee; !* Black *!*/
-  overflow-x: hidden; /* Disable horizontal scroll */
+  overflow-x: hidden;
   padding-top: 70px;
   transition: 0.5s;
   background-color:#f9f6f7;
@@ -171,7 +161,7 @@ body{
 
 /* Style page content */
 .main {
-  margin-left: 160px; /* Same as the width of the sidebar */
+  margin-left: 160px;
   padding: 0px 10px;
 
 }
@@ -184,7 +174,7 @@ body{
 .typeahead, .tt-query, .tt-hint {
 	border: 2px solid #CCCCCC;
 	border-radius: 8px;
-	font-size: 22px; /* Set input font size */
+	font-size: 22px; 
 	height: 30px;
 	line-height: 30px;
 	outline: medium none;
@@ -210,7 +200,7 @@ body{
 
   .tt-menu {
 	background-color: #FFFFFF;
-	border: 1px solid rgba(0, 0, 0, 0.2);
+	border: 1px solids rgba(0, 0, 0, 0.2);
 	border-radius: 8px;
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 	margin-top: 12px;
@@ -218,7 +208,7 @@ body{
 	width: 422px;
   }
   .tt-suggestion {
-	font-size: 22px;  /* Set suggestion dropdown font size */
+	font-size: 22px;  
 	padding: 3px 20px;
   }
   .tt-suggestion:hover {
@@ -229,6 +219,39 @@ body{
   .tt-suggestion p {
 	margin: 0;
   }
+
+  /* Scrollable panel CSS */
+
+ .scrollable-panel{
+     min-height:500px;
+     height: 100vw;
+     max-height: 600px;
+     overflow-y: auto;
+     margin: auto;
+     width:90%;    
+  }
+
+  #home{display: block;}
+
+  #about{display: none;}
+
+  #services{display: none;}
+
+  #name-search{display: none;}
+
+  #ingredient-search{display: none;}
+
+  #browse{display: none;}
+
+  #alcohol{display: none;}
+
+  #juices{display: none;}
+
+  #fruit{display: none;}
+
+  #other{display: none;}
+
+  #favorites{display: none;}
 
 
 @media screen and (min-width: 1200px) {
@@ -263,6 +286,13 @@ body{
 	}
 	.card-body h4{
 		font-size: 18px;
+	}
+	#side-navigation{
+		width: 0;
+	}
+	#content-wrapper{
+		margin-left: 0;
+		margin: auto;
 	}
 } 
 

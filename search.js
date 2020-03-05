@@ -5,7 +5,8 @@ $('#sidebar-search').on('keyup', function(event) {
 
  
   if(event.keyCode == 13){
-      document.getElementById("accordion").innerHTML = "";
+      sidebarSearch();
+      document.getElementById("ingredient-search").innerHTML = "";
       if(inner.split(" ").length == 1 || inner.split(" ").length == 2 || inner.split(" ").length == 3){
           getByIngredient(inner);
       }
@@ -26,7 +27,7 @@ $('#sidebar-search').on('keyup', function(event) {
           if (this.readyState == 4 && this.status == 200) {
               var data = JSON.parse(this.responseText);
               console.log(data);
-              const container = document.getElementById('accordion');
+              const container = document.getElementById('ingredient-search');
 
                   data.forEach((result, idx) => {
                   // Create card element
