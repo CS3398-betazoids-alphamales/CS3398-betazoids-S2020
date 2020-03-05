@@ -42,6 +42,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarResponsive">
+
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <a class="nav-link" id="homelink" onclick="homeDisplay()" href=" # ">Home
@@ -63,10 +64,47 @@
                  </span>
             </div>
           </li>
+          <li>
+            <!-- Button to open the modal login form -->
+             <button class="btn btn-primary" onclick="document.getElementById('loginpopup').style.display='block'">Login</button>
+          </li>
         </ul>
+
+
       </div>
     </div>
   </nav>
+
+    <!-- The Modal -->
+  <div id="loginpopup" class="modal">
+    <span onclick="document.getElementById('loginpopup').style.display='none'"
+  class="close" title="Close Modal">&times;</span>
+
+    <!-- Modal Content -->
+    <form class="modal-content animate" action="/action_page.php">
+      <div class="imgcontainer">
+        <img src="cocktail.png" id="loginimg" alt="Avatar" class="avatar">
+      </div>
+
+      <div class="container">
+        <label for="uname"><b>Username:</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+        <br>
+        <label for="psw"><b>Password: </b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+
+        <button class="btn btn-primary" type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" class="btn btn-primary" onclick="document.getElementById('loginpopup').style.display='none'" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+  </div>
 
   <!-- Side navigation -->
 <div id="side-navigation" class="container-md sidenav border">
