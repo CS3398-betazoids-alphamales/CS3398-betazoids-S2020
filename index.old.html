@@ -46,15 +46,15 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <!-- will remove function calls and add event listeners to external .js later -->
-            <a class="nav-link" id="homelink" href=" # ">Home
+            <a class="nav-link" id="homelink" onclick="homeDisplay();getRandom();" href=" # ">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="aboutlink" href=" # ">About</a>
+            <a class="nav-link" id="aboutlink" onclick="aboutDisplay()" href=" # ">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="serviceslink" href=" # ">Services</a>
+            <a class="nav-link" id="serviceslink" onclick="servicesDisplay()" href=" # ">Services</a>
           </li>
           <li class="nav-item" id="navsearch">
             <!-- Search form -->
@@ -120,26 +120,25 @@
        </span>
    </div>
 
- <a id="browselink" href="#"><p>Browse Ingredients</p></a>
+ <a onclick="browseDisplay()" href="#"><p>Browse Ingredients</p></a>
 
- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="alcohollink" href="#">Alcohol</a>
+ <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="alcohollink" onclick="alcoholDisplay()" href="#">Alcohol</a>
 
- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="juiceslink" href="#">Juices</a>
+ <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="juiceslink" onclick="juicesDisplay()" href="#">Juices</a>
 
- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="fruitlink" href="#">Fruit</a>
+ <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="fruitlink" onclick="fruitDisplay()" href="#">Fruit</a>
 
- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="otherlink" href="#">Other</a>
+ <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="otherlink" onclick="otherDisplay()" href="#">Other</a>
 
- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="favlink" href="#">Favorites</a>
+ <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="favlink" onclick="favDisplay()" href="#">Favorites</a>
 
 </div>
 
   <!-- Page Content -->
   <div class="container" id="content-wrapper">
-    <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
     <div class="row" id="content-window">
       
-    
+    <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
       <div class="col-lg-12 text-left">
 
         <div id="home" class="panel panel-primary scrollable-panel container">
