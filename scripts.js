@@ -1,3 +1,4 @@
+//These open the scrollable panels, which still need to be styled.
 $("#homelink").click(function(){
   $("#ingredient-search").hide();
   $("#about").hide();
