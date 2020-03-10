@@ -69,7 +69,7 @@ body{
 .nav-item{
 	text-decoration: none;
 	text-align: left;
-	margin-right: 10vw;
+	margin-right: 8vw;
 	margin-top: 6vw;
 }
 
@@ -90,7 +90,6 @@ body{
 #content-window{
 	transition: margin-left .5s;
 }
-
 
 .form-control{
 	padding: 16px;
@@ -232,6 +231,20 @@ body{
 
   /* Scrollable panel CSS */
 
+  .panel-head-wrapper{
+    background: white;
+    overflow: hidden;
+    width: 100%;
+    z-index: 1;
+    display: block;
+    position: fixed;
+  }
+
+  .panel-head-wrapper h2{
+    margin-left: 33px;
+    font-size: 3vw;
+  }
+
  .scrollable-panel{
      min-height:500px;
      height: 100vw;
@@ -351,6 +364,8 @@ body{
 	 .nav-item{
 		margin-right: 150px;
 	}
+
+  .panel-head-wrapper h2{font-size: 35px;}
 	
 } 
 
@@ -373,6 +388,7 @@ body{
 		margin-left: 0;
 		margin: auto;
 	}
+  .panel-head-wrapper h2{font-size: 16px;}
 } 
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
