@@ -1,25 +1,11 @@
 
-$('#sidebar-search').on('keyup', function(event) {
-  var inner = document.getElementById("sidebar-search").value;
-  console.log(inner);
+function getRandom() {
 
- 
-  if(event.keyCode == 13){
-      sidebarSearch();
-      document.getElementById("ingredient-search").innerHTML = "";
-      if(inner.split(" ").length == 1 || inner.split(" ").length == 2 || inner.split(" ").length == 3){
-          getByIngredient(inner);
-      }
-
-  }
-
-  function getByIngredient(searchText) {
+      document.getElementById("home").innerHTML = `<div class="panel-head-wrapper" id="homehead"><h2>Welcome to Witches' Brew!</h2></div><br><br>`;
 
       var xhttp = new XMLHttpRequest();
-      
-      let search = searchText.trim();
 
-      var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/devGetByIngredient?findthis=' + searchText;
+      var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/getRandomList?howmany=' + 6;
       xhttp.open('POST', targetUrl);
 
       xhttp.onreadystatechange = function() {
@@ -27,27 +13,27 @@ $('#sidebar-search').on('keyup', function(event) {
           if (this.readyState == 4 && this.status == 200) {
               var data = JSON.parse(this.responseText);
               console.log(data);
-              const container = document.getElementById('ingredient-search');
+              const container = document.getElementById('home');
 
                   data.forEach((result, idx) => {
                   // Create card element
                   const card = document.createElement('div');
                   card.classList = 'card-body';
-                  var ingredientArray = [];
+                  var ingredientArray1 = [];
 
 
-                      ingredientArray.push(Object.values(result.ingredients));
+                      ingredientArray1.push(Object.values(result.ingredients));
 
 
-                  for( i in ingredientArray){
+                  for( i in ingredientArray1){
                   console.log("Now the ingredient array has: ");
-                  console.log(ingredientArray[i]);
+                  console.log(ingredientArray1[i]);
                   }
                   const cont =
                   `<div class="col-md-4" style="display:inline-grid">
                   <div class="card">
                     <div class="card-block" id="card-block-${idx}">
-                      <img class="card-img-top" src="amaretto.jpg" alt="Card image" style="width:100%">
+                      <img class="card-img-top" src="style/amaretto.jpg" alt="Card image" style="width:100%">
                         <div class="card-body" id="card-body-${idx}">
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
@@ -59,9 +45,9 @@ $('#sidebar-search').on('keyup', function(event) {
 
 
                   container.innerHTML += cont;
-                  for(i in ingredientArray){
+                  for(i in ingredientArray1){
                     var z = document.createElement('p');
-                    var x = document.createTextNode(ingredientArray[i]);
+                    var x = document.createTextNode(ingredientArray1[i]);
                     z.appendChild(x);
                     console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("card-body-" + idx).appendChild(z);
@@ -91,8 +77,5 @@ $('#sidebar-search').on('keyup', function(event) {
         };
       xhttp.send();
 
+}
 
-
-  }
-
-})

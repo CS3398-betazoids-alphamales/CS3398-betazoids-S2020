@@ -1,9 +1,25 @@
 
-function getRandom() {
+$('#sidebar-search').on('keyup', function(event) {
+  var inner = document.getElementById("sidebar-search").value;
+  console.log(inner);
+
+ 
+  if(event.keyCode == 13){
+      sidebarSearch();
+      document.getElementById("ingredient-search").innerHTML = `<div class="panel-head-wrapper" id="ingredienthead"><h2>Search by Ingredient:</h2></div><br><br>`;
+      if(inner.split(" ").length == 1 || inner.split(" ").length == 2 || inner.split(" ").length == 3){
+          getByIngredient(inner);
+      }
+
+  }
+
+  function getByIngredient(searchText) {
 
       var xhttp = new XMLHttpRequest();
+      
+      let search = searchText.trim();
 
-      var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/getRandomList?howmany=' + 6;
+      var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/devGetByIngredient?findthis=' + searchText;
       xhttp.open('POST', targetUrl);
 
       xhttp.onreadystatechange = function() {
@@ -11,7 +27,7 @@ function getRandom() {
           if (this.readyState == 4 && this.status == 200) {
               var data = JSON.parse(this.responseText);
               console.log(data);
-              const container = document.getElementById('home');
+              const container = document.getElementById('ingredient-search');
 
                   data.forEach((result, idx) => {
                   // Create card element
@@ -31,7 +47,7 @@ function getRandom() {
                   `<div class="col-md-4" style="display:inline-grid">
                   <div class="card">
                     <div class="card-block" id="card-block-${idx}">
-                      <img class="card-img-top" src="amaretto.jpg" alt="Card image" style="width:100%">
+                      <img class="card-img-top" src="style/amaretto.jpg" alt="Card image" style="width:100%">
                         <div class="card-body" id="card-body-${idx}">
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
@@ -79,3 +95,4 @@ function getRandom() {
 
   }
 
+})
