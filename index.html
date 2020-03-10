@@ -110,11 +110,11 @@
   <!-- Side navigation -->
 <div id="side-navigation" class="container-md sidenav border">
 
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="javascript:void(0)" class="closebtn" id="sideexit" >&times;</a>
 
   <!-- Search form -->
   <div class="input-group">
-       <input class="form-control py-2 border-right-0 border typeahead" type="search" spellcheck="false" onsearch="sidebarSearch()" placeholder="Search Ingredients" autocomplete="off" id="sidebar-search">
+       <input class="form-control py-2 border-right-0 border typeahead" type="search" spellcheck="false" placeholder="Search Ingredients" autocomplete="off" id="sidebar-search">
        <span class="input-group-append">
           <div class="input-group-text bg-white" style="border: none; top: 1px; right:0px; position: absolute;"><i class="fa fa-search"></i></div>
        </span>
@@ -136,7 +136,7 @@
 
   <!-- Page Content -->
   <div class="container" id="content-wrapper">
-    <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
+    <button class="openbtn" id="sideopen">&#9776; Open Sidebar</button>
     <div class="row" id="content-window">
       
     
@@ -226,7 +226,6 @@
   <script src="search.js"></script>
   <script src="home.js"></script>
   <script src="scripts.js"></script>
-  <script src="scripts.old.js"></script>
   <script src="typesuggest.js"></script>
   <script src="utility.js"></script>
   </div>

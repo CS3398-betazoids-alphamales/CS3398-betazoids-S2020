@@ -29,7 +29,7 @@ body{
 
 .card{
 	max-width: 230px;
-	max-height: 320px;
+	max-height: 330px;
 	min-width: 80px;
 	margin-right: auto;
 	margin-left: auto;
@@ -45,19 +45,19 @@ body{
 .card-body h4{
 	font-size: 2.2vw;
   overflow: hidden;
-   text-overflow: ellipsis;
-   display: -webkit-box;
-   -webkit-box-orient: vertical;
-   -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 
 .card-body p{
 	font-size: 1.1vw;
   overflow: hidden;
-   text-overflow: ellipsis;
-   display: -webkit-box;
-   -webkit-box-orient: vertical;
-   -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 .card-img-top{
