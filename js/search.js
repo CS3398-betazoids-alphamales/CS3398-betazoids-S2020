@@ -53,6 +53,7 @@ $('#sidebar-search').on('keyup', function(event) {
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
                           <a href="#" class="btn btn-primary stretched-link" onclick="document.getElementById('recipepopup').style.display='block'">Recipe</a>
+                          <img src="style/5star.png" class="rating">
                         </div>
                       </div>
                     </div>
