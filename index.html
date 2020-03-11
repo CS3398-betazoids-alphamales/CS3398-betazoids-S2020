@@ -76,7 +76,7 @@
     </div>
   </nav>
 
-    <!-- The Modal -->
+    <!-- The Login Modal -->
   <div id="loginpopup" class="modal">
     <span onclick="document.getElementById('loginpopup').style.display='none'"
   class="close" title="Close Modal">&times;</span>
@@ -103,6 +103,28 @@
       <div class="container" style="background-color:#f1f1f1">
         <button type="button" class="btn btn-primary" onclick="document.getElementById('loginpopup').style.display='none'" class="cancelbtn">Cancel</button>
         <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+  </div>
+
+      <!-- The Recipe Modal -->
+  <div id="recipepopup" class="modal">
+    <span onclick="document.getElementById('recipepopup').style.display='none'"
+  class="close" title="Close Modal">&times;</span>
+
+    <!-- Modal Content -->
+    <form class="modal-content-recipe animate" action=" # ">
+      <div class="imgcontainer">
+        <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink">
+      </div>
+
+      <div class="title-container">
+        <h2>Title</h2>
+      </div>
+
+      <div class="recipe-container">
+        <h4>Recipe</h4>
+        
       </div>
     </form>
   </div>
@@ -144,7 +166,7 @@
       	
       		
 	        <div id="home" class="panel panel-primary scrollable-panel container">
-	          <div class="panel-head-wrapper" id="homehead"><h2>Welcome to Witches' Brew!</h2></div><br><br>
+	          
 	          <!-- The cards appear here -->
 			</div>
 
@@ -187,25 +209,25 @@
           </div>
 
           <div id="juices" class="panel panel-primary scrollable-panel container">
-          <p>juices</p>
+          <div class="panel-head-wrapper" id="juiceshead"><h2>Juices</h2></div><br><br>
           <!-- The cards appear here -->
             
           </div>
 
           <div id="fruit" class="panel panel-primary scrollable-panel container">
-          <p>fruit</p>
+          <div class="panel-head-wrapper" id="fruithead"><h2>Fruit</h2></div><br><br>
           <!-- The cards appear here -->
             
           </div>
 
           <div id="other" class="panel panel-primary scrollable-panel container">
-          <p>other</p>
+          <div class="panel-head-wrapper" id="otherhead"><h2>Other</h2></div><br><br>
           <!-- The cards appear here -->
             
           </div>
 
           <div id="favorites" class="panel panel-primary scrollable-panel container">
-          <p>favorites</p>
+          <div class="panel-head-wrapper" id="favhead"><h2>Favorites</h2></div><br><br>
           <!-- The cards appear here -->
             
           </div>

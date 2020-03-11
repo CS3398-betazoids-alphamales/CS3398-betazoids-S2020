@@ -301,6 +301,13 @@ body{
   width: 40%; 
 }
 
+.modal-content-recipe {
+  background-color: #fefefe;
+  margin: 5px auto; 
+  border: 1px solid #888;
+  width: 50%; 
+}
+
 /* The Close Button */
 .close {
   /* Position it in the top right corner outside of the modal */
@@ -328,6 +335,11 @@ body{
 #loginimg{
 	margin: auto;
 	width: 5vw;
+}
+
+#drinkimg{
+  margin-left: auto;
+  width: 40%;
 }
 
 @-webkit-keyframes animatezoom {

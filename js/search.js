@@ -52,7 +52,7 @@ $('#sidebar-search').on('keyup', function(event) {
                         <div class="card-body" id="card-body-${idx}">
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
-                          <a href="#" class="btn btn-primary stretched-link">Recipe</a>
+                          <a href="#" class="btn btn-primary stretched-link" onclick="document.getElementById('recipepopup').style.display='block'">Recipe</a>
                         </div>
                       </div>
                     </div>
