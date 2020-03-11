@@ -6,6 +6,7 @@ $('#sidebar-search').on('keyup', function(event) {
  
   if(event.keyCode == 13){
       sidebarSearch();
+      document.getElementById("home").innerHTML = ``;
       document.getElementById("ingredient-search").innerHTML = `<div class="panel-head-wrapper" id="ingredienthead"><h2>Search by Ingredient:</h2></div><br><br>`;
       if(inner.split(" ").length == 1 || inner.split(" ").length == 2 || inner.split(" ").length == 3){
           getByIngredient(inner);
