@@ -65,6 +65,10 @@ body{
 	margin: auto;
 }
 
+.rating{
+  width: 80px;
+}
+
 
 .nav-item{
 	text-decoration: none;
@@ -246,9 +250,9 @@ body{
   }
 
  .scrollable-panel{
-     min-height:500px;
+     min-height:600px;
      height: 100vw;
-     max-height: 600px;
+     max-height: 650px;
      overflow-y: auto;
      margin: auto;
      width:90%;    
