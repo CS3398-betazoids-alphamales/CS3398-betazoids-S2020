@@ -1,8 +1,11 @@
+function getHome(){
+	document.getElementById("home").innerHTML = `<div class="panel-head-wrapper" id="homehead"><h2>Welcome to Witches' Brew!</h2></div><br><br>`;
+	getRandom();
+}
 
 function getRandom() {
 
-      document.getElementById("home").innerHTML = `<div class="panel-head-wrapper" id="homehead"><h2>Welcome to Witches' Brew!</h2></div><br><br>`;
-
+      
       var xhttp = new XMLHttpRequest();
 
       var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/getRandomList?howmany=' + 6;

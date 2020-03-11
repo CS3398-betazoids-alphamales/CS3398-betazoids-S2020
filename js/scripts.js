@@ -11,7 +11,7 @@ $("#homelink").click(function(){
   $("#other").hide();
   $("#favorites").hide();
   $("#home").show();
-  getRandom();
+  getHome();
 });
 
 $("#browselink").click(function(){
