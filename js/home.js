@@ -68,12 +68,14 @@ function getRandom() {
 
                       <div class="recipe-container-${idx}">
                         <h4>${result.form.type}</h4>
+                        <p>${result.ingredients}</p>
                         
                       </div>
                     </form>
                   </div>
 
                   </div>`;
+
 
 
                   container.innerHTML += cont;
@@ -84,7 +86,6 @@ function getRandom() {
                     console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("card-body-" + idx).appendChild(z);
                   }
-
 
                   // Append newyly created card element to the container
                   //   container.innerHTML += content;

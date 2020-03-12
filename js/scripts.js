@@ -166,7 +166,7 @@ function sidebarSearch(){
   }
 
     // Get the modal
-  var modal1 = document.getElementById('recipepopup-*');
+  var modal1 = document.getElementById('recipepopup-01');
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
