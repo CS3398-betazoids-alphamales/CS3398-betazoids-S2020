@@ -52,11 +52,38 @@ $('#sidebar-search').on('keyup', function(event) {
                         <div class="card-body" id="card-body-${idx}">
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
-                          <a href="#" class="btn btn-primary stretched-link" onclick="document.getElementById('recipepopup').style.display='block'">Recipe</a>
+                          <a href="#" class="btn btn-primary stretched-link" onclick="document.getElementById('recipepopup-${idx}').style.display='block'">Recipe</a>
                           <img src="style/5star.png" class="rating">
                         </div>
                       </div>
                     </div>
+
+	                    <!-- The Recipe Modal -->
+					  <div id="recipepopup-${idx}" class="modal">
+					    <span onclick="document.getElementById('recipepopup-${idx}').style.display='none'"
+					  class="close" title="Close Modal">&times;</span>
+
+					    <!-- Modal Content -->
+					    <form class="modal-content-recipe animate" action=" # ">
+					      <div class="imgcontainer">
+					        <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink rounded">
+					      </div>
+
+					      <div class="title-container">
+					        <h2>${result.name}</h2>
+					      </div>
+
+					      <div class="rating-container">
+					        <img src="style/5star.png" class="rating">
+					      </div>
+
+					      <div class="recipe-container-${idx}">
+					        <h4>${result.form.type}</h4>
+					        
+					      </div>
+					    </form>
+					  </div>
+
                   </div>`;
 
 
@@ -67,6 +94,7 @@ $('#sidebar-search').on('keyup', function(event) {
                     z.appendChild(x);
                     console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("card-body-" + idx).appendChild(z);
+
                   }
 
 
