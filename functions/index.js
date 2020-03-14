@@ -14,6 +14,7 @@ const cors = require('cors')({
 });
 
 const REGEX = new RegExp(/\.|-|`|75|0|1|2|3|4|5|6|7 |8|9|\/|GLASS|PARTS|PART|FROZEN|CRACKED|SHAVED|SQUEEZE|OZ.| OZ| C | T | L | CUPS|CUP |LITERS|LITER|LADLE| EACH|QUART| GAL |ML| CANS | CAN |DASH OF|PACKET|INSTANT|\(RAW\)|DASHES|DASH OF|DASH|EQUAL|LARGE | ONE |ONE |DOUBLE BREWED|UNSWEETEND|STRONG |MUG |USHERS |NOILLY PRAT|SCOOPS|SCOOP|SPLASH OF|SPLASH|PREPARED|RINGS|HALF A|JUICE FROM|JUICE OF| CUBES|CUBED|\(CUBED\)|CUBE|\(BOILING\)|\(TO TASTE\)|TO TASTE|\(CHILLED\)|\(STEMMED\)|\(SEEDLESS\)| RIM|ENVELOPE|TBPS|TBSP.|TBSP|TBS.|TBS|TSP.|TSP|\(SEEDED\)|FRESH|CINZANO|PROOF|SUPERFINE|FLAVORED |SLICED|SLICES|SLICE OF|SLICE|SMALL|WITH SYRUP|CHILLED|TEASPOON|WHOLE|BOTTLE|DROPS|QTS|QT|PINT|SEVERAL|PACKAGE|HULLED|PREMIUM|BUSHMILLS|BACARDI|\(KAHLUA\)|\(PREMIUM\)|\(2 DRINKS\)|JIGGERS|JIGGER|\(WHOLE\)|MINCED|RIPE|CHOPPED|CRUSHED|\(OR\)|IMPORTED/, "g");
+const STOCK_FAIL_RESPONSE = [{"form":{"glass":"Glass of Absence","type":"Lonely Drink"},"garnish":{"1":"Tears"},"ingredients":{"1":"1 1/4 oz. Denial","2":"5 oz. Anger","3":"1 Scoop Depression"},"name":"Invalid Query","occasion":"Any","procedure":{"1":"Combine ingredients in blender","2":"blend until eternity...."}}];
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -26,7 +27,7 @@ exports.helloWorld = functions.https.onRequest(async (request, response) => {
 
 
 exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
-    //this function will respond with a (json) list of all ingredients from every entry
+//this function will respond with a (json) list of all ingredients from every entry
     
     response.set('Access-Control-Allow-Origin', '*');
 
@@ -112,11 +113,13 @@ exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => 
 
 
 exports.getRandomList = functions.https.onRequest(async (request, response) => {
+//  note: this function now expects an argument, "howmany" specifying how many to return
+//
+//  EXAMPLE: full_address?howmany=10
 
     response.set('Access-Control-Allow-Origin', '*');
 
     const howMany = request.query.howmany;
-
     const randList = [];
     var randIntStr = "init";
     const MIN = 1;
@@ -139,10 +142,10 @@ exports.getRandomList = functions.https.onRequest(async (request, response) => {
 
 
 exports.devGetByIngredient = functions.https.onRequest(async (request, response) => {
-    //  note: Please add ?variableName=value to end of https calls for passing aurguments.
-    //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
-    //
-    //  EXAMPLE: full_address?findthis=rum
+//  note: Please add ?variableName=value to end of https calls for passing aurguments.
+//  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
+//
+//  EXAMPLE: full_address?findthis=rum
     
     response.set('Access-Control-Allow-Origin', '*');
 
@@ -180,22 +183,34 @@ exports.devGetByIngredient = functions.https.onRequest(async (request, response)
 });
 
 
-exports.getByIngredientMulti = functions.https.onRequest(async (request, response) => { // currently, using .contains() is returning true for " cola" in "pina colada" etc
-    //  note: Please add ?variableName=value to end of https calls for passing aurguments.
-    //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
-    //
-    //  EXAMPLE: full_address?total=2&findthis1=rum&findthis2=gin 
+exports.getByIngredientSlack = functions.https.onRequest(async (request, response) => { // currently, using .contains() is returning true for " cola" in "pina colada" etc
+//  note: Please add ?variableName=value to end of https calls for passing aurguments.
+//  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
+//
+//  EXAMPLE: full_address?total=2&findthis1=rum&findthis2=gin 
 
-    response.set('Access-Control-Allow-Origin', '*');    
+    response.set('Access-Control-Allow-Origin', '*');
 
-    var totalIngrs = request.query.total; // MIN = 2, MAX = 5
-    var find1 = " " + request.query.findthis1.toUpperCase();
-    var find2 = " " + request.query.findthis2.toUpperCase();
+    try {
+
+        var totalIngrs = request.query.total; // MIN = 2, MAX = 5
+        var find1 = " " + request.query.findthis1.toUpperCase();
+    } catch (e) {
+
+        console.log(e);
+        response.json(STOCK_FAIL_RESPONSE);
+    }
+    
+    var find2;
     var find3;
     var find4;
     var find5;
         
     do {
+        if (totalIngrs === "1")
+            break;
+
+        find2 = " " + request.query.findthis2.toUpperCase();
         if (totalIngrs === "2")
             break;
             
@@ -258,22 +273,33 @@ exports.getByIngredientMulti = functions.https.onRequest(async (request, respons
 });
 
 
-exports.getByIngredientMultiStrict = functions.https.onRequest(async (request, response) => { // currently, using .contains() is returning true for " cola" in "pina colada" etc
-    //  note: Please add ?variableName=value to end of https calls for passing aurguments.
-    //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
-    //
-    //  EXAMPLE: full_address?total=2&findthis1=rum&findthis2=gin 
+exports.getByIngredientStrict = functions.https.onRequest(async (request, response) => { // currently, using .contains() is returning true for " cola" in "pina colada" etc
+//  note: Please add ?variableName=value to end of https calls for passing aurguments.
+//  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
+//
+//  EXAMPLE: full_address?total=2&findthis1=rum&findthis2=gin 
         
     response.set('Access-Control-Allow-Origin', '*');
 
-    var totalIngrs = request.query.total; // MIN = 2, MAX = 5
-    var find1 = " " + request.query.findthis1.toUpperCase();
-    var find2 = " " + request.query.findthis2.toUpperCase();
+    try {
+
+        var totalIngrs = request.query.total; // MIN = 2, MAX = 5
+        var find1 = " " + request.query.findthis1.toUpperCase();
+    } catch (e) {
+        
+        console.log(e);
+        response.json(STOCK_FAIL_RESPONSE);
+    }
+    var find2;
     var find3;
     var find4;
     var find5;
         
     do {
+        if (totalIngrs === "1")
+            break;
+
+        find2 = " " + request.query.findthis2.toUpperCase();
         if (totalIngrs === "2")
             break;
             
@@ -320,21 +346,26 @@ exports.getByIngredientMultiStrict = functions.https.onRequest(async (request, r
                 });
 
                 switch( totalIngrs ) {
+
+                    case "1":
+                        if (hasIngr1)
+                            allMatches.push(eachDrinkSnapshot);
+                        break;    
                     case "2":
                         if (hasIngr1 && hasIngr2)
                             allMatches.push(eachDrinkSnapshot);
                         break;
                     case "3":
                         if (hasIngr1 && hasIngr2 && hasIngr3)
-                        allMatches.push(eachDrinkSnapshot);
+                            allMatches.push(eachDrinkSnapshot);
                         break;
                     case "4":
                         if (hasIngr1 && hasIngr2 && hasIngr3 && hasIngr4)
-                        allMatches.push(eachDrinkSnapshot);
+                            allMatches.push(eachDrinkSnapshot);
                         break;
                     case "5":
                         if (hasIngr1 && hasIngr2 && hasIngr3 && hasIngr4 && hasIngr5)
-                        allMatches.push(eachDrinkSnapshot);
+                            allMatches.push(eachDrinkSnapshot);
                 }
     
                 hasIngr1 = false;
