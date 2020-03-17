@@ -17,7 +17,14 @@
   <!-- Firebase SDK's -->
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-database.js"></script>
-  
+
+  <!-- Angular Tags-->
+  <script data-require="angular.js@1.5.3" data-semver="1.5.3" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+  <script src="main.module.js"></script>
+  <script src="chips.module.js"></script>
+  <script data-require="ui-bootstrap@*" data-semver="1.3.2" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-1.3.2.js"></script>
+
+
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +35,7 @@
 
 </head>
 
-<body>
+<body ng-app="mainModule">
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top border border-top-0 border border-right-0 border border-left-0 border-secondary">
@@ -80,17 +87,41 @@
        </span>
    </div>
 
- <a href="#"><p>Browse Ingredients</p></a>
 
- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Alcohol</a>
+  <div ng-controller="mainController as ctrl">
+    <div class="row">
+      <form class="form-inline">
+        <div class="form-group col-xs-6 col-sm-6 col-md-6">
+          <input type="text"
+                 class="form-control"
+                 id="exampleInputName2"
+                 placeholder="Insert Category"
+                 ng-model="ctrl.insert">
+        </div>
+        <button type="submit" class="btn btn-default" ng-click="ctrl.add(ctrl.insert)">
+        Validate
+      </button>
+      </form>
+    </div>
+    <ul class="list-inline" >
+      <li class="listItem" ng-repeat="elem in ctrl.items">
+        <bl-chips text="{{elem}}" close="ctrl.close(text)"></bl-chips>
+      </li>
+    </ul>
+  </div>
 
- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Juices</a>
 
- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Fruit</a>
+  <!-- <a href="#"><p>Browse Ingredients</p></a>-->
 
- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Other</a>
+  <!-- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Alcohol</a>-->
 
- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Favorites</a>
+  <!-- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Juices</a>-->
+
+  <!-- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Fruit</a>-->
+
+  <!-- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Other</a>-->
+
+  <!-- <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Favorites</a>-->
 
 </div>
 
