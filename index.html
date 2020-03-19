@@ -24,8 +24,6 @@
   <script src="chips.module.js"></script>
   <script data-require="ui-bootstrap@*" data-semver="1.3.2" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-1.3.2.js"></script>
 
-
-
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -79,27 +77,35 @@
 <div id="side-navigation" class="container-md sidenav border">
 
   <!-- Search form -->
-  <div class="input-group">
-       <input class="form-control py-2 border-right-0 border typeahead" type="text" spellcheck="false"
-              placeholder="Search Ingredients" autocomplete="off" id="sidebar-search">
-       <span class="input-group-append">
-          <div class="input-group-text bg-white" style="border: none; top: 1px; right:0px; position: absolute;"><i class="fa fa-search"></i></div>
-       </span>
-   </div>
+<!--  <div class="input-group">-->
+<!--       <input class="form-control py-2 border-right-0 border typeahead" type="text" spellcheck="false"-->
+<!--              placeholder="Search Ingredients" autocomplete="off" id="sidebar-search">-->
+<!--       <span class="input-group-append">-->
+<!--          <div class="input-group-text bg-white" style="border: none; top: 1px; right:0px; position: absolute;"><i class="fa fa-search"></i></div>-->
+<!--       </span>-->
+<!--   </div>-->
 
+<!--  <div class="input-group">-->
+<!--    <input class="form-control py-2 border-right-0 border typeahead" type="text" spellcheck="false"-->
+<!--           placeholder="Search Ingredients" autocomplete="off" id="sidebar-search">-->
+<!--    <span class="input-group-append">-->
+<!--      <div class="input-group-text bg-white" style="border: none; top: 1px; right:0px; position: absolute;"><i class="fa fa-search"></i></div>-->
+<!--    </span>-->
+<!--  </div>-->
 
   <div ng-controller="mainController as ctrl">
     <div class="row">
       <form class="form-inline">
         <div class="form-group col-xs-6 col-sm-6 col-md-6">
           <input type="text"
-                 class="form-control"
+                 class="form-control py-2 border-right-0 border typeahead"
+                 spellcheck="false"
                  id="exampleInputName2"
-                 placeholder="Insert Category"
+                 placeholder="Add Ingredient"
                  ng-model="ctrl.insert">
         </div>
         <button type="submit" class="btn btn-default" ng-click="ctrl.add(ctrl.insert)">
-        Validate
+        +
       </button>
       </form>
     </div>
