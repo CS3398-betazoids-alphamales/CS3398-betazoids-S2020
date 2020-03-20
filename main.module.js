@@ -12,7 +12,7 @@
     init();
     
     function init(){
-       self.items = ['test 1'];
+       self.items = [];
        self.insert = '';
     }
    
@@ -26,7 +26,7 @@
           self.items.push(input);
           self.insert = '';
        } else {
-         console.log('yo');
+         console.log('present');
        }
     }
     
