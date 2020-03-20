@@ -96,20 +96,18 @@
   <div ng-controller="mainController as ctrl">
     <div class="row">
       <form class="form-inline">
-        <div class="form-group col-xs-6 col-sm-6 col-md-6">
           <input type="text"
                  class="form-control py-2 border-right-0 border typeahead"
                  id="side-search"
                  autocomplete="off"
                  placeholder="Add Ingredient"
                  ng-model="ctrl.insert">
-        </div>
         <button type="submit" class="btn btn-default" ng-click="ctrl.add(ctrl.insert)">
         +
       </button>
       </form>
     </div>
-    <ul class="list-inline" >
+    <ul class="list-inline-item">
       <li class="listItem" ng-repeat="elem in ctrl.items">
         <bl-chips text="{{elem}}" close="ctrl.close(text)"></bl-chips>
       </li>
@@ -130,6 +128,8 @@
    <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Favorites</a>
 
   <div class="text-center">
+
+    <br>
 
   <button type="submit" class="btn btn-primary submit-button">Submit</button>
 </div>
