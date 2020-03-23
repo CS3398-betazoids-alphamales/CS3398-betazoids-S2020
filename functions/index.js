@@ -12,9 +12,13 @@ admin.initializeApp();
 const cors = require('cors')({
     origin: true,
 });
-
+//REG, ALC, JUICE, OTHER, FRUIT, (ALL)OTHER
 const REGEX = new RegExp(/\.|-|`|75|0|1|2|3|4|5|6|7 |8|9|\/|GLASS|PARTS|PART|FROZEN|CRACKED|SHAVED|SQUEEZE|OZ.| OZ| C | T | L | CUPS|CUP |LITERS|LITER|LADLE| EACH|QUART| GAL |ML| CANS | CAN |DASH OF|PACKET|INSTANT|\(RAW\)|DASHES|DASH OF|DASH|EQUAL|LARGE | ONE |ONE |DOUBLE BREWED|UNSWEETEND|STRONG |MUG |USHERS |NOILLY PRAT|SCOOPS|SCOOP|SPLASH OF|SPLASH|PREPARED|RINGS|HALF A|JUICE FROM|JUICE OF| CUBES|CUBED|\(CUBED\)|CUBE|\(BOILING\)|\(TO TASTE\)|TO TASTE|\(CHILLED\)|\(STEMMED\)|\(SEEDLESS\)| RIM|ENVELOPE|TBPS|TBSP.|TBSP|TBS.|TBS|TSP.|TSP|\(SEEDED\)|FRESH|CINZANO|PROOF|SUPERFINE|FLAVORED |SLICED|SLICES|SLICE OF|SLICE|SMALL|WITH SYRUP|CHILLED|TEASPOON|WHOLE|BOTTLE|DROPS|QTS|QT|PINT|SEVERAL|PACKAGE|HULLED|PREMIUM|BUSHMILLS|BACARDI|\(KAHLUA\)|\(PREMIUM\)|\(2 DRINKS\)|JIGGERS|JIGGER|\(WHOLE\)|MINCED|RIPE|CHOPPED|CRUSHED|\(OR\)|IMPORTED/, "g");
-const STOCK_FAIL_RESPONSE = [{"form":{"glass":"Glass of Absence","type":"Lonely Drink"},"garnish":{"1":"Tears"},"ingredients":{"1":"1 1/4 oz. Denial","2":"5 oz. Anger","3":"1 Scoop Depression"},"name":"Invalid Query","occasion":"Any","procedure":{"1":"Combine ingredients in blender","2":"blend until eternity...."}}];
+const ALL_ALCOHOL = new RegExp(/RUM|LIQUEUR|EARLY|BRANDY|SCOTCH|AMARETTO|VODKA|SOUTHERN|MARNIER|GIN|VERMOUTH|CREME|CURACAO|JACK|GALLIANO|HARVEYS|DUBONNET|TEQUILA|TRIPLE|IRISH|SCHNAPPS|WINE|BOURBON|TIA MARIA|BRANDY|WHISKY|CAMPARI|MIDORI|KIRSCH|BEER|LILLE|SKYY|SAMBUCA|TUACA|METAXA|CHABLIS|PICON|CHAMPAGNE|BITTER|COINTREAU|GALLIANO|KIRSCHWASSER|HEERING|COGNAC|CHARTREUSE|ANISETTE|PERNOD|JAEGERMEISTER|FRANGELICO|OUZO|STOLICHNAYA|CUERVO|BEEFEATER|PUCKER|STREGA|MADEIRA|PIMMS|BURGUNDY|DRAMBUIE|RYE|SAKE|BOMBAY|LICOR|AQUAVIT|TURKEY|SLIVOVITZ|EVERCLEAR|B & B/,"g")
+const ALL_JUICE = new RegExp(/JUICE|CIDER|SWEAT & SOUR|CREAM OF COCONUT|LEMONADE|SOUR MIX|LIMEADE|BLOODY|PASSION|DAIQUIRI MIX|BAR SOUR|PEACH NECTAR/,"g")
+const ALL_OTHER = new RegExp(/SYRUP|PEEL|SAUCE|/,"g")
+const ALL_FRUIT = new RegExp(/BANANA|STRAWBERR|LEMON|LIME|PEACH|BLUEBERR|RASPBERR|BLACKBERR|CHERR|APPLE|ORANGE|CRANBERR|/,"g")
+const STOCK_FAIL_RESPONSE = [{"form":{"glass":"Glass of Absence","type":"Lonely Drink"},"garnish":{"1":"Tears"},"ingredients":{"1":"1 1/4 oz. Denial","2":"5 oz. Anger","3":"1 Scoop Depression"},"name":"Invalid Query","occasion":"Any","procedure":{"1":"Combine ingredients in blender","2":"blend into eternity...."}}];
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -26,6 +30,56 @@ exports.helloWorld = functions.https.onRequest(async (request, response) => {
 });
 
 
+// exports.getAllSepIngrs = functions.https.onRequest(async (request, response) => { // UNDER CONSTRUCTION
+
+//     response.set('Access-Control-Allow-Origin', '*');
+//     var refinedList = {};
+//     var alcList = {};
+//     var juiceList = {};
+//     var otherList = {};
+//     var fruitList = {};
+
+//     admin.database().ref("data").once('value')
+//         .then((dataSnapshot) => {
+        
+//             var totalIngrs = 0;
+//             var totalUnref = 1;
+//             var unrefinedList = {};
+//             var hasIngr = false;
+    
+//             dataSnapshot.forEach((entrySnapshot) => { //changed to arrow-callback style
+    
+//                 entrySnapshot.child('ingredients').forEach((eachIngr) => { //changed to arrow-callback style
+                        
+//                     var tempStr = eachIngr.val().toUpperCase();
+//                     tempStr = tempStr.replace(REGEX, '').trim();
+//                     tempStr = tempStr.replace(/ AND | N /g, '&');
+    
+//                     for (var i = 0; i < totalIngrs; ++i)
+//                         if ( unrefinedList["ingr" + (i+1)] === tempStr)
+//                             hasIngr = true;
+    
+//                     if ( !hasIngr )
+//                         unrefinedList["ingr" + totalUnref++] = tempStr;
+                            
+//                     hasIngr = false;
+//                     ++totalIngrs;
+//                 }); 
+//             });
+
+//             unrefinedList.forEach((findAlcIter) => {
+
+//                 var tempAlc = findAlcIter.val().toUpperCase();
+//                 if (tempAlc)
+//             })
+    
+//             response.json(unrefinedList);
+//             return null;
+//         })
+
+// });
+
+
 exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
 //this function will respond with a (json) list of all ingredients from every entry
     
@@ -35,8 +89,8 @@ exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
         .then((snapshot) => { //changed to arrow-callback style 
 		
             var totalIngrs = 0;
-            var totalRefined = 1;
-            var refinedList = {};
+            var totalUnref = 1;
+            var unrefinedList = {};
             var hasIngr = false;
     
             snapshot.forEach((entrySnapshot) => { //changed to arrow-callback style
@@ -48,67 +102,51 @@ exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
                     tempStr = tempStr.replace(/ AND | N /g, '&');
     
                     for (var i = 0; i < totalIngrs; ++i)
-                        if ( refinedList["ingr" + (i+1)] === tempStr)
+                        if ( unrefinedList["ingr" + (i+1)] === tempStr)
                             hasIngr = true;
     
                     if ( !hasIngr )
-                        refinedList["ingr" + totalRefined++] = tempStr;
+                        unrefinedList["ingr" + totalUnref++] = tempStr;
                             
                     hasIngr = false;
                     ++totalIngrs;
                 }); 
             });
     
-            response.json(refinedList);
+            response.json(unrefinedList);
             return null;
         }).catch(e => { console.log(e) });
     
 });
 
 
-exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => {
-//this function will respond with a (json) list of all ingredients from every entry
+exports.getByName = functions.https.onRequest(async (request, response) => {
 
     response.set('Access-Control-Allow-Origin', '*');
 
+    const strToFind = request.query.findThis.toUpperCase();
+    const matchList = [];
+    
     admin.database().ref("data").once('value')
-        .then((snapshot) => { //changed to arrow-callback style
+        .then((dataSnapshot) => {
 
-        var totalIngrs = 0;
-        var totalRefined = 1;       
-        var drinkID = 1; //for debugging
-        var refinedList = {};
-        var hasIngr = false;
+        dataSnapshot.forEach((eachDrink) => {
 
-        snapshot.forEach((entrySnapshot) => { //changed to arrow-callback style
+            if (eachDrink.child('name').val() !== null) {
 
-            entrySnapshot.child('ingredients').forEach((eachIngr) => { //changed to arrow-callback style
-                    
-                var tempStr = eachIngr.val().toUpperCase();
-                tempStr = tempStr.replace(REGEX, '').trim();
-                tempStr = tempStr.replace(/ AND | N /g, '&');
+                var drinkName = eachDrink.child('name').val().toUpperCase();
 
-                for (var i = 0; i < totalIngrs; ++i)
-                    if ( refinedList["ingr" + (i+1)] === tempStr)
-                        hasIngr = true;
-
-                if ( !hasIngr ) {
-
-                    refinedList["drinkID" + drinkID] = drinkID; //for debugging
-                    refinedList["ingr" + totalRefined++] = tempStr;
-                }
-                        
-
-                hasIngr = false;
-                ++totalIngrs;
-            }); 
-            ++drinkID; //for debugging
+                if ( drinkName.includes(strToFind) )
+                    matchList.push(eachDrink);
+            }
         });
 
-        response.json(refinedList);
+        if (matchList.length > 0)
+            response.json(matchList);
+        else
+            response.json(STOCK_FAIL_RESPONSE);
         return null;
-    }).catch(e => { console.log(e) });
-
+        }).catch(e => {console.log(e) });
 });
 
 
@@ -138,48 +176,6 @@ exports.getRandomList = functions.https.onRequest(async (request, response) => {
             response.json(randList);
             return null;
         }).catch(e => { console.log(e) });
-});
-
-
-exports.devGetByIngredient = functions.https.onRequest(async (request, response) => {
-//  note: Please add ?variableName=value to end of https calls for passing aurguments.
-//  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
-//
-//  EXAMPLE: full_address?findthis=rum
-    
-    response.set('Access-Control-Allow-Origin', '*');
-
-    const thingToFind = " " + request.query.findthis.toUpperCase();
-
-    admin.database().ref("data").once('value')
-        .then((dataSnapshot) => { //changed to arrow-callback style
-
-            const allMatches = [];
-
-            dataSnapshot.forEach((eachDrinkSnapshot) => { //changed to arrow-callback style
-
-                var hasIngredient = false;
-
-                var ingrsObject = eachDrinkSnapshot.child('ingredients');
-
-                ingrsObject.forEach((eachIngrSnapshot) => { //changed to arrow-callback style
-
-                    var ingrStr = eachIngrSnapshot.val().toUpperCase();
-
-                    if ( ingrStr.includes(thingToFind) )
-                        hasIngredient = true;
-                });
-
-                if (hasIngredient)
-                    allMatches.push(eachDrinkSnapshot);
-
-                hasIngredient = false;
-            });
-
-            response.json(allMatches);
-            return null;
-        }).catch(e => { console.log(e) });
-
 });
 
 
@@ -266,7 +262,10 @@ exports.getByIngredientSlack = functions.https.onRequest(async (request, respons
                 hasIngr5 = false;
             });
     
-            response.json(allMatches);
+            if (allMatches.length > 0)
+                response.json(allMatches);
+            else
+                response.json(STOCK_FAIL_RESPONSE);
             return null;
         }).catch(e => { console.log(e) });
     
@@ -375,7 +374,10 @@ exports.getByIngredientStrict = functions.https.onRequest(async (request, respon
                 hasIngr5 = false;
             });
     
-            response.json(allMatches);
+            if (allMatches.length > 0)
+                response.json(allMatches);
+            else
+                response.json(STOCK_FAIL_RESPONSE);
             return null;
         }).catch(e => { console.log(e) });  
 
@@ -418,6 +420,95 @@ exports.setRecipeRating = functions.https.onRequest(async (request, response) =>
         }).catch(e => { console.log(e) });
 
 });
+
+
+exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => {
+    //this function will respond with a (json) list of all ingredients from every entry
+    
+    response.set('Access-Control-Allow-Origin', '*');
+    
+    admin.database().ref("data").once('value')
+        .then((snapshot) => { //changed to arrow-callback style
+    
+        var totalIngrs = 0;
+        var totalUnref = 1;       
+        var drinkID = 1; //for debugging
+        var unrefinedList = {};
+        var hasIngr = false;
+    
+        snapshot.forEach((entrySnapshot) => { //changed to arrow-callback style
+    
+            entrySnapshot.child('ingredients').forEach((eachIngr) => { //changed to arrow-callback style
+                        
+                var tempStr = eachIngr.val().toUpperCase();
+                tempStr = tempStr.replace(REGEX, '').trim();
+                tempStr = tempStr.replace(/ AND | N /g, '&');
+    
+                for (var i = 0; i < totalIngrs; ++i)
+                    if ( unrefinedList["ingr" + (i+1)] === tempStr)
+                        hasIngr = true;
+    
+                if ( !hasIngr ) {
+    
+                    unrefinedList["drinkID" + drinkID] = drinkID; //for debugging
+                    unrefinedList["ingr" + totalUnref++] = tempStr;
+                }
+                            
+    
+                hasIngr = false;
+                ++totalIngrs;
+            }); 
+            ++drinkID; //for debugging
+        });
+    
+        response.json(unrefinedList);
+        return null;
+    }).catch(e => { console.log(e) });
+    
+});
+
+
+exports.devGetByIngredient = functions.https.onRequest(async (request, response) => {
+    //  note: Please add ?variableName=value to end of https calls for passing aurguments.
+    //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
+    //
+    //  EXAMPLE: full_address?findthis=rum
+        
+    response.set('Access-Control-Allow-Origin', '*');
+    
+    const thingToFind = " " + request.query.findthis.toUpperCase();
+    
+    admin.database().ref("data").once('value')
+        .then((dataSnapshot) => { //changed to arrow-callback style
+    
+            const allMatches = [];
+    
+            dataSnapshot.forEach((eachDrinkSnapshot) => { //changed to arrow-callback style
+    
+                var hasIngredient = false;
+    
+                var ingrsObject = eachDrinkSnapshot.child('ingredients');
+    
+                ingrsObject.forEach((eachIngrSnapshot) => { //changed to arrow-callback style
+    
+                    var ingrStr = eachIngrSnapshot.val().toUpperCase();
+    
+                    if ( ingrStr.includes(thingToFind) )
+                        hasIngredient = true;
+                });
+    
+                if (hasIngredient)
+                        allMatches.push(eachDrinkSnapshot);
+    
+                hasIngredient = false;
+            });
+    
+            response.json(allMatches);
+            return null;
+        }).catch(e => { console.log(e) });
+    
+});
+
 
 // exports.testDatabase = functions.https.onRequest(async (request, response) => {
 //
