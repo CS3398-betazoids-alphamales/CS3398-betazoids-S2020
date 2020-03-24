@@ -14,10 +14,10 @@ const cors = require('cors')({
 });
 //REG, ALC, JUICE, OTHER, FRUIT, (ALL)OTHER
 const REGEX = new RegExp(/\.|-|`|75|0|1|2|3|4|5|6|7 |8|9|\/|GLASS|PARTS|PART|FROZEN|CRACKED|SHAVED|SQUEEZE|OZ.| OZ| C | T | L | CUPS|CUP |LITERS|LITER|LADLE| EACH|QUART| GAL |ML| CANS | CAN |DASH OF|PACKET|INSTANT|\(RAW\)|DASHES|DASH OF|DASH|EQUAL|LARGE | ONE |ONE |DOUBLE BREWED|UNSWEETEND|STRONG |MUG |USHERS |NOILLY PRAT|SCOOPS|SCOOP|SPLASH OF|SPLASH|PREPARED|RINGS|HALF A|JUICE FROM|JUICE OF| CUBES|CUBED|\(CUBED\)|CUBE|\(BOILING\)|\(TO TASTE\)|TO TASTE|\(CHILLED\)|\(STEMMED\)|\(SEEDLESS\)| RIM|ENVELOPE|TBPS|TBSP.|TBSP|TBS.|TBS|TSP.|TSP|\(SEEDED\)|FRESH|CINZANO|PROOF|SUPERFINE|FLAVORED |SLICED|SLICES|SLICE OF|SLICE|SMALL|WITH SYRUP|CHILLED|TEASPOON|WHOLE|BOTTLE|DROPS|QTS|QT|PINT|SEVERAL|PACKAGE|HULLED|PREMIUM|BUSHMILLS|BACARDI|\(KAHLUA\)|\(PREMIUM\)|\(2 DRINKS\)|JIGGERS|JIGGER|\(WHOLE\)|MINCED|RIPE|CHOPPED|CRUSHED|\(OR\)|IMPORTED/, "g");
-const ALL_ALCOHOL = new RegExp(/RUM|LIQUEUR|EARLY|BRANDY|SCOTCH|AMARETTO|VODKA|SOUTHERN|MARNIER|GIN|VERMOUTH|CREME|CURACAO|JACK|GALLIANO|HARVEYS|DUBONNET|TEQUILA|TRIPLE|IRISH|SCHNAPPS|WINE|BOURBON|TIA MARIA|BRANDY|WHISKY|CAMPARI|MIDORI|KIRSCH|BEER|LILLE|SKYY|SAMBUCA|TUACA|METAXA|CHABLIS|PICON|CHAMPAGNE|BITTER|COINTREAU|GALLIANO|KIRSCHWASSER|HEERING|COGNAC|CHARTREUSE|ANISETTE|PERNOD|JAEGERMEISTER|FRANGELICO|OUZO|STOLICHNAYA|CUERVO|BEEFEATER|PUCKER|STREGA|MADEIRA|PIMMS|BURGUNDY|DRAMBUIE|RYE|SAKE|BOMBAY|LICOR|AQUAVIT|TURKEY|SLIVOVITZ|EVERCLEAR|B & B/,"g")
-const ALL_JUICE = new RegExp(/JUICE|CIDER|SWEAT & SOUR|CREAM OF COCONUT|LEMONADE|SOUR MIX|LIMEADE|BLOODY|PASSION|DAIQUIRI MIX|BAR SOUR|PEACH NECTAR/,"g")
-const ALL_OTHER = new RegExp(/SYRUP|PEEL|SAUCE|/,"g")
-const ALL_FRUIT = new RegExp(/BANANA|STRAWBERR|LEMON|LIME|PEACH|BLUEBERR|RASPBERR|BLACKBERR|CHERR|APPLE|ORANGE|CRANBERR|/,"g")
+const ALL_ALCOHOL = new RegExp(/GRENADINE|RUM|LIQUEUR|EARLY|BRANDY|SCOTCH|AMARETTO|VODKA|SOUTHERN|MARNIER|GIN|VERMOUTH|CREME|CURACAO|JACK|GALLIANO|HARVEYS|DUBONNET|TEQUILA|TRIPLE|IRISH|SCHNAPPS|WINE|BOURBON|TIA MARIA|BRANDY|WHISKY|CAMPARI|MIDORI|KIRSCH|BEER|LILLE|SKYY|SAMBUCA|TUACA|METAXA|CHABLIS|PICON|CHAMPAGNE|BITTER|COINTREAU|GALLIANO|KIRSCHWASSER|HEERING|COGNAC|CHARTREUSE|ANISETTE|PERNOD|JAEGERMEISTER|FRANGELICO|OUZO|STOLICHNAYA|CUERVO|BEEFEATER|PUCKER|STREGA|MADEIRA|PIMMS|BURGUNDY|DRAMBUIE|RYE|SAKE|BOMBAY|LICOR|AQUAVIT|TURKEY|SLIVOVITZ|EVERCLEAR|B & B/,"g");
+const ALL_JUICE = new RegExp(/JUICE|CIDER|SWEAT & SOUR|CREAM OF COCONUT|LEMONADE|SOUR MIX|LIMEADE|BLOODY|PASSION|DAIQUIRI MIX|BAR SOUR|PEACH NECTAR/,"g");
+const ALL_OTHER = new RegExp(/SYRUP|PEEL|SAUCE/,"g");
+const ALL_FRUIT = new RegExp(/BANANA|STRAWBERR|LEMON|LIME|PEACH|BLUEBERR|RASPBERR|BLACKBERR|CHERR|APPLE|ORANGE|CRANBERR/,"g");
 const STOCK_FAIL_RESPONSE = [{"form":{"glass":"Glass of Absence","type":"Lonely Drink"},"garnish":{"1":"Tears"},"ingredients":{"1":"1 1/4 oz. Denial","2":"5 oz. Anger","3":"1 Scoop Depression"},"name":"Invalid Query","occasion":"Any","procedure":{"1":"Combine ingredients in blender","2":"blend into eternity...."}}];
 
 // // Create and Deploy Your First Cloud Functions
@@ -30,54 +30,106 @@ exports.helloWorld = functions.https.onRequest(async (request, response) => {
 });
 
 
-// exports.getAllSepIngrs = functions.https.onRequest(async (request, response) => { // UNDER CONSTRUCTION
+exports.getAllSepIngrs = functions.https.onRequest(async (request, response) => { // UNDER CONSTRUCTION
 
-//     response.set('Access-Control-Allow-Origin', '*');
-//     var refinedList = {};
-//     var alcList = {};
-//     var juiceList = {};
-//     var otherList = {};
-//     var fruitList = {};
+    response.set('Access-Control-Allow-Origin', '*');
+    var refinedList = {};
+    var counter = 0;
+    var otherCounter = 0;
 
-//     admin.database().ref("data").once('value')
-//         .then((dataSnapshot) => {
+    admin.database().ref("data").once('value')
+        .then((dataSnapshot) => {
         
-//             var totalIngrs = 0;
-//             var totalUnref = 1;
-//             var unrefinedList = {};
-//             var hasIngr = false;
+            var totalIngrs = 0;
+            var totalUnref = 0;
+            let unrefinedList = {};
+            var hasIngr = false;
     
-//             dataSnapshot.forEach((entrySnapshot) => { //changed to arrow-callback style
+            unrefinedList['all'] = [];
+            dataSnapshot.forEach((entrySnapshot) => { //changed to arrow-callback style
     
-//                 entrySnapshot.child('ingredients').forEach((eachIngr) => { //changed to arrow-callback style
+                entrySnapshot.child('ingredients').forEach((eachIngr) => { //changed to arrow-callback style
                         
-//                     var tempStr = eachIngr.val().toUpperCase();
-//                     tempStr = tempStr.replace(REGEX, '').trim();
-//                     tempStr = tempStr.replace(/ AND | N /g, '&');
+                    var tempStr = eachIngr.val().toUpperCase();
+                    tempStr = tempStr.replace(REGEX, '').trim();
+                    tempStr = tempStr.replace(/ AND | N /g, '&');
     
-//                     for (var i = 0; i < totalIngrs; ++i)
-//                         if ( unrefinedList["ingr" + (i+1)] === tempStr)
-//                             hasIngr = true;
+                    for (var i = 0; i < totalIngrs; ++i)
+                        if ( unrefinedList.all[i] === tempStr) //CHANGE TO i
+                            hasIngr = true;
     
-//                     if ( !hasIngr )
-//                         unrefinedList["ingr" + totalUnref++] = tempStr;
+                    if ( !hasIngr )
+                        unrefinedList.all[totalUnref++] = tempStr; //CHANGE TO someIter++
                             
-//                     hasIngr = false;
-//                     ++totalIngrs;
-//                 }); 
-//             });
+                    hasIngr = false;
+                    ++totalIngrs;
+                }); 
+            });
 
-//             unrefinedList.forEach((findAlcIter) => {
+            refinedList['alcohol'] = [];
+            unrefinedList.all.forEach((maybeAlc, index, object) => {
 
-//                 var tempAlc = findAlcIter.val().toUpperCase();
-//                 if (tempAlc)
-//             })
+                var tempStr = maybeAlc.toUpperCase();
+                if (tempStr.match(ALL_ALCOHOL) !== null) {
+
+                    refinedList.alcohol[counter++] = tempStr;
+                    //object.splice(index,1);
+                    object[index] = 'X';
+                }
+            });
     
-//             response.json(unrefinedList);
-//             return null;
-//         })
+            counter = 0;
+            refinedList['juice'] = [];
+            unrefinedList.all.forEach((maybeJuice, index, object) => {
 
-// });
+                var tempStr = maybeJuice.toUpperCase();
+                if (tempStr.match(ALL_JUICE) !== null) {
+
+                    refinedList.juice[counter++] = tempStr;
+                    //object.splice(index,1);
+                    object[index] = 'X';
+                }
+            });
+
+            refinedList['other'] = [];
+            unrefinedList.all.forEach((maybeOther, index, object) => {
+
+                var tempStr = maybeOther.toUpperCase();
+                if (tempStr.match(ALL_OTHER) !== null) {
+
+                    refinedList.other[otherCounter++] = tempStr;
+                    //object.splice(index,1);
+                    object[index] = 'X';
+                }
+            });
+
+            counter = 0;
+            refinedList['fruit'] = [];
+            unrefinedList.all.forEach((maybeFruit, index, object) => {
+
+                var tempStr = maybeFruit.toUpperCase();
+                if (tempStr.match(ALL_FRUIT) !== null) {
+
+                    refinedList.fruit[counter++] = tempStr;
+                    //object.splice(index,1);
+                    object[index] = 'X';
+                }
+            });
+
+            unrefinedList.all.forEach((remaining, index, object) => {
+
+                if (remaining !== 'X') {
+                    var tempStr = remaining.toUpperCase();
+                    refinedList.other[otherCounter++] = tempStr;
+                }
+                
+            });
+
+            response.json(refinedList);
+            return null;
+        }).catch(e => { console.log(e) });
+
+});
 
 
 exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
@@ -89,10 +141,11 @@ exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
         .then((snapshot) => { //changed to arrow-callback style 
 		
             var totalIngrs = 0;
-            var totalUnref = 1;
+            var totalUnref = 0;
             var unrefinedList = {};
             var hasIngr = false;
     
+            unrefinedList['all'] = [];
             snapshot.forEach((entrySnapshot) => { //changed to arrow-callback style
     
                 entrySnapshot.child('ingredients').forEach((eachIngr) => { //changed to arrow-callback style
@@ -102,11 +155,11 @@ exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
                     tempStr = tempStr.replace(/ AND | N /g, '&');
     
                     for (var i = 0; i < totalIngrs; ++i)
-                        if ( unrefinedList["ingr" + (i+1)] === tempStr)
+                        if ( unrefinedList.all[i] === tempStr)
                             hasIngr = true;
     
                     if ( !hasIngr )
-                        unrefinedList["ingr" + totalUnref++] = tempStr;
+                        unrefinedList.all[totalUnref++] = tempStr;
                             
                     hasIngr = false;
                     ++totalIngrs;
