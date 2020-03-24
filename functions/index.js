@@ -12,7 +12,7 @@ admin.initializeApp();
 const cors = require('cors')({
     origin: true,
 });
-//REG, ALC, JUICE, OTHER, FRUIT, (ALL)OTHER
+//REG, ALC, JUICE, OTHER, FRUIT, (ALL)OTHER [pattern to catch ingredients most effectively....]
 const REGEX = new RegExp(/\.|-|`|75|0|1|2|3|4|5|6|7 |8|9|\/|GLASS|PARTS|PART|FROZEN|CRACKED|SHAVED|SQUEEZE|OZ.| OZ| C | T | L | CUPS|CUP |LITERS|LITER|LADLE| EACH|QUART| GAL |ML| CANS | CAN |DASH OF|PACKET|INSTANT|\(RAW\)|DASHES|DASH OF|DASH|EQUAL|LARGE | ONE |ONE |DOUBLE BREWED|UNSWEETEND|STRONG |MUG |USHERS |NOILLY PRAT|SCOOPS|SCOOP|SPLASH OF|SPLASH|PREPARED|RINGS|HALF A|JUICE FROM|JUICE OF| CUBES|CUBED|\(CUBED\)|CUBE|\(BOILING\)|\(TO TASTE\)|TO TASTE|\(CHILLED\)|\(STEMMED\)|\(SEEDLESS\)| RIM|ENVELOPE|TBPS|TBSP.|TBSP|TBS.|TBS|TSP.|TSP|\(SEEDED\)|FRESH|CINZANO|PROOF|SUPERFINE|FLAVORED |SLICED|SLICES|SLICE OF|SLICE|SMALL|WITH SYRUP|CHILLED|TEASPOON|WHOLE|BOTTLE|DROPS|QTS|QT|PINT|SEVERAL|PACKAGE|HULLED|PREMIUM|BUSHMILLS|BACARDI|\(KAHLUA\)|\(PREMIUM\)|\(2 DRINKS\)|JIGGERS|JIGGER|\(WHOLE\)|MINCED|RIPE|CHOPPED|CRUSHED|\(OR\)|IMPORTED/, "g");
 const ALL_ALCOHOL = new RegExp(/GRENADINE|RUM|LIQUEUR|EARLY|BRANDY|SCOTCH|AMARETTO|VODKA|SOUTHERN|MARNIER|GIN|VERMOUTH|CREME|CURACAO|JACK|GALLIANO|HARVEYS|DUBONNET|TEQUILA|TRIPLE|IRISH|SCHNAPPS|WINE|BOURBON|TIA MARIA|BRANDY|WHISKY|CAMPARI|MIDORI|KIRSCH|BEER|LILLE|SKYY|SAMBUCA|TUACA|METAXA|CHABLIS|PICON|CHAMPAGNE|BITTER|COINTREAU|GALLIANO|KIRSCHWASSER|HEERING|COGNAC|CHARTREUSE|ANISETTE|PERNOD|JAEGERMEISTER|FRANGELICO|OUZO|STOLICHNAYA|CUERVO|BEEFEATER|PUCKER|STREGA|MADEIRA|PIMMS|BURGUNDY|DRAMBUIE|RYE|SAKE|BOMBAY|LICOR|AQUAVIT|TURKEY|SLIVOVITZ|EVERCLEAR|B & B/,"g");
 const ALL_JUICE = new RegExp(/JUICE|CIDER|SWEAT & SOUR|CREAM OF COCONUT|LEMONADE|SOUR MIX|LIMEADE|BLOODY|PASSION|DAIQUIRI MIX|BAR SOUR|PEACH NECTAR/,"g");
@@ -30,7 +30,7 @@ exports.helloWorld = functions.https.onRequest(async (request, response) => {
 });
 
 
-exports.getAllSepIngrs = functions.https.onRequest(async (request, response) => { // UNDER CONSTRUCTION
+exports.getAllSepIngrs = functions.https.onRequest(async (request, response) => {
 
     response.set('Access-Control-Allow-Origin', '*');
     var refinedList = {};
@@ -46,20 +46,20 @@ exports.getAllSepIngrs = functions.https.onRequest(async (request, response) => 
             var hasIngr = false;
     
             unrefinedList['all'] = [];
-            dataSnapshot.forEach((entrySnapshot) => { //changed to arrow-callback style
+            dataSnapshot.forEach((entrySnapshot) => {
     
-                entrySnapshot.child('ingredients').forEach((eachIngr) => { //changed to arrow-callback style
+                entrySnapshot.child('ingredients').forEach((eachIngr) => {
                         
                     var tempStr = eachIngr.val().toUpperCase();
                     tempStr = tempStr.replace(REGEX, '').trim();
                     tempStr = tempStr.replace(/ AND | N /g, '&');
     
                     for (var i = 0; i < totalIngrs; ++i)
-                        if ( unrefinedList.all[i] === tempStr) //CHANGE TO i
+                        if ( unrefinedList.all[i] === tempStr)
                             hasIngr = true;
     
                     if ( !hasIngr )
-                        unrefinedList.all[totalUnref++] = tempStr; //CHANGE TO someIter++
+                        unrefinedList.all[totalUnref++] = tempStr;
                             
                     hasIngr = false;
                     ++totalIngrs;
@@ -72,8 +72,7 @@ exports.getAllSepIngrs = functions.https.onRequest(async (request, response) => 
                 var tempStr = maybeAlc.toUpperCase();
                 if (tempStr.match(ALL_ALCOHOL) !== null) {
 
-                    refinedList.alcohol[counter++] = tempStr;
-                    //object.splice(index,1);
+                    refinedList.alcohol[counter++] = tempStr.toLowerCase();
                     object[index] = 'X';
                 }
             });
@@ -85,8 +84,7 @@ exports.getAllSepIngrs = functions.https.onRequest(async (request, response) => 
                 var tempStr = maybeJuice.toUpperCase();
                 if (tempStr.match(ALL_JUICE) !== null) {
 
-                    refinedList.juice[counter++] = tempStr;
-                    //object.splice(index,1);
+                    refinedList.juice[counter++] = tempStr.toLowerCase();
                     object[index] = 'X';
                 }
             });
@@ -97,8 +95,7 @@ exports.getAllSepIngrs = functions.https.onRequest(async (request, response) => 
                 var tempStr = maybeOther.toUpperCase();
                 if (tempStr.match(ALL_OTHER) !== null) {
 
-                    refinedList.other[otherCounter++] = tempStr;
-                    //object.splice(index,1);
+                    refinedList.other[otherCounter++] = tempStr.toLowerCase();
                     object[index] = 'X';
                 }
             });
@@ -110,8 +107,7 @@ exports.getAllSepIngrs = functions.https.onRequest(async (request, response) => 
                 var tempStr = maybeFruit.toUpperCase();
                 if (tempStr.match(ALL_FRUIT) !== null) {
 
-                    refinedList.fruit[counter++] = tempStr;
-                    //object.splice(index,1);
+                    refinedList.fruit[counter++] = tempStr.toLowerCase();
                     object[index] = 'X';
                 }
             });
@@ -120,7 +116,7 @@ exports.getAllSepIngrs = functions.https.onRequest(async (request, response) => 
 
                 if (remaining !== 'X') {
                     var tempStr = remaining.toUpperCase();
-                    refinedList.other[otherCounter++] = tempStr;
+                    refinedList.other[otherCounter++] = tempStr.toLowerCase();
                 }
                 
             });
@@ -138,7 +134,7 @@ exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
     response.set('Access-Control-Allow-Origin', '*');
 
     admin.database().ref("data").once('value')
-        .then((snapshot) => { //changed to arrow-callback style 
+        .then((snapshot) => {
 		
             var totalIngrs = 0;
             var totalUnref = 0;
@@ -146,13 +142,14 @@ exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
             var hasIngr = false;
     
             unrefinedList['all'] = [];
-            snapshot.forEach((entrySnapshot) => { //changed to arrow-callback style
+            snapshot.forEach((entrySnapshot) => {
     
-                entrySnapshot.child('ingredients').forEach((eachIngr) => { //changed to arrow-callback style
+                entrySnapshot.child('ingredients').forEach((eachIngr) => {
                         
                     var tempStr = eachIngr.val().toUpperCase();
                     tempStr = tempStr.replace(REGEX, '').trim();
                     tempStr = tempStr.replace(/ AND | N /g, '&');
+                    tempStr = tempStr.toLowerCase();
     
                     for (var i = 0; i < totalIngrs; ++i)
                         if ( unrefinedList.all[i] === tempStr)
@@ -218,7 +215,7 @@ exports.getRandomList = functions.https.onRequest(async (request, response) => {
     
 
     admin.database().ref("data").once('value')
-        .then((dataSnapshot) => { //changed to arrow-callback style
+        .then((dataSnapshot) => {
 
             for ( var i = 0; i < howMany; ++i) {
                 
@@ -275,11 +272,11 @@ exports.getByIngredientSlack = functions.https.onRequest(async (request, respons
     } while (once)
     
     admin.database().ref("data").once('value')
-        .then((dataSnapshot) => { //changed to arrow-callback style
+        .then((dataSnapshot) => {
     
             const allMatches = [];
     
-            dataSnapshot.forEach((eachDrinkSnapshot) => { //changed to arrow-callback style
+            dataSnapshot.forEach((eachDrinkSnapshot) => {
     
                 var hasIngr1 = false;
                 var hasIngr2 = false;
@@ -289,7 +286,7 @@ exports.getByIngredientSlack = functions.https.onRequest(async (request, respons
     
                 var ingrsObject = eachDrinkSnapshot.child('ingredients');
     
-                ingrsObject.forEach((eachIngrSnapshot) => { //changed to arrow-callback style
+                ingrsObject.forEach((eachIngrSnapshot) => {
     
                     var ingrStr = eachIngrSnapshot.val().toUpperCase();
 
@@ -367,11 +364,11 @@ exports.getByIngredientStrict = functions.https.onRequest(async (request, respon
     } while (once)
     
     admin.database().ref("data").once('value')
-        .then((dataSnapshot) => { //changed to arrow-callback style
+        .then((dataSnapshot) => {
     
             const allMatches = [];
     
-            dataSnapshot.forEach((eachDrinkSnapshot) => { //changed to arrow-callback style
+            dataSnapshot.forEach((eachDrinkSnapshot) => {
     
                 var hasIngr1 = false;
                 var hasIngr2 = false;
@@ -381,7 +378,7 @@ exports.getByIngredientStrict = functions.https.onRequest(async (request, respon
     
                 var ingrsObject = eachDrinkSnapshot.child('ingredients');
     
-                ingrsObject.forEach((eachIngrSnapshot) => { //changed to arrow-callback style
+                ingrsObject.forEach((eachIngrSnapshot) => {
     
                     var ingrStr = eachIngrSnapshot.val().toUpperCase();
 
@@ -449,11 +446,11 @@ exports.setRecipeRating = functions.https.onRequest(async (request, response) =>
     const rating = request.query.rating;
 
     admin.database().ref("data").once('value')
-        .then((dataSnapshot) => { //changed to arrow-callback style
+        .then((dataSnapshot) => {
 
             var match = false;
 
-            dataSnapshot.forEach((currentDrinkSnapshotIndex) => { //changed to arrow-callback style
+            dataSnapshot.forEach((currentDrinkSnapshotIndex) => {
                 if(currentDrinkSnapshotIndex.child("name").val() !== null) {
 
                     var nameString = currentDrinkSnapshotIndex.child("name").val().toUpperCase();
@@ -481,7 +478,7 @@ exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => 
     response.set('Access-Control-Allow-Origin', '*');
     
     admin.database().ref("data").once('value')
-        .then((snapshot) => { //changed to arrow-callback style
+        .then((snapshot) => {
     
         var totalIngrs = 0;
         var totalUnref = 1;       
@@ -489,9 +486,9 @@ exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => 
         var unrefinedList = {};
         var hasIngr = false;
     
-        snapshot.forEach((entrySnapshot) => { //changed to arrow-callback style
+        snapshot.forEach((entrySnapshot) => {
     
-            entrySnapshot.child('ingredients').forEach((eachIngr) => { //changed to arrow-callback style
+            entrySnapshot.child('ingredients').forEach((eachIngr) => {
                         
                 var tempStr = eachIngr.val().toUpperCase();
                 tempStr = tempStr.replace(REGEX, '').trim();
@@ -532,17 +529,17 @@ exports.devGetByIngredient = functions.https.onRequest(async (request, response)
     const thingToFind = " " + request.query.findthis.toUpperCase();
     
     admin.database().ref("data").once('value')
-        .then((dataSnapshot) => { //changed to arrow-callback style
+        .then((dataSnapshot) => {
     
             const allMatches = [];
     
-            dataSnapshot.forEach((eachDrinkSnapshot) => { //changed to arrow-callback style
+            dataSnapshot.forEach((eachDrinkSnapshot) => {
     
                 var hasIngredient = false;
     
                 var ingrsObject = eachDrinkSnapshot.child('ingredients');
     
-                ingrsObject.forEach((eachIngrSnapshot) => { //changed to arrow-callback style
+                ingrsObject.forEach((eachIngrSnapshot) => {
     
                     var ingrStr = eachIngrSnapshot.val().toUpperCase();
     
