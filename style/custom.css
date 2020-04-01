@@ -1,0 +1,427 @@
+
+nav {
+	min-height: 50px;
+	background-color: #ff971d;
+	position:fixed;
+}
+
+form{
+	padding: 6px;
+	border-radius: 33px;
+}
+
+a:hover{
+
+}
+
+ul, li{
+	list-style: none;
+}
+
+h1{
+	color:white;
+}
+
+body{
+	overflow: hidden;
+	background-color:#ffffff;
+}
+
+.card{
+	max-width: 230px;
+	max-height: 330px;
+	min-width: 80px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.card-body{
+	max-width: 230px;
+	overflow: hidden;
+}
+
+.card-body h4{
+	font-size: 2.2vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.card-body p{
+	font-size: 1.1vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.card-img-top{
+	max-width: 100%;
+	margin: auto;
+}
+
+.rating{
+  width: 80px;
+}
+
+
+.nav-item{
+	text-decoration: none;
+	text-align: left;
+	margin-right: 8vw;
+	margin-top: 6vw;
+}
+
+.navbar-brand img{
+	width: 4vw;
+}
+
+.navbar-brand h2{
+	font-size: 18px;
+}
+
+#navsearch{
+	margin-right: 0px;
+	margin-top: 3vw;
+}
+
+
+#content-window{
+	transition: margin-left .5s;
+}
+
+.form-control{
+	padding: 16px;
+	border-radius: 33px;
+}
+
+.input-group-text{
+	border-radius: 33px;
+}
+
+#content-wrapper{
+	transition: margin-left .5s;
+	transition: margin 0.5s;
+	margin-left: 256px;
+}
+
+ /* The sidebar menu */
+.sidenav {
+  align-items: stretch;
+  height: 100%; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 70px;
+  transition: 0.5s;
+  background-color:#f9f6f7;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav p {
+  font-size: 18px;
+  color: black;
+  padding: 3px;
+  margin-bottom: 0px;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #1a7dff;
+}
+
+.sidenav .closebtn {
+ 
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 12px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+.btn{
+	width: 9vw;
+	font-size: 1.2vw;
+}
+
+
+/* Style page content */
+.main {
+  margin-left: 160px;
+  padding: 0px 10px;
+
+}
+
+.input-group > .typeahead {
+	flex: 1 1 auto;
+	width: auto;
+ }
+
+.typeahead, .tt-query, .tt-hint {
+	border: 2px solid #CCCCCC;
+	border-radius: 8px;
+	font-size: 22px; 
+	height: 30px;
+	line-height: 30px;
+	outline: medium none;
+	padding: 8px 12px;
+	width: 396px;
+  }
+  .typeahead {
+	background-color: #FFFFFF;
+  }
+  .typeahead:focus {
+	border: 2px solid #0097CF;
+  }
+  .tt-query {
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  }
+  .tt-hint {
+	color: #999999;
+  }
+
+  .tt-input{
+	  width:255px;
+  }
+
+  .tt-menu {
+	background-color: #FFFFFF;
+	border: 1px solids rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	margin-top: 12px;
+	padding: 8px 0;
+	width: 422px;
+  }
+  .tt-suggestion {
+	font-size: 22px;  
+	padding: 3px 20px;
+  }
+  .tt-suggestion:hover {
+	cursor: pointer;
+	background-color: #0097CF;
+	color: #FFFFFF;
+  }
+  .tt-suggestion p {
+	margin: 0;
+  }
+
+  /* Scrollable panel CSS */
+
+  .panel-head-wrapper{
+    background: white;
+    overflow: hidden;
+    width: 100%;
+    z-index: 1;
+    display: block;
+    position: fixed;
+  }
+
+  .panel-head-wrapper h2{
+    margin-left: 33px;
+    font-size: 3vw;
+  }
+
+ .scrollable-panel{
+     min-height:600px;
+     height: 100vw;
+     max-height: 650px;
+     overflow-y: auto;
+     margin: auto;
+     width:90%;    
+  }
+
+  #home{display: block;}
+
+  #about{display: none;}
+
+  #services{display: none;}
+
+  #name-search{display: none;}
+
+  #ingredient-search{display: none;}
+
+  #browse{display: none;}
+
+  #alcohol{display: none;}
+
+  #juices{display: none;}
+
+  #fruit{display: none;}
+
+  #other{display: none;}
+
+  #favorites{display: none;}
+
+/* login popup stuff */
+
+ /* The Modal (background) */
+.modal {
+  display: none; 
+  position: fixed; /
+  z-index: 2; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4);
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5px auto; 
+  border: 1px solid #888;
+  width: 40%; 
+}
+
+.modal-content-recipe {
+  background-color: #fefefe;
+  margin: 5px auto; 
+  border: 1px solid #888;
+  width: 50%; 
+}
+
+/* The Close Button */
+.close {
+  /* Position it in the top right corner outside of the modal */
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+/* Close button on hover */
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+#loginimg{
+	margin: auto;
+	width: 5vw;
+}
+
+#drinkimg{
+  margin-left: 14vw;
+  width: 40%;
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+} 
+
+
+
+
+
+
+ /* media queries */
+@media screen and (min-width: 1200px) {
+	.navbar-brand img{
+	width: 70px;
+}
+	.btn{
+		width: 80px;
+		font-size: 16px;
+	}
+	.card-body h4{
+		font-size: 21px;
+	}
+
+	.card-body p{
+		font-size: 16px;
+	}
+	 .nav-item{
+		margin-right: 150px;
+	}
+
+  .panel-head-wrapper h2{font-size: 35px;}
+	
+} 
+
+@media screen and (max-width: 768px) {
+	.btn{
+		width: 70px;
+		font-size: 12px;
+	}
+
+	.card-body p{
+		font-size: 16px;
+	}
+	.card-body h4{
+		font-size: 18px;
+	}
+	#side-navigation{
+		width: 0;
+	}
+	#content-wrapper{
+		margin-left: 0;
+		margin: auto;
+	}
+  .panel-head-wrapper h2{font-size: 16px;}
+} 
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .navbar-brand img{
+	width: 20px;
+  }
+  .sidenav a {font-size: 16px;}
+  .nav-item{
+  	margin-top: 10px;
+  }
+  #navsearch{
+  	margin-top: 10px;
+  }
+  .navbar-toggler{
+	margin: none;
+	padding: none;
+}
+  
+} 

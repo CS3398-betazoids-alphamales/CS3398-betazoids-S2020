@@ -212,7 +212,9 @@ exports.getRandomList = functions.https.onRequest(async (request, response) => {
     var randIntStr = "init";
     const MIN = 1;
     const MAX = 1072;
-    
+
+    const howMany = 6;
+
 
     admin.database().ref("data").once('value')
         .then((dataSnapshot) => {
