@@ -66,9 +66,8 @@ function getRandom() {
                         <img src="style/5star.png" class="rating">
                       </div>
 
-                      <div class="recipe-container-${idx}">
+                      <div class="recipe-container" id="recipe-container-${idx}">
                         <h4>${result.form.type}</h4>
-                        <p>${result.ingredients}</p>
                         
                       </div>
                     </form>
@@ -85,6 +84,14 @@ function getRandom() {
                     z.appendChild(x);
                     console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("card-body-" + idx).appendChild(z);
+                  }
+
+                  for(i in ingredientArray1){
+                    var j = document.createElement('p');
+                    var k = document.createTextNode(ingredientArray1[i]);
+                    j.appendChild(k);
+                    console.log(document.getElementById("collapse-"+ idx));
+                    document.getElementById("recipe-container-" + idx).appendChild(j);
                   }
 
                   // Append newyly created card element to the container
