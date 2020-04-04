@@ -64,6 +64,11 @@ body{
 
 }
 
+.dark-switch{
+	margin-left:0px;
+}
+
+
 .pointer{
 	cursor: pointer;
 }
@@ -97,6 +102,7 @@ body{
 .form-control{
 	padding: 16px;
 	border-radius: 33px;
+	margin-left:15px;
 }
 
 .input-group-text{
