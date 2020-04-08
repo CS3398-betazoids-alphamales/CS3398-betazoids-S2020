@@ -104,7 +104,7 @@ $('#sidebar-search').on('keyup', function(event) {
 
 
 
-                  container.innerHTML += cont;
+                  
                   for(i in ingredientArray){
                     var j = document.createElement('p');
                     var k = document.createTextNode(ingredientArray[i]);
