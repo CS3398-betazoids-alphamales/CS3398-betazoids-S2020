@@ -174,10 +174,20 @@ exports.getByName = functions.https.onRequest(async (request, response) => {
 
     response.set('Access-Control-Allow-Origin', '*');
 
-    const strToFind = request.query.findThis.toUpperCase();
+    var strToFind = "";
     const matchList = [];
-    
-    admin.database().ref("data").once('value')
+
+    try {
+        strToFind = request.query.findThis.toUpperCase();
+    } catch (e) {
+        console.log("invalid query");
+    }
+
+    if (strToFind.length === 0)
+        response.json(STOCK_FAIL_RESPONSE);
+
+    else {
+        admin.database().ref("data").once('value')
         .then((dataSnapshot) => {
 
         dataSnapshot.forEach((eachDrink) => {
@@ -197,6 +207,7 @@ exports.getByName = functions.https.onRequest(async (request, response) => {
             response.json(STOCK_FAIL_RESPONSE);
         return null;
         }).catch(e => {console.log(e) });
+    }
 });
 
 
@@ -207,16 +218,23 @@ exports.getRandomList = functions.https.onRequest(async (request, response) => {
 
     response.set('Access-Control-Allow-Origin', '*');
 
-    const howMany = request.query.howmany;
+    var howMany = -1;
     const randList = [];
     var randIntStr = "init";
     const MIN = 1;
     const MAX = 1072;
 
-    const howMany = 6;
+    try {
+        howMany = request.query.howmany;
+    } catch (e) {
+        console.log("/'howMany/' was invalid")
+    }
 
+    if (howMany.length === -1)
+        response.json(STOCK_FAIL_RESPONSE);
 
-    admin.database().ref("data").once('value')
+    else {
+        admin.database().ref("data").once('value')
         .then((dataSnapshot) => {
 
             for ( var i = 0; i < howMany; ++i) {
@@ -228,6 +246,7 @@ exports.getRandomList = functions.https.onRequest(async (request, response) => {
             response.json(randList);
             return null;
         }).catch(e => { console.log(e) });
+    }
 });
 
 
@@ -239,41 +258,45 @@ exports.getByIngredientSlack = functions.https.onRequest(async (request, respons
 
     response.set('Access-Control-Allow-Origin', '*');
 
-    try {
-
-        var totalIngrs = request.query.total; // MIN = 2, MAX = 5
-        var find1 = " " + request.query.findthis1.toUpperCase();
-    } catch (e) {
-
-        console.log(e);
-        response.json(STOCK_FAIL_RESPONSE);
-    }
-    
+    var totalIngrs = 1;
+    var find1 = " ";
     var find2;
     var find3;
     var find4;
     var find5;
-        
-    do {
-        if (totalIngrs === "1")
-            break;
 
-        find2 = " " + request.query.findthis2.toUpperCase();
-        if (totalIngrs === "2")
-            break;
-            
-        find3 = " " + request.query.findthis3.toUpperCase();
-        if (totalIngrs === "3")
-            break;
-            
-        find4 = " " + request.query.findthis4.toUpperCase();
-        if (totalIngrs === "4")
-            break;
-            
-        find5 = " " + request.query.findthis5.toUpperCase();
-    } while (once)
-    
-    admin.database().ref("data").once('value')
+    try {
+        totalIngrs = request.query.total; // MIN = 1, MAX = 5
+        find1 += request.query.findthis1.toUpperCase();
+    } catch (e) {
+        console.log("invalid query");
+    }
+
+    if (find1.length === 1)
+        response.json(STOCK_FAIL_RESPONSE);
+
+    else {
+
+        do {
+            if (totalIngrs === "1")
+                break;
+
+            find2 = " " + request.query.findthis2.toUpperCase();
+            if (totalIngrs === "2")
+                break;
+                
+            find3 = " " + request.query.findthis3.toUpperCase();
+            if (totalIngrs === "3")
+                break;
+                
+            find4 = " " + request.query.findthis4.toUpperCase();
+            if (totalIngrs === "4")
+                break;
+                
+            find5 = " " + request.query.findthis5.toUpperCase();
+        } while (once)
+
+        admin.database().ref("data").once('value')
         .then((dataSnapshot) => {
     
             const allMatches = [];
@@ -320,7 +343,7 @@ exports.getByIngredientSlack = functions.https.onRequest(async (request, respons
                 response.json(STOCK_FAIL_RESPONSE);
             return null;
         }).catch(e => { console.log(e) });
-    
+    }
 });
 
 
@@ -332,40 +355,45 @@ exports.getByIngredientStrict = functions.https.onRequest(async (request, respon
         
     response.set('Access-Control-Allow-Origin', '*');
 
-    try {
-
-        var totalIngrs = request.query.total; // MIN = 2, MAX = 5
-        var find1 = " " + request.query.findthis1.toUpperCase();
-    } catch (e) {
-        
-        console.log(e);
-        response.json(STOCK_FAIL_RESPONSE);
-    }
+    var totalIngrs = 1;
+    var find1 = " ";
     var find2;
     var find3;
     var find4;
     var find5;
-        
-    do {
-        if (totalIngrs === "1")
-            break;
 
-        find2 = " " + request.query.findthis2.toUpperCase();
-        if (totalIngrs === "2")
-            break;
-            
-        find3 = " " + request.query.findthis3.toUpperCase();
-        if (totalIngrs === "3")
-            break;
-            
-        find4 = " " + request.query.findthis4.toUpperCase();
-        if (totalIngrs === "4")
-            break;
-            
-        find5 = " " + request.query.findthis5.toUpperCase();
-    } while (once)
-    
-    admin.database().ref("data").once('value')
+    try {
+        totalIngrs = request.query.total; // MIN = 1, MAX = 5
+        find1 += request.query.findthis1.toUpperCase();
+    } catch (e) {
+        console.log("invalid query");
+    }
+
+    if (find1.length === 1)
+        response.json(STOCK_FAIL_RESPONSE);
+
+    else {
+
+        do {
+            if (totalIngrs === "1")
+                break;
+
+            find2 = " " + request.query.findthis2.toUpperCase();
+            if (totalIngrs === "2")
+                break;
+                    
+            find3 = " " + request.query.findthis3.toUpperCase();
+            if (totalIngrs === "3")
+                break;
+                    
+            find4 = " " + request.query.findthis4.toUpperCase();
+            if (totalIngrs === "4")
+                break;
+                    
+            find5 = " " + request.query.findthis5.toUpperCase();
+        } while (once)
+
+        admin.database().ref("data").once('value')
         .then((dataSnapshot) => {
     
             const allMatches = [];
@@ -431,58 +459,58 @@ exports.getByIngredientStrict = functions.https.onRequest(async (request, respon
             else
                 response.json(STOCK_FAIL_RESPONSE);
             return null;
-        }).catch(e => { console.log(e) });  
-
+        }).catch(e => { console.log(e) });
+    }
 });
 
 
 exports.setRecipeRating = functions.https.onRequest(async (request, response) => {
-//  note: Please add ?variableName=value to end of https calls for passing aurguments.
-//  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
-//
-//  EXAMPLE: full_address?recipeName=Cactus Kicker - 4&rating=5
-
-const thingToFind = request.query.recipeName.toUpperCase();
-const rating = parseFloat(request.query.rating);
-response.set('Access-Control-Allow-Origin', '*');
-admin.database().ref("data").once('value')
-    .then(function(dataSnapshot) {
-
+    //  note: Please add ?variableName=value to end of https calls for passing aurguments.
+    //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
+    //
+    //  EXAMPLE: full_address?recipeName=Cactus Kicker - 4&rating=5
+    
+    const thingToFind = request.query.recipeName.toUpperCase();
+    const rating = parseFloat(request.query.rating);
+    response.set('Access-Control-Allow-Origin', '*');
     admin.database().ref("data").once('value')
-        .then((dataSnapshot) => {
-
-            var match = false;
-
-
-            dataSnapshot.forEach((currentDrinkSnapshotIndex) => {
-                if(currentDrinkSnapshotIndex.child("name").val() !== null) {
-
-                
-
-                var nameString = currentDrinkSnapshotIndex.child("name").val().toUpperCase();
-                // var ratingString = currentDrinkSnapshotIndex.child("rating").val();
-                if ( nameString.includes(thingToFind) ){
-                    match = true;
-                    const dbRef = currentDrinkSnapshotIndex.ref;
-
-                    if(currentDrinkSnapshotIndex.hasChild("rating")) {
-                         let ratingNumber = currentDrinkSnapshotIndex.child("rating").val();
-                         var updatedRating = (parseFloat(ratingNumber) + parseFloat(rating))/(2.0);
-                         dbRef.update({"rating": updatedRating});
-                     }else {
-                         dbRef.update({"rating" : rating });
-                     }
+        .then(function(dataSnapshot) {
+    
+        admin.database().ref("data").once('value')
+            .then((dataSnapshot) => {
+    
+                var match = false;
+    
+    
+                dataSnapshot.forEach((currentDrinkSnapshotIndex) => {
+                    if(currentDrinkSnapshotIndex.child("name").val() !== null) {
+    
                     
+    
+                    var nameString = currentDrinkSnapshotIndex.child("name").val().toUpperCase();
+                    // var ratingString = currentDrinkSnapshotIndex.child("rating").val();
+                    if ( nameString.includes(thingToFind) ){
+                        match = true;
+                        const dbRef = currentDrinkSnapshotIndex.ref;
+    
+                        if(currentDrinkSnapshotIndex.hasChild("rating")) {
+                             let ratingNumber = currentDrinkSnapshotIndex.child("rating").val();
+                             var updatedRating = (parseFloat(ratingNumber) + parseFloat(rating))/(2.0);
+                             dbRef.update({"rating": updatedRating});
+                         }else {
+                             dbRef.update({"rating" : rating });
+                         }
+                        
+                    }
                 }
-            }
-                 
-            });
-
-            response.json(match);
-            return null;
-        }).catch(e => { console.log(e) });
-
-});
+                     
+                });
+    
+                response.json(match);
+                return null;
+            }).catch(e => { console.log(e) });
+    
+    });
 
 
 exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => {
@@ -538,10 +566,20 @@ exports.devGetByIngredient = functions.https.onRequest(async (request, response)
     //  EXAMPLE: full_address?findthis=rum
         
     response.set('Access-Control-Allow-Origin', '*');
+
+    var thingToFind = " ";
+
+    try {
+        thingToFind += request.query.findthis.toUpperCase();
+    } catch (e) {
+        console.log("empty query");
+    }
     
-    const thingToFind = " " + request.query.findthis.toUpperCase();
+    if (thingToFind.length === 1)
+        response.json(STOCK_FAIL_RESPONSE);
     
-    admin.database().ref("data").once('value')
+    else {
+        admin.database().ref("data").once('value')
         .then((dataSnapshot) => {
     
             const allMatches = [];
@@ -566,10 +604,14 @@ exports.devGetByIngredient = functions.https.onRequest(async (request, response)
                 hasIngredient = false;
             });
     
-            response.json(allMatches);
+
+            if (allMatches.length > 0)
+                response.json(allMatches);
+            else
+                response.json(STOCK_FAIL_RESPONSE);
             return null;
         }).catch(e => { console.log(e) });
-    
+    }
 });
 
 
