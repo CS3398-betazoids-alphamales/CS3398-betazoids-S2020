@@ -442,29 +442,40 @@ exports.setRecipeRating = functions.https.onRequest(async (request, response) =>
 //
 //  EXAMPLE: full_address?recipeName=Cactus Kicker - 4&rating=5
 
-    response.set('Access-Control-Allow-Origin', '*');
-
-    const thingToFind = request.query.recipeName.toUpperCase();
-    const rating = request.query.rating;
+const thingToFind = request.query.recipeName.toUpperCase();
+const rating = parseFloat(request.query.rating);
+response.set('Access-Control-Allow-Origin', '*');
+admin.database().ref("data").once('value')
+    .then(function(dataSnapshot) {
 
     admin.database().ref("data").once('value')
         .then((dataSnapshot) => {
 
             var match = false;
 
+
             dataSnapshot.forEach((currentDrinkSnapshotIndex) => {
                 if(currentDrinkSnapshotIndex.child("name").val() !== null) {
 
-                    var nameString = currentDrinkSnapshotIndex.child("name").val().toUpperCase();
-            
-                    if ( nameString.includes(thingToFind) ){
-                        
-                        match = true;
-                        const dbRef = currentDrinkSnapshotIndex.ref;
-                        dbRef.update({"rating" : rating });
-                    }
-                }
                 
+
+                var nameString = currentDrinkSnapshotIndex.child("name").val().toUpperCase();
+                // var ratingString = currentDrinkSnapshotIndex.child("rating").val();
+                if ( nameString.includes(thingToFind) ){
+                    match = true;
+                    const dbRef = currentDrinkSnapshotIndex.ref;
+
+                    if(currentDrinkSnapshotIndex.hasChild("rating")) {
+                         let ratingNumber = currentDrinkSnapshotIndex.child("rating").val();
+                         var updatedRating = (parseFloat(ratingNumber) + parseFloat(rating))/(2.0);
+                         dbRef.update({"rating": updatedRating});
+                     }else {
+                         dbRef.update({"rating" : rating });
+                     }
+                    
+                }
+            }
+                 
             });
 
             response.json(match);
