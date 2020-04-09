@@ -474,7 +474,7 @@ exports.setRecipeRating = functions.https.onRequest(async (request, response) =>
     const rating = parseFloat(request.query.rating);
     response.set('Access-Control-Allow-Origin', '*');
     admin.database().ref("data").once('value')
-        .then(function(dataSnapshot) {
+        .then((dataSnapshot) => {
     
         admin.database().ref("data").once('value')
             .then((dataSnapshot) => {
@@ -509,8 +509,10 @@ exports.setRecipeRating = functions.https.onRequest(async (request, response) =>
                 response.json(match);
                 return null;
             }).catch(e => { console.log(e) });
-    
-    });
+
+        return null;
+    }).catch(e => {console.log(e) });
+});
 
 
 exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => {
