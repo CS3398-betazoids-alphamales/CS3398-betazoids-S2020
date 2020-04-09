@@ -3,11 +3,14 @@ $('#login').click( function () {
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {
       // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result.credential.accessToken;
+      let token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
       var userPhoto = result.user.photoURL;
       console.log(user);
+
+      // Set the user's login email to associate with reviews
+      localStorage.setItem('userEmail', user.email);
 
       //Find the login button
       var el = document.getElementById("login");

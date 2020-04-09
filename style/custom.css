@@ -427,8 +427,15 @@ body{
   width: 80%; 
 }
 
-  .panel-head-wrapper h2{font-size: 16px;}
+.panel-head-wrapper h2{font-size: 16px;}
 } 
+
+.star-rating {
+  line-height:32px;
+  font-size:1.25em;
+}
+
+.star-rating .fa-star{color: orange;}
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
