@@ -346,6 +346,17 @@ body{
   width: 40%;
 }
 
+.avatar {
+  vertical-align: middle;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  line-height: 1.5;
+  vertical-align: top;
+  position: relative;
+  text-align: center;
+}
+
 @-webkit-keyframes animatezoom {
   from {-webkit-transform: scale(0)}
   to {-webkit-transform: scale(1)}
@@ -437,3 +448,5 @@ body{
 }
   
 } 
+
+
