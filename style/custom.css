@@ -312,6 +312,19 @@ body{
   width: 50%; 
 }
 
+.modal-container {
+  margin-left: 40px;
+  padding: 3px;
+}
+
+.modal-container h5 {
+  padding-left: 15px;
+}
+
+.modal-container p {
+  padding-left: 35px;
+}
+
 /* The Close Button */
 .close {
   /* Position it in the top right corner outside of the modal */

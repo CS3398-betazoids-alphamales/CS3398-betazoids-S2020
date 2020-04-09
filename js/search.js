@@ -35,15 +35,23 @@ $('#sidebar-search').on('keyup', function(event) {
                   const card = document.createElement('div');
                   card.classList = 'card-body';
                   var ingredientArray = [];
+                  var procedureArray = [];
 
 
                       ingredientArray.push(Object.values(result.ingredients));
+                      procedureArray.push(Object.values(result.procedure));
 
 
                   for( i in ingredientArray){
                   console.log("Now the ingredient array has: ");
                   console.log(ingredientArray[i]);
                   }
+                  for( i in procedureArray){
+                  console.log("Now the procedure array has: ");
+                  console.log(procedureArray[i]);
+                  }
+
+
                   const cont =
                   `<div class="col-md-4" style="display:inline-grid">
                   <div class="card">
@@ -69,18 +77,24 @@ $('#sidebar-search').on('keyup', function(event) {
 					        <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink rounded">
 					      </div>
 
-					      <div class="title-container">
+					      <div class="title-container modal-container">
 					        <h2>${result.name}</h2>
 					      </div>
 
-					      <div class="rating-container">
+					      <div class="rating-container modal-container">
 					        <img src="style/5star.png" class="rating">
 					      </div>
 
-					      <div id="search-recipe-container-${idx}">
+					      <div class="recipe-container modal-container" id="search-recipe-container-${idx}">
 					        <h4>${result.form.type}</h4>
+					        <h5>Ingredients:</h5>
 					        
 					      </div>
+
+					      <div class="procedure-container modal-container" id="procedure-container-${idx}">
+                       		 <h5>To make it:</h5>
+                        
+                    	  </div>
 					    </form>
 					  </div>
 
@@ -106,6 +120,14 @@ $('#sidebar-search').on('keyup', function(event) {
                     console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("search-recipe-container-" + idx).appendChild(j);
 
+                  }
+
+                  for(i in procedureArray){
+                    var v = document.createElement('p');
+                    var w = document.createTextNode(procedureArray[i]);
+                    v.appendChild(w);
+                    console.log(document.getElementById("collapse-"+ idx));
+                    document.getElementById("procedure-container-" + idx).appendChild(v);
                   }
 
                   

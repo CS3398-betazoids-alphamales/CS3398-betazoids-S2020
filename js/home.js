@@ -23,15 +23,23 @@ function getRandom() {
                   const card = document.createElement('div');
                   card.classList = 'card-body';
                   var ingredientArray1 = [];
+                  var procedureArray1 = [];
 
 
                       ingredientArray1.push(Object.values(result.ingredients));
+                      procedureArray1.push(Object.values(result.procedure));
 
 
                   for( i in ingredientArray1){
                   console.log("Now the ingredient array has: ");
                   console.log(ingredientArray1[i]);
                   }
+                  for( i in procedureArray1){
+                  console.log("Now the procedure array has: ");
+                  console.log(procedureArray1[i]);
+                  }
+
+
                   const cont =
                   `<div class="col-md-4" style="display:inline-grid">
                   <div class="card">
@@ -58,16 +66,22 @@ function getRandom() {
                         <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink rounded">
                       </div>
 
-                      <div class="title-container">
+                      <div class="title-container modal-container">
                         <h2>${result.name}</h2>
+                        <h4>${result.form.type}</h4>
                       </div>
 
-                      <div class="rating-container">
+                      <div class="rating-container modal-container">
                         <img src="style/5star.png" class="rating">
                       </div>
 
-                      <div class="recipe-container" id="recipe-container-${idx}">
-                        <h4>${result.form.type}</h4>
+                      <div class="recipe-container modal-container" id="recipe-container-${idx}">
+                        <h5>Ingredients:</h5>
+                        
+                      </div>
+
+                      <div class="procedure-container modal-container" id="procedure-container-${idx}">
+                        <h5>To make it:</h5>
                         
                       </div>
                     </form>
@@ -92,6 +106,14 @@ function getRandom() {
                     j.appendChild(k);
                     console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("recipe-container-" + idx).appendChild(j);
+                  }
+
+                  for(i in procedureArray1){
+                    var v = document.createElement('p');
+                    var w = document.createTextNode(procedureArray1[i]);
+                    v.appendChild(w);
+                    console.log(document.getElementById("collapse-"+ idx));
+                    document.getElementById("procedure-container-" + idx).appendChild(v);
                   }
 
                   // Append newyly created card element to the container
