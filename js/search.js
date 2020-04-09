@@ -77,7 +77,7 @@ $('#sidebar-search').on('keyup', function(event) {
 					        <img src="style/5star.png" class="rating">
 					      </div>
 
-					      <div class="recipe-container-${idx}">
+					      <div id="search-recipe-container-${idx}">
 					        <h4>${result.form.type}</h4>
 					        
 					      </div>
@@ -92,10 +92,24 @@ $('#sidebar-search').on('keyup', function(event) {
                     var z = document.createElement('p');
                     var x = document.createTextNode(ingredientArray[i]);
                     z.appendChild(x);
+
+                    var z1 = z;
+
                     console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("card-body-" + idx).appendChild(z);
 
                   }
+                  for(i in ingredientArray){
+                    var j = document.createElement('p');
+                    var k = document.createTextNode(ingredientArray[i]);
+                    j.appendChild(k);
+                    console.log(document.getElementById("collapse-"+ idx));
+                    document.getElementById("search-recipe-container-" + idx).appendChild(j);
+
+                  }
+
+                  
+               
 
 
                   // Append newyly created card element to the container
