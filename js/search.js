@@ -98,19 +98,12 @@ $('#sidebar-search').on('keyup', function(event) {
                     console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("card-body-" + idx).appendChild(z);
 
-                    document.getElementById("card-body-" + idx).appendChild(z);
-
                   }
-
-
-
-                  
                   for(i in ingredientArray){
                     var j = document.createElement('p');
                     var k = document.createTextNode(ingredientArray[i]);
                     j.appendChild(k);
                     console.log(document.getElementById("collapse-"+ idx));
-                    document.getElementById("card-body-" + idx).appendChild(j);
                     document.getElementById("search-recipe-container-" + idx).appendChild(j);
 
                   }
