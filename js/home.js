@@ -1,6 +1,6 @@
 function getHome(){
-	document.getElementById("home").innerHTML = `<div class="panel-head-wrapper" id="homehead"><h2>Welcome to Witches' Brew!</h2></div><br><br>`;
-	getRandom();
+  document.getElementById("home").innerHTML = `<div class="panel-head-wrapper" id="homehead"><h2>Welcome to Witches' Brew!</h2></div><br><br>`;
+  getRandom();
 }
 
 function getRandom() {
@@ -48,8 +48,26 @@ function getRandom() {
                         <div class="card-body" id="card-body-${idx}">
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
-                          <a href="#" class="btn btn-primary stretched-link" onclick="document.getElementById('recipepopup-${idx}').style.display='block'">Recipe</a>
-                          <img src="style/5star.png" class="rating">
+                          <a href="#" class="btn btn-primary" onclick="document.getElementById('recipepopup-${idx}').style.display='block'">Recipe</a>
+                          
+
+                         <div class="container">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <div class="star-rating">
+                                  <span class="fa fa-star-o" data-rating="1"></span>
+                                  <span class="fa fa-star-o" data-rating="2"></span>
+                                  <span class="fa fa-star-o" data-rating="3"></span>
+                                  <span class="fa fa-star-o" data-rating="4"></span>
+                                  <span class="fa fa-star-o" data-rating="5"></span>
+                                  <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+
                         </div>
                       </div>
                     </div>
@@ -71,9 +89,21 @@ function getRandom() {
                         <h4>${result.form.type}</h4>
                       </div>
 
-                      <div class="rating-container modal-container">
-                        <img src="style/5star.png" class="rating">
-                      </div>
+
+                         <div class="container">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <div class="star-rating star-rating-modal">
+                                  <span class="fa fa-star-o" data-rating="1"></span>
+                                  <span class="fa fa-star-o" data-rating="2"></span>
+                                  <span class="fa fa-star-o" data-rating="3"></span>
+                                  <span class="fa fa-star-o" data-rating="4"></span>
+                                  <span class="fa fa-star-o" data-rating="5"></span>
+                                  <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
 
                       <div class="recipe-container modal-container" id="recipe-container-${idx}">
                         <h5>Ingredients:</h5>
@@ -120,6 +150,15 @@ function getRandom() {
                   //   container.innerHTML += content;
 
                   })
+
+                  // Dynamically load star rating script after all elements have been created
+                  var head= document.getElementsByTagName('head')[0];
+                  var script= document.createElement('script');
+                  script.type= 'text/javascript';
+                  script.src= 'js/rating.js';
+                  head.appendChild(script);
+
+
               console.log(this.responseType);
               for (i in data){
                   console.log("working");

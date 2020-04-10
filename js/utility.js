@@ -24,3 +24,5 @@ function getAllIngredients(searchText) {
       
       xhttp.send();
     }
+
+    

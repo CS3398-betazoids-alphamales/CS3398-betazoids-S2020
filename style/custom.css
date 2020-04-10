@@ -29,8 +29,8 @@ body{
 
 .card{
 	max-width: 230px;
-	max-height: 330px;
-	min-width: 80px;
+	max-height: 350px;
+	min-width: 90px;
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: 3px;
@@ -39,6 +39,7 @@ body{
 
 .card-body{
 	max-width: 230px;
+  min-width: 90px;
 	overflow: hidden;
 }
 
@@ -52,7 +53,7 @@ body{
 }
 
 .card-body p{
-	font-size: 1.1vw;
+	font-size: 0.8em;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -314,16 +315,18 @@ body{
 
 .modal-container {
   margin-left: 40px;
+  margin-right: 40px;
   padding: 3px;
 }
 
 .modal-container h5 {
-  padding-left: 15px;
+  padding-left: 10px;
 }
 
 .modal-container p {
-  padding-left: 35px;
+  padding-left: 25px;
 }
+
 
 /* The Close Button */
 .close {
@@ -357,6 +360,17 @@ body{
 #drinkimg{
   margin-left: 14vw;
   width: 40%;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  line-height: 1.5;
+  vertical-align: top;
+  position: relative;
+  text-align: center;
 }
 
 @-webkit-keyframes animatezoom {
@@ -429,8 +443,21 @@ body{
   width: 80%; 
 }
 
-  .panel-head-wrapper h2{font-size: 16px;}
+.panel-head-wrapper h2{font-size: 16px;}
 } 
+
+.star-rating-card {
+  line-height:25px;
+  font-size:0.9em;
+}
+
+.star-rating .fa-star{color: orange;}
+
+.star-rating-modal {
+  margin-left: 25px;
+  line-height:32px;
+  font-size:1.25em;
+}
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
@@ -450,3 +477,5 @@ body{
 }
   
 } 
+
+

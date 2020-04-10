@@ -60,43 +60,67 @@ $('#sidebar-search').on('keyup', function(event) {
                         <div class="card-body" id="card-body-${idx}">
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
-                          <a href="#" class="btn btn-primary stretched-link" onclick="document.getElementById('recipepopup-${idx}').style.display='block'">Recipe</a>
-                          <img src="style/5star.png" class="rating">
+                          <a href="#" class="btn btn-primary" onclick="document.getElementById('recipepopup-${idx}').style.display='block'">Recipe</a>
+                          <div class="container">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <div class="star-rating">
+                                  <span class="fa fa-star-o" data-rating="1"></span>
+                                  <span class="fa fa-star-o" data-rating="2"></span>
+                                  <span class="fa fa-star-o" data-rating="3"></span>
+                                  <span class="fa fa-star-o" data-rating="4"></span>
+                                  <span class="fa fa-star-o" data-rating="5"></span>
+                                  <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
 
-	                    <!-- The Recipe Modal -->
-					  <div id="recipepopup-${idx}" class="modal">
-					    <span onclick="document.getElementById('recipepopup-${idx}').style.display='none'"
-					  class="close" title="Close Modal">&times;</span>
+                      <!-- The Recipe Modal -->
+            <div id="recipepopup-${idx}" class="modal">
+              <span onclick="document.getElementById('recipepopup-${idx}').style.display='none'"
+            class="close" title="Close Modal">&times;</span>
 
-					    <!-- Modal Content -->
-					    <form class="modal-content-recipe animate" action=" # ">
-					      <div class="imgcontainer">
-					        <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink rounded">
-					      </div>
+              <!-- Modal Content -->
+              <form class="modal-content-recipe animate" action=" # ">
+                <div class="imgcontainer">
+                  <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink rounded">
+                </div>
 
-					      <div class="title-container modal-container">
-					        <h2>${result.name}</h2>
-					      </div>
+                <div class="title-container modal-container">
+                  <h2>${result.name}</h2>
+                  <h4>${result.form.type}</h4>
+                </div>
 
-					      <div class="rating-container modal-container">
-					        <img src="style/5star.png" class="rating">
-					      </div>
+                         <div class="container">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <div class="star-rating star-rating-modal">
+                                  <span class="fa fa-star-o" data-rating="1"></span>
+                                  <span class="fa fa-star-o" data-rating="2"></span>
+                                  <span class="fa fa-star-o" data-rating="3"></span>
+                                  <span class="fa fa-star-o" data-rating="4"></span>
+                                  <span class="fa fa-star-o" data-rating="5"></span>
+                                  <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
 
-					      <div class="recipe-container modal-container" id="search-recipe-container-${idx}">
-					        <h4>${result.form.type}</h4>
-					        <h5>Ingredients:</h5>
-					        
-					      </div>
+                <div class="recipe-container modal-container" id="search-recipe-container-${idx}">
+                  <h5>Ingredients:</h5>
+                  
+                </div>
 
-					      <div class="procedure-container modal-container" id="procedure-container-${idx}">
-                       		 <h5>To make it:</h5>
+                <div class="procedure-container modal-container" id="procedure-container-${idx}">
+                           <h5>To make it:</h5>
                         
-                    	  </div>
-					    </form>
-					  </div>
+                        </div>
+              </form>
+            </div>
 
                   </div>`;
 
@@ -138,6 +162,17 @@ $('#sidebar-search').on('keyup', function(event) {
                   //   container.innerHTML += content;
 
                   })
+
+
+                  // Dynamically load star rating script after all elements have been created
+                  var head= document.getElementsByTagName('head')[0];
+                  var script= document.createElement('script');
+                  script.type= 'text/javascript';
+                  script.src= 'js/rating.js';
+                  head.appendChild(script);
+
+
+
               console.log(this.responseType);
               for (i in data){
                   console.log("working");

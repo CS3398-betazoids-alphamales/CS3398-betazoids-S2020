@@ -155,6 +155,8 @@ function sidebarSearch(){
 }
 
 
+
+
   // Get the modal
   var modal = document.getElementById('loginpopup');
 
