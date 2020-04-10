@@ -9,8 +9,8 @@ let ingrArray = [];
   app.controller('mainController',mainController);
   
   function mainController($filter){
-    var self = this;
-    
+    let self = this;
+
     init();
     
     function init(){
@@ -24,37 +24,39 @@ let ingrArray = [];
     function add(input){
        if(self.items.indexOf(input) === -1
             && self.insert !== ''){
-          
           self.items.push(input);
           self.insert = '';
-          // console.log('adding')
-           ingrArray.push(this.items);
-           // console.log(ingrArray);
+          ingrArray=this.items;
        } else {
-         // console.log('nope');
        }
     }
-    
+
     function close(text){
-        // console.log('removing')
       self.items = $filter('filter')(self.items, function(value){
           return value != text;
       });
-      ingrArray.splice(ingrArray.indexOf(this.items), 1 );
-        // console.log('removing')
-        // console.log(ingrArray);
+      ingrArray=this.items;
     }
   }
 })(window.angular);
 
+function multiSearch() {
 
-function multiSearch(){
-    // console.log(ingrArray)
+    var xhttp = new XMLHttpRequest();
 
+    var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/' +
+        'getByIngredientStrict?total=' + ingrArray.length;
 
+    for (let i = 0; i < ingrArray.length; i++) {
+        let ingredient = '&findthis' + [i + 1] + '=' + ingrArray[i].toString().replace(/ /g, '+');
+        targetUrl = targetUrl.concat(ingredient);
+    }
+    console.log(targetUrl);
 
+    // xhttp.open('POST', targetUrl);
 
 }
+
 
 
 
