@@ -1,4 +1,28 @@
+
 document.addEventListener( "DOMContentLoaded", getHome(), false );
+document.addEventListener('DOMContentLoaded', function() {
+      var firebaseConfig = {
+            apiKey: "AIzaSyArwkzp5Fo5C3NHI3RAJWG6D6xlzhlTxGo",
+            authDomain: "rvrslkupdb.firebaseapp.com",
+            databaseURL: "https://rvrslkupdb.firebaseio.com",
+            projectId: "rvrslkupdb",
+            storageBucket: "rvrslkupdb.appspot.com",
+            messagingSenderId: "332925524075",
+            appId: "1:332925524075:web:e0c448b953cd7963c6792e",
+            measurementId: "G-ZD50MRM92Y"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          firebase.analytics();
+
+      try {
+        let app = firebase.app();
+       
+      } catch (e) {
+        console.error(e);
+        
+      }
+    });
 
 //These open the scrollable panels, which still need to be styled.
 $("#homelink").click(function(){
@@ -129,6 +153,31 @@ $("#favlink").click(function(){
   $("#favorites").show();
 });
 
+$("#search-ingredient-button").click(function(){
+    var inner = document.getElementById("sidebar-search").value;
+    console.log(inner);
+
+      sidebarSearch();
+      document.getElementById("ingredient-search").innerHTML = ``;
+      document.getElementById("ingredient-search").innerHTML = `<div class="panel-head-wrapper" id="ingredienthead"><h2>Search by Ingredient:</h2></div><br><br>`;
+      if(inner.split(" ").length == 1 || inner.split(" ").length == 2 || inner.split(" ").length == 3){
+          getByIngredient(inner);
+      }
+});
+
+$("#search-cocktail-button").click(function(){
+    var inner = document.getElementById("nav-search").value;
+    console.log(inner);
+
+      sidebarSearch();
+      document.getElementById("name-search").innerHTML = ``;
+      document.getElementById("name-search").innerHTML = `<div class="panel-head-wrapper" id="ingredienthead"><h2>Search by Ingredient:</h2></div><br><br>`;
+      if(inner.split(" ").length == 1 || inner.split(" ").length == 2 || inner.split(" ").length == 3){
+          getByName(inner);
+      }
+});
+
+
 $("#sideexit").click(function(){
   document.getElementById("side-navigation").style.width = "0";
   document.getElementById("content-wrapper").style.marginLeft = "0";
@@ -153,8 +202,6 @@ function sidebarSearch(){
   document.getElementById("favorites").style.display = "none";
   document.getElementById("ingredient-search").style.display = "block";
 }
-
-
 
 
   // Get the modal

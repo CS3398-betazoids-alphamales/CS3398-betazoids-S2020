@@ -2,7 +2,6 @@
 $('#sidebar-search').on('keyup', function(event) {
   var inner = document.getElementById("sidebar-search").value;
   console.log(inner);
-
  
   if(event.keyCode == 13){
       sidebarSearch();
@@ -11,10 +10,11 @@ $('#sidebar-search').on('keyup', function(event) {
       if(inner.split(" ").length == 1 || inner.split(" ").length == 2 || inner.split(" ").length == 3){
           getByIngredient(inner);
       }
-
   }
+})
 
-  function getByIngredient(searchText) {
+
+ function getByIngredient(searchText) {
 
       var xhttp = new XMLHttpRequest();
       
@@ -195,5 +195,3 @@ $('#sidebar-search').on('keyup', function(event) {
 
 
   }
-
-})

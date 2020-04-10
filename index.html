@@ -52,9 +52,9 @@
           <li class="nav-item" id="navsearch">
             <!-- Search form -->
            <div class="input-group">
-                <input class="form-control py-2 border-right-0 border typeahead" style="width: 300px; position: absolute;" type="text" spellcheck="false" placeholder="Find a Cocktail" autocomplete="off" id="example-search-input-0">
+                <input class="form-control py-2 border-right-0 border typeahead" id="nav-search" style="width: 300px; position: absolute;" type="text" spellcheck="false" placeholder="Find a Cocktail" autocomplete="off" id="example-search-input-0">
                 <span class="input-group-append" style="right: 20%;">
-                   <div class="input-group-text bg-transparent" style="border: none; right:-2px; position: absolute;"><i class="fa fa-search"></i></div>
+                   <div class="input-group-text bg-transparent" id="search-cocktail-button" style="border: none; right:-2px; position: absolute;"><i class="fa fa-search"></i></div>
                  </span>
             </div>
           </li>
@@ -109,7 +109,7 @@
   <div class="input-group">
        <input class="form-control py-2 border-right-0 border typeahead" type="search" spellcheck="false" placeholder="Search Ingredients" autocomplete="off" id="sidebar-search">
        <span class="input-group-append">
-          <div class="input-group-text bg-white" style="border: none; top: 1px; right:0px; position: absolute;"><i class="fa fa-search"></i></div>
+          <div class="input-group-text bg-white" id="search-ingredient-button" style="border: none; top: 1px; right:0px; position: absolute;"><i class="fa fa-search"></i></div>
        </span>
    </div>
 
@@ -237,31 +237,7 @@
 
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var firebaseConfig = {
-            apiKey: "AIzaSyArwkzp5Fo5C3NHI3RAJWG6D6xlzhlTxGo",
-            authDomain: "rvrslkupdb.firebaseapp.com",
-            databaseURL: "https://rvrslkupdb.firebaseio.com",
-            projectId: "rvrslkupdb",
-            storageBucket: "rvrslkupdb.appspot.com",
-            messagingSenderId: "332925524075",
-            appId: "1:332925524075:web:e0c448b953cd7963c6792e",
-            measurementId: "G-ZD50MRM92Y"
-          };
-          // Initialize Firebase
-          firebase.initializeApp(firebaseConfig);
-          firebase.analytics();
-
-      try {
-        let app = firebase.app();
-       
-      } catch (e) {
-        console.error(e);
-        
-      }
-    });
-  </script>
+  
 </body>
 
 </html>
