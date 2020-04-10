@@ -4,9 +4,6 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
-//const path = require('path');
-//const os = require('os');
-//const fs = require('fs');
 
 // CORS Express middleware to enable CORS Requests.
 const cors = require('cors')({
@@ -170,48 +167,75 @@ exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
 });
 
 
-exports.getByName = functions.https.onRequest(async (request, response) => {
+exports.getByName = functions.https.onRequest(async (request, response) => { // REQUIRED: findthis, iteration
 
     response.set('Access-Control-Allow-Origin', '*');
 
     var strToFind = "";
     const matchList = [];
+    var iter = 0;
+    var match_count = 0;
 
     try {
-        strToFind = request.query.findThis.toUpperCase();
+        strToFind = request.query.findthis.toUpperCase();
+        iter = request.query.iteration;
     } catch (e) {
         console.log("invalid query");
     }
 
-    if (strToFind.length === 0)
+    iter = iter * 24;
+
+    if (strToFind.length === 0 || iter === 0)
         response.json(STOCK_FAIL_RESPONSE);
 
     else {
         admin.database().ref("data").once('value')
         .then((dataSnapshot) => {
 
-        dataSnapshot.forEach((eachDrink) => {
+            var dataObject = dataSnapshot.val(); // HERE <<-------------------------------------*
 
-            if (eachDrink.child('name').val() !== null) {
+            dataObject.every((eachDrink) => {
 
-                var drinkName = eachDrink.child('name').val().toUpperCase();
+                if (eachDrink.name !== null) {
 
-                if ( drinkName.includes(strToFind) )
-                    matchList.push(eachDrink);
-            }
-        });
+                    var drinkName = eachDrink.name.toUpperCase();
 
-        if (matchList.length > 0)
-            response.json(matchList);
-        else
-            response.json(STOCK_FAIL_RESPONSE);
-        return null;
-        }).catch(e => {console.log(e) });
+                    if ( drinkName.includes(strToFind) ) {
+
+                        if ( match_count >= (iter-24) && match_count < iter )
+                            matchList.push(eachDrink);
+                        ++match_count;
+                    }  
+                }
+                return (match_count < iter);
+            });
+
+            // dataSnapshot.forEach((eachDrink) => { // old way for reference (couldn't use ".every" on dataSnapshots)
+
+            //     if (eachDrink.child('name').val() !== null) {
+
+            //         var drinkName = eachDrink.child('name').val().toUpperCase();
+
+            //         if ( drinkName.includes(strToFind) ) {
+
+            //             if ( match_count >= (iter-24) && match_count < iter )
+            //                 matchList.push(eachDrink);
+            //             ++match_count;
+            //         }  
+            //     }
+            // });
+
+            if (matchList.length > 0)
+                response.json(matchList);
+            else
+                response.json(STOCK_FAIL_RESPONSE);
+            return null;
+            }).catch(e => {console.log(e) });
     }
 });
 
 
-exports.getRandomList = functions.https.onRequest(async (request, response) => {
+exports.getRandomList = functions.https.onRequest(async (request, response) => { // REQUIRED: howmany
 //  note: this function now expects an argument, "howmany" specifying how many to return
 //
 //  EXAMPLE: full_address?howmany=10
@@ -230,7 +254,9 @@ exports.getRandomList = functions.https.onRequest(async (request, response) => {
         console.log("/'howMany/' was invalid")
     }
 
-    if (howMany.length === -1)
+    iter = iter * 24;
+
+    if (howMany.length === -1 || iter === 0)
         response.json(STOCK_FAIL_RESPONSE);
 
     else {
@@ -250,7 +276,7 @@ exports.getRandomList = functions.https.onRequest(async (request, response) => {
 });
 
 
-exports.getByIngredientSlack = functions.https.onRequest(async (request, response) => { // currently, using .contains() is returning true for " cola" in "pina colada" etc
+exports.getByIngredientSlack = functions.https.onRequest(async (request, response) => { // REQUIRED: iteration, total, findthis1, (findthis#, depending on total w/max of 5)
 //  note: Please add ?variableName=value to end of https calls for passing aurguments.
 //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
 //
@@ -264,15 +290,20 @@ exports.getByIngredientSlack = functions.https.onRequest(async (request, respons
     var find3;
     var find4;
     var find5;
+    var iter = 0;
+    var match_count = 0;
 
     try {
         totalIngrs = request.query.total; // MIN = 1, MAX = 5
         find1 += request.query.findthis1.toUpperCase();
+        iter = request.query.iteration;
     } catch (e) {
         console.log("invalid query");
     }
 
-    if (find1.length === 1)
+    iter = iter * 24;
+
+    if (find1.length === 1 || iter === 0)
         response.json(STOCK_FAIL_RESPONSE);
 
     else {
@@ -299,9 +330,10 @@ exports.getByIngredientSlack = functions.https.onRequest(async (request, respons
         admin.database().ref("data").once('value')
         .then((dataSnapshot) => {
     
+            var dataObject = dataSnapshot.val();
             const allMatches = [];
     
-            dataSnapshot.forEach((eachDrinkSnapshot) => {
+            dataObject.every((eachDrink) => {
     
                 var hasIngr1 = false;
                 var hasIngr2 = false;
@@ -309,11 +341,11 @@ exports.getByIngredientSlack = functions.https.onRequest(async (request, respons
                 var hasIngr4 = false;
                 var hasIngr5 = false;
     
-                var ingrsObject = eachDrinkSnapshot.child('ingredients');
+                var ingrsObject = eachDrink.ingredients;
     
-                ingrsObject.forEach((eachIngrSnapshot) => {
+                ingrsObject.forEach((eachIngr) => {
     
-                    var ingrStr = eachIngrSnapshot.val().toUpperCase();
+                    var ingrStr = eachIngr.toUpperCase();
 
                     if ( ingrStr.includes(find1) )
                         hasIngr1 = true;
@@ -327,14 +359,20 @@ exports.getByIngredientSlack = functions.https.onRequest(async (request, respons
                         hasIngr5 = true;
                 });
 
-                if ( hasIngr1 || hasIngr2 || hasIngr3 || hasIngr4 || hasIngr5 )
-                    allMatches.push( eachDrinkSnapshot );
-    
+                if ( hasIngr1 || hasIngr2 || hasIngr3 || hasIngr4 || hasIngr5 ) {
+
+                    if ( match_count >= (iter-24) && match_count < iter )
+                        allMatches.push( eachDrink );
+                    ++match_count;
+                }
+                
                 hasIngr1 = false;
                 hasIngr2 = false;
                 hasIngr3 = false;
                 hasIngr4 = false;
                 hasIngr5 = false;
+
+                return (match_count < iter);
             });
     
             if (allMatches.length > 0)
@@ -347,7 +385,7 @@ exports.getByIngredientSlack = functions.https.onRequest(async (request, respons
 });
 
 
-exports.getByIngredientStrict = functions.https.onRequest(async (request, response) => { // currently, using .contains() is returning true for " cola" in "pina colada" etc
+exports.getByIngredientStrict = functions.https.onRequest(async (request, response) => { // REQUIRED: iteration, total, findthis1, (findthis#, depending on total w/max of 5)
 //  note: Please add ?variableName=value to end of https calls for passing aurguments.
 //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
 //
@@ -361,15 +399,20 @@ exports.getByIngredientStrict = functions.https.onRequest(async (request, respon
     var find3;
     var find4;
     var find5;
+    var iter = 0;
+    var match_count = 0;
 
     try {
         totalIngrs = request.query.total; // MIN = 1, MAX = 5
         find1 += request.query.findthis1.toUpperCase();
+        iter = request.query.iteration;
     } catch (e) {
         console.log("invalid query");
     }
 
-    if (find1.length === 1)
+    iter = iter * 24;
+
+    if (find1.length === 1 || iter === 0)
         response.json(STOCK_FAIL_RESPONSE);
 
     else {
@@ -396,9 +439,10 @@ exports.getByIngredientStrict = functions.https.onRequest(async (request, respon
         admin.database().ref("data").once('value')
         .then((dataSnapshot) => {
     
+            var dataObject = dataSnapshot.val();
             const allMatches = [];
     
-            dataSnapshot.forEach((eachDrinkSnapshot) => {
+            dataObject.every((eachDrink) => {
     
                 var hasIngr1 = false;
                 var hasIngr2 = false;
@@ -406,11 +450,11 @@ exports.getByIngredientStrict = functions.https.onRequest(async (request, respon
                 var hasIngr4 = false;
                 var hasIngr5 = false;
     
-                var ingrsObject = eachDrinkSnapshot.child('ingredients');
+                var ingrsObject = eachDrink.ingredients;
     
-                ingrsObject.forEach((eachIngrSnapshot) => {
+                ingrsObject.forEach((eachIngr) => {
     
-                    var ingrStr = eachIngrSnapshot.val().toUpperCase();
+                    var ingrStr = eachIngr.toUpperCase();
 
                     if ( ingrStr.includes(find1) )
                         hasIngr1 = true;
@@ -427,24 +471,35 @@ exports.getByIngredientStrict = functions.https.onRequest(async (request, respon
                 switch( totalIngrs ) {
 
                     case "1":
-                        if (hasIngr1)
-                            allMatches.push(eachDrinkSnapshot);
-                        break;    
+                        if (hasIngr1) {
+                            if ( match_count >= (iter-24) && match_count < iter )
+                                allMatches.push(eachDrink);
+                            ++match_count;
+                        } break;    
                     case "2":
-                        if (hasIngr1 && hasIngr2)
-                            allMatches.push(eachDrinkSnapshot);
-                        break;
+                        if (hasIngr1 && hasIngr2) {
+                            if ( match_count >= (iter-24) && match_count < iter )
+                                allMatches.push(eachDrink);
+                            ++match_count;
+                        } break;
                     case "3":
-                        if (hasIngr1 && hasIngr2 && hasIngr3)
-                            allMatches.push(eachDrinkSnapshot);
-                        break;
+                        if (hasIngr1 && hasIngr2 && hasIngr3) {
+                            if ( match_count >= (iter-24) && match_count < iter )
+                                allMatches.push(eachDrink);
+                            ++match_count;
+                        } break;
                     case "4":
-                        if (hasIngr1 && hasIngr2 && hasIngr3 && hasIngr4)
-                            allMatches.push(eachDrinkSnapshot);
-                        break;
+                        if (hasIngr1 && hasIngr2 && hasIngr3 && hasIngr4) {
+                            if ( match_count >= (iter-24) && match_count < iter )
+                                allMatches.push(eachDrink);
+                            ++match_count;
+                        } break;
                     case "5":
-                        if (hasIngr1 && hasIngr2 && hasIngr3 && hasIngr4 && hasIngr5)
-                            allMatches.push(eachDrinkSnapshot);
+                        if (hasIngr1 && hasIngr2 && hasIngr3 && hasIngr4 && hasIngr5) {
+                            if ( match_count >= (iter-24) && match_count < iter )
+                                allMatches.push(eachDrink);
+                            ++match_count;
+                        }
                 }
     
                 hasIngr1 = false;
@@ -452,6 +507,8 @@ exports.getByIngredientStrict = functions.https.onRequest(async (request, respon
                 hasIngr3 = false;
                 hasIngr4 = false;
                 hasIngr5 = false;
+
+                return (match_count < iter);
             });
     
             if (allMatches.length > 0)
