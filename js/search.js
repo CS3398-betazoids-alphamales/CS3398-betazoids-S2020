@@ -5,7 +5,9 @@ $('#sidebar-search').on('keyup', function(event) {
 
  
   if(event.keyCode == 13){
-      document.getElementById("accordion").innerHTML = "";
+      sidebarSearch();
+      document.getElementById("home").innerHTML = ``;
+      document.getElementById("ingredient-search").innerHTML = `<div class="panel-head-wrapper" id="ingredienthead"><h2>Search by Ingredient:</h2></div><br><br>`;
       if(inner.split(" ").length == 1 || inner.split(" ").length == 2 || inner.split(" ").length == 3){
           getByIngredient(inner);
       }
@@ -26,7 +28,7 @@ $('#sidebar-search').on('keyup', function(event) {
           if (this.readyState == 4 && this.status == 200) {
               var data = JSON.parse(this.responseText);
               console.log(data);
-              const container = document.getElementById('accordion');
+              const container = document.getElementById('ingredient-search');
 
                   data.forEach((result, idx) => {
                   // Create card element
@@ -46,14 +48,42 @@ $('#sidebar-search').on('keyup', function(event) {
                   `<div class="col-md-4" style="display:inline-grid">
                   <div class="card">
                     <div class="card-block" id="card-block-${idx}">
-                      <img class="card-img-top" src="amaretto.jpg" alt="Card image" style="width:100%">
+                      <img class="card-img-top" src="style/amaretto.jpg" alt="Card image" style="width:100%">
                         <div class="card-body" id="card-body-${idx}">
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
-                          <a href="#" class="btn btn-primary stretched-link">See Recipe</a>
+                          <a href="#" class="btn btn-primary stretched-link" onclick="document.getElementById('recipepopup-${idx}').style.display='block'">Recipe</a>
+                          <img src="style/5star.png" class="rating">
                         </div>
                       </div>
                     </div>
+
+	                    <!-- The Recipe Modal -->
+					  <div id="recipepopup-${idx}" class="modal">
+					    <span onclick="document.getElementById('recipepopup-${idx}').style.display='none'"
+					  class="close" title="Close Modal">&times;</span>
+
+					    <!-- Modal Content -->
+					    <form class="modal-content-recipe animate" action=" # ">
+					      <div class="imgcontainer">
+					        <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink rounded">
+					      </div>
+
+					      <div class="title-container">
+					        <h2>${result.name}</h2>
+					      </div>
+
+					      <div class="rating-container">
+					        <img src="style/5star.png" class="rating">
+					      </div>
+
+					      <div id="search-recipe-container-${idx}">
+					        <h4>${result.form.type}</h4>
+					        
+					      </div>
+					    </form>
+					  </div>
+
                   </div>`;
 
 
@@ -62,9 +92,24 @@ $('#sidebar-search').on('keyup', function(event) {
                     var z = document.createElement('p');
                     var x = document.createTextNode(ingredientArray[i]);
                     z.appendChild(x);
+
+                    var z1 = z;
+
                     console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("card-body-" + idx).appendChild(z);
+
                   }
+                  for(i in ingredientArray){
+                    var j = document.createElement('p');
+                    var k = document.createTextNode(ingredientArray[i]);
+                    j.appendChild(k);
+                    console.log(document.getElementById("collapse-"+ idx));
+                    document.getElementById("search-recipe-container-" + idx).appendChild(j);
+
+                  }
+
+                  
+               
 
 
                   // Append newyly created card element to the container
