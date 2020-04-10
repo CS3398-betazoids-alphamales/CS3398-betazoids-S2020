@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="shortcut icon" href="favicon.ico"/>
+  <link rel="shortcut icon" href="style/favicon.ico"/>
 
   <title>Witches Brew</title>
 
@@ -29,6 +29,7 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="style/custom.css" rel="stylesheet">
   <link href="custom.css" rel="stylesheet">
   <link rel="stylesheet" href="dark-mode/dark-mode.css">
 
@@ -41,12 +42,12 @@
   <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top border border-top-0 border border-right-0 border border-left-0 border-secondary">
     <div class="container">
 
-      <div class="dark-switch custom-control custom-switch">
+      <div class="dark-switch custom-control custom-switch" >
         <input type="checkbox" class="custom-control-input" id="darkSwitch">
         <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
       </div>
 
-      <a class="navbar-brand" href="#"><img src="cocktail.png"> Witches' Brew</a>
+      <a class="navbar-brand" href="#"><img src="style/cocktail.png"> Witches' Brew</a>
 
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,24 +57,29 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href=" # ">Home
+            <!-- will remove function calls and add event listeners to external .js later -->
+            <a class="nav-link" id="homelink" href=" # ">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href=" # ">About</a>
+            <a class="nav-link" id="aboutlink" href=" # ">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href=" # ">Services</a>
+            <a class="nav-link" id="serviceslink" href=" # ">Services</a>
           </li>
           <li class="nav-item" id="navsearch">
             <!-- Search form -->
-           <div class="input-group">
+           <div class="input-group" id="top-bar-search">
                 <input class="form-control py-2 border-right-0 border typeahead" style="width: 300px; position: absolute;" type="text" spellcheck="false" placeholder="Find a Cocktail" autocomplete="off" id="example-search-input-0">
                 <span class="input-group-append" style="right: 20%;">
                    <div class="input-group-text bg-transparent" style="border: none; right:-2px; position: absolute;"><i class="fa fa-search"></i></div>
                  </span>
             </div>
+          </li>
+          <li>
+            <!-- Button to open the modal login form -->
+          <button id="login" class="btn btn-primary" >Login</button>
           </li>
         </ul>
       </div>
@@ -82,6 +88,8 @@
 
   <!-- Side navigation -->
 <div id="side-navigation" class="container-md sidenav border">
+
+  <a href="javascript:void(0)" class="closebtn" id="sideexit" >&times;</a>
 
   <!-- Search form -->
 <!--  <div class="input-group">-->
@@ -122,17 +130,17 @@
   </div>
 
 
-   <a href="#"><p>Browse Ingredients</p></a>
+  <a id="browselink" href="#"><p>Browse Ingredients</p></a>
 
-   <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Alcohol</a>
+  <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="alcohollink" href="#">Alcohol</a>
 
-   <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Juices</a>
+  <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="juiceslink" href="#">Juices</a>
 
-   <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Fruit</a>
+  <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="fruitlink" href="#">Fruit</a>
 
-   <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Other</a>
+  <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="otherlink" href="#">Other</a>
 
-   <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" href="#">Favorites</a>
+  <a class="border border-bottom-0 border-right-0 border border-left-0 border-secondary" id="favlink" href="#">Favorites</a>
 
   <div class="text-center">
 
@@ -142,37 +150,137 @@
 </div>
 
 </div>
+<button class="openbtn" id="sideopen">&#9776; Open Sidebar</button>
 
   <!-- Page Content -->
-  <div class="container">
+  <div class="container" id="content-wrapper">
     <div class="row" id="content-window">
       <div class="col-lg-12 text-left">
-        <h1 class="mt-3">Popular Cocktails</h1>
-      <div id= "accordion" class="panel panel-primary scrollable-panel">
 
+        <div id="home" class="panel panel-primary scrollable-panel container">
+	          
           <!-- The cards appear here -->
+        </div>
 
-      </div>
-    </div>
-</div>
+            <div id="about" class="panel panel-primary scrollable-panel container">
+              <div class="panel-head-wrapper" id="abouthead"><h2>About</h2></div><br><br>
+              
+              <p>Witches' Brew is a class project being developed by CS students at Texas State University. Currently it is in pre-alpha development with many features yet to come.</p>
+              <p>This app's database is hosted by Google Firebase with native firebase functions handling most of the back-end. The web-app front end is a static HTML page that is updated via JavaScript and CSS.</p>
+                
+              </div>
+
+            <div id="services" class="panel panel-primary scrollable-panel container">
+              <div class="panel-head-wrapper" id="serviceshead"><h2>Services</h2></div><br><br>
+              <!-- The cards appear here -->
+                
+              </div>
+
+            <div id="name-search" class="panel panel-primary scrollable-panel container">
+              <div class="panel-head-wrapper" id="namehead"><h2>Search by Name:</h2></div><br><br>
+              <!-- The cards appear here -->
+                
+              </div>
+
+            <div id="ingredient-search" class="panel panel-primary scrollable-panel container">
+
+              <!-- The cards appear here --> 
+
+            </div>
+
+            <div id="browse" class="panel panel-primary scrollable-panel container">
+              <div class="panel-head-wrapper" id="browsehead"><h2>Browse</h2></div><br><br>
+              <!-- The cards appear here -->
+                
+              </div>
+
+              <div id="alcohol" class="panel panel-primary scrollable-panel container">
+              <div class="panel-head-wrapper" id="alcoholhead"><h2>Alcohol</h2></div><br><br>
+              <!-- The cards appear here -->
+                
+              </div>
+
+              <div id="juices" class="panel panel-primary scrollable-panel container">
+              <div class="panel-head-wrapper" id="juiceshead"><h2>Juices</h2></div><br><br>
+              <!-- The cards appear here -->
+                
+              </div>
+
+              <div id="fruit" class="panel panel-primary scrollable-panel container">
+              <div class="panel-head-wrapper" id="fruithead"><h2>Fruit</h2></div><br><br>
+              <!-- The cards appear here -->
+                
+              </div>
+              <div id="other" class="panel panel-primary scrollable-panel container">
+                <div class="panel-head-wrapper" id="otherhead"><h2>Other</h2></div><br><br>
+                <!-- The cards appear here -->
+                  
+                </div>
+      
+                <div id="favorites" class="panel panel-primary scrollable-panel container">
+                <div class="panel-head-wrapper" id="favhead"><h2>Favorites</h2></div><br><br>
+                <!-- The cards appear here -->
+                  
+                </div>
+      
+             </div>
+           </div>
+        </div>
 
   <!-- Bootstrap core JavaScript -->
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="typeahead.bundle.js"></script>
+  <script src="js/typeahead.bundle.js"></script>
 
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
+  <!-- The core Firebase JS SDK -->
+  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+
+  <!-- Firebase SDK's -->
+  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-database.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/7.10.0/firebase-auth.js"></script>
 
 
-  <!-- <script src="node_modules/jquery-typeahead/dist/jquery.typeahead.min.js"></script> -->
-  <script src="search.js"></script>
-  <script src="typesuggest.js"></script>
-  <script src="utility.js"></script>
-    <script src="dark-mode/dark-mode-switch.min.js"></script>
+  <script src="js/typesuggest.js"></script>
+  <script src="js/utility.js"></script>
+
+  <!-- Other scripts -->
+  <script src="js/search.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/signin.js"></script>
+  <script src="dark-mode/dark-mode-switch.min.js"></script>
 
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var firebaseConfig = {
+            apiKey: "AIzaSyArwkzp5Fo5C3NHI3RAJWG6D6xlzhlTxGo",
+            authDomain: "rvrslkupdb.firebaseapp.com",
+            databaseURL: "https://rvrslkupdb.firebaseio.com",
+            projectId: "rvrslkupdb",
+            storageBucket: "rvrslkupdb.appspot.com",
+            messagingSenderId: "332925524075",
+            appId: "1:332925524075:web:e0c448b953cd7963c6792e",
+            measurementId: "G-ZD50MRM92Y"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          firebase.analytics();
+
+      try {
+        let app = firebase.app();
+       
+      } catch (e) {
+        console.error(e);
+        
+      }
+    });
+  </script>
 
 </body>
 
