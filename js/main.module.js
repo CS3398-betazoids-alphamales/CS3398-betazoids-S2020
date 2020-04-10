@@ -1,8 +1,8 @@
 'use strict';
 
-(function(angular){
+let ingrArray = [];
 
-    let ingrArray = [];
+(function(angular){
 
   var app = angular.module('mainModule', ['chips']);
   
@@ -41,8 +41,20 @@
           return value != text;
       });
       ingrArray.splice(ingrArray.indexOf(this.items), 1 );
-      // console.log(ingrArray);
+        // console.log('removing')
+        // console.log(ingrArray);
     }
   }
-  
 })(window.angular);
+
+
+function multiSearch(){
+    // console.log(ingrArray)
+
+
+
+
+}
+
+
+
