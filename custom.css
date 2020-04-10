@@ -1,0 +1,208 @@
+
+nav {
+	min-height: 120px;
+	background-color: #ff971d;
+	position:fixed;
+}
+
+form{
+	padding: 6px;
+	border-radius: 33px;
+}
+
+a:hover{
+
+}
+
+ul, li{
+	list-style: none;
+}
+
+h1{
+	color:white;
+}
+
+body{
+	overflow: hidden;
+	background-color:#ffffff;
+}
+
+.scrollable-panel{
+      min-height:200px;
+      height: 50vw;
+      max-height: 600px;
+      overflow-y: auto;
+      width:100%;
+      }
+
+.card{
+	max-width: 230px;
+	min-width: 80px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.card-body{
+	max-width: 230px;
+}
+
+.card-img-top{
+	max-width: 100%;
+	margin: auto;
+}
+
+
+.nav-item{
+	text-decoration: none;
+	text-align: left;
+	margin-right: 10vw;
+	margin-top: 6vw;
+}
+
+.navbar-brand img{
+	width: 4vw;
+}
+
+.navbar-brand h2{
+	font-size: 18px;
+}
+
+#navsearch{
+	margin-right: 0px;
+	margin-top: 3vw;
+}
+
+
+#content-window{
+	margin-left: 30vw;
+}
+
+.form-control{
+	padding: 16px;
+	border-radius: 33px;
+}
+
+.input-group-text{
+	border-radius: 33px;
+}
+
+ /* The sidebar menu */
+.sidenav {
+  align-items: stretch;
+  height: 100%; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  left: 0;
+  /*background-color: #eeeeee; !* Black *!*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+	background-color:#f9f6f7;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav p {
+  font-size: 18px;
+  color: black;
+  padding: 3px;
+  margin-bottom: 0px;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #1a7dff;
+}
+
+/* Style page content */
+.main {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+
+}
+
+.input-group > .typeahead {
+	flex: 1 1 auto;
+	width: auto;
+ }
+
+.typeahead, .tt-query, .tt-hint {
+	border: 2px solid #CCCCCC;
+	border-radius: 8px;
+	font-size: 22px; /* Set input font size */
+	height: 30px;
+	line-height: 30px;
+	outline: medium none;
+	padding: 8px 12px;
+	width: 396px;
+  }
+  .typeahead {
+	background-color: #FFFFFF;
+  }
+  .typeahead:focus {
+	border: 2px solid #0097CF;
+  }
+  .tt-query {
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  }
+  .tt-hint {
+	color: #999999;
+  }
+
+  .tt-input{
+	  width:255px;
+  }
+
+  .tt-menu {
+	background-color: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	margin-top: 12px;
+	padding: 8px 0;
+	width: 422px;
+  }
+  .tt-suggestion {
+	font-size: 22px;  /* Set suggestion dropdown font size */
+	padding: 3px 20px;
+  }
+  .tt-suggestion:hover {
+	cursor: pointer;
+	background-color: #0097CF;
+	color: #FFFFFF;
+  }
+  .tt-suggestion p {
+	margin: 0;
+  }
+
+
+@media screen and (min-width: 1200px) {
+	 .nav-item{
+		margin-right: 150px;
+	}
+	 #content-window{
+		margin-left: 220px;
+	}
+} 
+
+@media screen and (max-width: 768px) {
+	#content-window{
+		margin-left: 180px;
+	}
+	.sidenav {
+  width: 200px;
+}
+
+} 
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+} 
