@@ -167,7 +167,7 @@ exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
 });
 
 
-exports.getByName = functions.https.onRequest(async (request, response) => { // REQUIRED: findthis, iteration
+exports.getByName = functions.https.onRequest(async (request, response) => { // REQUIRED: findthis, page
 
     response.set('Access-Control-Allow-Origin', '*');
 
@@ -178,7 +178,7 @@ exports.getByName = functions.https.onRequest(async (request, response) => { // 
 
     try {
         strToFind = request.query.findthis.toUpperCase();
-        iter = request.query.iteration;
+        iter = request.query.page;
     } catch (e) {
         console.log("invalid query");
     }
@@ -276,11 +276,11 @@ exports.getRandomList = functions.https.onRequest(async (request, response) => {
 });
 
 
-exports.getByIngredientSlack = functions.https.onRequest(async (request, response) => { // REQUIRED: iteration, total, findthis1, (findthis#, depending on total w/max of 5)
+exports.getByIngredientSlack = functions.https.onRequest(async (request, response) => { // REQUIRED: page, total, findthis1, (findthis#, depending on total w/max of 5)
 //  note: Please add ?variableName=value to end of https calls for passing aurguments.
 //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
 //
-//  EXAMPLE: full_address?total=2&findthis1=rum&findthis2=gin 
+//  EXAMPLE: full_address?page=1&total=2&findthis1=rum&findthis2=gin 
 
     response.set('Access-Control-Allow-Origin', '*');
 
@@ -296,7 +296,7 @@ exports.getByIngredientSlack = functions.https.onRequest(async (request, respons
     try {
         totalIngrs = request.query.total; // MIN = 1, MAX = 5
         find1 += request.query.findthis1.toUpperCase();
-        iter = request.query.iteration;
+        iter = request.query.page;
     } catch (e) {
         console.log("invalid query");
     }
@@ -385,11 +385,11 @@ exports.getByIngredientSlack = functions.https.onRequest(async (request, respons
 });
 
 
-exports.getByIngredientStrict = functions.https.onRequest(async (request, response) => { // REQUIRED: iteration, total, findthis1, (findthis#, depending on total w/max of 5)
+exports.getByIngredientStrict = functions.https.onRequest(async (request, response) => { // REQUIRED: page, total, findthis1, (findthis#, depending on total w/max of 5)
 //  note: Please add ?variableName=value to end of https calls for passing aurguments.
 //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
 //
-//  EXAMPLE: full_address?total=2&findthis1=rum&findthis2=gin 
+//  EXAMPLE: full_address?page=1&total=2&findthis1=rum&findthis2=gin 
         
     response.set('Access-Control-Allow-Origin', '*');
 
@@ -405,7 +405,7 @@ exports.getByIngredientStrict = functions.https.onRequest(async (request, respon
     try {
         totalIngrs = request.query.total; // MIN = 1, MAX = 5
         find1 += request.query.findthis1.toUpperCase();
-        iter = request.query.iteration;
+        iter = request.query.page;
     } catch (e) {
         console.log("invalid query");
     }
