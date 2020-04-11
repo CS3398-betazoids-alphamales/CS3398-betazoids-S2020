@@ -185,8 +185,8 @@ $("#sideexit").click(function(){
 });
 
 $("#sideopen").click(function(){
-  document.getElementById("side-navigation").style.width = "256px";
-  document.getElementById("content-wrapper").style.marginLeft = "256px";
+  document.getElementById("side-navigation").style.width = "280px";
+  document.getElementById("content-wrapper").style.marginLeft = "230px";
 });
 
 function sidebarSearch(){

@@ -14,6 +14,21 @@ $('#top-bar-search').on('keyup', function(event) {
 })
 
 
+$('#side-search').on('keyup', function(event) {
+  var inner = document.getElementById("side-search").value;
+  console.log(inner);
+ 
+  if(event.keyCode == 13){
+      sidebarSearch();
+      document.getElementById("home").innerHTML = ``;
+      document.getElementById("ingredient-search").innerHTML = `<div class="panel-head-wrapper" id="ingredienthead"><h2>Search by Ingredient:</h2></div><br><br>`;
+      if(inner.split(" ").length == 1 || inner.split(" ").length == 2 || inner.split(" ").length == 3){
+          getByIngredient(inner);
+      }
+  }
+})
+
+
  function getByIngredient(searchText) {
 
       var xhttp = new XMLHttpRequest();
