@@ -45,7 +45,7 @@ function multiSearch() {
     var xhttp = new XMLHttpRequest();
 
     var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/' +
-        'getByIngredientStrict?total=' + ingrArray.length;
+        'getByIngredientStrict?page=1&total=' + ingrArray.length;
 
     for (let i = 0; i < ingrArray.length; i++) {
         let ingredient = '&findthis' + [i + 1] + '=' + ingrArray[i].toString().replace(/ /g, '+');
@@ -53,7 +53,19 @@ function multiSearch() {
     }
     console.log(targetUrl);
 
-    // xhttp.open('POST', targetUrl);
+    xhttp.open('POST', targetUrl);
+
+
+
+    xhttp.onreadystatechange = function() {
+
+
+
+
+    };
+
+    xhttp.send();
+
 
 }
 
