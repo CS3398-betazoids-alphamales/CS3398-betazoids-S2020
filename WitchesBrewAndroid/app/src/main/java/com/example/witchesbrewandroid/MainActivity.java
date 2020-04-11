@@ -16,4 +16,4 @@ public class MainActivity extends Activity {
         settings.setJavaScriptEnabled(true);
         browser.loadUrl("http://jonathanandrewdesign.com/witchesbrew/");
     }
-}
+} // making changes
