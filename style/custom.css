@@ -66,6 +66,30 @@ body{
 	margin: auto;
 }
 
+/* styles for tags */
+
+.chips{
+    border-radius: 15px !important;
+    font-size: 20px;
+    width: auto;
+}
+
+.chipsContainer{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left:20px;
+
+}
+
+.dark-switch{
+    margin-left:0px;
+}
+
+
+.pointer{
+    cursor: pointer;
+}
+
 .rating{
   width: 80px;
 }
@@ -99,6 +123,7 @@ body{
 .form-control{
 	padding: 16px;
 	border-radius: 33px;
+    margin-left:15px;
 }
 
 .input-group-text{
@@ -153,6 +178,10 @@ body{
   font-size: 36px;
   margin-left: 50px;
 }
+
+  #side-navigation{
+    width: 280px;
+  }
 
 .openbtn {
   font-size: 12px;
@@ -446,6 +475,7 @@ body{
 .panel-head-wrapper h2{font-size: 16px;}
 } 
 
+
 .star-rating-card {
   line-height:25px;
   font-size:0.9em;
@@ -458,6 +488,7 @@ body{
   line-height:32px;
   font-size:1.25em;
 }
+
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {

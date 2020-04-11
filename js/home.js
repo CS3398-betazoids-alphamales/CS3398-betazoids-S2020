@@ -51,6 +51,7 @@ function getRandom() {
                           <a href="#" class="btn btn-primary" onclick="document.getElementById('recipepopup-${idx}').style.display='block'">Recipe</a>
                           
 
+
                          <div class="container">
                             <div class="row">
                               <div class="col-sm-12">
@@ -65,7 +66,6 @@ function getRandom() {
                               </div>
                             </div>
                           </div>
-
 
 
                         </div>
@@ -151,7 +151,9 @@ function getRandom() {
 
                   })
 
+
                   // Dynamically load star rating script after all elements have been created
+
                   var head= document.getElementsByTagName('head')[0];
                   var script= document.createElement('script');
                   script.type= 'text/javascript';

@@ -1,6 +1,6 @@
 
-$('#sidebar-search').on('keyup', function(event) {
-  var inner = document.getElementById("sidebar-search").value;
+$('#top-bar-search').on('keyup', function(event) {
+  var inner = document.getElementById("top-bar-search").value;
   console.log(inner);
  
   if(event.keyCode == 13){
