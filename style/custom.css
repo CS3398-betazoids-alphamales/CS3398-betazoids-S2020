@@ -22,6 +22,7 @@ h1{
 	color:white;
 }
 
+
 body{
 	overflow: hidden;
 	background-color:#ffffff;
@@ -261,7 +262,7 @@ body{
   /* Scrollable panel CSS */
 
   .panel-head-wrapper{
-    background: white;
+    /*background: white;*/
     overflow: hidden;
     width: 100%;
     z-index: 1;
