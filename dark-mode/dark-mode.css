@@ -15,3 +15,8 @@
 [data-theme="dark"] .panel-head-wrapper {
   color: #eee;
 }
+
+[data-theme="dark"] .btn-primary {
+  color: white;
+  background-color: #d65a31;
+}

@@ -28,6 +28,11 @@ body{
 	background-color:#ffffff;
 }
 
+.btn-primary{
+    background-color: #ff971d;
+    color: black;
+}
+
 .card{
 	max-width: 230px;
 	max-height: 330px;

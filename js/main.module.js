@@ -41,9 +41,6 @@ let ingrArray = [];
 })(window.angular);
 
 function multiSearch() {
-
-    var xhttp = new XMLHttpRequest();
-
     var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/' +
         'getByIngredientStrict?page=1&total=' + ingrArray.length;
 
@@ -52,23 +49,6 @@ function multiSearch() {
         targetUrl = targetUrl.concat(ingredient);
     }
     console.log(targetUrl);
-
-    xhttp.open('POST', targetUrl);
-
-
-
-    xhttp.onreadystatechange = function() {
-
-
-
-
-    };
-
-    xhttp.send();
-
-
 }
-
-
 
 
