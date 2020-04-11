@@ -20,3 +20,7 @@
   color: white;
   background-color: #d65a31;
 }
+
+[data-theme="dark"] .tt-menu {
+  background-color: #222831;
+}
