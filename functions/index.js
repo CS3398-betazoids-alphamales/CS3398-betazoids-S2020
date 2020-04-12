@@ -530,8 +530,6 @@ exports.setRecipeRating = functions.https.onRequest(async (request, response) =>
     const thingToFind = request.query.recipeName.toUpperCase();
     const rating = parseFloat(request.query.rating);
     response.set('Access-Control-Allow-Origin', '*');
-    admin.database().ref("data").once('value')
-        .then((dataSnapshot) => {
     
         admin.database().ref("data").once('value')
             .then((dataSnapshot) => {
@@ -563,12 +561,46 @@ exports.setRecipeRating = functions.https.onRequest(async (request, response) =>
                      
                 });
     
-                response.json(match);
+                response.send(match);
                 return null;
             }).catch(e => { console.log(e) });
+        });
 
-        return null;
-    }).catch(e => {console.log(e) });
+
+
+exports.getRecipeRating = functions.https.onRequest(async (request, response) => { 
+//  note: Please add ?variableName=value to end of https calls for passing aurguments.
+    //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
+    //
+    //  EXAMPLE: full_address?recipeName=Cactus Kicker - 4
+
+    response.set('Access-Control-Allow-Origin', '*');
+    const thingToFind = request.query.recipeName.toUpperCase();
+
+    admin.database().ref("data").once('value')
+        .then((dataSnapshot) => {
+
+            dataSnapshot.forEach((currentDrinkSnapshotIndex) => {
+                if(currentDrinkSnapshotIndex.child("name").val() !== null) {
+
+                var nameString = currentDrinkSnapshotIndex.child("name").val().toUpperCase();
+                // var ratingString = currentDrinkSnapshotIndex.child("rating").val();
+                if ( nameString.includes(thingToFind) ){
+                   
+                    if(currentDrinkSnapshotIndex.hasChild("rating")) {
+                         let ratingNumber = currentDrinkSnapshotIndex.child("rating").val();
+                         response.status(200).send(ratingNumber.toString());
+                     }else {
+                         response.status(200).send(0);
+                     }           
+                }
+            }
+                 
+            });
+            response.status(200).send(0);
+            return null;
+        }).catch(e => { console.log(e) });
+
 });
 
 

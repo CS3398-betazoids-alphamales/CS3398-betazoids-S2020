@@ -34,12 +34,22 @@ function getRandom() {
                   console.log("Now the ingredient array has: ");
                   console.log(ingredientArray1[i]);
                   }
-                  for( i in procedureArray1){
-                  console.log("Now the procedure array has: ");
-                  console.log(procedureArray1[i]);
+
+                  let resultRating = 0;
+                  console.log("this is result.rating: " + result.rating);
+                  if ( result.rating !== undefined){
+                    console.log("set result.rating");
+                    resultRating = result.rating;
                   }
-
-
+                  var starRating=``;
+                  for(var f = 0; f < parseInt(resultRating); f++) {
+                    starRating= starRating + `<span class="fa fa-star" data-rating="` + f + `"></span>`;
+                  }
+                  for(var f = parseInt(resultRating)+1; f <= 5; f++) {
+                    console.log("The function is working");
+                    starRating= starRating + `<span class="fa fa-star-o" data-rating="` + f + `"></span>`;
+                  }
+                  console.log(starRating);
                   const cont =
                   `<div class="col-md-4" style="display:inline-grid">
                   <div class="card">
@@ -54,13 +64,8 @@ function getRandom() {
 
                          <div class="container">
                             <div class="row">
-                              <div class="col-sm-12">
-                                <div class="star-rating">
-                                  <span class="fa fa-star-o" data-rating="1"></span>
-                                  <span class="fa fa-star-o" data-rating="2"></span>
-                                  <span class="fa fa-star-o" data-rating="3"></span>
-                                  <span class="fa fa-star-o" data-rating="4"></span>
-                                  <span class="fa fa-star-o" data-rating="5"></span>
+                              <div class="col-lg-12">
+                                <div class="star-rating">` + starRating + `
                                   <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
                                 </div>
                               </div>
@@ -167,13 +172,12 @@ function getRandom() {
                 var div = document.createElement("DIV");
                 div.innerHTML = i;
               }
-              document.getElementById("unique").innerHTML =
-              this.responseText;
+              console.log(this.responseText);
             //console.log(this.responseText);
           }else if (this.status){
               document.getElementById("unique").innerHTML = "Can not access: " + targetUrl 
                   + " <br /> Response: " + this.status + " " + this.responseText;
-                  console.log(this.responseText);
+                  console.log("response: " + this.responseText + ", status: " + this.status);
           }else{
               document.getElementById("unique").innerHTML = "Loading... ";
           }

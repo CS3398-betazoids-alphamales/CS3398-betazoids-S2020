@@ -1,6 +1,6 @@
 
-$('#top-bar-search').on('keyup', function(event) {
-  var inner = document.getElementById("top-bar-search").value;
+$('#example-top-bar-search').on('keyup', function(event) {
+  var inner = document.getElementById('example-top-bar-search').value;
   console.log(inner);
  
   if(event.keyCode == 13){
@@ -61,11 +61,22 @@ $('#side-search').on('keyup', function(event) {
                   console.log("Now the ingredient array has: ");
                   console.log(ingredientArray[i]);
                   }
-                  for( i in procedureArray){
-                  console.log("Now the procedure array has: ");
-                  console.log(procedureArray[i]);
-                  }
 
+                  let resultRating = 0;
+                  console.log("this is result.rating: " + result.rating);
+                  if ( result.rating !== undefined){
+                    console.log("set result.rating");
+                    resultRating = result.rating;
+                  }
+                  var starRating=``;
+                  for(var f = 0; f < parseInt(resultRating); f++) {
+                    starRating= starRating + `<span class="fa fa-star" data-rating="` + f + `"></span>`;
+                  }
+                  for(var f = parseInt(resultRating)+1; f <= 5; f++) {
+                    console.log("The function is working");
+                    starRating= starRating + `<span class="fa fa-star-o" data-rating="` + f + `"></span>`;
+                  }
+                  console.log(starRating);
 
                   const cont =
                   `<div class="col-md-4" style="display:inline-grid">
@@ -76,20 +87,19 @@ $('#side-search').on('keyup', function(event) {
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
                           <a href="#" class="btn btn-primary" onclick="document.getElementById('recipepopup-${idx}').style.display='block'">Recipe</a>
+
                           <div class="container">
                             <div class="row">
-                              <div class="col-sm-12">
-                                <div class="star-rating">
-                                  <span class="fa fa-star-o" data-rating="1"></span>
-                                  <span class="fa fa-star-o" data-rating="2"></span>
-                                  <span class="fa fa-star-o" data-rating="3"></span>
-                                  <span class="fa fa-star-o" data-rating="4"></span>
-                                  <span class="fa fa-star-o" data-rating="5"></span>
+                              <div class="col-lg-12">
+                                <div class="star-rating">` + starRating + `
                                   <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
                                 </div>
                               </div>
                             </div>
                           </div>
+
+
+                          
                         </div>
                       </div>
                     </div>
@@ -171,7 +181,13 @@ $('#side-search').on('keyup', function(event) {
 
                   
                
+                  // Dynamically load star rating script after all elements have been created
 
+                  var head= document.getElementsByTagName('head')[0];
+                  var script= document.createElement('script');
+                  script.type= 'text/javascript';
+                  script.src= 'js/rating.js';
+                  head.appendChild(script);
 
                   // Append newyly created card element to the container
                   //   container.innerHTML += content;

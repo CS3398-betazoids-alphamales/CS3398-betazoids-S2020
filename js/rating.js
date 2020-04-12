@@ -5,15 +5,19 @@ $(document).ready(function() {
     var $star_rating = $('.star-rating .fa');
   
   var SetRatingStar = function(sep, ratingN, ratingO) {
+
+    if(ratingO == undefined || ratingO == null){
+      rating0=0;
+    }
   
     var xhttp = new XMLHttpRequest();
         
    
-        //  var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/setRecipeRating?recipeName=' + ratingN + '&rating=' + ratingO.value;
-        //  xhttp.open('POST', targetUrl);
-        //  xhttp.send();
+        var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/setRecipeRating?recipeName=' + ratingN + '&rating=' + ratingO.value;
+        xhttp.open('POST', targetUrl);
+        xhttp.send();
         console.log("This is the rating ID passed to the function")
-        console.log(ratingO.value);
+        //console.log(ratingO.value);
     return $star_rating.each(function() {
       // console.log("in the function $(this): ");
       // console.log($(this));
