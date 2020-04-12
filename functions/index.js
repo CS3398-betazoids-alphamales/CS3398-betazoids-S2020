@@ -132,7 +132,7 @@ exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
 
     admin.database().ref("data").once('value')
         .then((snapshot) => {
-		
+        
             var totalIngrs = 0;
             var totalUnref = 0;
             var unrefinedList = {};
