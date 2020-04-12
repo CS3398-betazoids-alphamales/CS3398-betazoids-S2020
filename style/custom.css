@@ -279,7 +279,7 @@ body{
     width: 100%;
     z-index: 1;
     display: block;
-    position: fixed;
+    position: relative;
   }
 
   .panel-head-wrapper h2{
