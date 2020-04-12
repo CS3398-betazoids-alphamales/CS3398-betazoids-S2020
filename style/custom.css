@@ -29,9 +29,16 @@ body{
 }
 
 .btn-primary{
-    background-color: #ff971d;
-    color: black;
+    background-color: #550C18;
+    color: white;
+    border :none;
 }
+
+.btn-primary:hover {
+    background-color: #550C18; !important;
+    color: white;
+}
+
 
 .card{
 	max-width: 230px;
