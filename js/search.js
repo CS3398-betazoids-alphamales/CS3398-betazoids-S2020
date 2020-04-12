@@ -1,19 +1,4 @@
 
-$('#top-bar-search').on('keyup', function(event) {
-  var inner = document.getElementById("top-bar-search").value;
-  console.log(inner);
- 
-  if(event.keyCode == 13){
-      sidebarSearch();
-      document.getElementById("home").innerHTML = ``;
-      document.getElementById("ingredient-search").innerHTML = `<div class="panel-head-wrapper" id="ingredienthead"><h2>Search by Ingredient:</h2></div><br><br>`;
-      if(inner.split(" ").length == 1 || inner.split(" ").length == 2 || inner.split(" ").length == 3){
-          getByIngredient(inner);
-      }
-  }
-})
-
-
 $('#side-search').on('keyup', function(event) {
   var inner = document.getElementById("side-search").value;
   console.log(inner);
@@ -145,10 +130,6 @@ $('#side-search').on('keyup', function(event) {
                     var z = document.createElement('p');
                     var x = document.createTextNode(ingredientArray[i]);
                     z.appendChild(x);
-
-                    var z1 = z;
-
-                    console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("card-body-" + idx).appendChild(z);
 
                   }
@@ -156,7 +137,6 @@ $('#side-search').on('keyup', function(event) {
                     var j = document.createElement('p');
                     var k = document.createTextNode(ingredientArray[i]);
                     j.appendChild(k);
-                    console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("search-recipe-container-" + idx).appendChild(j);
 
                   }
@@ -165,7 +145,6 @@ $('#side-search').on('keyup', function(event) {
                     var v = document.createElement('p');
                     var w = document.createTextNode(procedureArray[i]);
                     v.appendChild(w);
-                    console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("procedure-container-" + idx).appendChild(v);
                   }
 

@@ -1,42 +1,55 @@
-function getHome(){
-  document.getElementById("home").innerHTML = `<div class="panel-head-wrapper" id="homehead"><h2>Welcome to Witches' Brew!</h2></div><br><br>`;
-  getRandom();
-}
 
-function getRandom() {
+$('#nav-search').on('keyup', function(event) {
+  var inner1 = document.getElementById("nav-search").value;
+  var pageNumber = 1;
+  console.log(inner1);
+ 
+  if(event.keyCode == 13){
+      navbarSearch();
+      document.getElementById("name-search").innerHTML = ``;
+      document.getElementById("nav-search").innerHTML = `<div class="panel-head-wrapper" id="namehead"><h2>Search by Name:</h2></div><br><br>`;
+      if(inner1.split(" ").length == 1 || inner1.split(" ").length == 2 || inner1.split(" ").length == 3){
+          getByName(inner1, pageNumber);
+      }
+  }
+})
 
+ function getByName(searchText, pageNumber) {
+
+      var xhttp1 = new XMLHttpRequest();
       
-      var xhttp2 = new XMLHttpRequest();
+      let page = pageNumber;
+      let search1 = searchText.trim();
 
-      var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/getRandomList?howmany=' + 6;
-      xhttp2.open('POST', targetUrl);
+      var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/getByName?findthis=' + search1 + "&page=" + page;
+      xhttp1.open('POST', targetUrl);
 
-      xhttp2.onreadystatechange = function() {
+      xhttp1.onreadystatechange = function() {
 
           if (this.readyState == 4 && this.status == 200) {
               var data = JSON.parse(this.responseText);
               console.log(data);
-              const container = document.getElementById('home');
+              const container1 = document.getElementById('name-search');
 
                   data.forEach((result, idx) => {
                   // Create card element
                   const card = document.createElement('div');
                   card.classList = 'card-body';
-                  var ingredientArray1 = [];
-                  var procedureArray1 = [];
+                  var ingredientArray2 = [];
+                  var procedureArray2 = [];
 
 
-                      ingredientArray1.push(Object.values(result.ingredients));
-                      procedureArray1.push(Object.values(result.procedure));
+                      ingredientArray2.push(Object.values(result.ingredients));
+                      procedureArray2.push(Object.values(result.procedure));
 
 
-                  for( i in ingredientArray1){
+                  for( i in ingredientArray2){
                   console.log("Now the ingredient array has: ");
-                  console.log(ingredientArray1[i]);
+                  console.log(ingredientArray2[i]);
                   }
-                  for( i in procedureArray1){
+                  for( i in procedureArray2){
                   console.log("Now the procedure array has: ");
-                  console.log(procedureArray1[i]);
+                  console.log(procedureArray2[i]);
                   }
 
 
@@ -49,10 +62,7 @@ function getRandom() {
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
                           <a href="#" class="btn btn-primary" onclick="document.getElementById('recipepopup-${idx}').style.display='block'">Recipe</a>
-                          
-
-
-                         <div class="container">
+                          <div class="container">
                             <div class="row">
                               <div class="col-sm-12">
                                 <div class="star-rating">
@@ -66,29 +76,25 @@ function getRandom() {
                               </div>
                             </div>
                           </div>
-
-
                         </div>
                       </div>
                     </div>
 
+                      <!-- The Recipe Modal -->
+            <div id="recipepopup-${idx}" class="modal">
+              <span onclick="document.getElementById('recipepopup-${idx}').style.display='none'"
+            class="close" title="Close Modal">&times;</span>
 
-                            <!-- The Recipe Modal -->
-                  <div id="recipepopup-${idx}" class="modal">
-                    <span onclick="document.getElementById('recipepopup-${idx}').style.display='none'"
-                  class="close" title="Close Modal">&times;</span>
+              <!-- Modal Content -->
+              <form class="modal-content-recipe animate" action=" # ">
+                <div class="imgcontainer">
+                  <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink rounded">
+                </div>
 
-                    <!-- Modal Content -->
-                    <form class="modal-content-recipe animate" action=" # ">
-                      <div class="imgcontainer">
-                        <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink rounded">
-                      </div>
-
-                      <div class="title-container modal-container">
-                        <h2>${result.name}</h2>
-                        <h4>${result.form.type}</h4>
-                      </div>
-
+                <div class="title-container modal-container">
+                  <h2>${result.name}</h2>
+                  <h4>${result.form.type}</h4>
+                </div>
 
                          <div class="container">
                             <div class="row">
@@ -105,46 +111,45 @@ function getRandom() {
                             </div>
                           </div>
 
-                      <div class="recipe-container modal-container" id="recipe-container-${idx}">
-                        <h5>Ingredients:</h5>
-                        
-                      </div>
+                <div class="recipe-container modal-container" id="search-recipe-container-${idx}">
+                  <h5>Ingredients:</h5>
+                  
+                </div>
 
-                      <div class="procedure-container modal-container" id="procedure-container-${idx}">
-                        <h5>To make it:</h5>
+                <div class="procedure-container modal-container" id="procedure-container-${idx}">
+                           <h5>To make it:</h5>
                         
-                      </div>
-                    </form>
-                  </div>
+                        </div>
+              </form>
+            </div>
 
                   </div>`;
 
+          container1.innerHTML += cont;
 
-
-                  container.innerHTML += cont;
-                  for(i in ingredientArray1){
+           
+                  for(i in ingredientArray2){
                     var z = document.createElement('p');
-                    var x = document.createTextNode(ingredientArray1[i]);
+                    var x = document.createTextNode(ingredientArray2[i]);
                     z.appendChild(x);
-                    console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("card-body-" + idx).appendChild(z);
-                  }
 
-                  for(i in ingredientArray1){
+                  }
+                  for(i in ingredientArray2){
                     var j = document.createElement('p');
-                    var k = document.createTextNode(ingredientArray1[i]);
+                    var k = document.createTextNode(ingredientArray2[i]);
                     j.appendChild(k);
-                    console.log(document.getElementById("collapse-"+ idx));
-                    document.getElementById("recipe-container-" + idx).appendChild(j);
+                    document.getElementById("search-recipe-container-" + idx).appendChild(j);
+
                   }
 
-                  for(i in procedureArray1){
+                  for(i in procedureArray2){
                     var v = document.createElement('p');
-                    var w = document.createTextNode(procedureArray1[i]);
+                    var w = document.createTextNode(procedureArray2[i]);
                     v.appendChild(w);
-                    console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("procedure-container-" + idx).appendChild(v);
                   }
+
 
                   // Append newyly created card element to the container
                   //   container.innerHTML += content;
@@ -153,12 +158,12 @@ function getRandom() {
 
 
                   // Dynamically load star rating script after all elements have been created
-
                   var head= document.getElementsByTagName('head')[0];
                   var script= document.createElement('script');
                   script.type= 'text/javascript';
                   script.src= 'js/rating.js';
                   head.appendChild(script);
+
 
 
               console.log(this.responseType);
@@ -178,7 +183,8 @@ function getRandom() {
               document.getElementById("unique").innerHTML = "Loading... ";
           }
         };
-      xhttp2.send();
+      xhttp1.send();
 
-}
 
+
+  }

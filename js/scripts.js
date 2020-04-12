@@ -203,6 +203,21 @@ function sidebarSearch(){
   document.getElementById("ingredient-search").style.display = "block";
 }
 
+function navbarSearch(){
+  document.getElementById("home").style.display = "none";
+  document.getElementById("about").style.display = "none";
+  document.getElementById("services").style.display = "none";
+  document.getElementById("browse").style.display = "none";
+  document.getElementById("alcohol").style.display = "none";
+  document.getElementById("juices").style.display = "none";
+  document.getElementById("fruit").style.display = "none";
+  document.getElementById("other").style.display = "none";
+  document.getElementById("favorites").style.display = "none";
+  document.getElementById("ingredient-search").style.display = "none";
+  document.getElementById("name-search").style.display = "block";
+}
+
+
 
   // Get the modal
   var modal = document.getElementById('loginpopup');
