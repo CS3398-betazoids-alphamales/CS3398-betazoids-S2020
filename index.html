@@ -4,25 +4,13 @@
 <head>
 
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="shortcut icon" href="style/favicon.ico"/>
 
   <title>Witches Brew</title>
 
-  <!-- The core Firebase JS SDK -->
-  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
-
-  <!-- Firebase SDK's -->
-  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-database.js"></script>
-
-  <!-- Angular Tags-->
-  <script data-require="angular.js@1.5.3" data-semver="1.5.3" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-  <script src="js/main.module.js"></script>
-  <script src="js/chips.module.js"></script>
-  <script data-require="ui-bootstrap@*" data-semver="1.3.2" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-1.3.2.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -68,10 +56,11 @@
           </li>
           <li class="nav-item" id="navsearch">
             <!-- Search form -->
+
            <div class="input-group" id="top-bar-search">
-                <input class="form-control py-2 border-right-0 border typeahead" style="width: 300px; position: absolute;" type="text" spellcheck="false" placeholder="Find a Cocktail" autocomplete="off" id="example-search-input-0">
+                <input class="form-control py-2 border-right-0 border typeahead" id="nav-search" style="width: 300px; position: absolute;" type="text" spellcheck="false" placeholder="Find a Cocktail" autocomplete="off" id="example-search-input-0">
                 <span class="input-group-append" style="right: 20%;">
-                   <div class="input-group-text bg-transparent" style="border: none; right:-2px; position: absolute;"><i class="fa fa-search"></i></div>
+                   <div class="input-group-text bg-transparent" id="search-cocktail-button" style="border: none; right:-2px; position: absolute;"><i class="fa fa-search"></i></div>
                  </span>
             </div>
           </li>
@@ -90,6 +79,7 @@
   <a href="javascript:void(0)" class="closebtn" id="sideexit" >&times;</a>
 
   <!-- Search form -->
+
 <!--  <div class="input-group">-->
 <!--       <input class="form-control py-2 border-right-0 border typeahead" type="text" spellcheck="false"-->
 <!--              placeholder="Search Ingredients" autocomplete="off" id="sidebar-search">-->
@@ -146,6 +136,7 @@
 
   <button onclick="multiSearch()" id="multi-search" type="submit" class="btn btn-primary submit-button">Search</button>
 </div>
+
 
 </div>
 <button class="openbtn" id="sideopen">&#9776; Open Sidebar</button>
@@ -242,6 +233,11 @@
   <script defer src="https://www.gstatic.com/firebasejs/7.10.0/firebase-auth.js"></script>
 
 
+    <!-- Angular Tags-->
+  <script data-require="angular.js@1.5.3" data-semver="1.5.3" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+  <script src="js/main.module.js"></script>
+  <script src="js/chips.module.js"></script>
+  <script data-require="ui-bootstrap@*" data-semver="1.3.2" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-1.3.2.js"></script>
   <script src="js/typesuggest.js"></script>
   <script src="js/utility.js"></script>
 
@@ -252,33 +248,9 @@
   <script src="js/signin.js"></script>
   <script src="dark-mode/dark-mode-switch.min.js"></script>
 
+
+
   </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var firebaseConfig = {
-            apiKey: "AIzaSyArwkzp5Fo5C3NHI3RAJWG6D6xlzhlTxGo",
-            authDomain: "rvrslkupdb.firebaseapp.com",
-            databaseURL: "https://rvrslkupdb.firebaseio.com",
-            projectId: "rvrslkupdb",
-            storageBucket: "rvrslkupdb.appspot.com",
-            messagingSenderId: "332925524075",
-            appId: "1:332925524075:web:e0c448b953cd7963c6792e",
-            measurementId: "G-ZD50MRM92Y"
-          };
-          // Initialize Firebase
-          firebase.initializeApp(firebaseConfig);
-          firebase.analytics();
-
-      try {
-        let app = firebase.app();
-       
-      } catch (e) {
-        console.error(e);
-        
-      }
-    });
-  </script>
 
 </body>
 
