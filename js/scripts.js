@@ -217,6 +217,12 @@ function navbarSearch(){
   document.getElementById("name-search").style.display = "block";
 }
 
+function panelPurge(){
+  document.getElementById("home").innerHTML = ``;
+  document.getElementById("ingredient-search").innerHTML = ``;
+  document.getElementById("name-search").innerHTML = ``;
+}
+
 
 
   // Get the modal

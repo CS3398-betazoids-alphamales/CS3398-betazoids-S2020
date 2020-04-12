@@ -6,7 +6,7 @@ $('#nav-search').on('keyup', function(event) {
  
   if(event.keyCode == 13){
       navbarSearch();
-      document.getElementById("name-search").innerHTML = ``;
+      panelPurge();
       document.getElementById("nav-search").innerHTML = `<div class="panel-head-wrapper" id="namehead"><h2>Search by Name:</h2></div><br><br>`;
       if(inner1.split(" ").length == 1 || inner1.split(" ").length == 2 || inner1.split(" ").length == 3){
           getByName(inner1, pageNumber);
@@ -21,8 +21,8 @@ $('#nav-search').on('keyup', function(event) {
       let page = pageNumber;
       let search1 = searchText.trim();
 
-      var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/getByName?findthis=' + search1 + "&page=" + page;
-      xhttp1.open('POST', targetUrl);
+      var targetUrl1 = 'https://us-central1-rvrslkupdb.cloudfunctions.net/getByName?findthis=' + search1 + "&page=" + page;
+      xhttp1.open('POST', targetUrl1);
 
       xhttp1.onreadystatechange = function() {
 
