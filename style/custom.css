@@ -214,6 +214,14 @@ body{
 	font-size: 1.2vw;
 }
 
+.add-btn{
+    color:black;
+}
+
+.add-btn:hover {
+    color: #d65a31;
+}
+
 
 /* Style page content */
 .main {
@@ -238,7 +246,7 @@ body{
 	width: 396px;
   }
   .typeahead {
-	background-color: #FFFFFF;
+	background-color: white;
   }
   .typeahead:focus {
 	border: 2px solid #0097CF;

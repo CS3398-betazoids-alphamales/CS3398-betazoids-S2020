@@ -4,7 +4,7 @@
 
 [data-theme="dark"] .navbar-fixed-top {
   background-color: #d65a31  !important;
-  color: #eee;
+  color: #eeeeee;
 }
 
 [data-theme="dark"] .sidenav {
@@ -13,12 +13,12 @@
 }
 
 [data-theme="dark"] .panel-head-wrapper {
-  color: #eee;
+  color: #eeeeee;
 }
 
 [data-theme="dark"] .btn-primary {
   color: black;
-  background-color: #EAE0D5 !important;
+  background-color: #eeeeee !important;
   border: none;
 }
 
@@ -28,5 +28,17 @@
 
 [data-theme="dark"] .card-body {
   background-color: #393e46;
-  color: white;
+  color: #eeeeee;
+}
+
+[data-theme="dark"] .typeahead {
+  background-color: #eeeeee !important;
+}
+
+[data-theme="dark"] .add-btn {
+  color: #eeeeee !important;
+}
+
+[data-theme="dark"] .add-btn:hover {
+  color: orange  !important;
 }
