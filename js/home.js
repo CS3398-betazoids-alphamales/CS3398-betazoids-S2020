@@ -6,12 +6,12 @@ function getHome(){
 function getRandom() {
 
       
-      var xhttp = new XMLHttpRequest();
+      var xhttp2 = new XMLHttpRequest();
 
       var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/getRandomList?howmany=' + 6;
-      xhttp.open('POST', targetUrl);
+      xhttp2.open('POST', targetUrl);
 
-      xhttp.onreadystatechange = function() {
+      xhttp2.onreadystatechange = function() {
 
           if (this.readyState == 4 && this.status == 200) {
               var data = JSON.parse(this.responseText);
@@ -182,7 +182,7 @@ function getRandom() {
               document.getElementById("unique").innerHTML = "Loading... ";
           }
         };
-      xhttp.send();
+      xhttp2.send();
 
 }
 

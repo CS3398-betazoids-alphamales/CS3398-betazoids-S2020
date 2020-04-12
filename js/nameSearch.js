@@ -1,67 +1,57 @@
 
-$('#side-search').on('keyup', function(event) {
-  var inner = document.getElementById("side-search").value;
-  console.log(inner);
+$('#nav-search').on('keyup', function(event) {
+  var inner1 = document.getElementById("nav-search").value;
+  var pageNumber = 1;
+  console.log(inner1);
  
   if(event.keyCode == 13){
-      sidebarSearch();
+      navbarSearch();
       panelPurge();
-      document.getElementById("ingredient-search").innerHTML = `<div class="panel-head-wrapper" id="ingredienthead"><h2>Search by Ingredient:</h2></div><br><br>`;
-      if(inner.split(" ").length == 1 || inner.split(" ").length == 2 || inner.split(" ").length == 3){
-          getByIngredient(inner);
+      document.getElementById("nav-search").innerHTML = `<div class="panel-head-wrapper" id="namehead"><h2>Search by Name:</h2></div><br><br>`;
+      if(inner1.split(" ").length == 1 || inner1.split(" ").length == 2 || inner1.split(" ").length == 3){
+          getByName(inner1, pageNumber);
       }
   }
 })
 
+ function getByName(searchText, pageNumber) {
 
- function getByIngredient(searchText) {
-
-      var xhttp = new XMLHttpRequest();
+      var xhttp1 = new XMLHttpRequest();
       
-      let search = searchText.trim();
+      let page = pageNumber;
+      let search1 = searchText.trim();
 
-      var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/devGetByIngredient?findthis=' + searchText;
-      xhttp.open('POST', targetUrl);
+      var targetUrl1 = 'https://us-central1-rvrslkupdb.cloudfunctions.net/getByName?findthis=' + search1 + "&page=" + page;
+      xhttp1.open('POST', targetUrl1);
 
-      xhttp.onreadystatechange = function() {
+      xhttp1.onreadystatechange = function() {
 
           if (this.readyState == 4 && this.status == 200) {
               var data = JSON.parse(this.responseText);
               console.log(data);
-              const container = document.getElementById('ingredient-search');
+              const container1 = document.getElementById('name-search');
 
                   data.forEach((result, idx) => {
                   // Create card element
                   const card = document.createElement('div');
                   card.classList = 'card-body';
-                  var ingredientArray = [];
-                  var procedureArray = [];
+                  var ingredientArray2 = [];
+                  var procedureArray2 = [];
 
 
-                      ingredientArray.push(Object.values(result.ingredients));
-                      procedureArray.push(Object.values(result.procedure));
+                      ingredientArray2.push(Object.values(result.ingredients));
+                      procedureArray2.push(Object.values(result.procedure));
 
 
-                  for( i in ingredientArray){
+                  for( i in ingredientArray2){
                   console.log("Now the ingredient array has: ");
-                  console.log(ingredientArray[i]);
+                  console.log(ingredientArray2[i]);
+                  }
+                  for( i in procedureArray2){
+                  console.log("Now the procedure array has: ");
+                  console.log(procedureArray2[i]);
                   }
 
-                  let resultRating = 0;
-                  console.log("this is result.rating: " + result.rating);
-                  if ( result.rating !== undefined){
-                    console.log("set result.rating");
-                    resultRating = result.rating;
-                  }
-                  var starRating=``;
-                  for(var f = 0; f < parseInt(resultRating); f++) {
-                    starRating= starRating + `<span class="fa fa-star" data-rating="` + f + `"></span>`;
-                  }
-                  for(var f = parseInt(resultRating)+1; f <= 5; f++) {
-                    console.log("The function is working");
-                    starRating= starRating + `<span class="fa fa-star-o" data-rating="` + f + `"></span>`;
-                  }
-                  console.log(starRating);
 
                   const cont =
                   `<div class="col-md-4" style="display:inline-grid">
@@ -72,19 +62,20 @@ $('#side-search').on('keyup', function(event) {
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
                           <a href="#" class="btn btn-primary" onclick="document.getElementById('recipepopup-${idx}').style.display='block'">Recipe</a>
-
                           <div class="container">
                             <div class="row">
-                              <div class="col-lg-12">
-                                <div class="star-rating">` + starRating + `
+                              <div class="col-sm-12">
+                                <div class="star-rating">
+                                  <span class="fa fa-star-o" data-rating="1"></span>
+                                  <span class="fa fa-star-o" data-rating="2"></span>
+                                  <span class="fa fa-star-o" data-rating="3"></span>
+                                  <span class="fa fa-star-o" data-rating="4"></span>
+                                  <span class="fa fa-star-o" data-rating="5"></span>
                                   <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
                                 </div>
                               </div>
                             </div>
                           </div>
-
-
-                          
                         </div>
                       </div>
                     </div>
@@ -134,39 +125,31 @@ $('#side-search').on('keyup', function(event) {
 
                   </div>`;
 
+          container1.innerHTML += cont;
 
-                  container.innerHTML += cont;
-                  for(i in ingredientArray){
+           
+                  for(i in ingredientArray2){
                     var z = document.createElement('p');
-                    var x = document.createTextNode(ingredientArray[i]);
+                    var x = document.createTextNode(ingredientArray2[i]);
                     z.appendChild(x);
                     document.getElementById("card-body-" + idx).appendChild(z);
 
                   }
-                  for(i in ingredientArray){
+                  for(i in ingredientArray2){
                     var j = document.createElement('p');
-                    var k = document.createTextNode(ingredientArray[i]);
+                    var k = document.createTextNode(ingredientArray2[i]);
                     j.appendChild(k);
                     document.getElementById("search-recipe-container-" + idx).appendChild(j);
 
                   }
 
-                  for(i in procedureArray){
+                  for(i in procedureArray2){
                     var v = document.createElement('p');
-                    var w = document.createTextNode(procedureArray[i]);
+                    var w = document.createTextNode(procedureArray2[i]);
                     v.appendChild(w);
                     document.getElementById("procedure-container-" + idx).appendChild(v);
                   }
 
-                  
-               
-                  // Dynamically load star rating script after all elements have been created
-
-                  var head= document.getElementsByTagName('head')[0];
-                  var script= document.createElement('script');
-                  script.type= 'text/javascript';
-                  script.src= 'js/rating.js';
-                  head.appendChild(script);
 
                   // Append newyly created card element to the container
                   //   container.innerHTML += content;
@@ -200,7 +183,7 @@ $('#side-search').on('keyup', function(event) {
               document.getElementById("unique").innerHTML = "Loading... ";
           }
         };
-      xhttp.send();
+      xhttp1.send();
 
 
 
