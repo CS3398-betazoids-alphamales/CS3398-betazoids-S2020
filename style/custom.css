@@ -145,7 +145,7 @@ body{
 #content-wrapper{
 	transition: margin-left .5s;
 	transition: margin 0.5s;
-	margin-left: 230px;
+	margin-left: 255px;
 }
 
  /* The sidebar menu */
@@ -192,7 +192,7 @@ body{
 }
 
   #side-navigation{
-    width: 325px;
+    width: 345px;
   }
 
 .openbtn {
