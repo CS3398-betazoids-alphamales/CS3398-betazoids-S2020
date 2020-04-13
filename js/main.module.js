@@ -41,6 +41,8 @@ let ingrArray = [];
 })(window.angular);
 
 function multiSearch() {
+
+
     var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/' +
         'getByIngredientStrict?page=1&total=' + ingrArray.length;
 
@@ -54,14 +56,14 @@ function multiSearch() {
 
     xhttp.open('POST', targetUrl);
 
-    document.getElementById("home").innerHTML = `<div class="panel-head-wrapper" id="homehead"></div><br><br>`;
+    document.getElementById("ingredient-search").innerHTML = `<div class="panel-head-wrapper" id="ingredienthead"></div><br><br>`;
 
     xhttp.onreadystatechange = function() {
 
         if (this.readyState == 4 && this.status == 200) {
             var data = JSON.parse(this.responseText);
             console.log(data);
-            const container = document.getElementById('home');
+            const container = document.getElementById('ingredient-search');
 
             data.forEach((result, idx) => {
                 // Create card element
