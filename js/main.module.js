@@ -68,9 +68,38 @@ function multiSearch() {
                 const card = document.createElement('div');
                 card.classList = 'card-body';
                 var ingredientArray1 = [];
+                var procedureArray = [];
+
+                      
+                        ingredientArray1.push(Object.values(result.ingredients));
+                      
+                      
+                      
+                        procedureArray.push(Object.values(result.procedure));
+                      
+     
+                  for( i in ingredientArray1){
+                  console.log("Now the ingredient array has: ");
+                  console.log(ingredientArray1[i]);
+                  }
+
+                  let resultRating = 0;
+                  console.log("this is result.rating: " + result.rating);
+                  if ( result.rating !== undefined){
+                    console.log("set result.rating");
+                    resultRating = result.rating;
+                  }
+                  var starRating=``;
+                  for(var f = 0; f < parseInt(resultRating); f++) {
+                    starRating= starRating + `<span class="fa fa-star" data-rating="` + f + `"></span>`;
+                  }
+                  for(var f = parseInt(resultRating)+1; f <= 5; f++) {
+                    console.log("The function is working");
+                    starRating= starRating + `<span class="fa fa-star-o" data-rating="` + f + `"></span>`;
+                  }
+                  console.log(starRating);
 
 
-                ingredientArray1.push(Object.values(result.ingredients));
 
 
                 for(const i in ingredientArray1){
@@ -90,12 +119,7 @@ function multiSearch() {
                           <div class="container">
                             <div class="row">
                               <div class="col-lg-12">
-                                <div class="star-rating">
-                                  <span class="fa fa-star-o" data-rating="1"></span>
-                                  <span class="fa fa-star-o" data-rating="2"></span>
-                                  <span class="fa fa-star-o" data-rating="3"></span>
-                                  <span class="fa fa-star-o" data-rating="4"></span>
-                                  <span class="fa fa-star-o" data-rating="5"></span>
+                                <div class="star-rating">` + starRating + `
                                   <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
                                 </div>
                               </div>

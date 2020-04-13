@@ -37,14 +37,17 @@ $('#side-search').on('keyup', function(event) {
                   var ingredientArray = [];
                   var procedureArray = [];
 
-
-                      ingredientArray.push(Object.values(result.ingredients));
+                      if( result.ingredients != undefined){
+                        ingredientArray.push(Object.values(result.ingredients));
+                      }
+                      
+                      if( result.procedure != undefined){
                       procedureArray.push(Object.values(result.procedure));
-
+                      }
 
                   for( i in ingredientArray){
-                  console.log("Now the ingredient array has: ");
-                  console.log(ingredientArray[i]);
+                    console.log("Now the ingredient array has: ");
+                    console.log(ingredientArray[i]);
                   }
 
                   let resultRating = 0;

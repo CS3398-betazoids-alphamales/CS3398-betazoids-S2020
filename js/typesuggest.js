@@ -7,6 +7,7 @@ $(document).ready(function(){
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         local: ingrs
     });
+
     
     // Initializing the typeahead
     $('.typeahead').typeahead({
@@ -18,4 +19,5 @@ $(document).ready(function(){
         name: 'ingrs',
         source: ingrs
     });
-}); 
+
+});

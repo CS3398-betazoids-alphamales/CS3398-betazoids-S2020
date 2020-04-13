@@ -10,6 +10,7 @@ function getRandom() {
 
       var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/getRandomList?howmany=' + 6;
       xhttp2.open('POST', targetUrl);
+      xhttp2.send();
 
       xhttp2.onreadystatechange = function() {
 
@@ -98,12 +99,7 @@ function getRandom() {
                          <div class="container">
                             <div class="row">
                               <div class="col-sm-12">
-                                <div class="star-rating star-rating-modal">
-                                  <span class="fa fa-star-o" data-rating="1"></span>
-                                  <span class="fa fa-star-o" data-rating="2"></span>
-                                  <span class="fa fa-star-o" data-rating="3"></span>
-                                  <span class="fa fa-star-o" data-rating="4"></span>
-                                  <span class="fa fa-star-o" data-rating="5"></span>
+                                <div class="star-rating star-rating-modal"> ` + starRating + `
                                   <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
                                 </div>
                               </div>
@@ -175,14 +171,12 @@ function getRandom() {
               console.log(this.responseText);
             //console.log(this.responseText);
           }else if (this.status){
-              document.getElementById("unique").innerHTML = "Can not access: " + targetUrl 
-                  + " <br /> Response: " + this.status + " " + this.responseText;
                   console.log("response: " + this.responseText + ", status: " + this.status);
           }else{
-              document.getElementById("unique").innerHTML = "Loading... ";
+                  console.log( "Loading... ");
           }
         };
-      xhttp2.send();
+      
 
 }
 
