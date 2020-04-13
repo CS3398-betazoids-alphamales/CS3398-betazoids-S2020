@@ -98,7 +98,6 @@ body{
     margin-left:0px;
 }
 
-
 .pointer{
     cursor: pointer;
 }
@@ -236,14 +235,14 @@ body{
  }
 
 .typeahead, .tt-query, .tt-hint {
-	border: 2px solid #CCCCCC;
-	border-radius: 8px;
-	font-size: 22px; 
-	height: 30px;
-	line-height: 30px;
-	outline: medium none;
-	padding: 8px 12px;
-	width: 396px;
+	/*border: 2px solid #CCCCCC;*/
+	/*border-radius: 5px;*/
+	/*font-size: 22px;*/
+	/*height: 30px;*/
+	/*line-height: 30px;*/
+	/*outline: medium none;*/
+	/*padding: 8px 12px;*/
+	/*width: 100px;*/
   }
   .typeahead {
 	background-color: white;
@@ -511,6 +510,7 @@ body{
 }
 
 
+
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .navbar-brand img{
@@ -527,6 +527,7 @@ body{
 	margin: none;
 	padding: none;
 }
+
   
 } 
 
