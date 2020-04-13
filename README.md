@@ -95,6 +95,14 @@ Please see the next steps for each team member below.
 
 - Refactor my code (delete old files, unnecessary comments, and random console logs)
 
+### Benjamin 
+
+- Refactor search functions to all use one base search function for populating drink cards.
+
+- Link rating to userID so that users can save favorite drinks and rated drinks.
+
+- Fix UI problems to make sure the app is ready for its first release.
+
 
 ### Sprint 1
 
@@ -160,7 +168,15 @@ An array of ingredients is created and is used to generate a HTTPS request URL.
 
     https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/e31434ad5a63784eb033c1ff89dc6b56352659ad
 
+### Ben
 
+- Artifact 1: I added a login in button that links to ones google account. When a user clicks login, a login modal pops up if the user is not already logged into their google account and is prompted to enter login information.
+
+   https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/3701eac3b4877145e41233cb44fb196746747bcf
+
+- Artifact 2: I created a rating system that allows users to rate a drink based on a five star rating. The rating system also pulls from rating from the database and display them when drinks load.
+
+   https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/cbea832a599c9cbbb435632b53784e30eda87b9c
 
 
 ### Sprint 1
