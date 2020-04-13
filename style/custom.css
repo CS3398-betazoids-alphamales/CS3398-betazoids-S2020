@@ -114,13 +114,8 @@ body{
 	margin-top: 6vw;
 }
 
-.nav-link{
-    margin-right:0px;
-}
-
 .navbar-brand img{
 	width: 4vw;
-    height: 9vw;
 }
 
 .navbar-brand h2{
@@ -128,8 +123,8 @@ body{
 }
 
 #navsearch{
-	margin-right: 3px;
-	margin-top: 6vw;
+	margin-right: 0px;
+	margin-top: 3vw;
 }
 
 
