@@ -184,7 +184,7 @@ $('#nav-search').on('keyup', function(event) {
               this.responseText;
             //console.log(this.responseText);
           }else if (this.status){
-              document.getElementById("unique").innerHTML = "Can not access: " + targetUrl 
+              document.getElementById("unique").innerHTML = "Can not access: " + targetUrl1 
                   + " <br /> Response: " + this.status + " " + this.responseText;
                   console.log(this.responseText);
           }else{
