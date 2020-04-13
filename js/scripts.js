@@ -177,13 +177,19 @@ $("#search-cocktail-button").click(function(){
       }
 });
 
+$("#multi-search").click(function(){
+    panelPurge();
+    sidebarSearch();
+    multiSearch();
+});
+
 
 $("#sideexit").click(function(){
   document.getElementById("side-navigation").style.width = "0";
 });
 
 $("#sideopen").click(function(){
-  document.getElementById("side-navigation").style.width = "345px";
+  document.getElementById("side-navigation").style.width = "330px";
 });
 
 function sidebarSearch(){
@@ -213,6 +219,8 @@ function navbarSearch(){
   document.getElementById("ingredient-search").style.display = "none";
   document.getElementById("name-search").style.display = "block";
 }
+
+
 
 function panelPurge(){
   document.getElementById("home").innerHTML = ``;
