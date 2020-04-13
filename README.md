@@ -133,7 +133,7 @@ Please see the artifacts for each team member below.
  
    [WitchesBrew.apk](https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/blob/android-dev/WitchesBrewAndroid/app/build/outputs/apk/debug/app-debug.apk)
    
- - And an image of the apks usage 
+ - And an image of the apks usage (click image to expand)
  
    <img src=https://raw.githubusercontent.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/master/artifact-apk-tablet.png width="400">
 
