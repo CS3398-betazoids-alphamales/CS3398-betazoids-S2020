@@ -26,6 +26,11 @@
   background-color: #222831;
 }
 
+[data-theme="dark"] .tt-suggestion:hover {
+  background-color: #eeeeee;
+  color:black;
+}
+
 [data-theme="dark"] .card-body {
   background-color: #393e46;
   color: #eeeeee;

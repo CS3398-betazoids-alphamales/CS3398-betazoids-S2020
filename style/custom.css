@@ -259,10 +259,11 @@ body{
 
   .tt-input{
 	  width:255px;
+      color:white;
   }
 
   .tt-menu {
-	background-color: #FFFFFF;
+	background-color: white;
 	border: 1px solids rgba(0, 0, 0, 0.2);
 	border-radius: 8px;
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -275,10 +276,10 @@ body{
 	padding: 3px 20px;
   }
   .tt-suggestion:hover {
-	cursor: pointer;
-	background-color: #0097CF;
-	color: #FFFFFF;
-  }
+         cursor: pointer;
+         background-color: #550C18;
+         color: #FFFFFF;
+     }
   .tt-suggestion p {
 	margin: 0;
   }
