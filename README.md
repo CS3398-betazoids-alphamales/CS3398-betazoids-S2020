@@ -60,6 +60,9 @@ Please see the status for each team member below.
  
  - Andrew Saenz: Active and contributing
 
+ - Evan Estrada: Active and contributing
+
+
 ### Sprint 1
 We have successfully built our database, built the front-end of the website, and have connected the two. We have also implemented a search of database recipes as well as a typehead for both the recipe and ingredient searches. 
 
@@ -84,6 +87,13 @@ Please see the next steps for each team member below.
  - Optimize database to more efficiently handle higher traffic
  
  - Collaberate with team to handle unique problems that persist
+ 
+#### Evan
+- Make the design of the app more modern and responsive, especially the top-nav
+
+- Work on additional functionality to make the app more useful for users
+
+- Refactor my code (delete old files, unnecessary comments, and random console logs)
 
 
 ### Sprint 1
@@ -137,6 +147,20 @@ Please see the artifacts for each team member below.
  - And an image of the apks usage (click image to expand)
  
    <img src=https://raw.githubusercontent.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/master/artifact-apk-tablet.png width="400">
+
+
+#### Evan
+
+- Artifact 1: I added the ability to choose ingredients and have them populate in the form of tags below the sidebar search bar. 
+An array of ingredients is created and is used to generate a HTTPS request URL.
+
+    https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/2245d37a866cec140b7892babee21081d0c9e909 
+
+- Artifact 2: I implemented a dark-mode toggle which changes the appearance of various components on the page to be easier on the eyes. 
+
+    https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/e31434ad5a63784eb033c1ff89dc6b56352659ad
+
+
 
 
 ### Sprint 1
