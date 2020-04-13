@@ -1,14 +1,49 @@
 [data-theme="dark"] {
   background-color: #222831 !important;
-  color: #eee;
 }
 
 [data-theme="dark"] .navbar-fixed-top {
   background-color: #d65a31  !important;
-  color: #eee;
+  color: #eeeeee;
 }
 
 [data-theme="dark"] .sidenav {
   background-color: #393e46 !important;
   color: #eee;
+}
+
+[data-theme="dark"] .panel-head-wrapper {
+  color: #eeeeee;
+}
+
+[data-theme="dark"] .btn-primary {
+  color: black;
+  background-color: #eeeeee !important;
+  border: none;
+}
+
+[data-theme="dark"] .tt-menu {
+  background-color: #222831;
+}
+
+[data-theme="dark"] .tt-suggestion:hover {
+  background-color: #eeeeee;
+  color:black;
+}
+
+[data-theme="dark"] .card-body {
+  background-color: #393e46;
+  color: #eeeeee;
+}
+
+[data-theme="dark"] .typeahead {
+  background-color: #eeeeee !important;
+}
+
+[data-theme="dark"] .add-btn {
+  color: #eeeeee !important;
+}
+
+[data-theme="dark"] .add-btn:hover {
+  color: orange  !important;
 }
