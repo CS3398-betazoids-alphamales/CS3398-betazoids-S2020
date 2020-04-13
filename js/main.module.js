@@ -199,15 +199,12 @@ function multiSearch() {
                 var div = document.createElement("DIV");
                 div.innerHTML = i;
             }
-            document.getElementById("unique").innerHTML =
-                this.responseText;
-            //console.log(this.responseText);
+           
         }else if (this.status){
-            document.getElementById("unique").innerHTML = "Can not access: " + targetUrl
-                + " <br /> Response: " + this.status + " " + this.responseText;
+            
             console.log(this.responseText);
         }else{
-            document.getElementById("unique").innerHTML = "Loading... ";
+            console.log("loading");
         }
     };
     xhttp.send();
