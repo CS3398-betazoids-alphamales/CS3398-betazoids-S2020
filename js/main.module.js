@@ -41,8 +41,6 @@ let ingrArray = [];
 })(window.angular);
 
 function multiSearch() {
-
-
     var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/' +
         'getByIngredientStrict?page=1&total=' + ingrArray.length;
 
@@ -56,7 +54,7 @@ function multiSearch() {
 
     xhttp.open('POST', targetUrl);
 
-    document.getElementById("ingredient-search").innerHTML = `<div class="panel-head-wrapper" id="ingredienthead"></div><br><br>`;
+    document.getElementById("home").innerHTML = `<div class="panel-head-wrapper" id="homehead"></div><br><br>`;
 
     xhttp.onreadystatechange = function() {
 
@@ -74,9 +72,6 @@ function multiSearch() {
 
                       
                         ingredientArray1.push(Object.values(result.ingredients));
-                      
-                      
-                      
                         procedureArray.push(Object.values(result.procedure));
                       
      
@@ -117,7 +112,6 @@ function multiSearch() {
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
                           <a href="#" class="btn btn-primary" onclick="document.getElementById('recipepopup-${idx}').style.display='block'">Recipe</a>
-                          
                           <div class="container">
                             <div class="row">
                               <div class="col-lg-12">
@@ -133,33 +127,46 @@ function multiSearch() {
                     </div>
 
 
-                            <!-- The Recipe Modal -->
-                  <div id="recipepopup-${idx}" class="modal">
-                    <span onclick="document.getElementById('recipepopup-${idx}').style.display='none'"
-                  class="close" title="Close Modal">&times;</span>
-
-                    <!-- Modal Content -->
-                    <form class="modal-content-recipe animate" action=" # ">
-                      <div class="imgcontainer">
-                        <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink rounded">
-                      </div>
-
-                      <div class="title-container">
-                        <h2>${result.name}</h2>
-                      </div>
-
-                      <div class="rating-container">
-                        <img src="style/5star.png" class="rating">
-                      </div>
-
-                      <div class="recipe-container" id="recipe-container-${idx}">
-                        <h4>${result.form.type}</h4>
-                        
-                      </div>
-                    </form>
-                  </div>
-
-                  </div>`;
+                    <!-- The Recipe Modal -->
+                    <div id="recipepopup-${idx}" class="modal">
+                      <span onclick="document.getElementById('recipepopup-${idx}').style.display='none'"
+                    class="close" title="Close Modal">&times;</span>
+  
+                      <!-- Modal Content -->
+                      <form class="modal-content-recipe animate" action=" # ">
+                        <div class="imgcontainer">
+                          <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink rounded">
+                        </div>
+  
+                        <div class="title-container modal-container">
+                          <h2>${result.name}</h2>
+                          <h4>${result.form.type}</h4>
+                        </div>
+  
+  
+                           <div class="container">
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <div class="star-rating star-rating-modal"> ` + starRating + `
+                                    <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+  
+                        <div class="recipe-container modal-container" id="recipe-container-${idx}">
+                          <h5>Ingredients:</h5>
+                          
+                        </div>
+  
+                        <div class="procedure-container modal-container" id="procedure-container-${idx}">
+                          <h5>To make it:</h5>
+                          
+                        </div>
+                      </form>
+                    </div>
+  
+                    </div>`;
 
 
 
@@ -178,6 +185,13 @@ function multiSearch() {
                     j.appendChild(k);
                     console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("recipe-container-" + idx).appendChild(j);
+                }
+
+                for(i in procedureArray){
+                  var v = document.createElement('p');
+                  var w = document.createTextNode(procedureArray[i]);
+                  v.appendChild(w);
+                  document.getElementById("procedure-container-" + idx).appendChild(v);
                 }
 
                 // Append newyly created card element to the container
@@ -201,12 +215,14 @@ function multiSearch() {
                 var div = document.createElement("DIV");
                 div.innerHTML = i;
             }
-           
+            document.getElementById("unique").innerHTML =
+                this.responseText;
+            //console.log(this.responseText);
         }else if (this.status){
-            
+           
             console.log(this.responseText);
         }else{
-            console.log("loading");
+            document.getElementById("unique").innerHTML = "Loading... ";
         }
     };
     xhttp.send();
