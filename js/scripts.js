@@ -180,13 +180,10 @@ $("#search-cocktail-button").click(function(){
 
 $("#sideexit").click(function(){
   document.getElementById("side-navigation").style.width = "0";
-  document.getElementById("content-wrapper").style.marginLeft = "0";
-  document.getElementById("content-wrapper").style.margin = "auto";
 });
 
 $("#sideopen").click(function(){
   document.getElementById("side-navigation").style.width = "320px";
-  document.getElementById("content-wrapper").style.marginLeft = "230px";
 });
 
 function sidebarSearch(){

@@ -145,7 +145,7 @@ body{
 #content-wrapper{
 	transition: margin-left .5s;
 	transition: margin 0.5s;
-	margin-left: 256px;
+	margin-left: 230px;
 }
 
  /* The sidebar menu */
@@ -290,7 +290,6 @@ body{
     /*background: white;*/
     overflow: hidden;
     width: 100%;
-    z-index: 1;
     display: block;
     position: relative;
   }
@@ -301,12 +300,12 @@ body{
   }
 
  .scrollable-panel{
-     min-height:600px;
+     min-height:620px;
      height: 100vw;
-     max-height: 650px;
+     max-height: 700px;
      overflow-y: auto;
      margin: auto;
-     width:90%;    
+     width:85%;    
   }
 
   #home{display: block;}
@@ -439,6 +438,11 @@ body{
 
 
  /* media queries */
+@media screen and (min-width: 1400px) {
+
+  #content-wrapper{margin: auto;}
+}
+
 @media screen and (min-width: 1200px) {
 	.navbar-brand img{
 	width: 70px;
@@ -459,8 +463,11 @@ body{
 	}
 
   .panel-head-wrapper h2{font-size: 35px;}
+
 	
 } 
+
+
 
 @media screen and (max-width: 768px) {
 	.btn{
@@ -478,7 +485,6 @@ body{
 		width: 0;
 	}
 	#content-wrapper{
-		margin-left: 0;
 		margin: auto;
 	}
   /* Modal Content/Box */
