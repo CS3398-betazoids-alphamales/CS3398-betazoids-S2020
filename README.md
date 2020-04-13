@@ -54,6 +54,13 @@ List of TODOs for future development:
 
 ## Status
 
+Please see the status for each team member below.
+
+### Sprint 2
+ 
+ - Andrew Saenz: Active and contributing
+
+### Sprint 1
 We have successfully built our database, built the front-end of the website, and have connected the two. We have also implemented a search of database recipes as well as a typehead for both the recipe and ingredient searches. 
 
 * Benjamin Bond: Active and contributing
@@ -64,9 +71,22 @@ We have successfully built our database, built the front-end of the website, and
 
 * Jonathan Crouch: Active and contributing
 
-### Next Steps
+## Next Steps
 
 Please see the next steps for each team member below. 
+
+### Sprint 2
+
+#### Andrew
+
+ - Discover new ways for handling the tasks of sprint three
+
+ - Optimize database to more efficiently handle higher traffic
+ 
+ - Collaberate with team to handle unique problems that persist
+
+
+### Sprint 1
 
 #### Andrew
  
@@ -103,8 +123,11 @@ Please see the next steps for each team member below.
 
 ## Artifacts
 
+Please see the artifacts for each team member below.
 
-### Andrew
+### Sprint 1
+
+#### Andrew
 
  - My first artifact is the index.js file used for the backend functions that operate on our database.
    These functions are accessed through https requests, and wait for a response that includes
@@ -118,30 +141,30 @@ Please see the next steps for each team member below.
    
    [public/data.json](https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/blob/master/public/data.json)
 
-### Benjamin
+#### Benjamin
 
-#### Linked the front end to the back using the search bar:
+##### Linked the front end to the back using the search bar:
 
 I added support for searching for one ingredient in our database to the search bar. 
 
 Link to commit: https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/b143f5cd05125beb0475f2c5aa58e6f0d86f1380
 
-#### Temporarily fixed CORS backend settings so that we could access backend functions.
+##### Temporarily fixed CORS backend settings so that we could access backend functions.
 
 Allowed all CORS access to our backend function so that we could access the function without a unique key. This is a temporary fix and will need to be changed in the future.
 
 Link to commit: https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/5d3440d665aefe2e25f877f5505b7e47400b6915
 
-#### Fixed styling issues and a list population bug
+##### Fixed styling issues and a list population bug
 
 Fixed styling issues with the nav bar search button no properly positioning itself ontop of the search bar. Also removed previous searches from the bottom of the accordion div so that search functionality would work as expected. 
 
 Link to commit: https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/85c8a838eb5b271435946dccbccd8027ccab2eb0
 
 
-### Evan
+#### Evan
 
-#### Created a mockup for our site's front-end:
+##### Created a mockup for our site's front-end:
 
 I created a mockup containing multiple images for the initial website design. We ended up using this for the site's initial design and functionality.  
 
@@ -149,23 +172,23 @@ Link to issue: https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S
 
 Link to mockup: https://docs.google.com/presentation/d/1H3nJWtqTiYMdaJfWLd7iGyKQ_eKWjSnrIqtsADG_00g/edit?usp=sharing
 
-#### Added a typahead to the side navigation search:
+##### Added a typahead to the side navigation search:
 
 After Benjamin, Jonathan, and I got the typehead working, I added the typeahead to the side navigation search. The typahead allows users to see ingredients that are available in the database by displaying them below the search bar as they type.
 
 Link to commit: https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/2cdb41fa513855d27cad351209eb67471c02cd21
 
 
-### Jonathan
+#### Jonathan
 
-#### Created a bootstrap website based on Evan's mockup:
+##### Created a bootstrap website based on Evan's mockup:
 
 I created an HTML/CSS/JavaScript website using bootstrap and prepped it for connecting to the backend. This includes the initial website navbar/sidebar, scrollable panel, responsive display, and card structure. 
 Link to issue: https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/issues/24
 
 Link to commit: https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/270aa38f8cef1b0a46027c3335607b557106186a
 
-#### Created a basic icon/logo as an identifier:
+##### Created a basic icon/logo as an identifier:
 
 I whipped up a quick logo/icon in Adobe Illustrator to give the site a more polished feel in these early stages. It's currently used as an image for the website header and possibly will be used as the Android app icon.
 
