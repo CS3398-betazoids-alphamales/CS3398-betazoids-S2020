@@ -30,6 +30,10 @@
   background-color: #eeeeee;
   color:black;
 }
+[data-theme="dark"]  .modal-content-recipe{
+  background-color:#393e46;
+  border-color: #393e2f;
+}
 
 [data-theme="dark"] .card-body {
   background-color: #393e46;
@@ -47,3 +51,15 @@
 [data-theme="dark"] .add-btn:hover {
   color: orange  !important;
 }
+
+[data-theme="dark"] h2 {
+  color:white;
+}
+[data-theme="dark"] p {
+  color:#FFFFFa;
+}
+
+[data-theme="dark"] .panel .panel-primary .scrollable-panel .container {
+  scrollbar-color: black;
+}
+
