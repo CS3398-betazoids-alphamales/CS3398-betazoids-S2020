@@ -131,7 +131,7 @@ Please see the artifacts for each team member below.
 
  - My artifact for sprint 2 is the apk file created for use on Android devices.
  
-   [WitchesBrew.apk](https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/blob/android-dev/WitchesBrewAndroid/app/build/outputs/apk/app-debug.apk)
+   [WitchesBrew.apk](https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/blob/android-dev/WitchesBrewAndroid/app/build/outputs/apk/debug/app-debug.apk)
 
 
 ### Sprint 1
