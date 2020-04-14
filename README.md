@@ -19,7 +19,7 @@
 * [Contact](#contact)
 
 ## General info
-![Cocktail](/cocktail.png). 
+![Cocktail](/style/cocktail.png). 
 
 Hosted at: https://cs3398-betazoids-alphamales.github.io/CS3398-betazoids-S2020/
 
