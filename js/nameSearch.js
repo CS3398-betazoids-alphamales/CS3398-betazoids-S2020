@@ -38,9 +38,12 @@ $('#nav-search').on('keyup', function(event) {
                   var ingredientArray2 = [];
                   var procedureArray2 = [];
 
-
-                      ingredientArray2.push(Object.values(result.ingredients));
-                      procedureArray2.push(Object.values(result.procedure));
+                  if(result.ingredients !== undefined && result.ingredients !== null){
+                    ingredientArray2.push(Object.values(result.ingredients));
+                  }
+                  if(result.procedure !== undefined && result.procedure !== null){
+                  procedureArray2.push(Object.values(result.procedure));
+                  }
 
 
                   for( i in ingredientArray2){
