@@ -31,8 +31,8 @@ This is a best effort at creating a recipe recommendation program. For the momen
 ## Technologies
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-* [Google Firebase](https://firebase.google.com/)
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [Google Firebase](https://firebase.google.com/)
 
 
 
