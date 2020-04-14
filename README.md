@@ -57,10 +57,14 @@ List of TODOs for future development:
 Please see the status for each team member below.
 
 ### Sprint 2
+
+ - Benjamin Bond: Active and contributing
  
  - Andrew Saenz: Active and contributing
 
  - Evan Estrada: Active and contributing
+ 
+ - Jonathan Crouch: Active and contributing
 
 
 ### Sprint 1
