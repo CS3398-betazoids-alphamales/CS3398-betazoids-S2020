@@ -107,6 +107,13 @@ Please see the next steps for each team member below.
 
 - Fix UI problems to make sure the app is ready for its first release.
 
+### Jonathan
+
+- Refactor index.html to utilize only one scroll panel
+
+- Populate sidebar links with appropriate pages/functionalities
+
+- Taylor website to Android wrapper.
 
 ### Sprint 1
 
@@ -182,6 +189,15 @@ An array of ingredients is created and is used to generate a HTTPS request URL.
 
    https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/cbea832a599c9cbbb435632b53784e30eda87b9c
 
+### Jonathan
+
+- Artifact 1: I created a dynamic pop-up modal for all the individual drink cards.
+
+  https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/b6b3c2e7b3b7a75581b602bf5f779ecd2e693e30
+
+- Artifact 2: I linked the navigation search bar to the search by name function.
+
+  https://github.com/CS3398-betazoids-alphamales/CS3398-betazoids-S2020/commit/e2687608283a027d78044a0d3d7b625e29c6d33c
 
 ### Sprint 1
 
