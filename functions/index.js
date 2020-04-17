@@ -177,7 +177,7 @@ exports.getByName = functions.https.onRequest(async (request, response) => { // 
     var match_count = 0;
 
     try {
-        strToFind = request.query.findthis.toUpperCase();
+        strToFind = request.query.findthis.replace(/\s/g, "").toUpperCase();
         iter = request.query.page;
     } catch (e) {
         console.log("invalid query");
@@ -198,7 +198,7 @@ exports.getByName = functions.https.onRequest(async (request, response) => { // 
 
                 if (eachDrink.name !== null) {
 
-                    var drinkName = eachDrink.name.toUpperCase();
+                    var drinkName = eachDrink.name.replace(/\s/g, "").toUpperCase();
 
                     if ( drinkName.includes(strToFind) ) {
 

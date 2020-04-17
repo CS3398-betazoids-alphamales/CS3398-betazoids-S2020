@@ -8,7 +8,8 @@ $('#nav-search').on('keyup', function(event) {
       navbarSearch();
       panelPurge();
       document.getElementById("nav-search").innerHTML = `<div class="panel-head-wrapper" id="namehead"><h2>Search by Name:</h2></div><br><br>`;
-      if(inner1.split(" ").length == 1 || inner1.split(" ").length == 2 || inner1.split(" ").length == 3){
+      if(inner1.split(" ").length == 1 || inner1.split(" ").length == 2 || inner1.split(" ").length == 3 || inner1.split(" ").length == 4 ){
+        console.log("The search query is: " + inner1);
           getByName(inner1, pageNumber);
       }
   }
