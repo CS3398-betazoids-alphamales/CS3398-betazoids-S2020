@@ -105,16 +105,24 @@
                  autocomplete="off"
                  placeholder="Add Ingredient"
                  ng-model="ctrl.insert">
-        <button type="submit" class="add-btn btn btn-default" ng-click="ctrl.add(ctrl.insert)">
-        +
-      </button>
+        <button type="submit" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
+              +
+            </button>
+            <button type="submit" class="btn btn-default addchip" ng-click="ctrl.negate(ctrl.insert)">
+              -
+            </button>
       </form>
     </div>
-    <ul class="list-inline">
-      <li class="listItem" ng-repeat="elem in ctrl.items">
-        <bl-chips text="{{elem}}" close="ctrl.close(text)"></bl-chips>
-      </li>
-    </ul>
+    <ul class="list-inline" >
+        <li class="listItem" ng-repeat="elem in ctrl.positiveItems">
+          <bl-chips text="{{elem}}" close="ctrl.closePos(text)"></bl-chips>
+        </li>
+      </ul>
+      <ul class="list-inline neg" >
+        <li class="listItem negative" ng-repeat="elem in ctrl.negativeItems">
+          <bl-chips text="{{elem}}" close="ctrl.closeNeg(text)"></bl-chips>
+        </li>
+      </ul>
   </div>
 
 

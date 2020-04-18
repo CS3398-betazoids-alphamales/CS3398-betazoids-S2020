@@ -94,6 +94,15 @@ body{
 
 }
 
+.label{
+  display: block;
+}
+
+.listItem.negative p{
+    text-decoration: line-through;
+    color: red;
+}
+
 .dark-switch{
     margin-left:0px;
 }
@@ -211,6 +220,11 @@ body{
 .btn{
 	width: 80px;
 	font-size: 16px;
+}
+
+.btn.btn-default.addchip{
+  width: 35px;
+  font-size: 16px;
 }
 
 .add-btn{
@@ -451,6 +465,11 @@ body{
 		width: 80px;
 		font-size: 16px;
 	}
+
+  .btn.btn-default.addchip{
+  width: 35px;
+  font-size: 16px;
+}
 	.card-body h4{
 		font-size: 21px;
 	}

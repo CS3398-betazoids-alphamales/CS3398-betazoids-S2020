@@ -1,6 +1,7 @@
 'use strict';
 
 let ingrArray = [];
+let negIngrArray = [];
 
 (function(angular){
 
@@ -14,30 +15,53 @@ let ingrArray = [];
     init();
     
     function init(){
-       self.items = [];
+       self.positiveItems = [];
+       self.negativeItems = [];
        self.insert = '';
     }
    
     self.add = add;
-    self.close = close;
+    self.negate = negate;
+    self.closePos = closePos;
+    self.closeNeg = closeNeg;
     
-    function add(input){
-       if(self.items.indexOf(input) === -1
+   function add(input){
+       if(self.positiveItems.indexOf(input) === -1  
             && self.insert !== ''){
-          self.items.push(input);
+          
+          self.positiveItems.push(input);
           self.insert = '';
-          ingrArray=this.items;
+          ingrArray=this.positiveItems;
        } else {
+         console.log('presente');
        }
     }
 
-    function close(text){
-      self.items = $filter('filter')(self.items, function(value){
-          return value != text;
+    function negate(input){
+        if(self.negativeItems.indexOf(input) === -1
+            && self.insert !== ''){
+          self.negativeItems.push(input);
+          self.insert = '';
+          negIngrArray=this.negativeItems;
+       } else {
+       }
+    }
+    
+    function closePos(text){
+      self.positiveItems = $filter('filter')(self.positiveItems, function(value){
+        return value != text;
       });
-      ingrArray=this.items;
+      ingrArray=this.positiveItems;
+    }
+
+    function closeNeg(text){
+      self.negativeItems = $filter('filter')(self.negativeItems, function(value){
+        return value != text;
+      });
+      negIngrArray=this.negativeItems;
     }
   }
+  
 })(window.angular);
 
 function multiSearch() {
