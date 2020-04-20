@@ -322,7 +322,9 @@ body{
      width:85%;    
   }
 
-  #home{display: block;}
+
+
+  #main-panel{display: block;}
 
   #about{display: none;}
 

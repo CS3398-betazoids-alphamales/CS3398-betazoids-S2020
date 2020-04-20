@@ -1,5 +1,6 @@
 
 document.addEventListener( "DOMContentLoaded", getHome(), false );
+
 document.addEventListener('DOMContentLoaded', function() {
       var firebaseConfig = {
             apiKey: "AIzaSyArwkzp5Fo5C3NHI3RAJWG6D6xlzhlTxGo",
@@ -24,162 +25,44 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-//These open the scrollable panels, which still need to be styled.
+
 $("#homelink").click(function(){
-  $("#ingredient-search").hide();
-  $("#about").hide();
-  $("#services").hide();
-  $("#name-search").hide();
-  $("#browse").hide();
-  $("#alcohol").hide();
-  $("#juices").hide();
-  $("#fruit").hide();
-  $("#other").hide();
-  $("#favorites").hide();
-  $("#home").show();
+  panelPurge();
   getHome();
 });
 
 $("#browselink").click(function(){
-  $("#ingredient-search").hide();
-  $("#about").hide();
-  $("#services").hide();
-  $("#name-search").hide();
-  $("#alcohol").hide();
-  $("#juices").hide();
-  $("#fruit").hide();
-  $("#other").hide();
-  $("#favorites").hide();
-  $("#home").hide();
-  $("#browse").show();
 });
 
 $("#aboutlink").click(function(){
-  $("#ingredient-search").hide();
-  $("#services").hide();
-  $("#name-search").hide();
-  $("#browse").hide();
-  $("#alcohol").hide();
-  $("#juices").hide();
-  $("#fruit").hide();
-  $("#other").hide();
-  $("#favorites").hide();
-  $("#home").hide();
-  $("#about").show();
+  panelPurge();
+  aboutDisplay();
 });
 
 $("#serviceslink").click(function(){
-  $("#ingredient-search").hide();
-  $("#name-search").hide();
-  $("#browse").hide();
-  $("#alcohol").hide();
-  $("#juices").hide();
-  $("#fruit").hide();
-  $("#other").hide();
-  $("#favorites").hide();
-  $("#home").hide();
-  $("#about").hide();
-  $("#services").show();
+  panelPurge();
+  servicesDisplay();
 });
 
 
 $("#alcohollink").click(function(){
-  $("#ingredient-search").hide();
-  $("#name-search").hide();
-  $("#browse").hide();
-  $("#juices").hide();
-  $("#fruit").hide();
-  $("#other").hide();
-  $("#favorites").hide();
-  $("#services").hide();
-  $("#home").hide();
-  $("#about").hide();
-  $("#alcohol").show();
 });
 
 $("#juiceslink").click(function(){
-  $("#ingredient-search").hide();
-  $("#name-search").hide();
-  $("#browse").hide();
-  $("#fruit").hide();
-  $("#other").hide();
-  $("#favorites").hide();
-  $("#home").hide();
-  $("#about").hide();
-  $("#services").hide();
-  $("#alcohol").hide();
-  $("#juices").show();
 });
 
 $("#fruitlink").click(function(){
-  $("#ingredient-search").hide();
-  $("#name-search").hide();
-  $("#browse").hide();
-  $("#other").hide();
-  $("#favorites").hide();
-  $("#home").hide();
-  $("#about").hide();
-  $("#services").hide();
-  $("#alcohol").hide();
-  $("#juices").hide();
-  $("#fruit").show();
 });
 
 $("#otherlink").click(function(){
-  $("#ingredient-search").hide();
-  $("#name-search").hide();
-  $("#browse").hide();
-  $("#favorites").hide();
-  $("#services").hide();
-  $("#home").hide();
-  $("#about").hide();
-  $("#alcohol").hide();
-  $("#juices").hide();
-  $("#fruit").hide();
-  $("#other").show();
 });
 
 $("#favlink").click(function(){
-  $("#ingredient-search").hide();
-  $("#name-search").hide();
-  $("#browse").hide();
-  $("#services").hide();
-  $("#home").hide();
-  $("#about").hide();
-  $("#alcohol").hide();
-  $("#juices").hide();
-  $("#fruit").hide();
-  $("#other").hide();
-  $("#favorites").show();
 });
 
-$("#search-ingredient-button").click(function(){
-    var inner = document.getElementById("sidebar-search").value;
-    console.log(inner);
-
-      sidebarSearch();
-      document.getElementById("ingredient-search").innerHTML = ``;
-      document.getElementById("ingredient-search").innerHTML = `<div class="panel-head-wrapper" id="ingredienthead"><h2>Search by Ingredient:</h2></div><br><br>`;
-      if(inner.split(" ").length == 1 || inner.split(" ").length == 2 || inner.split(" ").length == 3){
-          getByIngredient(inner);
-      }
-});
-
-$("#search-cocktail-button").click(function(){
-    var inner = document.getElementById("nav-search").value;
-    console.log(inner);
-
-      sidebarSearch();
-      document.getElementById("name-search").innerHTML = ``;
-      document.getElementById("name-search").innerHTML = `<div class="panel-head-wrapper" id="ingredienthead"><h2>Search by Ingredient:</h2></div><br><br>`;
-      if(inner.split(" ").length == 1 || inner.split(" ").length == 2 || inner.split(" ").length == 3){
-          getByName(inner);
-      }
-});
 
 $("#multi-search").click(function(){
     panelPurge();
-    sidebarSearch();
     multiSearch();
 });
 
@@ -192,61 +75,53 @@ $("#sideopen").click(function(){
   document.getElementById("side-navigation").style.width = "330px";
 });
 
-function sidebarSearch(){
-  document.getElementById("home").style.display = "none";
-  document.getElementById("about").style.display = "none";
-  document.getElementById("services").style.display = "none";
-  document.getElementById("name-search").style.display = "none";
-  document.getElementById("browse").style.display = "none";
-  document.getElementById("alcohol").style.display = "none";
-  document.getElementById("juices").style.display = "none";
-  document.getElementById("fruit").style.display = "none";
-  document.getElementById("other").style.display = "none";
-  document.getElementById("favorites").style.display = "none";
-  document.getElementById("ingredient-search").style.display = "block";
-}
-
-function navbarSearch(){
-  document.getElementById("home").style.display = "none";
-  document.getElementById("about").style.display = "none";
-  document.getElementById("services").style.display = "none";
-  document.getElementById("browse").style.display = "none";
-  document.getElementById("alcohol").style.display = "none";
-  document.getElementById("juices").style.display = "none";
-  document.getElementById("fruit").style.display = "none";
-  document.getElementById("other").style.display = "none";
-  document.getElementById("favorites").style.display = "none";
-  document.getElementById("ingredient-search").style.display = "none";
-  document.getElementById("name-search").style.display = "block";
-}
-
-
+$('#nav-search').on('keyup', function(event) {
+  var inner1 = document.getElementById("nav-search").value;
+  var pageNumber = 1;
+  console.log(inner1);
+ 
+  if(event.keyCode == 13){
+      document.getElementById("main-panel").innerHTML = `<div class="panel-head-wrapper" id="namehead"><h2>Search by Name:</h2></div><br><br>`;
+      if(inner1.split(" ").length == 1 || inner1.split(" ").length == 2 || inner1.split(" ").length == 3 || inner1.split(" ").length == 4 ){
+        console.log("The search query is: " + inner1);
+          panelPurge();
+          getByName(inner1, pageNumber);
+      }
+  }
+})
 
 function panelPurge(){
-  document.getElementById("home").innerHTML = ``;
-  document.getElementById("ingredient-search").innerHTML = ``;
-  document.getElementById("name-search").innerHTML = ``;
+  document.getElementById("main-panel").innerHTML = ``;
 }
 
 
+function aboutDisplay() {
+    const container = document.getElementById('main-panel');
+    const cont = `<div class="panel-head-wrapper" id="abouthead"><h2>About</h2></div><br><br>        
+    <p>Witches' Brew is a class project being developed by CS students at Texas State University. Currently it is in pre-alpha development with many features yet to come.</p>
+    <p>This app's database is hosted by Google Firebase with native firebase functions handling most of the back-end. The web-app front end is a static HTML page that is updated via JavaScript and CSS.</p>`
 
-  // Get the modal
-  var modal = document.getElementById('loginpopup');
+    container.innerHTML += cont;
+}
 
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-      if (event.target == modal) {
-       modal.style.display = "none";
-    }
-  }
+function servicesDisplay() {
+    const container = document.getElementById('main-panel');
+    const cont = ` <div class="panel-head-wrapper" id="serviceshead"><h2>Services</h2></div><br><br>
+              <div style="text-align:center;" class="container">
+                <h2 style="text-align:center; margin-bottom: 30px; font-weight: 900;"> Custom Drink Addition </h2>
+                <p> Add your <b>custom</b> flavor to the wide variety of spirits and get feedback from the community on its tastiness! </p>
+                <h2 style="text-align:center; margin-bottom: 30px; margin-top: 30px; font-weight: 900;"> Realtime Ratings </h2>
+                <p> Did one of our drinks taste like %$#@? Dont worry! Tell the community with your rating powers so no one falls victim again. </p>
+              </div>`
 
-    // Get the modal
-  var modal1 = document.getElementById('recipepopup-01');
+    container.innerHTML += cont;
+}
 
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-      if (event.target == modal1) {
-       modal1.style.display = "none";
-    }
-  }
+function getHome(){
+  panelPurge();
+  document.getElementById("main-panel").innerHTML = `<div class="panel-head-wrapper" id="homehead"><h2>Welcome to Witches' Brew!</h2></div><br><br>`;
+  getRandom();
+}
+
+
 

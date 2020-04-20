@@ -4,9 +4,8 @@ $('#side-search').on('keyup', function(event) {
   console.log(inner);
  
   if(event.keyCode == 13){
-      sidebarSearch();
       panelPurge();
-      document.getElementById("ingredient-search").innerHTML = `<div class="panel-head-wrapper" id="ingredienthead"><h2>Search by Ingredient:</h2></div><br><br>`;
+      document.getElementById("main-panel").innerHTML = `<div class="panel-head-wrapper" id="ingredienthead"><h2>Search by Ingredient:</h2></div><br><br>`;
       if(inner.split(" ").length == 1 || inner.split(" ").length == 2 || inner.split(" ").length == 3){
           getByIngredient(inner);
       }
@@ -28,7 +27,7 @@ $('#side-search').on('keyup', function(event) {
           if (this.readyState == 4 && this.status == 200) {
               var data = JSON.parse(this.responseText);
               console.log(data);
-              const container = document.getElementById('ingredient-search');
+              const container = document.getElementById('main-panel');
 
                   data.forEach((result, idx) => {
                   // Create card element

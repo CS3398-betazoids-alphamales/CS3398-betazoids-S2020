@@ -1,8 +1,3 @@
-function getHome(){
-  document.getElementById("home").innerHTML = `<div class="panel-head-wrapper" id="homehead"><h2>Welcome to Witches' Brew!</h2></div><br><br>`;
-  getRandom();
-}
-
 function getRandom() {
 
       
@@ -17,7 +12,7 @@ function getRandom() {
           if (this.readyState == 4 && this.status == 200) {
               var data = JSON.parse(this.responseText);
               console.log(data);
-              const container = document.getElementById('home');
+              const container = document.getElementById('main-panel');
 
                   data.forEach((result, idx) => {
                   // Create card element

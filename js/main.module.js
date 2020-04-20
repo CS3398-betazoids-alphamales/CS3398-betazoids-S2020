@@ -78,14 +78,14 @@ function multiSearch() {
 
     xhttp.open('POST', targetUrl);
 
-    document.getElementById("home").innerHTML = `<div class="panel-head-wrapper" id="homehead"></div><br><br>`;
+    document.getElementById("main-panel").innerHTML = `<div class="panel-head-wrapper" id="homehead"></div><br><br>`;
 
     xhttp.onreadystatechange = function() {
 
         if (this.readyState == 4 && this.status == 200) {
             var data = JSON.parse(this.responseText);
             console.log(data);
-            const container = document.getElementById('ingredient-search');
+            const container = document.getElementById('main-panel');
 
             data.forEach((result, idx) => {
                 // Create card element

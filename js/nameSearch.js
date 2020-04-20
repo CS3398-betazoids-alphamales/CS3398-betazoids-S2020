@@ -1,19 +1,5 @@
 
-$('#nav-search').on('keyup', function(event) {
-  var inner1 = document.getElementById("nav-search").value;
-  var pageNumber = 1;
-  console.log(inner1);
- 
-  if(event.keyCode == 13){
-      navbarSearch();
-      panelPurge();
-      document.getElementById("nav-search").innerHTML = `<div class="panel-head-wrapper" id="namehead"><h2>Search by Name:</h2></div><br><br>`;
-      if(inner1.split(" ").length == 1 || inner1.split(" ").length == 2 || inner1.split(" ").length == 3 || inner1.split(" ").length == 4 ){
-        console.log("The search query is: " + inner1);
-          getByName(inner1, pageNumber);
-      }
-  }
-})
+
 
  function getByName(searchText, pageNumber) {
 
@@ -30,7 +16,7 @@ $('#nav-search').on('keyup', function(event) {
           if (this.readyState == 4 && this.status == 200) {
               var data = JSON.parse(this.responseText);
               console.log(data);
-              const container1 = document.getElementById('name-search');
+              const container = document.getElementById('main-panel');
 
                   data.forEach((result, idx) => {
                   // Create card element
@@ -113,7 +99,7 @@ $('#nav-search').on('keyup', function(event) {
 
                          <div class="container">
                             <div class="row">
-                              <div class="col-sm-12">
+                              <div class="col-lg-12">
                                 <div class="star-rating star-rating-modal">
                                   ` + starRating + `
                                   <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
@@ -137,7 +123,7 @@ $('#nav-search').on('keyup', function(event) {
                   </div>
                   `;
 
-          container1.innerHTML += cont;
+          container.innerHTML += cont;
 
            
                   for(i in ingredientArray2){
