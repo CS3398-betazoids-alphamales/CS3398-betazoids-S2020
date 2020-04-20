@@ -37,11 +37,7 @@
                   console.log("Now the ingredient array has: ");
                   console.log(ingredientArray2[i]);
                   }
-                  for( i in procedureArray2){
-                  console.log("Now the procedure array has: ");
-                  console.log(procedureArray2[i]);
-                  }
-
+                  
                   let resultRating = 0;
                   console.log("this is result.rating: " + result.rating);
                   if ( result.rating !== undefined){
@@ -58,9 +54,14 @@
                   }
                   console.log(starRating);
 
+                  for( i in procedureArray2){
+                  console.log("Now the procedure array has: ");
+                  console.log(procedureArray2[i]);
+                  }
+
 
                   const cont =
-                  `<div class="col-md-4" style="display:inline-grid">
+                  `<div class="col-md-4 name" style="display:inline-grid">
                   <div class="card">
                     <div class="card-block" id="card-block-${idx}">
                       <img class="card-img-top" src="style/amaretto.jpg" alt="Card image" style="width:100%">
@@ -99,7 +100,7 @@
 
                          <div class="container">
                             <div class="row">
-                              <div class="col-lg-12">
+                              <div class="col-sm-12">
                                 <div class="star-rating star-rating-modal">
                                   ` + starRating + `
                                   <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
@@ -126,14 +127,14 @@
           container.innerHTML += cont;
 
            
-                  for(i in ingredientArray2){
+                  for(const i in ingredientArray2){
                     var z = document.createElement('p');
                     var x = document.createTextNode(ingredientArray2[i]);
                     z.appendChild(x);
                     document.getElementById("card-body-" + idx).appendChild(z);
 
                   }
-                  for(i in ingredientArray2){
+                  for(const i in ingredientArray2){
                     var j = document.createElement('p');
                     var k = document.createTextNode(ingredientArray2[i]);
                     j.appendChild(k);
