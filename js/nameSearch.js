@@ -61,7 +61,7 @@
 
 
                   const cont =
-                  `<div class="col-md-4 name" style="display:inline-grid">
+                  `<div class="col-md-4" style="display:inline-grid">
                   <div class="card">
                     <div class="card-block" id="card-block-${idx}">
                       <img class="card-img-top" src="style/amaretto.jpg" alt="Card image" style="width:100%">
@@ -71,58 +71,59 @@
                           <a href="#" class="btn btn-primary" onclick="document.getElementById('recipepopup-${idx}').style.display='block'">Recipe</a>
                           <div class="container">
                             <div class="row">
-                              <div class="col-sm-12">
+                              <div class="col-lg-12">
                                 <div class="star-rating">` + starRating + `
                                   <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
                                 </div>
                               </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                     </div>
 
-                      <!-- The Recipe Modal -->
-            <div id="recipepopup-${idx}" class="modal">
-              <span onclick="document.getElementById('recipepopup-${idx}').style.display='none'"
-            class="close" title="Close Modal">&times;</span>
 
-              <!-- Modal Content -->
-              <form class="modal-content-recipe animate" action=" # ">
-                <div class="imgcontainer">
-                  <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink rounded">
-                </div>
-
-                <div class="title-container modal-container">
-                  <h2>${result.name}</h2>
-                  <h4>${result.form.type}</h4>
-                </div>
-
-                         <div class="container">
-                            <div class="row">
-                              <div class="col-sm-12">
-                                <div class="star-rating star-rating-modal">
-                                  ` + starRating + `
-                                  <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
+                    <!-- The Recipe Modal -->
+                    <div id="recipepopup-${idx}" class="modal">
+                      <span onclick="document.getElementById('recipepopup-${idx}').style.display='none'"
+                    class="close" title="Close Modal">&times;</span>
+  
+                      <!-- Modal Content -->
+                      <form class="modal-content-recipe animate" action=" # ">
+                        <div class="imgcontainer">
+                          <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink rounded">
+                        </div>
+  
+                        <div class="title-container modal-container">
+                          <h2>${result.name}</h2>
+                          <h4>${result.form.type}</h4>
+                        </div>
+  
+  
+                           <div class="container">
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <div class="star-rating star-rating-modal"> ` + starRating + `
+                                    <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-
-                <div class="recipe-container modal-container" id="search-recipe-container-${idx}">
-                  <h5>Ingredients:</h5>
-                  
-                </div>
-
-                <div class="procedure-container modal-container" id="procedure-container-${idx}">
-                           <h5>To make it:</h5>
-                        
+  
+                        <div class="recipe-container modal-container" id="search-recipe-container-${idx}">
+                          <h5>Ingredients:</h5>
+                          
                         </div>
-              </form>
-            </div>
-
-                  </div>
-                  `;
+  
+                        <div class="procedure-container modal-container" id="procedure-container-${idx}">
+                          <h5>To make it:</h5>
+                          
+                        </div>
+                      </form>
+                    </div>
+  
+                    </div>`;
 
           container.innerHTML += cont;
 
