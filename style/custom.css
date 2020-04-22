@@ -499,6 +499,9 @@ body{
 
 
 @media screen and (max-width: 768px) {
+  .navbar-brand{
+    font-size: 20px;
+}
 	.btn{
 		width: 70px;
 		font-size: 12px;
