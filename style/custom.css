@@ -39,6 +39,10 @@ body{
     color: white;
 }
 
+.btn.btn-primary.load-more{
+  margin-top: 30px;
+  width: 150px;
+}
 
 .card{
 	max-width: 230px;

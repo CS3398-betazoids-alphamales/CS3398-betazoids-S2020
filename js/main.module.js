@@ -2,6 +2,7 @@
 
 let ingrArray = [];
 let negIngrArray = [];
+let lmMultiPage = 1;
 
 
 (function(angular){
@@ -70,9 +71,25 @@ let negIngrArray = [];
   
 })(window.angular);
 
-function multiSearch() {
+$("#multi-search").click(function(){
+	panelPurge();
+	lmMultiPage = 1;
+    multiSearch(lmMultiPage);
+});
+
+function multiLoadMore(){
+    var element = document.getElementById("lm-container");
+    element.parentNode.removeChild(element);
+    lmMultiPage++;
+    console.log("The page # is: " + lmMultiPage);
+    multiSearch(lmMultiPage);
+}
+
+function multiSearch(lmMultiPage) {
+	let page = lmMultiPage;
+
     var targetUrl = 'https://us-central1-rvrslkupdb.cloudfunctions.net/' +
-        'getByIngredientStrict?page=1&total=' + ingrArray.length;
+        'getByIngredientStrict?page=' + page + '&total=' + ingrArray.length;
 
     for (let i = 0; i < ingrArray.length; i++) {
         let ingredient = '&findthis' + [i + 1] + '=' + ingrArray[i].toString().replace(/ /g, '+');
@@ -87,8 +104,6 @@ function multiSearch() {
     var xhttp = new XMLHttpRequest();
 
     xhttp.open('POST', targetUrl);
-
-    document.getElementById("main-panel").innerHTML = `<div class="panel-head-wrapper" id="homehead"></div><br><br>`;
 
     xhttp.onreadystatechange = function() {
 
@@ -137,20 +152,29 @@ function multiSearch() {
                     console.log("Now the ingredient array has: ");
                     console.log(ingredientArray1[i]);
                 }
+
+                let index = idx;
+
+                  if (lmMultiPage > 1) {
+                    for (var i = 1; i < lmMultiPage; i++) {
+                      index = index + 24;
+                    }
+                  }
+
                 const cont =
                     `<div class="col-md-4" style="display:inline-grid">
                   <div class="card">
-                    <div class="card-block" id="card-block-${idx}">
+                    <div class="card-block" id="card-block-${index}">
                       <img class="card-img-top" src="style/amaretto.jpg" alt="Card image" style="width:100%">
-                        <div class="card-body" id="card-body-${idx}">
+                        <div class="card-body" id="card-body-${index}">
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
-                          <a href="#" class="btn btn-primary" onclick="document.getElementById('recipepopup-${idx}').style.display='block'">Recipe</a>
+                          <a href="#" class="btn btn-primary" onclick="document.getElementById('recipepopup-${index}').style.display='block'">Recipe</a>
                           <div class="container">
                             <div class="row">
                               <div class="col-lg-12">
                                 <div class="star-rating">` + starRating + `
-                                  <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
+                                  <input type="hidden" name="${result.name}" id="hiddenRating-${index}" class="rating-value" value="2.56">
                                 </div>
                               </div>
                             </div>
@@ -162,8 +186,8 @@ function multiSearch() {
 
 
                     <!-- The Recipe Modal -->
-                    <div id="recipepopup-${idx}" class="modal">
-                      <span onclick="document.getElementById('recipepopup-${idx}').style.display='none'"
+                    <div id="recipepopup-${index}" class="modal">
+                      <span onclick="document.getElementById('recipepopup-${index}').style.display='none'"
                     class="close" title="Close Modal">&times;</span>
   
                       <!-- Modal Content -->
@@ -182,18 +206,18 @@ function multiSearch() {
                               <div class="row">
                                 <div class="col-sm-12">
                                   <div class="star-rating star-rating-modal"> ` + starRating + `
-                                    <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
+                                    <input type="hidden" name="${result.name}" id="hiddenRating-${index}" class="rating-value" value="2.56">
                                   </div>
                                 </div>
                               </div>
                             </div>
   
-                        <div class="recipe-container modal-container" id="recipe-container-${idx}">
+                        <div class="recipe-container modal-container" id="recipe-container-${index}">
                           <h5>Ingredients:</h5>
                           
                         </div>
   
-                        <div class="procedure-container modal-container" id="procedure-container-${idx}">
+                        <div class="procedure-container modal-container" id="procedure-container-${index}">
                           <h5>To make it:</h5>
                           
                         </div>
@@ -209,29 +233,40 @@ function multiSearch() {
                     var z = document.createElement('p');
                     var x = document.createTextNode(ingredientArray1[i]);
                     z.appendChild(x);
-                    console.log(document.getElementById("collapse-"+ idx));
-                    document.getElementById("card-body-" + idx).appendChild(z);
+                    console.log(document.getElementById("collapse-"+ index));
+                    document.getElementById("card-body-" + index).appendChild(z);
                 }
 
                 for(const i in ingredientArray1){
                     var j = document.createElement('p');
                     var k = document.createTextNode(ingredientArray1[i]);
                     j.appendChild(k);
-                    console.log(document.getElementById("collapse-"+ idx));
-                    document.getElementById("recipe-container-" + idx).appendChild(j);
+                    console.log(document.getElementById("collapse-"+ index));
+                    document.getElementById("recipe-container-" + index).appendChild(j);
                 }
 
                 for(i in procedureArray){
                   var v = document.createElement('p');
                   var w = document.createTextNode(procedureArray[i]);
                   v.appendChild(w);
-                  document.getElementById("procedure-container-" + idx).appendChild(v);
+                  document.getElementById("procedure-container-" + index).appendChild(v);
                 }
 
                 // Append newyly created card element to the container
                 //   container.innerHTML += content;
 
             })
+
+
+			const container1 = document.getElementById('main-panel');
+                  const loadMore = `<div class="container" id="lm-container">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-8 text-center">
+                                              <a href="#" class="btn btn-primary load-more" onclick="multiLoadMore()">Load More</a>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                  container1.innerHTML += loadMore;
 
 
             // Dynamically load star rating script after all elements have been created
