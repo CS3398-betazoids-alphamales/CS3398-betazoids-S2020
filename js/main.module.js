@@ -78,6 +78,10 @@ function multiSearch() {
         let ingredient = '&findthis' + [i + 1] + '=' + ingrArray[i].toString().replace(/ /g, '+');
         targetUrl = targetUrl.concat(ingredient);
     }
+    for (let i = 0; i < negIngrArray.length; i++) {
+        let ingredient = '&not' + [i + 1] + '=' + negIngrArray[i].toString().replace(/ /g, '+');
+        targetUrl = targetUrl.concat(ingredient);
+    }
     console.log(targetUrl);
 
     var xhttp = new XMLHttpRequest();
