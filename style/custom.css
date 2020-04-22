@@ -123,8 +123,13 @@ body{
 	margin-top: 6vw;
 }
 
+.navbar-brand{
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    margin-right:50px;
+}
+
 .navbar-brand img{
-	width: 4vw;
 }
 
 .navbar-brand h2{
@@ -133,7 +138,7 @@ body{
 
 #navsearch{
 	margin-right: 0px;
-	margin-top: 3vw;
+	margin-top: 5.8vw;
 }
 
 

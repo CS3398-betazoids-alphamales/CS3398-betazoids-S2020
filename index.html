@@ -18,6 +18,7 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link href="style/custom.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dark-mode/dark-mode.css">
 
 </head>
@@ -27,19 +28,13 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top border border-top-0 border border-right-0 border border-left-0 border-secondary">
     <div class="container">
-
-      <div class="dark-switch custom-control custom-switch" >
-        <input type="checkbox" class="custom-control-input" id="darkSwitch">
-        <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
-      </div>
-
-      <a class="navbar-brand" href="#"><img src="style/cocktail.png"> Witches' Brew</a>
-
-
+      <a class="navbar-brand" href="#">
+        <img src="style/cocktail.png" width="60" height="100" class="d-inline-block align-bottom" alt="">
+        Witches' Brew
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
@@ -48,16 +43,23 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" id="aboutlink" href=" # ">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="serviceslink" href=" # ">Services</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              More
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" id="aboutlink" href=" # ">About</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" id="serviceslink" href=" # ">Services</a>
+              <div class="dropdown-divider"></div>
+              <div  class="dark-switch custom-control custom-switch" >
+              <input type="checkbox" class="custom-control-input" id="darkSwitch">
+              <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+            </div>
+            </div>
           </li>
           <li class="nav-item" id="navsearch">
             <!-- Search form -->
-
-
            <div class="input-group" id="navbar-search">
                 <input class="form-control py-2 border-right-0 border typeahead" id="nav-search" style="width: 300px; position: absolute;" type="text" spellcheck="false" placeholder="Find a Cocktail" autocomplete="off">
                 <span class="input-group-append" style="right: 20%;">
