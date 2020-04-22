@@ -40,7 +40,7 @@ body{
 }
 
 .btn.btn-primary.load-more{
-  margin-top: 30px;
+  margin: 50px;
   width: 150px;
 }
 
@@ -324,7 +324,7 @@ body{
 
  .scrollable-panel{
      min-height:620px;
-     height: 55vh;
+     height: 75vh;
      max-height: 700px;
      overflow-y: auto;
      margin: auto;
