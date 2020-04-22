@@ -324,7 +324,7 @@ body{
 
  .scrollable-panel{
      min-height:620px;
-     height: 100vh;
+     height: 70vh;
      max-height: 700px;
      overflow-y: auto;
      margin: auto;
