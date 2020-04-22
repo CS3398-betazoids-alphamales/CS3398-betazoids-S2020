@@ -60,13 +60,6 @@ $("#otherlink").click(function(){
 $("#favlink").click(function(){
 });
 
-
-$("#multi-search").click(function(){
-    panelPurge();
-    multiSearch();
-});
-
-
 $("#sideexit").click(function(){
   document.getElementById("side-navigation").style.width = "0";
 });
@@ -75,20 +68,9 @@ $("#sideopen").click(function(){
   document.getElementById("side-navigation").style.width = "330px";
 });
 
-$('#nav-search').on('keyup', function(event) {
-  var inner1 = document.getElementById("nav-search").value;
-  var pageNumber = 1;
-  console.log(inner1);
- 
-  if(event.keyCode == 13){
-      document.getElementById("main-panel").innerHTML = `<div class="panel-head-wrapper" id="namehead"><h2>Search by Name:</h2></div><br><br>`;
-      if(inner1.split(" ").length == 1 || inner1.split(" ").length == 2 || inner1.split(" ").length == 3 || inner1.split(" ").length == 4 ){
-        console.log("The search query is: " + inner1);
-          panelPurge();
-          getByName(inner1, pageNumber);
-      }
-  }
-})
+$("#lm-home").click(function(){
+
+});
 
 function panelPurge(){
   document.getElementById("main-panel").innerHTML = ``;

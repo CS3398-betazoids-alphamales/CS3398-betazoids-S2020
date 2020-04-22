@@ -1,4 +1,29 @@
+let lmNamePage = 1;
+let lastSearch = " ";
 
+
+$('#nav-search').on('keyup', function(event) {
+  var inner1 = document.getElementById("nav-search").value;
+  console.log(inner1);
+ 
+  if(event.keyCode == 13){
+      document.getElementById("main-panel").innerHTML = `<div class="panel-head-wrapper" id="namehead"><h2>Search by Name:</h2></div><br><br>`;
+      if(inner1.split(" ").length == 1 || inner1.split(" ").length == 2 || inner1.split(" ").length == 3 || inner1.split(" ").length == 4 ){
+        console.log("The search query is: " + inner1);
+          lmNamePage = 1;
+          panelPurge();
+          getByName(inner1, lmNamePage);
+      }
+  }
+})
+
+function nameLoadMore(){
+    var element = document.getElementById("lm-container");
+    element.parentNode.removeChild(element);
+    lmNamePage++;
+    console.log("The page # is: " + lmNamePage);
+    getByName(lastSearch, lmNamePage);
+}
 
 
  function getByName(searchText, pageNumber) {
@@ -7,6 +32,7 @@
       
       let page = pageNumber;
       let search1 = searchText.trim();
+      lastSearch = search1;
 
       var targetUrl1 = 'https://us-central1-rvrslkupdb.cloudfunctions.net/getByName?findthis=' + search1 + "&page=" + page;
       xhttp1.open('POST', targetUrl1);
@@ -59,21 +85,28 @@
                   console.log(procedureArray2[i]);
                   }
 
+                  let index = idx;
+
+                  if (lmNamePage > 1) {
+                    for (var i = 1; i < lmNamePage; i++) {
+                      index = index + 24;
+                    }
+                  }
 
                   const cont =
                   `<div class="col-md-4 name" style="display:inline-grid">
                   <div class="card">
-                    <div class="card-block" id="card-block-${idx}">
+                    <div class="card-block" id="card-block-${index}">
                       <img class="card-img-top" src="style/amaretto.jpg" alt="Card image" style="width:100%">
-                        <div class="card-body" id="card-body-${idx}">
+                        <div class="card-body" id="card-body-${index}">
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
-                          <a href="#" class="btn btn-primary" onclick="document.getElementById('recipepopup-${idx}').style.display='block'">Recipe</a>
+                          <a href="#" class="btn btn-primary" onclick="document.getElementById('recipepopup-${index}').style.display='block'">Recipe</a>
                           <div class="container">
                             <div class="row">
                               <div class="col-sm-12">
                                 <div class="star-rating">` + starRating + `
-                                  <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
+                                  <input type="hidden" name="${result.name}" id="hiddenRating-${index}" class="rating-value" value="2.56">
                                 </div>
                               </div>
                             </div>
@@ -87,6 +120,7 @@
               <span onclick="document.getElementById('recipepopup-${idx}').style.display='none'"
             class="close" title="Close Modal">&times;</span>
 
+<<<<<<< Updated upstream
               <!-- Modal Content -->
               <form class="modal-content-recipe animate" action=" # ">
                 <div class="imgcontainer">
@@ -117,6 +151,43 @@
                 <div class="procedure-container modal-container" id="procedure-container-${idx}">
                            <h5>To make it:</h5>
                         
+=======
+                    <!-- The Recipe Modal -->
+                    <div id="recipepopup-${index}" class="modal">
+                      <span onclick="document.getElementById('recipepopup-${index}').style.display='none'"
+                    class="close" title="Close Modal">&times;</span>
+  
+                      <!-- Modal Content -->
+                      <form class="modal-content-recipe animate" action=" # ">
+                        <div class="imgcontainer">
+                          <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink rounded">
+                        </div>
+  
+                        <div class="title-container modal-container">
+                          <h2>${result.name}</h2>
+                          <h4>${result.form.type}</h4>
+                        </div>
+  
+  
+                           <div class="container">
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <div class="star-rating star-rating-modal"> ` + starRating + `
+                                    <input type="hidden" name="${result.name}" id="hiddenRating-${index}" class="rating-value" value="2.56">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+  
+                        <div class="recipe-container modal-container" id="search-recipe-container-${index}">
+                          <h5>Ingredients:</h5>
+                          
+                        </div>
+  
+                        <div class="procedure-container modal-container" id="procedure-container-${index}">
+                          <h5>To make it:</h5>
+                          
+>>>>>>> Stashed changes
                         </div>
               </form>
             </div>
@@ -124,21 +195,20 @@
                   </div>
                   `;
 
-          container.innerHTML += cont;
-
+                    container.innerHTML += cont;
            
                   for(const i in ingredientArray2){
                     var z = document.createElement('p');
                     var x = document.createTextNode(ingredientArray2[i]);
                     z.appendChild(x);
-                    document.getElementById("card-body-" + idx).appendChild(z);
+                    document.getElementById("card-body-" + index).appendChild(z);
 
                   }
                   for(const i in ingredientArray2){
                     var j = document.createElement('p');
                     var k = document.createTextNode(ingredientArray2[i]);
                     j.appendChild(k);
-                    document.getElementById("search-recipe-container-" + idx).appendChild(j);
+                    document.getElementById("search-recipe-container-" + index).appendChild(j);
 
                   }
 
@@ -146,7 +216,7 @@
                     var v = document.createElement('p');
                     var w = document.createTextNode(procedureArray2[i]);
                     v.appendChild(w);
-                    document.getElementById("procedure-container-" + idx).appendChild(v);
+                    document.getElementById("procedure-container-" + index).appendChild(v);
                   }
 
 
@@ -154,6 +224,15 @@
                   //   container.innerHTML += content;
 
                   })
+                  const container1 = document.getElementById('main-panel');
+                  const loadMore = `<div class="container" id="lm-container">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-8 text-center">
+                                              <a href="#" class="btn btn-primary load-more" onclick="nameLoadMore()" id="lm-name-search">Load More</a>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                  container1.innerHTML += loadMore;
 
 
                   // Dynamically load star rating script after all elements have been created
