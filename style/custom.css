@@ -263,6 +263,10 @@ body{
 
 }
 
+.form-inline .form-control{
+  width: 230px !important;
+}
+
 .input-group > .typeahead {
 	flex: 1 1 auto;
 	width: auto;
