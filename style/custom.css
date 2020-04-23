@@ -301,9 +301,9 @@ body{
   }
 
   .custom-control-label{
-      font-size: 25px;
       margin-left: 0px;
-
+      font-size: 20px;
+      text-align: center;
   }
 
 
