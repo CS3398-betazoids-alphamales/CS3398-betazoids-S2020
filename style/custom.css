@@ -506,7 +506,7 @@ body{
 
 @media screen and (max-width: 768px) {
   .sidenav {
-  height: 82%;
+  height: 95%;
   overflow-y: auto;
 }
   .navbar-brand{
