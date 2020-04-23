@@ -300,6 +300,13 @@ body{
       color:white;
   }
 
+  .custom-control-label{
+      font-size: 25px;
+      margin-left: 0px;
+
+  }
+
+
   .tt-menu {
 	background-color: white;
 	border: 1px solids rgba(0, 0, 0, 0.2);
