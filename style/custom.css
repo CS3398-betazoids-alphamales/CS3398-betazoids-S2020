@@ -170,11 +170,12 @@ body{
  /* The sidebar menu */
 .sidenav {
   align-items: stretch;
-  height: 100%; 
+  height: 86%; 
   position: fixed; 
   z-index: 1; 
   left: 0;
   overflow-x: hidden;
+  overflow-y: auto;
   padding-top: 70px;
   transition: 0.5s;
   background-color:#f9f6f7;
@@ -239,6 +240,10 @@ body{
 
 .add-btn{
     color:black;
+}
+
+.btn.btn-primary.submit-button{
+  margin-bottom: 100px;
 }
 
 .add-btn:hover {
@@ -500,6 +505,10 @@ body{
 
 
 @media screen and (max-width: 768px) {
+  .sidenav {
+  height: 82%;
+  overflow-y: auto;
+}
   .navbar-brand{
     font-size: 20px;
 }
