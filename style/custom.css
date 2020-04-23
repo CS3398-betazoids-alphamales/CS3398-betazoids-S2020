@@ -512,6 +512,10 @@ body{
   .navbar-brand{
     font-size: 20px;
 }
+.navbar-brand img{
+  height: 30px;
+  width: 20px;
+}
 	.btn{
 		width: 70px;
 		font-size: 12px;
