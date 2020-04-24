@@ -40,6 +40,30 @@
   color: #eeeeee;
 }
 
+[data-theme="dark"] h4 {
+  color: #eeeeee;
+}
+
+[data-theme="dark"] h5 {
+  color: #eeeeee;
+}
+
+[data-theme="dark"] .fa-star-o {
+  color: #eeeeee;
+}
+
+[data-theme="dark"] .dropdown-menu {
+  background-color: #393e46;
+}
+
+[data-theme="dark"] .dropdown-item {
+  color: #eeeeee;
+}
+
+[data-theme="dark"] .dropdown-item:hover {
+  color: black;
+}
+
 [data-theme="dark"] .typeahead {
   background-color: #eeeeee !important;
 }
