@@ -87,3 +87,10 @@
   scrollbar-color: black;
 }
 
+
+[data-theme="dark"] .dropdown-container {
+  background-color: #222831;
+}
+
+
+
