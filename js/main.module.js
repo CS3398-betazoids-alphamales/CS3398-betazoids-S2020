@@ -12,18 +12,18 @@ let lmMultiPage = 1;
     var app = angular.module('mainModule', ['chips']);
   
   app.controller('mainController',mainController);
-  
+
   function mainController($filter){
     let self = this;
 
-    init();
-    
+      init();
+
     function init(){
        self.positiveItems = [];
        self.negativeItems = [];
        self.insert = '';
     }
-   
+
     self.add = add;
     self.negate = negate;
     self.closePos = closePos;
@@ -32,13 +32,12 @@ let lmMultiPage = 1;
    function add(input){
        let exists = allIngredients.includes(self.insert);
        console.log(exists);
-       if(self.positiveItems.indexOf(input) === -1  
+       if(self.positiveItems.indexOf(input) === -1
             && self.insert !== '' && exists){
           self.positiveItems.push(input);
           self.insert = '';
           ingrArray=this.positiveItems;
        } else {
-           alert("Please enter a valid ingredient");
        }
     }
 
@@ -50,10 +49,9 @@ let lmMultiPage = 1;
           self.insert = '';
           negIngrArray=this.negativeItems;
        } else {
-            alert("Please enter a valid ingredient");
         }
     }
-    
+
     function closePos(text){
       self.positiveItems = $filter('filter')(self.positiveItems, function(value){
         return value != text;
@@ -68,7 +66,7 @@ let lmMultiPage = 1;
       negIngrArray=this.negativeItems;
     }
   }
-  
+
 })(window.angular);
 
 $("#multi-search").click(function(){

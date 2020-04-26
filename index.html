@@ -108,55 +108,63 @@
           <bl-chips text="{{elem}}" close="ctrl.closeNeg(text)"></bl-chips>
         </li>
       </ul>
-  </div>
 
-
-  <a id="browselink" href="#"><p>Browse Ingredients</p></a>
-
-  <button class="dropdown-btn border border-bottom-0 border-right-0 border border-left-0 border-secondary">Alcohol
+  <button class="dropdown-btn border border-bottom-0 border-right-0 border border-left-0 border-secondary">Browse Ingredients
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="#">Whiskey</a>
-    <a href="#">Gin</a>
-    <a href="#">Rum</a>
+
+      <form class="form-inline">
+        <select id="spirits" class="custom-select " ng-model="ctrl.insert" >
+          <option value="" selected disabled>Spirits</option>
+          <option value="bourbon">bourbon</option>
+          <option value="vodka">vodka</option>
+          <option value="gin">gin</option>
+          <option value="rum">rum</option>
+          </select>
+        <button type="submit" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
+          +
+        </button>
+      </form>
+    <form class="form-inline">
+      <select id="alcohols" class="custom-select " ng-model="ctrl.insert" >
+        <option value="" selected disabled>Juices</option>
+        <option value="bourbon">bourbon</option>
+        <option value="vodka">vodka</option>
+        <option value="gin">gin</option>
+        <option value="rum">rum</option>
+      </select>
+      <button type="submit" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
+        +
+      </button>
+    </form>
+    <form class="form-inline">
+      <select id="alcohols" class="custom-select " ng-model="ctrl.insert" >
+        <option value="" selected disabled>Other</option>
+        <option value="bourbon">bourbon</option>
+        <option value="vodka">vodka</option>
+        <option value="gin">gin</option>
+        <option value="rum">rum</option>
+      </select>
+      <button type="submit" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
+        +
+      </button>
+    </form>
+    <form class="form-inline">
+      <select id="alcohols" class="custom-select "  ng-model="ctrl.insert" >
+        <option value="" selected disabled>Popular</option>
+        <option value="bourbon">bourbon</option>
+        <option value="vodka">vodka</option>
+        <option value="gin">gin</option>
+        <option value="rum">rum</option>
+      </select>
+      <button type="submit" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
+        +
+      </button>
+    </form>
+  </div>
   </div>
 
-  <button class="dropdown-btn border border-bottom-0 border-right-0 border border-left-0 border-secondary">Juices
-    <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <a href="#">Lemon Juice</a>
-    <a href="#">Lime Juice</a>
-    <a href="#">Orange Juice</a>
-  </div>
-
-  <button class="dropdown-btn border border-bottom-0 border-right-0 border border-left-0 border-secondary">Fruit
-    <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <a href="#">Lemon</a>
-    <a href="#">Lime</a>
-    <a href="#">Cherry</a>
-  </div>
-
-  <button class="dropdown-btn border border-bottom-0 border-right-0 border border-left-0 border-secondary">Other
-    <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <a href="#">Bitters</a>
-    <a href="#">Sweet Vermouth</a>
-    <a href="#">Simple Syrup</a>
-  </div>
-
-  <button class="dropdown-btn border border-bottom border-right-0 border border-left-0 border-secondary">Popular
-    <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <a href="#">Whiskey</a>
-    <a href="#">Lemon Juice</a>
-    <a href="#">Lime Juice</a>
-  </div>
 
 
   <div class="text-center">
