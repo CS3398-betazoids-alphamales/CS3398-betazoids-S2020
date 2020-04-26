@@ -80,7 +80,7 @@
   <a href="javascript:void(0)" class="closebtn" id="sideexit" >&times;</a>
 
   <div ng-controller="mainController as ctrl">
-    <div class="row">
+    <div class="row pad">
       <form class="form-inline">
           <input type="text"
                  class="form-control py-2 border-right-0 border typeahead"
@@ -129,7 +129,27 @@
 
 
 </div>
-<button class="openbtn" id="sideopen">&#9776; Open Sidebar</button>
+
+
+
+
+	<button class="openbtn" id="sideopen">&#9776; Open Sidebar</button>
+		<div class="container namesearch-container" id="namesearchcont">
+			<div class="input-group name-search-bar" id="body-search">
+		                <input class="form-control py-2 border-right-0 border typeahead body-search" id="nav-search2" style="width: 300px;" type="text" spellcheck="false" placeholder="Find a Cocktail" autocomplete="off">
+		                <span class="input-group-append">
+		                   <div class="input-group-text bg-transparent" id="search-cocktail-button-body"><i class="fa fa-search"></i></div>
+		                </span>
+		            </div>
+
+		</div>
+		
+
+
+
+			
+
+
 
   <!-- Page Content -->
   <div class="container" id="content-wrapper">
