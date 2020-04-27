@@ -89,7 +89,12 @@
 
 
 [data-theme="dark"] .dropdown-container {
+  background-color: #393e46;
+}
+
+[data-theme="dark"] .browse-selection {
   background-color: #222831;
+  color:white; 
 }
 
 
