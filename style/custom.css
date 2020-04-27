@@ -163,8 +163,8 @@ body{
 .navbar-brand p{
   position: absolute;
   font-size: 12px;
-  margin-left: 120px;
-  bottom: -6px;
+  margin-left: 100px;
+  bottom: -8px;
   color: black !important;
 }
 
@@ -598,7 +598,7 @@ body{
 .navbar-brand p{
   font-size: 14px;
   margin-left: 100px;
-  bottom: -0.32vw;
+  bottom: -0.37vw;
   color: black !important;
 }
 	.btn{
