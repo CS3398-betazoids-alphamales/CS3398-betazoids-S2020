@@ -115,7 +115,7 @@
   <div class="dropdown-container">
 
       <form class="form-inline">
-        <select id="spirits" class="custom-select " ng-model="ctrl.insert" >
+        <select id="spirits" class="custom-select browse-selection" ng-model="ctrl.insert" >
           <option value="" selected disabled>Spirits</option>
           <option value="bourbon">bourbon</option>
           <option value="vodka">vodka</option>
@@ -125,47 +125,32 @@
         <button type="submit" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
           +
         </button>
-      </form>
-    <form class="form-inline">
-      <select id="alcohols" class="custom-select " ng-model="ctrl.insert" >
+
+      <select id="juice" class="custom-select browse-selection" ng-model="ctrl.insert" >
         <option value="" selected disabled>Juices</option>
-        <option value="bourbon">bourbon</option>
-        <option value="vodka">vodka</option>
-        <option value="gin">gin</option>
-        <option value="rum">rum</option>
+        <option value="lime juice">lime juice</option>
+        <option value="orange juice">orange juice</option>
+        <option value="pineapple juice">pineapple juice</option>
+        <option value="lemon juice">lemon juice</option>
       </select>
       <button type="submit" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
         +
       </button>
-    </form>
-    <form class="form-inline">
-      <select id="alcohols" class="custom-select " ng-model="ctrl.insert" >
+
+      <select id="others" class="custom-select browse-selection" ng-model="ctrl.insert" >
         <option value="" selected disabled>Other</option>
-        <option value="bourbon">bourbon</option>
-        <option value="vodka">vodka</option>
-        <option value="gin">gin</option>
-        <option value="rum">rum</option>
+        <option value="bitters">bitters</option>
+        <option value="sweet vermouth">sweet vermouth</option>
+        <option value="simple syrup">simple syrup</option>
+        <option value="club soda">club soda</option>
       </select>
       <button type="submit" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
         +
       </button>
-    </form>
-    <form class="form-inline">
-      <select id="alcohols" class="custom-select "  ng-model="ctrl.insert" >
-        <option value="" selected disabled>Popular</option>
-        <option value="bourbon">bourbon</option>
-        <option value="vodka">vodka</option>
-        <option value="gin">gin</option>
-        <option value="rum">rum</option>
-      </select>
-      <button type="submit" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
-        +
-      </button>
+
     </form>
   </div>
   </div>
-
-
 
   <div class="text-center">
     <br>

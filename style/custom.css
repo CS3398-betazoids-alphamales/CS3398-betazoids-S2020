@@ -99,6 +99,23 @@ body{
 
 }
 
+.browse-selection{
+    margin-right:10px;
+    margin-bottom:10px;
+    margin-top:5px; 
+}
+
+#spirits{
+    width: 250px;
+}
+#juice{
+    width: 250px;
+}
+#others{
+    width: 250px;
+}
+
+
 .label{
   display: block;
 }
