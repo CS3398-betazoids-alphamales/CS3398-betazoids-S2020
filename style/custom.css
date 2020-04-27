@@ -154,21 +154,26 @@ body{
 .navbar-brand{
     font-family: 'Raleway', sans-serif;
     font-size: 30px;
-    margin-right:50px;
 }
 
 .navbar-brand img{
+	width: 60px;
+	display: inline-block;
+	float: left;
 }
 
-.navbar-brand h2{
-	font-size: 18px;
+.navbar-brand h1{
+	font-size: 30px;
+	margin-top: 40px;
+	color: black;
+	float: right;
 }
 
-.navbar-brand p{
-  position: absolute;
+.navbar-brand p{  
   font-size: 12px;
-  margin-left: 100px;
-  bottom: -8px;
+  margin-right: 15px;
+  display: block;
+  margin-top: 70px;
   color: black !important;
 }
 
@@ -603,13 +608,15 @@ body{
 
 @media screen and (min-width: 1200px) {
 	.navbar-brand img{
-	width: 70px;
+	width: 60px;
 }
-.navbar-brand p{
-  font-size: 14px;
-  margin-left: 100px;
-  bottom: 0px;
+.navbar-brand p{ 
+  font-size: 12px;
+  margin-left: 90px;
+  display: block;
+  margin-top: 70px;
   color: black !important;
+
 }
 	.btn{
 		width: 80px;
@@ -647,8 +654,8 @@ body{
     font-size: 20px;
 }
 .navbar-brand img{
-  height: 30px;
-  width: 20px;
+  height: 35px;
+  width: 22px;
 }
 
 #login-button-mobile{
@@ -666,12 +673,20 @@ body{
 
   #navsearch{display: none;}
 
-  .navbar-brand p{
-  font-size: 10px;
-  margin-left: 30px;
-  bottom: -10px;
+  .navbar-brand h1{
+	font-size: 22px;
+	margin-top: 10px;
+	color: black;
+	float: right;
+}
+
+.navbar-brand p{  
+  font-size: 10px;  display: block;
+  margin-top: 30px;
   color: black !important;
 }
+
+
 
   .name-search-bar{
     display: block;
