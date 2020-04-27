@@ -313,9 +313,9 @@ body{
 .openbtn {
   font-size: 12px;
   cursor: pointer;
-  background-color: #111;
+  background-color: #ff971d;
   color: white;
-  padding: 10px 15px;
+  padding: 10px 40px;
   border: none;
   left: 0;
   display: inline-block;
@@ -669,6 +669,7 @@ body{
 		font-size: 18px;
 	}
 	#side-navigation{
+    border:none;
 		width: 0;
 	}
 	#content-wrapper{
