@@ -159,11 +159,13 @@ function multiSearch(lmMultiPage) {
                     }
                   }
 
+                var image = getImage(result.form.type);
+
                 const cont =
                     `<div class="col-md-4" style="display:inline-grid">
                   <div class="card">
                     <div class="card-block" id="card-block-${index}">
-                      <img class="card-img-top" src="style/amaretto.jpg" alt="Card image" style="width:100%">
+                      <img class="card-img-top" src="${image}" alt="Card image" style="width:100%">
                         <div class="card-body" id="card-body-${index}">
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
@@ -191,7 +193,7 @@ function multiSearch(lmMultiPage) {
                       <!-- Modal Content -->
                       <form class="modal-content-recipe animate" action=" # ">
                         <div class="imgcontainer">
-                          <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink rounded">
+                          <img src="${image}" id="drinkimg" alt="Drink" class="drink rounded">
                         </div>
   
                         <div class="title-container modal-container">

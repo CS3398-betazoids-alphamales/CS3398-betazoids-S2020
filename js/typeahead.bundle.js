@@ -1121,7 +1121,6 @@
                 hint: {
                     position: "absolute",
                     top: "0",
-                    left: "0",
                     borderColor: "transparent",
                     boxShadow: "none",
                     opacity: "1"

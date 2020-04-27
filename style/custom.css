@@ -47,7 +47,7 @@ body{
 
 .card{
 	max-width: 230px;
-	max-height: 350px;
+	max-height: 500px;
 	min-width: 90px;
 	margin-right: auto;
 	margin-left: auto;
@@ -58,6 +58,8 @@ body{
 .card-body{
 	max-width: 230px;
   min-width: 90px;
+  max-height: 230px;
+  padding-bottom: 0px;
 	overflow: hidden;
 }
 
@@ -81,9 +83,9 @@ body{
 
 .card-img-top{
 	max-width: 100%;
+  max-height: 100%;
 	margin: auto;
 }
-
 /* styles for tags */
 
 .chips{
@@ -163,6 +165,9 @@ body{
 	margin-top: 5.8vw;
 }
 
+  .name-search-bar{
+    display: none;
+  }
 
 #content-window{
 	transition: margin-left .5s;
@@ -171,8 +176,39 @@ body{
 .form-control{
 	padding: 16px;
 	border-radius: 33px;
-    margin-left:15px;
 }
+
+.pad{margin-left: 15px;}
+
+.namesearch-container{
+  width: 300px;
+  margin: auto;
+  margin-left: 14vw;
+  align-self: center;
+  align-content: center;
+  display: inline-block;
+  padding-bottom: 20px;
+}
+
+.form-control.py-2.border-right-0.border.typeahead.body-search{
+  position: relative;
+}
+
+.form-control.py-2.border-right-0.border.typeahead.body-search.tt-hint{
+  position: absolute;
+}
+
+.form-control.py-2.border-right-0.border.typeahead.body-search.tt-input{
+  position: relative;
+}
+
+#search-cocktail-button-body{
+  border: none; 
+  top: 4px; 
+  right: -20px;
+  position: absolute; 
+}
+
 
 .input-group-text{
 	border-radius: 33px;
@@ -273,6 +309,8 @@ body{
   color: white;
   padding: 10px 15px;
   border: none;
+  left: 0;
+  display: inline-block;
 }
 
 .openbtn:hover {
@@ -391,7 +429,7 @@ body{
   }
 
   .panel-head-wrapper h2{
-    margin-left: 33px;
+    text-align: center;
     font-size: 3vw;
   }
 
@@ -406,26 +444,6 @@ body{
 
 
   #main-panel{display: block;}
-
-  #about{display: none;}
-
-  #services{display: none;}
-
-  #name-search{display: none;}
-
-  #ingredient-search{display: none;}
-
-  #browse{display: none;}
-
-  #alcohol{display: none;}
-
-  #juices{display: none;}
-
-  #fruit{display: none;}
-
-  #other{display: none;}
-
-  #favorites{display: none;}
 
 /* login popup stuff */
 
@@ -571,7 +589,10 @@ body{
 
 
 
-@media screen and (max-width: 768px) {
+
+
+@media screen and (max-width: 990px) {
+
   .sidenav {
   height: 95%;
   overflow-y: auto;
@@ -583,10 +604,17 @@ body{
   height: 30px;
   width: 20px;
 }
+
 	.btn{
 		width: 70px;
 		font-size: 12px;
 	}
+
+  #navsearch{display: none;}
+
+  .name-search-bar{
+    display: block;
+  }
 
 	.card-body p{
 		font-size: 16px;

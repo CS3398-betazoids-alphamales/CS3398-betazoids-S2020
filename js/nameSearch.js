@@ -17,6 +17,21 @@ $('#nav-search').on('keyup', function(event) {
   }
 })
 
+$('#nav-search2').on('keyup', function(event) {
+  var inner1 = document.getElementById("nav-search2").value;
+  console.log(inner1);
+ 
+  if(event.keyCode == 13){
+      document.getElementById("main-panel").innerHTML = `<div class="panel-head-wrapper" id="namehead"><h2>Search by Name:</h2></div><br><br>`;
+      if(inner1.split(" ").length == 1 || inner1.split(" ").length == 2 || inner1.split(" ").length == 3 || inner1.split(" ").length == 4 ){
+        console.log("The search query is: " + inner1);
+          lmNamePage = 1;
+          panelPurge();
+          getByName(inner1, lmNamePage);
+      }
+  }
+})
+
 function nameLoadMore(){
     var element = document.getElementById("lm-container");
     element.parentNode.removeChild(element);
@@ -93,11 +108,14 @@ function nameLoadMore(){
                     }
                   }
 
+                  var image = getImage(result.form.type); //function found in scripts.js
+                  console.log(image)
+
                   const cont =
                   `<div class="col-md-4" style="display:inline-grid">
                   <div class="card">
                     <div class="card-block" id="card-block-${index}">
-                      <img class="card-img-top" src="style/amaretto.jpg" alt="Card image" style="width:100%">
+                      <img class="card-img-top" src="${image}" alt="Card image" style="width:100%">
                         <div class="card-body" id="card-body-${index}">
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
@@ -125,7 +143,7 @@ function nameLoadMore(){
                       <!-- Modal Content -->
                       <form class="modal-content-recipe animate" action=" # ">
                         <div class="imgcontainer">
-                          <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink rounded">
+                          <img src="${image}" id="drinkimg" alt="Drink" class="drink rounded">
                         </div>
   
                         <div class="title-container modal-container">
