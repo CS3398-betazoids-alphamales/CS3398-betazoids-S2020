@@ -143,8 +143,12 @@ body{
 .nav-item{
 	text-decoration: none;
 	text-align: left;
-	margin-right: 8vw;
+	margin-right: 3.5vw;
 	margin-top: 6vw;
+}
+
+#login-button-mobile{
+  display: none;
 }
 
 .navbar-brand{
@@ -559,6 +563,12 @@ body{
   width: 40%;
 }
 
+.login-button-container{
+  position: absolute;
+  right: -800px;
+  padding-bottom: 20px;
+}
+
 .avatar {
   vertical-align: middle;
   width: 72px;
@@ -617,9 +627,6 @@ body{
 	.card-body p{
 		font-size: 16px;
 	}
-	 .nav-item{
-		margin-right: 150px;
-	}
 
   .panel-head-wrapper h2{font-size: 35px;}
 
@@ -642,6 +649,14 @@ body{
 .navbar-brand img{
   height: 30px;
   width: 20px;
+}
+
+#login-button-mobile{
+  display: block;
+}
+
+#login-button-desktop{
+  display: none;
 }
 
 	.btn{

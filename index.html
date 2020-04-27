@@ -27,12 +27,15 @@
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top border border-top-0 border border-right-0 border border-left-0 border-secondary">
-    <!-- Dark Mode -->
+    
+    <div class="container">
+      		<!-- Dark Mode -->
     <div  class="dark-switch custom-control custom-switch" >
       <input type="checkbox" class="custom-control-input" id="darkSwitch">
       <label class="custom-control-label" for="darkSwitch">&#127763</label>
     </div>
-    <div class="container">
+      	
+
       <a class="navbar-brand" href="#">
         <img src="style/cocktail.png" width="60" height="100" class="d-inline-block align-bottom" alt="">
         Witches' Brew
@@ -42,6 +45,11 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
+
+
+      	
+
+
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <!-- will remove function calls and add event listeners to external .js later -->
@@ -51,6 +59,10 @@
           </li>
           <li class="nav-item" style="width: 100%">
             <a class="nav-link" style="white-space: nowrap;" id="addadrinklink" href=" # ">Add A Drink</a>
+          </li>
+          <li class="nav-item" id="login-button-mobile">
+          	<!-- Button to open the modal login form -->
+          <button id="login" class="btn btn-primary" >Login</button>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,6 +75,7 @@
               
             </div>
           </li>
+          
           <li class="nav-item" id="navsearch">
             <!-- Search form -->
            <div class="input-group" id="navbar-search">
@@ -72,12 +85,13 @@
                  </span>
             </div>
           </li>
-          <li>
-            <!-- Button to open the modal login form -->
-          <button id="login" class="btn btn-primary" >Login</button>
-          </li>
         </ul>
       </div>
+      <div class="container login-button-container" id="login-button-desktop">
+      	<!-- Button to open the modal login form -->
+          <button id="login" class="btn btn-primary" >Login</button>
+      </div>
+            
     </div>
   </nav>
 
