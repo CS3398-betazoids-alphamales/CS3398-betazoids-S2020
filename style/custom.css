@@ -46,7 +46,7 @@ body{
 
 .card{
 	max-width: 230px;
-	max-height: 350px;
+	max-height: 500px;
 	min-width: 90px;
 	margin-right: auto;
 	margin-left: auto;
@@ -57,6 +57,8 @@ body{
 .card-body{
 	max-width: 230px;
   min-width: 90px;
+  max-height: 230px;
+  padding-bottom: 0px;
 	overflow: hidden;
 }
 
@@ -80,9 +82,9 @@ body{
 
 .card-img-top{
 	max-width: 100%;
+  max-height: 100%;
 	margin: auto;
 }
-
 /* styles for tags */
 
 .chips{
@@ -361,8 +363,6 @@ body{
      margin: auto;
      width:85%;    
   }
-
-  .col-md-4.name{width: 32%}
 
   #main-panel{display: block;}
 

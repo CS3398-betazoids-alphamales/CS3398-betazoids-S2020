@@ -108,18 +108,21 @@ function nameLoadMore(){
                     }
                   }
 
+                  var image = getImage(result.form.type); //function found in scripts.js
+                  console.log(image)
+
                   const cont =
-                  `<div class="col-md-4 name" style="display:inline-grid">
+                  `<div class="col-md-4" style="display:inline-grid">
                   <div class="card">
                     <div class="card-block" id="card-block-${index}">
-                      <img class="card-img-top" src="style/amaretto.jpg" alt="Card image" style="width:100%">
+                      <img class="card-img-top" src="${image}" alt="Card image" style="width:100%">
                         <div class="card-body" id="card-body-${index}">
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
                           <a href="#" class="btn btn-primary" onclick="document.getElementById('recipepopup-${index}').style.display='block'">Recipe</a>
                           <div class="container">
                             <div class="row">
-                              <div class="col-sm-12">
+                              <div class="col-lg-12">
                                 <div class="star-rating">` + starRating + `
                                   <input type="hidden" name="${result.name}" id="hiddenRating-${index}" class="rating-value" value="2.56">
                                 </div>
@@ -135,38 +138,6 @@ function nameLoadMore(){
               <span onclick="document.getElementById('recipepopup-${idx}').style.display='none'"
             class="close" title="Close Modal">&times;</span>
 
-<<<<<<< Updated upstream
-              <!-- Modal Content -->
-              <form class="modal-content-recipe animate" action=" # ">
-                <div class="imgcontainer">
-                  <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink rounded">
-                </div>
-
-                <div class="title-container modal-container">
-                  <h2>${result.name}</h2>
-                  <h4>${result.form.type}</h4>
-                </div>
-
-                         <div class="container">
-                            <div class="row">
-                              <div class="col-sm-12">
-                                <div class="star-rating star-rating-modal">
-                                  ` + starRating + `
-                                  <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                <div class="recipe-container modal-container" id="search-recipe-container-${idx}">
-                  <h5>Ingredients:</h5>
-                  
-                </div>
-
-                <div class="procedure-container modal-container" id="procedure-container-${idx}">
-                           <h5>To make it:</h5>
-                        
-=======
                     <!-- The Recipe Modal -->
                     <div id="recipepopup-${index}" class="modal">
                       <span onclick="document.getElementById('recipepopup-${index}').style.display='none'"
@@ -175,7 +146,7 @@ function nameLoadMore(){
                       <!-- Modal Content -->
                       <form class="modal-content-recipe animate" action=" # ">
                         <div class="imgcontainer">
-                          <img src="style/amaretto.jpg" id="drinkimg" alt="Drink" class="drink rounded">
+                          <img src="${image}" id="drinkimg" alt="Drink" class="drink rounded">
                         </div>
   
                         <div class="title-container modal-container">
@@ -201,8 +172,6 @@ function nameLoadMore(){
   
                         <div class="procedure-container modal-container" id="procedure-container-${index}">
                           <h5>To make it:</h5>
-                          
->>>>>>> Stashed changes
                         </div>
               </form>
             </div>

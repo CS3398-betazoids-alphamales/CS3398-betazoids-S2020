@@ -105,5 +105,58 @@ function getHome(){
   getRandom();
 }
 
+function getImage(drinkType){
+    var type = drinkType;
+    console.log(type)
+    var drinkImg;
+
+    switch(type){
+      case "Mixed Cocktail":
+        drinkImg = 'style/pic/mixed-cocktail.jpg';
+        break;
+      case "Shooter":
+        drinkImg = "style/pic/shooter.jpg";
+        break;
+      case "Martini":
+        drinkImg = "style/pic/martini.jpg";
+        break;
+      case "Highball":
+        drinkImg = "style/pic/highball.jpg";
+        break;
+      case "Frozen Drink":
+        drinkImg = "style/pic/frozen-drink.jpg";
+        break;
+      case "Punch":
+        drinkImg = "style/pic/punch.jpg";
+        break;
+      case "Hot Drink":
+        drinkImg = "style/pic/hot-drink.jpg";
+        break;
+      case "Cappuccino":
+        drinkImg = "style/pic/cappuccino.jpg";
+        break;
+      case "Ice Cream Drink":
+        drinkImg = "style/pic/ice-cream-drink.jpg";
+        break;
+      case "Coffee Drink":
+        drinkImg = "style/pic/coffee-drink.jpg";
+        break;
+      case "Champagne Drink":
+        drinkImg = "style/pic/champagne.jpg";
+        break;
+      case "Smoothie":
+        drinkImg = "style/pic/smoothie.jpg";
+        break;
+      case "Wine Drink":
+        drinkImg = "style/pic/wine-drink.jpg";
+        break;
+      default: 
+        drinkImg = "style/pic/amaretto.jpg"
+    }
+
+    return drinkImg;
+}
+
+
 
 
