@@ -181,12 +181,11 @@ body{
 .pad{margin-left: 15px;}
 
 .namesearch-container{
-  width: 300px;
+  width: 330px;
   margin: auto;
-  margin-left: 14vw;
   align-self: center;
   align-content: center;
-  display: inline-block;
+  display: block;
   padding-bottom: 20px;
 }
 
@@ -200,12 +199,13 @@ body{
 
 .form-control.py-2.border-right-0.border.typeahead.body-search.tt-input{
   position: relative;
+  left: 0;
 }
 
 #search-cocktail-button-body{
   border: none; 
   top: 4px; 
-  right: -20px;
+  right: -5px;
   position: absolute; 
 }
 
