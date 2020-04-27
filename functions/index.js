@@ -33,6 +33,15 @@ exports.getAllSepIngrs = functions.https.onRequest(async (request, response) => 
     var refinedList = {};
     var counter = 0;
     var otherCounter = 0;
+    var testingObjects;
+
+    try {
+        testingObjects = request.query.myObject;
+        console.log(testingObjects[1].drink);
+    } catch (err) {
+        console.log("object unrecieved")
+    }
+    
 
     admin.database().ref("data").once('value')
         .then((dataSnapshot) => {
@@ -132,7 +141,7 @@ exports.getAllIngrs = functions.https.onRequest(async (request, response) => {
 
     admin.database().ref("data").once('value')
         .then((snapshot) => {
-        
+		
             var totalIngrs = 0;
             var totalUnref = 0;
             var unrefinedList = {};
@@ -177,7 +186,7 @@ exports.getByName = functions.https.onRequest(async (request, response) => { // 
     var match_count = 0;
 
     try {
-        strToFind = request.query.findthis.replace(/\s/g, "").toUpperCase();
+        strToFind = request.query.findthis.toUpperCase();
         iter = request.query.page;
     } catch (e) {
         console.log("invalid query");
@@ -192,13 +201,13 @@ exports.getByName = functions.https.onRequest(async (request, response) => { // 
         admin.database().ref("data").once('value')
         .then((dataSnapshot) => {
 
-            var dataObject = dataSnapshot.val(); // HERE <<-------------------------------------*
+            var dataObject = dataSnapshot.val();
 
             dataObject.every((eachDrink) => {
 
                 if (eachDrink.name !== null) {
 
-                    var drinkName = eachDrink.name.replace(/\s/g, "").toUpperCase();
+                    var drinkName = eachDrink.name.toUpperCase();
 
                     if ( drinkName.includes(strToFind) ) {
 
@@ -209,21 +218,6 @@ exports.getByName = functions.https.onRequest(async (request, response) => { // 
                 }
                 return (match_count < iter);
             });
-
-            // dataSnapshot.forEach((eachDrink) => { // old way for reference (couldn't use ".every" on dataSnapshots)
-
-            //     if (eachDrink.child('name').val() !== null) {
-
-            //         var drinkName = eachDrink.child('name').val().toUpperCase();
-
-            //         if ( drinkName.includes(strToFind) ) {
-
-            //             if ( match_count >= (iter-24) && match_count < iter )
-            //                 matchList.push(eachDrink);
-            //             ++match_count;
-            //         }  
-            //     }
-            // });
 
             if (matchList.length > 0)
                 response.json(matchList);
@@ -241,6 +235,9 @@ exports.getRandomList = functions.https.onRequest(async (request, response) => {
 //  EXAMPLE: full_address?howmany=10
 
     response.set('Access-Control-Allow-Origin', '*');
+
+    // const conserveData = [{"form":{"glass":"Collins","type":"Mixed Cocktail"},"garnish":{"1":"None"},"ingredients":{"1":"1 1/4 oz. Vodka","2":"3 oz. Orange juice"},"name":"Harvey Wallbanger","occasion":"Orange","procedure":{"1":"Float 1/2 oz. Galliano","2":"Pour ingredients as listed over ice"},"rating":2},{"form":{"glass":"Short Glass","type":"Mixed Cocktail"},"garnish":{"1":"None"},"ingredients":{"1":"1 oz. Korbel Spiced Brandy","2":"1/4 oz. Chambord Liqueur","3":"1/2 oz. Citrus Vodka"},"name":"Spiced Snakebite","occasion":"Any","procedure":{"1":"Mix ingredients as listed"},"rating":0},{"form":{"glass":"Stemmed Glass","type":"Frozen Drink"},"garnish":{"1":"Whipped cream and a cherry"},"ingredients":{"1":"3 oz. Southern Comfort","2":"1 Banana","3":"4 Ice Cubes","4":"1 oz. Sweetened Lime juice"},"name":"Southern Banana Daiquiri","occasion":"Any","procedure":{"1":"Blend all ingredients in blender until slushy"},"rating":2.5},{"form":{"glass":"Short Glass","type":"Mixed Cocktail"},"garnish":{"1":"None"},"ingredients":{"1":"1 1/4 oz. Pepe Lopez Tequila","2":"1 oz. Lime juice","3":"dash White Creme de Menthe"},"name":"Mockingbird","occasion":"Any","procedure":{"1":"Mix ingredients as listed"},"rating":0},{"form":{"glass":"Short Glass","type":"Mixed Cocktail"},"garnish":{"1":"None"},"ingredients":{"1":"12 oz. Canadian Mist","2":"1 can Condensed Milk","3":"2 Tbsp Chocolate Flavored Syrup","4":"1 tsp Almond Extract","5":"3 Eggs","6":"1/2 c Whipping Cream"},"name":"Mistical Eggnog","occasion":"Any","procedure":{"1":"Chill and serve with cinnamon stick or cherry garnish and sprinkle of nutmeg"},"rating":0},{"form":{"glass":"Cocktail Glass","type":"Mixed Cocktail"},"garnish":{"1":"None"},"ingredients":{"1":"1 1/2 oz. Early Times","2":"1 oz. Noilly Prat Dry Vermouth","3":"1 oz. Pineapple juice"},"name":"Algonquin","occasion":"Any","procedure":{"1":"Mix ingredients as listed"},"rating":0}];
+    // response.json(conserveData);
 
     var howMany = -1;
     const randList = [];
@@ -401,6 +398,7 @@ exports.getByIngredientStrict = functions.https.onRequest(async (request, respon
     var find5;
     var iter = 0;
     var match_count = 0;
+    var blacklist = [];
 
     try {
         totalIngrs = request.query.total; // MIN = 1, MAX = 5
@@ -418,6 +416,13 @@ exports.getByIngredientStrict = functions.https.onRequest(async (request, respon
     else {
 
         do {
+            blacklist[0] = request.query.not1;
+            blacklist[1] = request.query.not2;
+            blacklist[2] = request.query.not3;
+            blacklist[3] = request.query.not4;
+            blacklist[4] = request.query.not5;
+            blacklist[5] = request.query.not6;
+            
             if (totalIngrs === "1")
                 break;
 
@@ -449,6 +454,7 @@ exports.getByIngredientStrict = functions.https.onRequest(async (request, respon
                 var hasIngr3 = false;
                 var hasIngr4 = false;
                 var hasIngr5 = false;
+                var blacklisted = false;
     
                 var ingrsObject = eachDrink.ingredients;
     
@@ -466,36 +472,41 @@ exports.getByIngredientStrict = functions.https.onRequest(async (request, respon
                         hasIngr4 = true;
                     if ( ingrStr.includes(find5) )
                         hasIngr5 = true;
+                    blacklist.forEach((item) => {
+                        if (item !== undefined)
+                            if( ingrStr.includes( item.toUpperCase() ) )
+                                blacklisted = true;
+                    });
                 });
 
                 switch( totalIngrs ) {
 
                     case "1":
-                        if (hasIngr1) {
+                        if (hasIngr1 && !blacklisted) {
                             if ( match_count >= (iter-24) && match_count < iter )
                                 allMatches.push(eachDrink);
                             ++match_count;
                         } break;    
                     case "2":
-                        if (hasIngr1 && hasIngr2) {
+                        if (hasIngr1 && hasIngr2 && !blacklisted) {
                             if ( match_count >= (iter-24) && match_count < iter )
                                 allMatches.push(eachDrink);
                             ++match_count;
                         } break;
                     case "3":
-                        if (hasIngr1 && hasIngr2 && hasIngr3) {
+                        if (hasIngr1 && hasIngr2 && hasIngr3 && !blacklisted) {
                             if ( match_count >= (iter-24) && match_count < iter )
                                 allMatches.push(eachDrink);
                             ++match_count;
                         } break;
                     case "4":
-                        if (hasIngr1 && hasIngr2 && hasIngr3 && hasIngr4) {
+                        if (hasIngr1 && hasIngr2 && hasIngr3 && hasIngr4 && !blacklisted) {
                             if ( match_count >= (iter-24) && match_count < iter )
                                 allMatches.push(eachDrink);
                             ++match_count;
                         } break;
                     case "5":
-                        if (hasIngr1 && hasIngr2 && hasIngr3 && hasIngr4 && hasIngr5) {
+                        if (hasIngr1 && hasIngr2 && hasIngr3 && hasIngr4 && hasIngr5 && !blacklisted) {
                             if ( match_count >= (iter-24) && match_count < iter )
                                 allMatches.push(eachDrink);
                             ++match_count;
@@ -507,6 +518,7 @@ exports.getByIngredientStrict = functions.https.onRequest(async (request, respon
                 hasIngr3 = false;
                 hasIngr4 = false;
                 hasIngr5 = false;
+                blacklisted = false;
 
                 return (match_count < iter);
             });
@@ -530,6 +542,8 @@ exports.setRecipeRating = functions.https.onRequest(async (request, response) =>
     const thingToFind = request.query.recipeName.toUpperCase();
     const rating = parseFloat(request.query.rating);
     response.set('Access-Control-Allow-Origin', '*');
+    admin.database().ref("data").once('value')
+        .then((dataSnapshot) => {
     
         admin.database().ref("data").once('value')
             .then((dataSnapshot) => {
@@ -561,47 +575,42 @@ exports.setRecipeRating = functions.https.onRequest(async (request, response) =>
                      
                 });
     
-                response.send(match);
+                response.json(match);
                 return null;
             }).catch(e => { console.log(e) });
-        });
 
+        return null;
+    }).catch(e => {console.log(e) });
+});
 
 
 exports.getRecipeRating = functions.https.onRequest(async (request, response) => { 
-//  note: Please add ?variableName=value to end of https calls for passing aurguments.
-    //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
-    //
-    //  EXAMPLE: full_address?recipeName=Cactus Kicker - 4
-
-    response.set('Access-Control-Allow-Origin', '*');
-    const thingToFind = request.query.recipeName.toUpperCase();
-
-    admin.database().ref("data").once('value')
-        .then((dataSnapshot) => {
-
-            dataSnapshot.forEach((currentDrinkSnapshotIndex) => {
-                if(currentDrinkSnapshotIndex.child("name").val() !== null) {
-
-                var nameString = currentDrinkSnapshotIndex.child("name").val().toUpperCase();
-                // var ratingString = currentDrinkSnapshotIndex.child("rating").val();
-                if ( nameString.includes(thingToFind) ){
-                   
-                    if(currentDrinkSnapshotIndex.hasChild("rating")) {
-                         let ratingNumber = currentDrinkSnapshotIndex.child("rating").val();
-                         response.status(200).send(ratingNumber.toString());
-                     }else {
-                         response.status(200).send(0);
-                     }           
+    //  note: Please add ?variableName=value to end of https calls for passing aurguments.
+        //  Subsequent aurguments can be passed by adding &variableName2=value directly after the first.
+        //
+        //  EXAMPLE: full_address?recipeName=Cactus Kicker - 4
+        response.set('Access-Control-Allow-Origin', '*');
+        const thingToFind = request.query.recipeName.toUpperCase();
+        admin.database().ref("data").once('value')
+            .then((dataSnapshot) => {
+                dataSnapshot.forEach((currentDrinkSnapshotIndex) => {
+                    if(currentDrinkSnapshotIndex.child("name").val() !== null) {
+                    var nameString = currentDrinkSnapshotIndex.child("name").val().toUpperCase();
+                    // var ratingString = currentDrinkSnapshotIndex.child("rating").val();
+                    if ( nameString.includes(thingToFind) ){
+                        if(currentDrinkSnapshotIndex.hasChild("rating")) {
+                             let ratingNumber = currentDrinkSnapshotIndex.child("rating").val();
+                             response.send(ratingNumber);
+                         }else {
+                             response.send(0);
+                         }           
+                    }
                 }
-            }
-                 
-            });
-            response.status(200).send(0);
-            return null;
-        }).catch(e => { console.log(e) });
-
-});
+                });
+                response.send(0);
+                return null;
+            }).catch(e => { console.log(e) });
+    });
 
 
 exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => {
@@ -638,51 +647,6 @@ exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => 
                             
     
                 hasIngr = false;
-                ++totalIngrs;
-            }); 
-            ++drinkID; //for debugging
-        });
-    
-        response.json(unrefinedList);
-        return null;
-    }).catch(e => { console.log(e) });
-    
-});
-
-exports.devGetAllNames = functions.https.onRequest(async (request, response) => {
-    //this function will respond with a (json) list of all ingredients from every entry
-    
-    response.set('Access-Control-Allow-Origin', '*');
-    
-    admin.database().ref("data").once('value')
-        .then((snapshot) => {
-    
-        var totalIngrs = 0;
-        var totalUnref = 1;       
-        var drinkID = 1; //for debugging
-        var unrefinedList = {};
-        var hasName = false;
-    
-        snapshot.forEach((entrySnapshot) => {
-    
-            entrySnapshot.child('name').forEach((eachIngr) => {
-                        
-                var tempStr = eachIngr.val().toUpperCase();
-                tempStr = tempStr.replace(REGEX, '').trim();
-                tempStr = tempStr.replace(/ AND | N /g, '&');
-    
-                for (var i = 0; i < totalIngrs; ++i)
-                    if ( unrefinedList["name" + (i+1)] === tempStr)
-                        hasName = true;
-    
-                if ( !hasName ) {
-    
-                    unrefinedList["drinkID" + drinkID] = drinkID; //for debugging
-                    unrefinedList["name" + totalUnref++] = tempStr;
-                }
-                            
-    
-                hasName = false;
                 ++totalIngrs;
             }); 
             ++drinkID; //for debugging
@@ -772,18 +736,79 @@ exports.devGetByIngredient = functions.https.onRequest(async (request, response)
 //     response.send("Check the log!");
 // });
 
-// exports.devAddRatingKeyToAll = functions.https.onRequest(async (request, response) => { //under-construction
+exports.addDrink = functions.https.onRequest(async (request, response) => {
 
-//     var rootRef = admin.database().ref("data");
+    // {+"form":{"glass":"Collins","type":"Mixed+Cocktail"},+"garnish":{"1":"none"},+"ingredients":{"1":"4+oz.+Sake"},+"name":"The+Coolio",+"occasion":"Any",+"procedure":{"1":"Pour+then+drink"},+"rating":0.0}
+    response.set('Access-Control-Allow-Origin', '*');
 
-//     rootRef.child("1").update({"ratingRunningTotal" : 0});
-//     rootRef.child("1").update({"ratingCount" : 0});
+    var newDrinkObj = request.query.newDrink;
+    var location;
+    var newTotal;
+
+    admin.database().ref("data").once('value')
+        .then(dataSnapshot => {
+
+            location = dataSnapshot.child("1/totalDrinks").val();
+            newTotal = ++location;
+
+           const dataRef = dataSnapshot.ref;
+        dataRef.child(location).set( JSON.parse(newDrinkObj) );
+        dataRef.update({"1/totalDrinks":newTotal});
+
+            return null;
+        }).catch(e => { console.log(e) });
+    
+    response.status(200).send("Ryoukai!");
+});
+
+/*
+var glassForm;
+var typeForm;
+var garnish = [];
+var ingredients = [];
+var drinkName;
+var occasion;
+var procedure = [];
+var newDrinkURL = "https://us-central1-rvrslkupdb.cloudfunctions.net/addDrink?newDrink=";
+var drinkObjectFormatter = "{+\"form\":{\"glass\":" + glassForm + ",\"type\":" + typeForm +
+                            "},+\"garnish\":{\"1\":" + garnish[0] + ",\"2\":" + garnish[1] + ",\"3\":" + garnish[2] + ",\"4\":" + garnish[3] +
+                            "},+\"ingredients\":{\"1\":" + ingredients[0] + ",\"2\":" + ingredients[1] + ",\"3\":" + ingredients[2] + ",\"4\":" + ingredients[3] +
+                            "},+\"name\":" + drinkName + 
+                            ",+\"occasion\":" + occasion + 
+                            ",+\"procedure\":{\"1\":" + procedure[0] + ",\"2\":" + procedure[1] + ",\"3\":" + procedure[2] + ",\"4\":" + procedure[3] + 
+                            "},+\"rating\":0.0}";
+newDrinkURL = newDrinkURL + drinkObjectFormatter;
+*/
+
+exports.devAddRatingKeyToAll = functions.https.onRequest(async (request, response) => { //under-construction
+
+    //var rootRef = admin.database().ref("data");
 
 
-//     response.send("success");
-//     // rootRef.forEach(function(eachEntry) { //pre-arrow-callback style
+    // rootRef.child("1").update({"ratingRunningTotal" : 0});
+    // rootRef.child("1").update({"ratingCount" : 0});
 
-//     //     eachEntry.push({"rating" : 0});
-//     //     return null;
-//     // }).catch(e => { console.log(e) });
-// });
+    admin.database().ref("data").once('value')
+        .then((dataSnapshot) => {
+
+            // for (var i = 1; i < 1074; ++i) {
+
+            //     dataSnapshot.child("i").update({"rating":0});
+            // }
+            dataSnapshot.forEach((eachEntry) => {
+
+                const drinkRef = eachEntry.ref;
+
+                drinkRef.update({"rating" : 0});
+            })
+
+            return null;
+        }).catch(e => { console.log(e) });
+    
+    response.status(200).send("ryoukaishimashita");
+    // rootRef.forEach(function(eachEntry) { //pre-arrow-callback style
+
+      
+    //     return null;  
+    // }).catch(e => { console.log(e) });
+});
