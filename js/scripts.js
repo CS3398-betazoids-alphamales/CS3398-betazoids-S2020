@@ -44,6 +44,11 @@ $("#serviceslink").click(function(){
   servicesDisplay();
 });
 
+$("#addadrinklink").click(function(){
+  panelPurge();
+  addADrinkDisplay();
+});
+
 
 $("#alcohollink").click(function(){
 });
@@ -74,6 +79,165 @@ $("#lm-home").click(function(){
 
 function panelPurge(){
   document.getElementById("main-panel").innerHTML = ``;
+}
+
+function addADrinkDisplay(){
+  document.getElementById("side-navigation").style.width = "0";
+  const container = document.getElementById('main-panel');
+    const cont = ` <div class="container">
+
+    <form>
+        <div class="d-flex flex-column justify-content-center">
+          <div class="input-group input-group-lg">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-lg">Drink Name</span>
+              </div>
+              <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+            </div>
+        </div>
+        
+        
+        <div class="row">
+        <div class="col-xs-3">
+        <div class="container"> 
+            <h3> Glass </h3>
+            <div class="checkbox">
+            <label>
+                <input type="checkbox" class="sev_check" name="Martini" />Collins</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="sev_check" name="Highball" />Highball Glass</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="sev_check" name="chk3" />Chilled Rocks</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="sev_check" name="chk5" />Chilled Cocktail</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="sev_check" name="chk4" />Tall Speciality</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="sev_check" name="chk5" />Tall Highball</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="sev_check" name="chk5" />Tall Glass</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="sev_check" name="chk5" />Footed Glass Mug</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="sev_check" name="chk5" />Shot Glass</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="sev_check" name="chk5" />Tall Rocks</label>
+        </div>
+        
+        </div>
+        </div>
+        
+        <div class="col-xs-2"><div class="container">
+            <h3> Type </h3>
+            
+            <div class="checkbox">
+            <label>
+                <input type="checkbox" class="type_check" name="Martini" />Mixed Cocktail</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="type_check" name="Highball" />Shooter</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="type_check" name="chk3" />Martini</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="type_check" name="chk4" />Highball</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="type_check" name="chk5" />Frozen Drink</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="type_check" name="chk5" />Punch</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="type_check" name="chk5" />Hot Drink</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="type_check" name="chk5" />Cappuccino</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="type_check" name="chk5" />Ice Cream Drink</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="type_check" name="chk5" />Coffee Drink</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="type_check" name="chk5" />Champagne Drink</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="type_check" name="chk5" />Smoothie</label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="type_check" name="chk5" />Wine Drink</label>
+        </div>
+        </div></div>
+        <div class="col-xs-2"><div class="container">
+            <h3> Garnish </h3>
+            <div><input type="text"  name="occasion"></div>
+
+            <h3> Ingredients </h3>
+                    <div class="input_fields_wrap">
+                        
+                    <div><input type="text" id="inputField1" name="mytext[]"><button class="add_field_button">+</button></div>
+
+        </div></div>
+        <div class="col-xs-2"><div class="container">
+            <h3> Occasion </h3>
+            <div><input type="text"  name="occasion"></div>
+            <h3> Procedure </h3>
+                    <div class="procedure_fields_wrap">
+                        
+                    <div><input type="text" id= "procedureField1" name="mytext[]"><button class="add_procedure_button">+</button></div>
+        </div></div>
+        
+        
+      </div>
+        
+
+
+
+
+</form>
+
+</div>`;
+
+    container.innerHTML += cont;
+    // Dynamically load star rating script after all elements have been created
+    var head= document.getElementsByTagName('head')[0];
+    var script= document.createElement('script');
+    script.type= 'text/javascript';
+    script.src= 'js/addDrink.js';
+    head.appendChild(script);
 }
 
 

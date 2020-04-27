@@ -649,6 +649,51 @@ exports.devGetAllIngrs = functions.https.onRequest(async (request, response) => 
     
 });
 
+exports.devGetAllNames = functions.https.onRequest(async (request, response) => {
+    //this function will respond with a (json) list of all ingredients from every entry
+    
+    response.set('Access-Control-Allow-Origin', '*');
+    
+    admin.database().ref("data").once('value')
+        .then((snapshot) => {
+    
+        var totalIngrs = 0;
+        var totalUnref = 1;       
+        var drinkID = 1; //for debugging
+        var unrefinedList = {};
+        var hasName = false;
+    
+        snapshot.forEach((entrySnapshot) => {
+    
+            entrySnapshot.child('name').forEach((eachIngr) => {
+                        
+                var tempStr = eachIngr.val().toUpperCase();
+                tempStr = tempStr.replace(REGEX, '').trim();
+                tempStr = tempStr.replace(/ AND | N /g, '&');
+    
+                for (var i = 0; i < totalIngrs; ++i)
+                    if ( unrefinedList["name" + (i+1)] === tempStr)
+                        hasName = true;
+    
+                if ( !hasName ) {
+    
+                    unrefinedList["drinkID" + drinkID] = drinkID; //for debugging
+                    unrefinedList["name" + totalUnref++] = tempStr;
+                }
+                            
+    
+                hasName = false;
+                ++totalIngrs;
+            }); 
+            ++drinkID; //for debugging
+        });
+    
+        response.json(unrefinedList);
+        return null;
+    }).catch(e => { console.log(e) });
+    
+});
+
 
 exports.devGetByIngredient = functions.https.onRequest(async (request, response) => {
     //  note: Please add ?variableName=value to end of https calls for passing aurguments.

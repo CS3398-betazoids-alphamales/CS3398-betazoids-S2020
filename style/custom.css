@@ -445,12 +445,37 @@ body{
 
   #main-panel{display: block;}
 
+  #about{display: none;}
+
+  #services{display: none;}
+
+  #name-search{display: none;}
+
+  #ingredient-search{display: none;}
+
+  #browse{display: none;}
+
+  #alcohol{display: none;}
+
+  #juices{display: none;}
+
+  #fruit{display: none;}
+
+  #other{display: none;}
+
+  #favorites{display: none;}
+
+  #addADrink{
+    margin: 0;
+    min-width:200px;
+  }
+
 /* login popup stuff */
 
  /* The Modal (background) */
 .modal {
   display: none; 
-  position: fixed; /
+  position: fixed; 
   z-index: 2; 
   left: 0;
   top: 0;
