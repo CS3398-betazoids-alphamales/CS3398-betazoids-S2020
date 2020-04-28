@@ -228,7 +228,7 @@ function addADrinkDisplay(){
 
 
 </div>
-<div style="margin: 10%; width:100%; height:20%;"> </div>
+<div style="margin: 30%; width:100%; height:50%;"> </div>
 `;
 
     container.innerHTML += cont;
