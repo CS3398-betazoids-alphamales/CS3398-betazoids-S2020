@@ -220,6 +220,7 @@ function addADrinkDisplay(){
                     <div><input type="text" id= "procedureField1" name="mytext[]"><button class="add_procedure_button">+</button></div>
         </div></div>
         
+        <input type="button" name="submit" value="Submit" onClick="createDrink(this.form)"> 
         
       </div>
         
@@ -240,6 +241,47 @@ function addADrinkDisplay(){
     head.appendChild(script);
 }
 
+function createDrink(form) {
+
+  var newDrinkURL = "https://us-central1-rvrslkupdb.cloudfunctions.net/addDrink?newDrink=";
+
+  var index;
+  for (index = 0; index < 10; ++index) {
+    if (form.glass[index].checked)
+      break;
+  }
+  var glass = form.glass[index].value;
+
+  for (index = 0; index < 13; ++index) {
+    if (form.type[index].checked)
+      break;
+  }
+  var type = form.type[index].value;
+
+  var garnish = form.garnish.value.replace(/ /g,"+");
+  var ingredients = form.ingredients.value.replace(/ /g,"+");
+  var drinkName = form.drink_name.value.replace(/ /g,"+");
+  var occasion = form.occasion.value.replace(/ /g,"+");
+  var procedure = form.procedure.value.replace(/ /g,"+");
+
+  var drinkObjectFormatter = "{+\"form\":{\"glass\":\"" + glass + "\",\"type\":\"" + type +
+                            "\"},+\"garnish\":{\"1\":\"" + garnish +
+                            "\"},+\"ingredients\":{\"1\":\"" + ingredients + "\",\"2\":\"" + ingredients + "\",\"3\":\"" + ingredients + "\",\"4\":\"" + ingredients +
+                            "\"},+\"name\":\"" + drinkName + 
+                            "\",+\"occasion\":\"" + occasion + 
+                            "\",+\"procedure\":{\"1\":\"" + procedure + "\",\"2\":\"" + procedure + "\",\"3\":\"" + procedure + "\",\"4\":\"" + procedure + 
+                            "\"},+\"rating\":0.0}";
+  newDrinkURL = newDrinkURL + drinkObjectFormatter;
+
+  xhttp2.open('POST',newDrinkURL);
+  xhttp2.send();
+
+  xhttp2.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      alert("Drink successfully added!");
+    }
+  }
+}
 
 function aboutDisplay() {
     const container = document.getElementById('main-panel');
