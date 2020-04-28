@@ -102,5 +102,13 @@
   background-color: #d65a31;
 }
 
+[data-theme="dark"] .btn.btn-default.addchip {
+  color: limegreen;
+}
+
+[data-theme="dark"] .btn.btn-default.removechip {
+  color: deeppink;
+}
+
 
 
