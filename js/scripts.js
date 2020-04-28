@@ -265,11 +265,11 @@ function createDrink(form) {
   var procedure;
 
   for (index = 0; index < form.procedure.length-1; ++index) {
-    ingredients += "\",\""+ index + "\":\""+ form.ingredients[index].value.replace(/ /g,"+");
+    ingredients += "\",\""+ (index+2) + "\":\""+ form.ingredients[index].value.replace(/ /g,"+");
   }
 
   for (index = 0; index < form.procedure.length-1; ++index) {
-    procedure += "\",\""+ index + "\":\""+ form.procedure[index].value.replace(/ /g,"+");
+    procedure += "\",\""+ (index+2) + "\":\""+ form.procedure[index].value.replace(/ /g,"+");
   }
   
 
