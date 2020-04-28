@@ -49,6 +49,11 @@ $("#addadrinklink").click(function(){
   addADrinkDisplay();
 });
 
+$("#add-drink-mobile-open").click(function(){
+  panelPurge();
+  addADrinkDisplay();
+});
+
 
 $("#alcohollink").click(function(){
 });
@@ -84,7 +89,7 @@ function panelPurge(){
 function addADrinkDisplay(){
   document.getElementById("side-navigation").style.width = "0";
   const container = document.getElementById('main-panel');
-    const cont = ` <div class="container">
+    const cont = ` <div class="container" style="">
 
     <form>
         <div class="d-flex flex-column justify-content-center">

@@ -595,6 +595,9 @@ body{
   position: relative;
   text-align: center;
 }
+#add-drink-mobile-open{
+  visibility: hidden;
+}
 
 @-webkit-keyframes animatezoom {
   from {-webkit-transform: scale(0)}
@@ -667,7 +670,14 @@ body{
 .navbar-brand img{
   height: 35px;
   width: 22px;
-	}
+  }
+
+#sideopen{
+  width: 50%;
+}
+#add-drink-mobile-open{
+  visibility: visible;
+}
 
 #login-button-mobile{
   display: block;
