@@ -131,6 +131,11 @@ body{
     margin-left:0px;
 }
 
+#dark-switch-mobile{
+	display: none;
+	margin-left: 10px;
+}
+
 .pointer{
     cursor: pointer;
 }
@@ -614,7 +619,7 @@ body{
 @media screen and (min-width: 1200px) {
 	.navbar-brand img{
 	width: 60px;
-}
+	}
 .navbar-brand p{ 
   font-size: 12px;
   margin-left: 90px;
@@ -622,7 +627,7 @@ body{
   margin-top: 70px;
   color: black !important;
 
-}
+	}
 	.btn{
 		width: 80px;
 		font-size: 16px;
@@ -631,7 +636,7 @@ body{
   .btn.btn-default.addchip{
   width: 35px;
   font-size: 16px;
-}
+	}
 	.card-body h4{
 		font-size: 21px;
 	}
@@ -654,22 +659,22 @@ body{
   .sidenav {
   height: 95%;
   overflow-y: auto;
-}
+	}
   .navbar-brand{
     font-size: 20px;
-}
+	}
 .navbar-brand img{
   height: 35px;
   width: 22px;
-}
+	}
 
 #login-button-mobile{
   display: block;
-}
+	}
 
 #login-button-desktop{
   display: none;
-}
+	}
 
 	.btn{
 		width: 70px;
@@ -683,19 +688,19 @@ body{
 	margin-top: 10px;
 	color: black;
 	float: right;
-}
+	}
 
 .navbar-brand p{  
   font-size: 10px;  display: block;
   margin-top: 30px;
   color: black !important;
-}
+	}
 
 
 
   .name-search-bar{
     display: block;
-  }
+  	}
 
 	.card-body p{
 		font-size: 16px;
@@ -723,7 +728,7 @@ body{
 }
 
 .panel-head-wrapper h2{font-size: 16px;}
-} 
+ 
 
 
 .star-rating-card {
@@ -737,26 +742,22 @@ body{
   margin-left: 25px;
   line-height:32px;
   font-size:1.25em;
+  }
+
 }
 
+@media screen and (max-width: 350px) {
+	#dark-switch-desktop{
+		display: none;
+	}
 
-
+	#dark-switch-mobile{
+		display: inline-block;
+	}
+	  
+} 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .navbar-brand img{
-	width: 20px;
-  }
-  .sidenav a {font-size: 16px;}
-  .nav-item{
-  	margin-top: 10px;
-  }
-  #navsearch{
-  	margin-top: 10px;
-  }
-  .navbar-toggler{
-	margin: none;
-	padding: none;
-}
+@media screen and (max-width: 450px) {
 
   
 } 
