@@ -259,17 +259,17 @@ function createDrink(form) {
   var type = form.type[index].value;
 
   var garnish = form.garnish.value.replace(/ /g,"+");
-  var ingredients;
+  var ingredients = form.ingredients[0].value.replace(/ /g,"+");
   var drinkName = form.drink_name.value.replace(/ /g,"+");
   var occasion = form.occasion.value.replace(/ /g,"+");
-  var procedure;
+  var procedure = form.procedure[0].value.replace(/ /g,"+");
 
-  for (index = 0; index < form.procedure.length-1; ++index) {
-    ingredients += "\",\""+ (index+2) + "\":\""+ form.ingredients[index].value.replace(/ /g,"+");
+  for (index = 1; index < form.procedure.length; ++index) {
+    ingredients += "\",\""+ (index+1) + "\":\""+ form.ingredients[index].value.replace(/ /g,"+");
   }
 
-  for (index = 0; index < form.procedure.length-1; ++index) {
-    procedure += "\",\""+ (index+2) + "\":\""+ form.procedure[index].value.replace(/ /g,"+");
+  for (index = 1; index < form.procedure.length; ++index) {
+    procedure += "\",\""+ (index+1) + "\":\""+ form.procedure[index].value.replace(/ /g,"+");
   }
   
 
