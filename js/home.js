@@ -150,8 +150,10 @@ function getRandom() {
 
                   // Append newyly created card element to the container
                   //   container.innerHTML += content;
-
+                  
                   })
+                  const cont = document.getElementById('main-panel');
+                  cont.innerHTML+= `<div style="margin: 30%; width:100%; height:50%;"> </div>`;
 
 
                   // Dynamically load star rating script after all elements have been created

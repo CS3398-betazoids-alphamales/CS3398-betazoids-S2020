@@ -461,12 +461,13 @@ body{
   }
 
  .scrollable-panel{
+     position: absolute;
      min-height:620px;
-     height: 75vh;
-     max-height: 700px;
-     overflow-y: auto;
-     margin: auto;
-     width:85%;    
+     overflow-y: scroll;
+     width:85%;
+     margin: 0;
+     padding: 0;
+     height: 10vh;    
   }
 
 
