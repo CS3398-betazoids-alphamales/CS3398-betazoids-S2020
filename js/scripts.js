@@ -223,14 +223,13 @@ function addADrinkDisplay(){
         <input type="button" name="submit" value="Submit" onClick="createDrink(this.form)"> 
         
       </div>
-        
-
-
-
 
 </form>
 
-</div>`;
+
+</div>
+<div style="margin: 10%; width:100%; height:20%;"> </div>
+`;
 
     container.innerHTML += cont;
     // Dynamically load star rating script after all elements have been created
