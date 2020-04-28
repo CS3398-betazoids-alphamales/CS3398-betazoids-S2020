@@ -103,43 +103,43 @@ function addADrinkDisplay(){
             <h3> Glass </h3>
             <div class="checkbox">
             <label>
-                <input type="checkbox" class="sev_check" name="Martini" />Collins</label>
+            <input type="radio" class="sev_check" name="glass" value="Collins">Collins</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="sev_check" name="Highball" />Highball Glass</label>
+          <input type="radio" class="sev_check" name="glass" value="Highball+Glass">Highball Glass</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="sev_check" name="chk3" />Chilled Rocks</label>
+          <input type="radio" class="sev_check" name="glass" value="Chilled+Rocks">Chilled Rocks</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="sev_check" name="chk5" />Chilled Cocktail</label>
+          <input type="radio" class="sev_check" name="glass" value="Chilled+Cocktail">Chilled Cocktail</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="sev_check" name="chk4" />Tall Speciality</label>
+          <input type="radio" class="sev_check" name="glass" value="Tall+Speciality">Tall Speciality</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="sev_check" name="chk5" />Tall Highball</label>
+          <input type="radio" class="sev_check" name="glass" value="Tall+Highball">Tall Highball</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="sev_check" name="chk5" />Tall Glass</label>
+          <input type="radio" class="sev_check" name="glass" value="Tall+Glass">Tall Glass</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="sev_check" name="chk5" />Footed Glass Mug</label>
+          <input type="radio" class="sev_check" name="glass" value="Footed+Glass+Mug">Footed Glass Mug</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="sev_check" name="chk5" />Shot Glass</label>
+          <input type="radio" class="sev_check" name="glass" value="Shot+Glass">Shot Glass</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="sev_check" name="chk5" />Tall Rocks</label>
+          <input type="radio" class="sev_check" name="glass" value="Tall+Rocks">Tall Rocks</label>
         </div>
         
         </div>
@@ -150,65 +150,65 @@ function addADrinkDisplay(){
             
             <div class="checkbox">
             <label>
-                <input type="checkbox" class="type_check" name="Martini" />Mixed Cocktail</label>
+            <input type="radio" class="type_check" name="type" value="Mixed+Cocktail">Mixed Cocktail</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="type_check" name="Highball" />Shooter</label>
+          <input type="radio" class="type_check" name="type" value="Shooter">Shooter</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="type_check" name="chk3" />Martini</label>
+          <input type="radio" class="type_check" name="type" value="Martini">Martini</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="type_check" name="chk4" />Highball</label>
+          <input type="radio" class="type_check" name="type" value="Highball">Highball</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="type_check" name="chk5" />Frozen Drink</label>
+          <input type="radio" class="type_check" name="type" value="Frozen+Drink">Frozen Drink</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="type_check" name="chk5" />Punch</label>
+          <input type="radio" class="type_check" name="type" value="Punch">Punch</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="type_check" name="chk5" />Hot Drink</label>
+          <input type="radio" class="type_check" name="type" value="Hot+Drink">Hot Drink</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="type_check" name="chk5" />Cappuccino</label>
+          <input type="radio" class="type_check" name="type" value="Cappuccino">Cappuccino</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="type_check" name="chk5" />Ice Cream Drink</label>
+          <input type="radio" class="type_check" name="type" value="Ice+Cream+Drink">Ice Cream Drink</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="type_check" name="chk5" />Coffee Drink</label>
+          <input type="radio" class="type_check" name="type" value="Coffee+Drink">Coffee Drink</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="type_check" name="chk5" />Champagne Drink</label>
+          <input type="radio" class="type_check" name="type" value="Champagne+Drink">Champagne Drink</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="type_check" name="chk5" />Smoothie</label>
+          <input type="radio" class="type_check" name="type" value="Smoothie"> Smoothie</label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="type_check" name="chk5" />Wine Drink</label>
+          <input type="radio" class="type_check" name="type" value="Wine+Drink">Wine Drink</label>
         </div>
         </div></div>
         <div class="col-xs-2"><div class="container">
             <h3> Garnish </h3>
-            <div><input type="text"  name="occasion"></div>
+            <div><input type="text"  name="garnish"></div>
 
             <h3> Ingredients </h3>
                     <div class="input_fields_wrap">
                         
-                    <div><input type="text" id="inputField1" name="mytext[]"><button class="add_field_button">+</button></div>
+                    <div><input type="text" id="inputField1" name="ingredients"><button class="add_field_button">+</button></div>
 
         </div></div>
         <div class="col-xs-2"><div class="container">
@@ -217,7 +217,7 @@ function addADrinkDisplay(){
             <h3> Procedure </h3>
                     <div class="procedure_fields_wrap">
                         
-                    <div><input type="text" id= "procedureField1" name="mytext[]"><button class="add_procedure_button">+</button></div>
+                    <div><input type="text" id= "procedureField1" name="procedure"><button class="add_procedure_button">+</button></div>
         </div></div>
         
         <input type="button" name="submit" value="Submit" onClick="createDrink(this.form)"> 
