@@ -273,6 +273,7 @@ function createDrink(form) {
                             "\"},+\"rating\":0.0}";
   newDrinkURL = newDrinkURL + drinkObjectFormatter;
 
+  var xhttp2 = new XMLHttpRequest();
   xhttp2.open('POST',newDrinkURL);
   xhttp2.send();
 
