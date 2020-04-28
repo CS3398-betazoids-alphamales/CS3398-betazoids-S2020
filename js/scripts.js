@@ -92,7 +92,7 @@ function addADrinkDisplay(){
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg">Drink Name</span>
               </div>
-              <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+              <input type="text" class="form-control" name="drink_name" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
             </div>
         </div>
         
