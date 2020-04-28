@@ -674,6 +674,7 @@ body{
 
 #sideopen{
   width: 50%;
+  white-space: nowrap;
 }
 #add-drink-mobile-open{
   visibility: visible;
