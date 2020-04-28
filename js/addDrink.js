@@ -21,7 +21,7 @@ $(document).ready(function() {
             document.getElementById("inputField" + x).disabled = true;
                 x++; //text box increment
                 
-                $(wrapper1).append('<div><input type="text" id="inputField'+ x +'" name=""/><button href="#" class="remove_field">-</button></div>'); //add input box
+                $(wrapper1).append('<div><input type="text" id="inputField'+ x +'" name="ingredients"/><button href="#" class="remove_field">-</button></div>'); //add input box
             }
         });
         
@@ -43,7 +43,7 @@ $(document).ready(function() {
             document.getElementById("procedureField" + y).disabled = true;
                 y++; //text box increment
                 
-                $(wrapper2).append('<div><input type="text" id="procedureField'+ y +'" name="" "/><button href="#" class="remove_field">-</button></div>'); //add input box
+                $(wrapper2).append('<div><input type="text" id="procedureField'+ y +'" name="procedure" "/><button href="#" class="remove_field">-</button></div>'); //add input box
             }
         });
         
