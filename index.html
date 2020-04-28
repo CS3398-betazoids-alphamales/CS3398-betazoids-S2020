@@ -143,6 +143,9 @@
         <button type="submit" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
           +
         </button>
+        <button type="submit" class="btn btn-default removechip" ng-click="ctrl.negate(ctrl.insert)">
+          -
+        </button>
 
       <select id="juice" class="custom-select browse-selection" ng-model="ctrl.insert" >
         <option value="" selected disabled>Juices</option>
@@ -154,6 +157,9 @@
       <button type="submit" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
         +
       </button>
+        <button type="submit" class="btn btn-default removechip" ng-click="ctrl.negate(ctrl.insert)">
+          -
+        </button>
 
       <select id="others" class="custom-select browse-selection" ng-model="ctrl.insert" >
         <option value="" selected disabled>Other</option>
@@ -165,6 +171,9 @@
       <button type="submit" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
         +
       </button>
+        <button type="submit" class="btn btn-default removechip" ng-click="ctrl.negate(ctrl.insert)">
+          -
+        </button>
 
     </form>
   </div>
