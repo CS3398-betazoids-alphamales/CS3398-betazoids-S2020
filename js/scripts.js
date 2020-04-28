@@ -264,7 +264,7 @@ function createDrink(form) {
   var occasion = form.occasion.value.replace(/ /g,"+");
   var procedure = form.procedure[0].value.replace(/ /g,"+");
 
-  for (index = 1; index < form.procedure.length; ++index) {
+  for (index = 1; index < form.ingredients.length; ++index) {
     ingredients += "\",\""+ (index+1) + "\":\""+ form.ingredients[index].value.replace(/ /g,"+");
   }
 
