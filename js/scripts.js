@@ -92,7 +92,7 @@ function addADrinkDisplay(){
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg">Drink Name</span>
               </div>
-              <input type="text" class="form-control" name="drink_name" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+              <input type="text" class="form-control" name="drink_name" aria-label="Large" aria-describedby="inputGroup-sizing-sm" min="1" max="15"/>
             </div>
         </div>
         
@@ -243,6 +243,8 @@ function addADrinkDisplay(){
 
 function createDrink(form) {
 
+  
+
   var newDrinkURL = "https://us-central1-rvrslkupdb.cloudfunctions.net/addDrink?newDrink=";
 
   var index;
@@ -256,7 +258,15 @@ function createDrink(form) {
     if (form.type[index].checked)
       break;
   }
-  var type = form.type[index].value;
+
+  var type;
+
+  if(form.type[index].value){
+    type = form.type[index].value;
+  }else {
+    type = "Serve It How You Like";
+  }
+  
 
   var garnish = form.garnish.value.replace(/ /g,"+");
   var ingredients;
