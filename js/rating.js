@@ -6,7 +6,7 @@ $(document).ready(function() {
   
   var SetRatingStar = function(sep, ratingN, ratingO) {
 
-    if(!rating0){
+    if(ratingO == undefined || ratingO == null){
       rating0=0;
     }
   
