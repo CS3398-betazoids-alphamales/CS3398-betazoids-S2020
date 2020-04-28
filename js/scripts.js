@@ -245,7 +245,6 @@ function createDrink(form) {
 
   var newDrinkURL = "https://us-central1-rvrslkupdb.cloudfunctions.net/addDrink?newDrink=";
 
-  let xhttp2 = new XMLHttpRequest();
   var index;
   for (index = 0; index < 10; ++index) {
     if (form.glass[index].checked)
@@ -263,9 +262,12 @@ function createDrink(form) {
   var ingredients = form.ingredients.value.replace(/ /g,"+");
   var drinkName = form.drink_name.value.replace(/ /g,"+");
   var occasion = form.occasion.value.replace(/ /g,"+");
-  var procedure = form.procedure.value.replace(/ /g,"+");
+  var procedure;
+
+  for (index = 0; index < form.procedure.length-1; ++index) {
+    procedure += "\",\""+ index + "\":\""+ form.procedure[index].value.replace(/ /g,"+");
+  }
   
-  console.log(form.procedure[2].value);
 
   var drinkObjectFormatter = "{+\"form\":{\"glass\":\"" + glass + "\",\"type\":\"" + type +
                             "\"},+\"garnish\":{\"1\":\"" + garnish +
