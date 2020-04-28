@@ -259,10 +259,14 @@ function createDrink(form) {
   var type = form.type[index].value;
 
   var garnish = form.garnish.value.replace(/ /g,"+");
-  var ingredients = form.ingredients.value.replace(/ /g,"+");
+  var ingredients;
   var drinkName = form.drink_name.value.replace(/ /g,"+");
   var occasion = form.occasion.value.replace(/ /g,"+");
   var procedure;
+
+  for (index = 0; index < form.procedure.length-1; ++index) {
+    ingredients += "\",\""+ index + "\":\""+ form.ingredients[index].value.replace(/ /g,"+");
+  }
 
   for (index = 0; index < form.procedure.length-1; ++index) {
     procedure += "\",\""+ index + "\":\""+ form.procedure[index].value.replace(/ /g,"+");
@@ -271,10 +275,10 @@ function createDrink(form) {
 
   var drinkObjectFormatter = "{+\"form\":{\"glass\":\"" + glass + "\",\"type\":\"" + type +
                             "\"},+\"garnish\":{\"1\":\"" + garnish +
-                            "\"},+\"ingredients\":{\"1\":\"" + ingredients + "\",\"2\":\"" + ingredients + "\",\"3\":\"" + ingredients + "\",\"4\":\"" + ingredients +
+                            "\"},+\"ingredients\":{\"1\":\"" + ingredients +
                             "\"},+\"name\":\"" + drinkName + 
                             "\",+\"occasion\":\"" + occasion + 
-                            "\",+\"procedure\":{\"1\":\"" + procedure + "\",\"2\":\"" + procedure + "\",\"3\":\"" + procedure + "\",\"4\":\"" + procedure + 
+                            "\",+\"procedure\":{\"1\":\"" + procedure + 
                             "\"},+\"rating\":0.0}";
   newDrinkURL = newDrinkURL + drinkObjectFormatter;
 
