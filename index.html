@@ -108,10 +108,10 @@
                  autocomplete="off"
                  placeholder="Add/Remove Ingredient"
                  ng-model="ctrl.insert">
-        <button type="submit" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
+        <button type="submit" title="add ingredient" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
               +
             </button>
-            <button type="submit" class="btn btn-default removechip" ng-click="ctrl.negate(ctrl.insert)">
+            <button type="submit" title="remove ingredient" class="btn btn-default removechip" ng-click="ctrl.negate(ctrl.insert)">
               -
             </button>
       </form>
@@ -140,10 +140,11 @@
           <option value="gin">gin</option>
           <option value="rum">rum</option>
           </select>
-        <button type="submit" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
+        <button type="submit" title="add ingredient" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
           +
         </button>
-        <button type="submit" class="btn btn-default removechip" ng-click="ctrl.negate(ctrl.insert)">
+
+        <button type="submit" title="remove ingredient" class="btn btn-default removechip" ng-click="ctrl.negate(ctrl.insert)">
           -
         </button>
 
@@ -154,10 +155,10 @@
         <option value="pineapple juice">pineapple juice</option>
         <option value="lemon juice">lemon juice</option>
       </select>
-      <button type="submit" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
+      <button type="submit" title="add ingredient" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
         +
       </button>
-        <button type="submit" class="btn btn-default removechip" ng-click="ctrl.negate(ctrl.insert)">
+        <button type="submit" title="remove ingredient" class="btn btn-default removechip" ng-click="ctrl.negate(ctrl.insert)">
           -
         </button>
 
@@ -168,10 +169,10 @@
         <option value="simple syrup">simple syrup</option>
         <option value="club soda">club soda</option>
       </select>
-      <button type="submit" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
+      <button type="submit" title="add ingredient" class="btn btn-default addchip" ng-click="ctrl.add(ctrl.insert)">
         +
       </button>
-        <button type="submit" class="btn btn-default removechip" ng-click="ctrl.negate(ctrl.insert)">
+        <button type="submit" title="remove ingredient" class="btn btn-default removechip" ng-click="ctrl.negate(ctrl.insert)">
           -
         </button>
 
