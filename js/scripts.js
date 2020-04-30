@@ -89,22 +89,35 @@ function panelPurge(){
 function addADrinkDisplay(){
   document.getElementById("side-navigation").style.width = "0";
   const container = document.getElementById('main-panel');
-    const cont = ` <div class="container" style="">
 
+  const drinkType = $('.type_check');
+  var image1;
+
+  for(drinkT in drinkType){
+    if(drinkType.prop("checked") == true){
+      image1 = $(this).value;
+    }
+  }
+
+  image1 = getImage(image1);
+
+  
+    const cont = ` <div class="container" style="">
+    <img class="card-img-top" src="${image1}" id="addadrinkimagedisplay" alt="Card image" style="margin-left:auto; margin-right:auto; display: block; width:50%">
     <form>
         <div class="d-flex flex-column justify-content-center">
           <div class="input-group input-group-lg">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg">Drink Name</span>
               </div>
-              <input type="text" class="form-control" name="drink_name" aria-label="Large" aria-describedby="inputGroup-sizing-sm" min="1" max="15"/>
+              <input type="text" class="form-control" id="drink_name" name="drink_name" aria-label="Large" aria-describedby="inputGroup-sizing-sm" min="1" max="15"/>
             </div>
         </div>
         
         
         <div class="row">
-        <div class="col-xs-3">
-        <div class="container"> 
+        <div class="col-xs-2">
+        <div class="container" style="background-color: orange;"> 
             <h3> Glass </h3>
             <div class="checkbox">
             <label>
@@ -216,7 +229,14 @@ function addADrinkDisplay(){
                     <div><input type="text" id="inputField1" name="ingredients"><button class="add_field_button">+</button></div>
 
         </div></div>
-        <div class="col-xs-2"><div class="container">
+        
+        
+        <input type="button" name="submit" value="Submit" onClick="createDrink(this.form)"> 
+        
+      </div>
+      
+
+      <div class="col-xs-2"><div class="container">
             <h3> Occasion </h3>
             <div><input type="text"  name="occasion"></div>
             <h3> Procedure </h3>
@@ -224,10 +244,8 @@ function addADrinkDisplay(){
                         
                     <div><input type="text" id= "procedureField1" name="procedure"><button class="add_procedure_button">+</button></div>
         </div></div>
-        
-        <input type="button" name="submit" value="Submit" onClick="createDrink(this.form)"> 
-        
-      </div>
+      
+      
 
 </form>
 
@@ -256,7 +274,13 @@ function createDrink(form) {
     if (form.glass[index].checked)
       break;
   }
-  var glass = form.glass[index].value;
+  var glass; 
+
+  if(form.glass[index] !== undefined){
+    glass = form.glass[index].value;
+  }else {
+    glass = "Any Glass";
+  }
 
   for (index = 0; index < 13; ++index) {
     if (form.type[index].checked)
@@ -265,25 +289,72 @@ function createDrink(form) {
 
   var type;
 
-  if(form.type[index].value){
+  if(form.type[index] !== undefined){
     type = form.type[index].value;
   }else {
     type = "Serve It How You Like";
   }
   
+  if(form.garnish )
+  var garnish;
 
-  var garnish = form.garnish.value.replace(/ /g,"+");
-  var ingredients = form.ingredients[0].value.replace(/ /g,"+");
+  if(form.garnish !== undefined ){
+    garnish = form.garnish.value.replace(/ /g,"+");
+  }else {
+    garnish = "No Garnish";
+  }
+  var ingredients;
+  if(form.ingredients[0] !== undefined ){
+    ingredients = form.ingredients[0].value.replace(/ /g,"+");
+  }else {
+    alert("Your drink must have at least one ingredient");
+    return false;
+  }
   var drinkName = form.drink_name.value.replace(/ /g,"+");
-  var occasion = form.occasion.value.replace(/ /g,"+");
-  var procedure = form.procedure[0].value.replace(/ /g,"+");
+  console.log(form.drink_name);
 
+  if(form.drink_name !== undefined  && form.drink_name.value !== ""){
+    drinName = form.drink_name.value.replace(/ /g,"+");
+  }else {
+    alert("Your drink must have a name that is between 3 and 30 characters long");
+    return false;
+  }
+
+
+  var occasion = form.occasion.value.replace(/ /g,"+");
+
+  if(form.occassion !== undefined ){
+    occasion = form.occasion.value.replace(/ /g,"+");
+  }else {
+    occasion = "Anytime";
+  }
+  var procedure;
+
+  if(form.procedure[0] !== undefined ){
+    procedure = form.procedure[0].value.replace(/ /g,"+");
+  }else {
+    alert("Your drink must have at least one procedure");
+    return false;
+  }
+
+  var validIngrProc = true;
   for (index = 1; index < form.ingredients.length; ++index) {
+    if(form.ingredients[index].value !== "")
     ingredients += "\",\""+ (index+1) + "\":\""+ form.ingredients[index].value.replace(/ /g,"+");
+    if(form.ingredients[index].value< 3 && form.ingredients[index].value > 125){
+      alert("Your ingredients must be between 3 and 125 characters long, inclusive.");
+      return false;
+    }
+
   }
 
   for (index = 1; index < form.procedure.length; ++index) {
+    if(form.procedure[index].value !== "")
     procedure += "\",\""+ (index+1) + "\":\""+ form.procedure[index].value.replace(/ /g,"+");
+    if(form.procedure[index].value< 3 && form.procedure[index].value > 125){
+      alert("Your procedure must be between 8 and 150 characters long, inclusive.");
+      return false;
+    }
   }
   
 
@@ -386,6 +457,18 @@ function getImage(drinkType){
 
     return drinkImg;
 }
+
+$('.type_check').click(function() {
+  if($(this).prop("checked") == true){
+    let type = $(this).innerHTML;
+    let drinkImageUrl = getImage(type);
+  document.getElementById("drinkVisualization").src = drinkImageUrl;
+  }else {
+    document.getElementById("drinkVisualization").src = 'style/pic/mixed-cocktail.jpg';
+  }
+});
+
+
 
 
 

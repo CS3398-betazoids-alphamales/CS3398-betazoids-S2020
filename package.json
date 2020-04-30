@@ -1,15 +1,15 @@
 {
-
   "name": "cs3398-betazoids-s2020",
   "version": "1.0.0",
   "description": ">  FeedMe started out with a team of five versatile developers by the names of: >  > * Benjamin Bond > * Jonathan Crouch > * Evan Estrada > * Aaron Baker > * Andrew Saenz > > with a vision to create an application that helps prevent good ingredients from going to waste. We want to help individuals with limited mixing experience create recipes based on the ingredients they already have at home.",
   "main": "index.js",
   "dependencies": {
-      "jquery-typeahead": "^2.11.0"
+    "jquery-typeahead": "^2.11.0"
   },
   "devDependencies": {
     "firebase": "^7.9.1",
-    "firebase-tools": "^7.14.0"
+    "firebase-tools": "^7.14.0",
+    "webpack": "^4.43.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

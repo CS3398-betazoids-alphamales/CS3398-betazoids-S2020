@@ -6,8 +6,27 @@ $(document).ready(function() {
     });
     
     $('.type_check').click(function() {
+
+        
+        var image1;
+
+        if($(this).is(":checked")){
+            console.log($(this).prop("value"));
+            image1 = $(this).prop("value").split('+').join(' ');
+        }
+        else if($(this).is(":not(:checked)")){
+            console.log("Checkbox is unchecked.");
+        }
+
+        image1 = getImage(image1);
+
+        let change = document.getElementById('addadrinkimagedisplay');
+
+        change.src = image1;
       $('.type_check').not(this).prop('checked', false);
     });
+
+
     
     
     var max_fields  = 10; //maximum input boxes allowed
@@ -18,10 +37,13 @@ $(document).ready(function() {
         $(add_button).click(function(e){ //on add input button click
             e.preventDefault();
             if(x < max_fields){ //max input box allowed
-            document.getElementById("inputField" + x).disabled = true;
+            let add = document.getElementById("inputField" + x).value;
+            
                 x++; //text box increment
                 
-                $(wrapper1).append('<div><input type="text" id="inputField'+ x +'" name="ingredients"/><button href="#" class="remove_field">-</button></div>'); //add input box
+                $(wrapper1).append('<div><input type="text" id="inputField'+ x +'" name="ingredients" value="' + add + '"/><button href="#" class="remove_field">-</button></div>'); //add input box
+
+                document.getElementById("inputField" + x-1).value = "";
             }
         });
         

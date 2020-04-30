@@ -11,7 +11,7 @@ function getRandom() {
 
           if (this.readyState == 4 && this.status == 200) {
               var data = JSON.parse(this.responseText);
-              console.log(data);
+              //console.log(data);
               const container = document.getElementById('main-panel');
 
                   data.forEach((result, idx) => {
@@ -27,25 +27,25 @@ function getRandom() {
 
 
                   for( i in ingredientArray1){
-                  console.log("Now the ingredient array has: ");
-                  console.log(ingredientArray1[i]);
+                  //console.log("Now the ingredient array has: ");
+                  //console.log(ingredientArray1[i]);
                   }
 
                   let resultRating = 0;
                   console.log("this is result.rating: " + result.rating);
                   if ( result.rating !== undefined){
-                    console.log("set result.rating");
-                    resultRating = result.rating;
+                    //console.log("set result.rating");
+                    //resultRating = result.rating;
                   }
                   var starRating=``;
                   for(var f = 0; f < parseInt(resultRating); f++) {
                     starRating= starRating + `<span class="fa fa-star" data-rating="` + f + `"></span>`;
                   }
                   for(var f = parseInt(resultRating)+1; f <= 5; f++) {
-                    console.log("The function is working");
+                    //console.log("The function is working");
                     starRating= starRating + `<span class="fa fa-star-o" data-rating="` + f + `"></span>`;
                   }
-                  console.log(starRating);
+                  //console.log(starRating);
 
                   var image = getImage(result.form.type); //function found in scripts.js
                   console.log(image)
@@ -82,11 +82,13 @@ function getRandom() {
 
                             <!-- The Recipe Modal -->
                   <div id="recipepopup-${idx}" class="modal">
-                    <span onclick="document.getElementById('recipepopup-${idx}').style.display='none'"
-                  class="close" title="Close Modal">&times;</span>
+                    
 
                     <!-- Modal Content -->
                     <form class="modal-content-recipe animate" action=" # ">
+                    <div class="content-container">
+                    <span onclick="document.getElementById('recipepopup-${idx}').style.display='none'"
+                  class="close" title="Close Modal">&times;</span>
                       <div class="imgcontainer">
                         <img src="${image}" id="drinkimg" alt="Drink" class="drink imgmodal rounded">
                       </div>
@@ -116,6 +118,7 @@ function getRandom() {
                         <h5>To make it:</h5>
                         
                       </div>
+                    </div>
                     </form>
                   </div>
 
@@ -124,11 +127,12 @@ function getRandom() {
 
 
                   container.innerHTML += cont;
+                  
                   for(i in ingredientArray1){
                     var z = document.createElement('p');
-                    var x = document.createTextNode(ingredientArray1[i]);
+                    var x = document.createTextNode(ingredientArray1[i] + " ");
                     z.appendChild(x);
-                    console.log(document.getElementById("collapse-"+ idx));
+                    //console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("card-body-" + idx).appendChild(z);
                   }
 
@@ -136,7 +140,7 @@ function getRandom() {
                     var j = document.createElement('p');
                     var k = document.createTextNode(ingredientArray1[i]);
                     j.appendChild(k);
-                    console.log(document.getElementById("collapse-"+ idx));
+                    //console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("recipe-container-" + idx).appendChild(j);
                   }
 
@@ -144,7 +148,7 @@ function getRandom() {
                     var v = document.createElement('p');
                     var w = document.createTextNode(procedureArray1[i]);
                     v.appendChild(w);
-                    console.log(document.getElementById("collapse-"+ idx));
+                    //console.log(document.getElementById("collapse-"+ idx));
                     document.getElementById("procedure-container-" + idx).appendChild(v);
                   }
 
@@ -152,8 +156,8 @@ function getRandom() {
                   //   container.innerHTML += content;
                   
                   })
-                  const cont = document.getElementById('main-panel');
-                  cont.innerHTML+= `<div style="margin: 30%; width:100%; height:50%;"> </div>`;
+                  // const cont = document.getElementById('main-panel');
+                  // cont.innerHTML+= `<div style="margin: 30%; width:100%; height:50%;"> </div>`;
 
 
                   // Dynamically load star rating script after all elements have been created
@@ -163,15 +167,17 @@ function getRandom() {
                   script.type= 'text/javascript';
                   script.src= 'js/rating.js';
                   head.appendChild(script);
+                  
 
-
-              console.log(this.responseType);
+                
+                  
+              //console.log(this.responseType);
               for (i in data){
                   console.log("working");
                 var div = document.createElement("DIV");
                 div.innerHTML = i;
               }
-              console.log(this.responseText);
+              //console.log(this.responseText);
             //console.log(this.responseText);
           }else if (this.status){
                   console.log("response: " + this.responseText + ", status: " + this.status);

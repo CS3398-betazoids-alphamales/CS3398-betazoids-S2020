@@ -37,6 +37,7 @@
 }
 
 [data-theme="dark"] .card-body {
+  border-radius: 0% 0% 2% 2%;
   background-color: #393e46;
   color: #eeeeee;
 }

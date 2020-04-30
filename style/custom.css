@@ -14,6 +14,7 @@ a:hover{
 
 }
 
+
 ul, li{
 	list-style: none;
 }
@@ -24,7 +25,7 @@ h1{
 
 
 body{
-	overflow: hidden;F
+	overflow: hidden;
 	background-color:#ffffff;
 }
 
@@ -61,6 +62,10 @@ body{
   max-height: 230px;
   padding-bottom: 0px;
 	overflow: hidden;
+}
+
+.card-block{
+  min-height: 390px;
 }
 
 .card-body h4{
@@ -460,15 +465,44 @@ body{
     font-size: 3vw;
   }
 
+  
  .scrollable-panel{
+     top: -40px;
      position: absolute;
      min-height:620px;
-     overflow-y: scroll;
-     width:85%;
+     overflow: auto;
+     width: 85%;
      margin: 0;
      padding: 0;
-     height: 10vh;    
+     height: 1vh;    
   }
+  .scrollable-panel::-webkit-scrollbar{
+    overflow: visible;
+    background: white;
+    opacity: .9;
+    border-radius: 4px;
+    height: 2px;
+    width: 2px;
+  }
+
+  .scrollable-panel::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 4px;
+  }
+  /* .scrollable-panel::-webkit-scrollbar{
+    width: 10px;
+      
+  }
+  .scrollable-panel::-webkit-scrollbar-thumb{
+    background: rgb(25,25,25);
+      border: 1px solid rgb(0,0,0);
+  }
+  ::-webkit-scrollbar-track {
+    background: rgb(0,0,0);
+    border: 4px solid transparent;
+    background-clip: content-box;   /* THIS IS IMPORTANT
+  }  */
+  
 
 
   #main-panel{display: block;}
@@ -548,11 +582,10 @@ body{
 /* The Close Button */
 .close {
   /* Position it in the top right corner outside of the modal */
-  position: absolute;
-  right: 25px;
-  top: 0;
+  position: relative;
+  top: -8px;
   color: #000;
-  font-size: 35px;
+  font-size: 40px;
   font-weight: bold;
 }
 
@@ -660,6 +693,11 @@ body{
 
 @media screen and (max-width: 990px) {
 
+  .scrollable-panel{
+    top: 0px;
+    margin-left: 0;
+  }
+
   .sidenav {
   height: 95%;
   overflow-y: auto;
@@ -706,9 +744,7 @@ body{
   font-size: 10px;  display: block;
   margin-top: 30px;
   color: black !important;
-	}
-
-
+  }
 
   .name-search-bar{
     display: block;
@@ -751,7 +787,8 @@ body{
 .star-rating .fa-star{color: orange;}
 
 .star-rating-modal {
-  margin-left: 25px;
+   margin-left: 3%;
+   margin-bottom: 2%; 
   line-height:32px;
   font-size:1.25em;
   }
@@ -773,5 +810,6 @@ body{
 
   
 } 
+
 
 

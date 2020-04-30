@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+  
+
 <head>
 
   <meta charset="utf-8">
@@ -20,7 +22,7 @@
   <link href="style/custom.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dark-mode/dark-mode.css">
-
+  <script type="module" src="node_modules/smooth-scrollbar/dist/smooth-scrollbar.js"></script>
 </head>
 
 <body ng-app="mainModule">
@@ -53,7 +55,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <!-- will remove function calls and add event listeners to external .js later -->
-            <a class="nav-link" id="homelink" href=" # " style="white-space: nowrap;">Recipes
+            <a class="nav-link current" id="homelink" href=" # " style="white-space: nowrap;">Recipes
               
             </a>
           </li>
@@ -217,10 +219,10 @@
 
 
   <!-- Page Content -->
-  <div class="container" id="content-wrapper">
+  <div class="container" id="content-wrapper" >
     <div class="row" id="content-window">
       <div class="col-lg-12 text-left">
-
+            
             <div id="main-panel" class="panel panel-primary scrollable-panel container">
 
               <!-- The cards appear here --> 
@@ -249,6 +251,7 @@
                 
 
               </div>
+            
 
             </div>
              </div>
@@ -306,11 +309,6 @@
       });
     }
   </script>
-
-
-
-  </div>
-
 </body>
 
 </html>
