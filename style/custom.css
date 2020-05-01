@@ -203,7 +203,7 @@ body{
 
 .current{
 	color: white !important;
-  text-decoration: underline;
+  text-decoration: underline !important;
 	background-color: #9c3918 !important;
 	border-radius: 15px;
 }
