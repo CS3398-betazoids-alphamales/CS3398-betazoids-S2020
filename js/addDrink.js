@@ -37,7 +37,7 @@ $(document).ready(function() {
         $(add_button).click(function(e){ //on add input button click
             e.preventDefault();
             if(x < max_fields){ //max input box allowed
-            let add = document.getElementById("inputField" + x).value;
+            let add = document.getElementById("inputField1").value;
             
                 x++; //text box increment
                 
@@ -62,10 +62,10 @@ $(document).ready(function() {
         $(add_procedure_button).click(function(e){ //on add input button click
             e.preventDefault();
             if(y < max_fields){ //max input box allowed
-            document.getElementById("procedureField" + y).disabled = true;
+                let add = document.getElementById("procedureField1").value;
                 y++; //text box increment
                 
-                $(wrapper2).append('<div><input type="text" id="procedureField'+ y +'" name="procedure" "/><button href="#" class="remove_field">-</button></div>'); //add input box
+                $(wrapper2).append('<div><input type="text" id="procedureField'+ y +'" name="procedure" value="' + add + '"/><button href="#" class="remove_field">-</button></div>'); //add input        
             }
         });
         
