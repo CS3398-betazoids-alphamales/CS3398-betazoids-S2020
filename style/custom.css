@@ -164,6 +164,11 @@ body{
 	text-align: left;
 	margin-right: 2vw;
 	margin-top: 6vw;
+  padding-bottom: 0px;
+}
+
+.navbar{
+  padding-bottom: 0px;
 }
 
 #login-button-mobile{
@@ -204,7 +209,7 @@ body{
 .current{
 	color: white !important;
   text-decoration: underline !important;
-	background-color: #dc7e10 !important;
+	background-color: none !important;
 }
 
 
