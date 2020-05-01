@@ -187,11 +187,13 @@ function multiSearch(lmMultiPage) {
 
                     <!-- The Recipe Modal -->
                     <div id="recipepopup-${index}" class="modal">
-                      <span onclick="document.getElementById('recipepopup-${index}').style.display='none'"
-                    class="close" title="Close Modal">&times;</span>
+                      
   
                       <!-- Modal Content -->
                       <form class="modal-content-recipe animate" action=" # ">
+                      <div class="content-container">
+                    <span onclick="document.getElementById('recipepopup-${idx}').style.display='none'"
+                  class="close" title="Close Modal">&times;</span>
                         <div class="imgcontainer">
                           <img src="${image}" id="drinkimg" alt="Drink" class="drink rounded">
                         </div>
@@ -220,6 +222,7 @@ function multiSearch(lmMultiPage) {
                         <div class="procedure-container modal-container" id="procedure-container-${index}">
                           <h5>To make it:</h5>
                           
+                        </div>
                         </div>
                       </form>
                     </div>

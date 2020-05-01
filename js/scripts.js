@@ -109,8 +109,11 @@ function addADrinkDisplay(){
 
   
     const cont = ` <div class="container" style="">
-    <img class="card-img-top" src="${image1}" id="addadrinkimagedisplay" alt="Card image" style="margin-left:auto; margin-right:auto; display: block; width:50%">
+    <div class="add-drink-img-container" style="margin: 2%; padding 2%;">
+    <img class="card-img-drink-display" src="${image1}" id="addadrinkimagedisplay" alt="Card image" >
+    </div>
     <form>
+    <div class="spacing" style="margin: 1%;">
         <div class="d-flex flex-column justify-content-center">
           <div class="input-group input-group-lg">
               <div class="input-group-prepend">
@@ -119,6 +122,7 @@ function addADrinkDisplay(){
               <input type="text" class="form-control" id="drink_name" name="drink_name" aria-label="Large" aria-describedby="inputGroup-sizing-sm" min="1" max="15"/>
             </div>
         </div>
+    </div>
         
         
         <div class="row">
@@ -225,19 +229,19 @@ function addADrinkDisplay(){
           <input type="radio" class="type_check" name="type" value="Wine+Drink">Wine Drink</label>
         </div>
         </div></div>
-        <div class="col-xs-2"><div class="container">
+        <div class="col-xs-2"><div class="container" style="background-color: orange;">
             <h3> Garnish </h3>
             <div><input type="text"  name="garnish"></div>
 
             <h3> Ingredients </h3>
                     <div class="input_fields_wrap">
                         
-                    <div><input type="text" id="inputField1" name="ingredients"><button class="add_field_button">+</button></div>
+                    <div><input type="text" id="inputField1" name="ingredients" style="margin-bottom: 5%;"><button class="add_field_button">+</button></div>
 
         </div></div>
         
         
-        <input type="button" name="submit" value="Submit" onClick="createDrink(this.form)"> 
+        <input type="button" name="submit" value="Submit" onClick="createDrink(this.form)" style="margin-bottom: 2%;"> 
         
       </div>
       
