@@ -35,6 +35,9 @@
   background-color:#393e46;
   border-color: #393e2f;
 }
+[data-theme="dark"]  .current{
+  background-color: #9c3918 !important;
+}
 
 [data-theme="dark"] .card-body {
   border-radius: 0% 0% 2% 2%;
