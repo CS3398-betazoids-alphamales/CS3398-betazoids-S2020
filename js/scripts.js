@@ -85,7 +85,8 @@ $("#lm-home").click(function(){
 $('.togglecurrent').click(function() {
 
 	if (!this.classList.contains('current')) {
-		$('.togglecurrent').toggleClass('current');
+		$('.togglecurrent').removeClass('current');
+		$(this).addClass('current');
 	}
 });
 
