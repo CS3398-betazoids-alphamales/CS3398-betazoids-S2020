@@ -1,3 +1,12 @@
+let lmHomePage = 1;
+
+function homeLoadMore(){
+    var element = document.getElementById("lm-container");
+    element.parentNode.removeChild(element);
+    lmHomePage++;
+    getRandom();
+}
+
 function getRandom() {
 
       
@@ -50,17 +59,23 @@ function getRandom() {
                   var image = getImage(result.form.type); //function found in scripts.js
                   console.log(image)
 
+                  let index = idx;
 
+                  if (lmHomePage > 1) {
+                    for (var i = 1; i < lmHomePage; i++) {
+                      index = index + 6;
+                    }
+                  }
 
                   const cont =
                   `<div class="col-md-4" style="display:inline-grid">
                   <div class="card">
-                    <div class="card-block" id="card-block-${idx}">
+                    <div class="card-block" id="card-block-${index}">
                       <img class="card-img-top" src="${image}" alt="Card image" style="width:100%">
-                        <div class="card-body" id="card-body-${idx}">
+                        <div class="card-body" id="card-body-${index}">
                           <h4 class="card-title"> ${result.name} </h4>
                           <p class="card-text"> ${result.form.type} </p>
-                          <a href="#" class="btn btn-primary" onclick="document.getElementById('recipepopup-${idx}').style.display='block'">Recipe</a>
+                          <a href="#" class="btn btn-primary" onclick="document.getElementById('recipepopup-${index}').style.display='block'">Recipe</a>
                           
 
 
@@ -68,7 +83,7 @@ function getRandom() {
                             <div class="row">
                               <div class="col-lg-12">
                                 <div class="star-rating">` + starRating + `
-                                  <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
+                                  <input type="hidden" name="${result.name}" id="hiddenRating-${index}" class="rating-value" value="2.56">
                                 </div>
                               </div>
                             </div>
@@ -81,13 +96,13 @@ function getRandom() {
 
 
                             <!-- The Recipe Modal -->
-                  <div id="recipepopup-${idx}" class="modal">
+                  <div id="recipepopup-${index}" class="modal">
                     
 
                     <!-- Modal Content -->
                     <form class="modal-content-recipe animate" action=" # ">
                     <div class="content-container">
-                    <span onclick="document.getElementById('recipepopup-${idx}').style.display='none'"
+                    <span onclick="document.getElementById('recipepopup-${index}').style.display='none'"
                   class="close" title="Close Modal">&times;</span>
                       <div class="imgcontainer">
                         <img src="${image}" id="drinkimg" alt="Drink" class="drink imgmodal rounded">
@@ -103,18 +118,18 @@ function getRandom() {
                             <div class="row">
                               <div class="col-sm-12">
                                 <div class="star-rating star-rating-modal"> ` + starRating + `
-                                  <input type="hidden" name="${result.name}" id="hiddenRating-${idx}" class="rating-value" value="2.56">
+                                  <input type="hidden" name="${result.name}" id="hiddenRating-${index}" class="rating-value" value="2.56">
                                 </div>
                               </div>
                             </div>
                           </div>
 
-                      <div class="recipe-container modal-container" id="recipe-container-${idx}">
+                      <div class="recipe-container modal-container" id="recipe-container-${index}">
                         <h5>Ingredients:</h5>
                         
                       </div>
 
-                      <div class="procedure-container modal-container" id="procedure-container-${idx}">
+                      <div class="procedure-container modal-container" id="procedure-container-${index}">
                         <h5>To make it:</h5>
                         
                       </div>
@@ -132,30 +147,40 @@ function getRandom() {
                     var z = document.createElement('p');
                     var x = document.createTextNode(ingredientArray1[i] + " ");
                     z.appendChild(x);
-                    //console.log(document.getElementById("collapse-"+ idx));
-                    document.getElementById("card-body-" + idx).appendChild(z);
+                    //console.log(document.getElementById("collapse-"+ index));
+                    document.getElementById("card-body-" + index).appendChild(z);
                   }
 
                   for(i in ingredientArray1){
                     var j = document.createElement('p');
                     var k = document.createTextNode(ingredientArray1[i]);
                     j.appendChild(k);
-                    //console.log(document.getElementById("collapse-"+ idx));
-                    document.getElementById("recipe-container-" + idx).appendChild(j);
+                    //console.log(document.getElementById("collapse-"+ index));
+                    document.getElementById("recipe-container-" + index).appendChild(j);
                   }
 
                   for(i in procedureArray1){
                     var v = document.createElement('p');
                     var w = document.createTextNode(procedureArray1[i]);
                     v.appendChild(w);
-                    //console.log(document.getElementById("collapse-"+ idx));
-                    document.getElementById("procedure-container-" + idx).appendChild(v);
+                    //console.log(document.getElementById("collapse-"+ index));
+                    document.getElementById("procedure-container-" + index).appendChild(v);
                   }
 
                   // Append newyly created card element to the container
                   //   container.innerHTML += content;
                   
                   })
+
+                  const container1 = document.getElementById('main-panel');
+                  const loadMore = `<div class="container" id="lm-container">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-8 text-center">
+                                              <a href="#" class="btn btn-primary load-more" onclick="homeLoadMore()" id="lm-home-search">Load More</a>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                  container1.innerHTML += loadMore;
                   // const cont = document.getElementById('main-panel');
                   // cont.innerHTML+= `<div style="margin: 30%; width:100%; height:50%;"> </div>`;
 
