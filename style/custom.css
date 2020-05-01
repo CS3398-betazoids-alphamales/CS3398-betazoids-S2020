@@ -103,6 +103,7 @@ body{
 
 }
 
+
 .browse-selection{
     margin-right:10px;
     margin-bottom:10px;
@@ -188,6 +189,13 @@ body{
 	margin-right: 0px;
 	margin-top: 5.8vw;
 }
+
+.current{
+	color: white !important;
+	background-color: #9c3918 !important;
+	border-radius: 15px;
+}
+
 
   .name-search-bar{
     display: none;

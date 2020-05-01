@@ -82,6 +82,12 @@ $("#lm-home").click(function(){
 
 });
 
+$('.togglecurrent').click(function() {
+    $('.togglecurrent').toggleClass('current');
+    
+
+});
+
 function panelPurge(){
   document.getElementById("main-panel").innerHTML = ``;
 }
