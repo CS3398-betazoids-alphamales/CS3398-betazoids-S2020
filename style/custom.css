@@ -203,8 +203,7 @@ body{
 
 .current{
 	color: white !important;
-	background-color: #9c3918 !important;
-	border-radius: 15px;
+	
 }
 
 
@@ -826,6 +825,41 @@ body{
 
   
 } 
+
+.fill li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: black;
+  height: 1px;
+}
+.fill li a {
+  transition: all 2s;
+}
+.fill li a:after {
+  text-align: left;
+  content: '.';
+  margin: 0;
+  opacity: 0;
+}
+.fill li a:hover {
+  color: black;
+  z-index: 1;
+}
+.fill li a:hover:after {
+  z-index: -10;
+  animation: fill 1s forwards;
+  -webkit-animation: fill 1s forwards;
+  -moz-animation: fill 1s forwards;
+  opacity: 1;
+}
+
+
 
 
 
