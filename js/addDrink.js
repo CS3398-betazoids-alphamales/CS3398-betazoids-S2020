@@ -43,7 +43,7 @@ $(document).ready(function() {
                 
                 $(wrapper1).append('<div><input type="text" id="inputField'+ x +'" name="ingredients" value="' + add + '"/><button href="#" class="remove_field">-</button></div>'); //add input box
 
-                document.getElementById("inputField" + x-1).value = "";
+                document.getElementById("inputField1").value = "";
             }
         });
         
@@ -65,7 +65,8 @@ $(document).ready(function() {
                 let add = document.getElementById("procedureField1").value;
                 y++; //text box increment
                 
-                $(wrapper2).append('<div><input type="text" id="procedureField'+ y +'" name="procedure" value="' + add + '"/><button href="#" class="remove_field">-</button></div>'); //add input        
+                $(wrapper2).append('<div><input type="text" id="procedureField'+ y +'" name="procedure" value="' + add + '"/><button href="#" class="remove_field">-</button></div>'); //add input 
+                document.getElementById("procedureField1").value = "";       
             }
         });
         
