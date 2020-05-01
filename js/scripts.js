@@ -83,9 +83,11 @@ $("#lm-home").click(function(){
 });
 
 $('.togglecurrent').click(function() {
-    $('.togglecurrent').toggleClass('current');
-    
 
+	if (!this.classList.contains('current')) {
+		$('.togglecurrent').removeClass('current');
+		$(this).addClass('current');
+	}
 });
 
 function panelPurge(){
