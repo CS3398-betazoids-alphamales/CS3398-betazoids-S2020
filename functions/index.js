@@ -242,6 +242,7 @@ exports.getRandomList = functions.https.onRequest(async (request, response) => {
     var howMany = -1;
     const randList = [];
     var randIntStr = "init";
+    var iter = 0;
     const MIN = 1;
     const MAX = 1072;
 
