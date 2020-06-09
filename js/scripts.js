@@ -92,6 +92,7 @@ $('.togglecurrent').click(function() {
 
 function panelPurge(){
   document.getElementById("main-panel").innerHTML = ``;
+  page = 1;
 }
 
 function addADrinkDisplay(){
@@ -479,8 +480,6 @@ $('.type_check').click(function() {
     document.getElementById("drinkVisualization").src = 'style/pic/mixed-cocktail.jpg';
   }
 });
-
-
 
 
 
