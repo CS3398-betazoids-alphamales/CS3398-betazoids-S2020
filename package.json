@@ -9,7 +9,7 @@
   "devDependencies": {
     "firebase": "^7.9.1",
     "firebase-tools": "^7.14.0",
-    "webpack": "^4.43.0"
+    "webpack": "^5.75.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
